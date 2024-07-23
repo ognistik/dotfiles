@@ -1,6 +1,55 @@
 # KARABINER - Config
 ---
-#2-areas/automations 
+## TOC
+- [#2-areas/automations](#2-areasautomations)
+- [Simple Modifications](#simple-modifications)
+- [CLEAN BASE LAYER](#clean-base-layer)
+- [DELETE MODS](#delete-mods)
+- [W MODE (YABAI WINDOWS)](#w-mode-yabai-windows)
+  - [W BASE Layer - No Modifiers](#w-base-layer---no-modifiers)
+  - [W CMD (Misc and go to space)](#w-cmd-misc-and-go-to-space)
+  - [W D (Insert, Stack, Throw \& Don’t Go)](#w-d-insert-stack-throw--dont-go)
+  - [W F (Focus)](#w-f-focus)
+  - [W G (Swap \& Throw \& Go)](#w-g-swap--throw--go)
+  - [W R (Rotate \& Resize)](#w-r-rotate--resize)
+  - [W C (Send to Space \& Don’t Go)](#w-c-send-to-space--dont-go)
+  - [W V (Send to Space \& Go)](#w-v-send-to-space--go)
+- [E MODE (NUMPAD)](#e-mode-numpad)
+- [T MODE (MARKDOWN \& TEXT TRANSFORMS)](#t-mode-markdown--text-transforms)
+  - [Base Layer](#base-layer)
+  - [Spacebar Sublayer](#spacebar-sublayer)
+- [CAPS MODE \& F19](#caps-mode--f19)
+  - [CAPS MODE](#caps-mode)
+    - [Numbers for Media Keys](#numbers-for-media-keys)
+    - [Base Layer](#base-layer-1)
+    - [(E) Arc Extension Commands](#e-arc-extension-commands)
+    - [(S) Arc Popups and Macros](#s-arc-popups-and-macros)
+    - [(D) Dropover \& Clop Commands](#d-dropover--clop-commands)
+    - [(C) CleanShot](#c-cleanshot)
+  - [F19 MODE](#f19-mode)
+    - [Base Layer](#base-layer-2)
+    - [Spacebar Sublayer](#spacebar-sublayer-1)
+- [A MODE (KIKI AI)](#a-mode-kiki-ai)
+  - [Base Layer](#base-layer-3)
+  - [CMD Sublayer](#cmd-sublayer)
+  - [Selected Text Actions](#selected-text-actions)
+    - [Replace (R)](#replace-r)
+    - [Place Below (B)](#place-below-b)
+    - [Dialog Response (D)](#dialog-response-d)
+- [SD MODE (TEXT, WINDOW, AND TAB NAVIGATION)](#sd-mode-text-window-and-tab-navigation)
+  - [Arrows](#arrows)
+  - [Modifiers](#modifiers)
+  - [Deletes](#deletes)
+  - [Window/Tab Switchers | Excluding Arc](#windowtab-switchers--excluding-arc)
+  - [Arc Tab Navigation](#arc-tab-navigation)
+  - [App Switchers](#app-switchers)
+  - [Possible Combinations for Text Navigation](#possible-combinations-for-text-navigation)
+- [F MODE (CURSOR MOVEMENT)](#f-mode-cursor-movement)
+  - [Movement Speed 1](#movement-speed-1)
+  - [Movement Speed 2](#movement-speed-2)
+  - [Movement Speed 3](#movement-speed-3)
+  - [Movement Speed 4](#movement-speed-4)
+
 --- 
 ## Simple Modifications
 * Non US Backlash to Grave Accent & Tile
@@ -28,7 +77,6 @@
 
 ---
 ## W MODE (YABAI WINDOWS)
-*[[Yabai - Update Notes]]*
 ### W BASE Layer - No Modifiers
 * tab: restart Yabai service
 * q: Toggle layer Normal & Below
@@ -183,6 +231,7 @@
 * right shift = Equal sign
 
 *F and S sublayers access symbols*
+
 ---
 ## T MODE (MARKDOWN & TEXT TRANSFORMS)
 ### Base Layer
@@ -204,6 +253,7 @@
 * m: Between Lines
 * comma: Code Line
 * period: Code Block
+
 ### Spacebar Sublayer
 * i: Bold & Italics
 * open bracket: Enclose in Curly Brackets
@@ -218,8 +268,10 @@
 ---
 ## CAPS MODE & F19
 ***CAPS LOCK:** Quick tap = escape | quick tap + key = caps mode | tap + hold = F19 mode*
+
 ### CAPS MODE
 *Caps Mode has to be quickly locked before f19 kicks in.* 
+
 #### Numbers for Media Keys
 * Equal sign = Volume Up
 * CMD + Equal Sign = Switch Audio to Airpods
@@ -239,6 +291,7 @@
 * CMD + 2 = Increase keyboard illumination
 * 1 = Decrease display brightness
 * CMD + 1 = Decrease keyboard illumination
+
 #### Base Layer
 * w = Delete Bear Note
 * r = Readwise to Bear Shortcut
@@ -267,8 +320,9 @@
 * Cmd + right shift = New tiled Little Arc
 * Spacebar = New floating bear note
 * Caps + spacebar = New tiled bear note (Scratchpad)
+
 #### (E) Arc Extension Commands
-* **Sublayer E**<!-- {"fold":true} -->
+* **Sublayer E**
   * r: Readwise Add
   * y: Activate Bitwarden Extension
   * u: Autofill with Bitwarden
@@ -282,8 +336,9 @@
   * comma: Arc Media - Forward a Bit
   * period: Arc Media - Reset Speed
   * spacebar: Close Overlay Extension
+
 #### (S) Arc Popups and Macros
-* **Sublayer S**<!-- {"fold":true} -->
+* **Sublayer S**
   * right_shift: Open current page in OpenIn
   * CMD + right_shift: Open link under mouse in OpenIn
   * spacebar: Open Clipboard URL in OpenIn
@@ -300,6 +355,7 @@
   * m: Open link under mouse as float
   * comma: Open link under mouse as tile
   * period: Open link under mouse as unpinned in BG
+
 #### (D) Dropover & Clop Commands
 * **Sublayer D**
   * r: Reveal location
@@ -327,8 +383,9 @@
   * enter: Shelf Command or Search Bar
   * Spacebar: Shelf from Clipboard
   * left command: Dropover from selected file, through Clipboard
+
 #### (C) CleanShot
-* **Sublayer C**<!-- {"fold":true} -->
+* **Sublayer C**
   * y: OCR with Linebreaks
   * u: OCR without Linebreaks
   * i: Scrolling Capture
@@ -347,16 +404,19 @@
 
 ### F19 MODE
 *F19 is mapped to Superkey Seek*
+
 #### Base Layer
 * Left Command = Delete backward
 * Right Command = Acts as tab, to switch between different Seek options.
 * a = letter A on tap, Control on hold
 * s = letter S on tap, Option on hold
 * d = letter C on tap, Command on hold
+
 #### Spacebar Sublayer
 * Spacebar + E = Escape from F19 mode and locks Caps Mode
 * Spacebar + Semicolon = Ñ character
 * Spacebar + Quote = Spanish tilde
+
 ---
 ## A MODE (KIKI AI)
 ### Base Layer
@@ -367,18 +427,22 @@
 * return: Trigger Markdown Chat in Bear
 * m: Presets Menu
 * spacebar: Quick Chat
+
 ### CMD Sublayer
 * t: Translate to English - Response in Dialog
 * s: Simplify - Paste in Frontmost App
+
 ### Selected Text Actions
 #### Replace (R)
 * spacebar: Add a Custom Prompt
 * p: Use as Prompt
 * m: Send to Presets Menu
+
 #### Place Below (B)
 * spacebar: Add a Custom Prompt
 * p: Use as Prompt
 * m: Send to Presets Menu
+
 #### Dialog Response (D)
 * spacebar: Add a Custom Prompt
 * p: Use as Prompt
@@ -391,6 +455,7 @@
 * J = Down arrow
 * K = Up arrow
 * L = Right arrow
+
 ### Modifiers
 * Left Command = VS Code Selection Shortcut
 * Caps Lock = Escape App or Window Switchers
@@ -398,23 +463,28 @@
 * f = Left Command
 * a = Left OPT
 * z = Left Control
+
 ### Deletes
 * n = Delete or backspace
 * period = Delete forward
+
 ### Window/Tab Switchers | Excluding Arc
 * y = Window Switcher - Below
 * u = Tab Switcher - Below
 * i = Tab Switcher - Above
 * o = Window Switcher - Above
+
 ### Arc Tab Navigation
 * y = Open Tabs Switcher - Previous
 * u = Tab Below
 * i = Tab Above
 * o = Open Tabs Switcher - Next
 * 7 = Close Selected Tab in Tabs Switcher
+
 ### App Switchers
 * m = Previous App
 * comma = Toggle Off Any Scratchpad
+
 ### Possible Combinations for Text Navigation
 * h & l = Left / Right moves by character
 * spacebar + h & spacebar + l = Left / Right selection by character
@@ -425,6 +495,7 @@
 * f + h & f + l = Move to beginning or end of line
 * f + spacebar + h & f + spacebar + l = Select to the beginning or end of line
 * f + n & f + period = Delete to the beginning or end of line
+
 ---
 ## F MODE (CURSOR MOVEMENT)
 * y = Left Mouse Button
@@ -433,21 +504,25 @@
 * o = Drag from Dropover to Current Position
 * s = focus window under cursor
 * d = Left Mouse Button
+
 ### Movement Speed 1
 * h = Left
 * j = Bottom
 * k = Top
 * l = Right
+
 ### Movement Speed 2
 * Spacebar + h = Left
 * Spacebar + j = Bottom
 * Spacebar + k = Top
 * Spacebar + l = Right
+
 ### Movement Speed 3
 * n = Left
 * m = Bottom
 * comma = Top
 * period = Right
+
 ### Movement Speed 4
 * Spacebar + n = Left
 * Spacebar + m = Bottom
