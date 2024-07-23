@@ -1,8 +1,8 @@
 # KARABINER - Config
 ---
-## TOC
+## ToC
 - [KARABINER - Config](#karabiner---config)
-  - [TOC](#toc)
+  - [ToC](#toc)
   - [Simple Modifications](#simple-modifications)
   - [CLEAN BASE LAYER](#clean-base-layer)
   - [DELETE MODS](#delete-mods)
@@ -45,7 +45,7 @@
     - [Arc Tab Navigation](#arc-tab-navigation)
     - [App Switchers](#app-switchers)
     - [Possible Combinations for Text Navigation](#possible-combinations-for-text-navigation)
-  - [F MODE (CURSOR MOVEMENT)](#f-mode-cursor-movement)
+  - [F MODE (POINTER MOVEMENT)](#f-mode-pointer-movement)
     - [Movement Speed 1](#movement-speed-1)
     - [Movement Speed 2](#movement-speed-2)
     - [Movement Speed 3](#movement-speed-3)
@@ -498,7 +498,7 @@
 * f + n & f + period = Delete to the beginning or end of line
 
 ---
-## F MODE (CURSOR MOVEMENT)
+## F MODE (POINTER MOVEMENT)
 * y = Left Mouse Button
 * u = Middle Mouse Button
 * i = Right Mouse Button
