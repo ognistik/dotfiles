@@ -1,1 +1,72 @@
-/Users/ognistik/Dropbox/2-Areas/SystemAndApps/Yabai/yabairc/yabairc
+#!/usr/bin/env sh
+
+/opt/homebrew/bin/yabai -m signal --add event=dock_did_restart action="sudo /opt/homebrew/bin/yabai --load-sa"
+sudo /opt/homebrew/bin/yabai --load-sa
+
+# global settings
+yabai -m config mouse_follows_focus          on
+yabai -m config focus_follows_mouse          autoraise
+yabai -m config window_origin_display        default
+yabai -m config window_placement             second_child
+yabai -m config window_topmost               off
+yabai -m config window_shadow                on
+yabai -m config window_opacity               on
+yabai -m config window_opacity_duration      0.2
+yabai -m config active_window_opacity        1.0
+yabai -m config normal_window_opacity        0.80
+yabai -m config insert_feedback_color        0xffd0e0e3
+yabai -m config split_ratio                  0.50
+yabai -m config auto_balance                 off
+yabai -m config mouse_modifier               fn
+yabai -m config mouse_action1                move
+yabai -m config mouse_action2                resize
+yabai -m config mouse_drop_action            swap
+
+# general space settings
+yabai -m config layout                       bsp
+yabai -m config top_padding                  50
+yabai -m config bottom_padding               50
+yabai -m config left_padding                 50
+yabai -m config right_padding                50
+yabai -m config window_gap                   50
+
+# yabai -m rule --add app=".*" sub-layer=normal
+# yabai -m rule --add app!="^(CleanShot X|Screen Studio)$" sub-layer=normal
+
+# Destroy Empty Spaces
+yabai -m signal --add label=destroyEmptySpaces event=space_changed action="~/Dropbox/2-Areas/SystemAndApps/Yabai/destroyEmptySpaces.sh"
+
+# Scratchpads
+yabai -m rule --add app="^Spotify$" scratchpad="Spotify" grid="11:11:1:1:9:9"
+yabai -m rule --add app="^Messages$" scratchpad="iMessages" grid="11:11:1:1:9:9"
+yabai -m rule --add app="^Transmission$" scratchpad="Transmission" grid="11:11:1:1:9:9"
+yabai -m rule --add app="^Dehancer Lightroom Plugin$" scratchpad="Dehancer" grid="1:1:0:0:1:1"
+yabai -m rule --add app="^Soundly$" scratchpad="scratchpad" grid="11:11:1:1:9:9"
+yabai -m rule --add app="^Mochi$" scratchpad="Mochi" grid="11:11:1:1:9:9"
+
+# Misc 
+yabai -m rule --add app="^CleanShot X$" sticky=on manage=off opacity=1.0
+yabai -m rule --add app="^Screen Studio$|^Kando$" manage=off opacity=1.0
+
+# Bear Scratchpads and Main Window
+yabai -m rule --add app="^Bear$" title!="^Bear$" manage=off grid="11:11:1:1:9:9"
+yabai -m signal --add label=scratchpad_newBear event=window_created app="^Bear$" title!="^Bear$" action='~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggleSpecial bearScratchpad'
+
+# Apps to Keep Unmanaged
+yabai -m rule --add app="^(Keyboard Maestro|TestFlight|LaunchPalette|iZotope RX 11|MacWhisper|FxFactory Agent|TrashMe 3|CrossOver|Find Any File|Keka|Bartender 5|DaisyDisk|OpenIn|Sideloadly!|iStat Menus Status|iStat Menus|Problem Reporter|PastePal|App Store|IINA|System Information|Dropover|Homerow|System Settings|Alfred Preferences|Karabiner-Elements|X-Title Import|Karabiner-EventViewer|BetterTouchTool)$" manage=off opacity=1.0
+# Centered Unmanaged Apps - Without Resizing
+yabai -m signal --add label=unmanagedAndCenteredApps event=window_created app='^(Keyboard Maestro|TestFlight|LaunchPalette|iZotope RX 11|MacWhisper|TrashMe 3|CrossOver|Find Any File|Keka|Bartender 5|DaisyDisk|Sideloadly!|iStat Menus|Problem Reporter|App Store|IINA|System Information|Dropover|System Settings|Alfred Preferences|Karabiner-Elements|X-Title Import|Karabiner-EventViewer|BetterTouchTool)$' action='window="$(yabai -m query --windows --window)"; display="$(/opt/homebrew/bin/yabai -m query --displays --window)"; coords="$(/opt/homebrew/bin/jq --argjson window "$window" --argjson display "$display" -nr "((\$display.frame | .x + .w / 2) - (\$window.frame.w / 2) | tostring) + \":\" + ((\$display.frame | .y + .h / 2) - (\$window.frame.h / 2) | tostring)")"; /opt/homebrew/bin/yabai -m window --move "abs:$coords"'
+
+# Window Titles to Keep Unmanaged
+yabai -m rule --add title="^Audio Hijack Session List$|^.*Info$|^Copy$|^Robert$|^Trash$|^Open$|^Finder Settings$" manage=off opacity=1.0
+# Unmanaged Window Titles to Keep Centered Without Resizing
+yabai -m signal --add label=unmanagedAndCenteredTitles event=window_created title='^Audio Hijack Session List$' action='window="$(yabai -m query --windows --window)"; display="$(/opt/homebrew/bin/yabai -m query --displays --window)"; coords="$(/opt/homebrew/bin/jq --argjson window "$window" --argjson display "$display" -nr "((\$display.frame | .x + .w / 2) - (\$window.frame.w / 2) | tostring) + \":\" + ((\$display.frame | .y + .h / 2) - (\$window.frame.h / 2) | tostring)")"; /opt/homebrew/bin/yabai -m window --move "abs:$coords"'
+
+# ARC WINDOWS HANDLING
+# I am not including sub-layer in this rule, since I apply a sub-layer=normal to all apps anyway. I know I can target the first created window with this.
+yabai -m rule --add app="^Arc$" manage=off
+yabai -m signal --add app="^Arc$" event=window_title_changed action="yabai -m config focus_follows_mouse autoraise"
+yabai -m signal --add label="arcrules" app="^Arc$" title!="^Space [0-9]+$|^$" event=window_created action="yabai -m window $YABAI_WINDOW_ID --toggle float"
+
+# focus window after active space changes
+# yabai -m signal --add event=space_changed action="yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)"

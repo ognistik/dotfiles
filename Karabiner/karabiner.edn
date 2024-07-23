@@ -1,1 +1,2020 @@
-/Users/ognistik/Dropbox/2-Areas/SystemAndApps/Karabiner/karabiner.edn
+{ 
+        :profiles {
+                :Default {
+                        :default true
+
+                        :sim     30     ;; simultaneous key press threshold (def: 50)
+                                        ;; simlayer is implemented with to_if_alone and simultaneous key press feature
+                                        ;; if keydown event for two different keys are pressed within :sim ms, the keypresses are considered simultaneous  
+                                        ;; different from simlayers. This is for cases like [:a :b]
+                        :delay   130    ;; to_delayed_action_delay_milliseconds (def: 500)
+                                        ;; basically it means time after which the key press is count delayed
+                                        ;; after :delay ms, the key press is considered to be delayed (used for double-press macros)
+                                        ;; NOTE: this should be equal to :held for mod-tap layers
+                        :held    130    ;; to_if_held_down_threshold_milliseconds (def: 500)
+                                        ;; key is fired twice when :held ms is elapsed (otherwise seen as a hold command) (TODO WHAT IS THIS??)
+                                        ;; useful for knowing when escape term finishes with caps mode.
+                                        ;; NOTE: this should be equal to :delay for mod-tap layers
+                        :alone   129    ;; to_if_alone_timeout_milliseconds (def: 1000)
+                                        ;; affects to_if_alone behavior
+                                        ;; simlayer is implemented with to_if_alone and simultaneous key press feature
+                                        ;; if keyup event comes within :alone ms from keydown, the key is not just pressed but held
+                                        ; NOTE: (I think) this must be just less than the delay / held value to avoid bug where mod-tap layer stays 1
+                }
+                }
+        :simlayer-threshold 30          ;; simultaneous_threshold_milliseconds (def: 50)
+
+;;--------------------------------------TEMPLATES, APPS---------------------------------------------------------------------------------------------------
+        :templates {
+                :alfred "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"%s\" in workflow \"%s\" with argument \"%s\"'"
+                :btt "osascript -e 'tell application \"BetterTouchTool\"' -e 'trigger_named \"%s\"' -e 'end tell'"
+                :km "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"%s\" with parameter \"%s\"'"
+                :notification "osascript -e 'display notification \"%s\" with title \"%s\"'"
+                :open "open \"%s\""
+                :open-g "open -g \"%s\""
+                :ts "osascript -e 'tell application \"System Events\" to keystroke \"c\" using {command down}'\\
+                        -e 'delay 0.1'\\
+                        -e 'tell application \"textsoapAgent\" to set oldTextValue to the Clipboard'\\
+                        -e 'tell application \"textsoapAgent\" to set newTextValue to cleanText oldTextValue with \"%s\"'\\
+                        -e 'tell application \"textsoapAgent\" to set the Clipboard to newTextValue'\\
+                        -e 'tell application \"System Events\" to keystroke \"v\" using {command down}'"
+                :sc "echo \"%s\"|shortcuts run \"%s\" -i -" ;;Pay attention that the Shortcut input goes before the Shortcut name.
+                :yabai "/opt/homebrew/bin/yabai -m %s"
+                }
+        :applications {
+                :arc ["company.thebrowser.Browser"]
+                :bear ["net.shinyfrog.bear"]
+                :finalcutpro ["com.apple.FinalCut"]
+                :terminal ["com.apple.Terminal"]
+                :vscode ["com.microsoft.VSCode"]
+                :captureone ["com.captureone.captureone16" :condi [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!e-mode]]
+                }
+
+        :layers {
+                :rcmd {:key :right_command :condi [:!ropt :!f19-mode] :afterup [{:set ["rcmd" 0]}{:set ["a-rcmd" 0]}{:set ["b-rcmd" 0]}{:set ["c-rcmd" 0]}{:set ["d-rcmd" 0]}{:set ["e-rcmd" 0]}{:set ["f-rcmd" 0]}{:set ["g-rcmd" 0]}{:set ["h-rcmd" 0]}{:set ["i-rcmd" 0]}{:set ["j-rcmd" 0]}{:set ["k-rcmd" 0]}{:set ["l-rcmd" 0]}{:set ["m-rcmd" 0]}{:set ["n-rcmd" 0]}{:set ["o-rcmd" 0]}{:set ["p-rcmd" 0]}{:set ["q-rcmd" 0]}{:set ["r-rcmd" 0]}{:set ["s-rcmd" 0]}{:set ["t-rcmd" 0]}{:set ["u-rcmd" 0]}{:set ["v-rcmd" 0]}{:set ["w-rcmd" 0]}{:set ["x-rcmd" 0]}{:set ["y-rcmd" 0]}{:set ["z-rcmd" 0]}{:set ["openbracket-rcmd" 0]}{:set ["closebracket-rcmd" 0]}{:set ["bslash-rcmd" 0]}{:set ["semi-rcmd" 0]}{:set ["quote-rcmd" 0]}{:set ["return-rcmd" 0]}{:set ["caps-rcmd" 0]}{:set ["rshift-rcmd" 0]}{:set ["lshift-rcmd" 0]}{:set ["space-rcmd" 0]}{:set ["ropt-rcmd" 0]}{:set ["lcmd-rcmd" 0]}]}
+                :ropt {:key :right_option :condi [:!rcmd] :afterup [{:set ["ropt" 0]}]}
+        }
+        ;:simlayers {
+        ;       :w-mode {:key :w :condi [:!del-mode :!f19-mode :!caps-mode :!t-mode :!a-mode :!sd-mode]
+                        ;THIS I HAVEN TRIED BUT IT GOES HERE [{:set ["fn-mode" 0]}{:set ["whatevermode" 0]}]
+        ;               :simo {:interrupt false :dorder :insensitive :uorder :insensitive}
+        ;               :afterup [{:set ["fpress" 0]} {:set ["gpress" 0]} {:set ["dpress" 0]} {:set ["rpress" 0]}]}
+        ;}
+
+;;-----------------------------------------LAYERS CREATION---------------------------------------------------------------------------------------------------
+        :main [
+       {:des "Modes/Layers Creation"
+                :rules [
+        ;;DEL MODE - I need it to work with modifiers and could not figure out how to do it as template. Works on F19. NOT on SD Mode.
+                [:semicolon ["del-mode" 1]
+                        [:!ropt :!rcmd :!w-mode :!spacebarpress :!caps-mode :!t-mode :!a-mode :!sd-mode :!f-mode :!e-mode]
+                        {:afterup ["del-mode" 0] :alone {:key :semicolon :repeat false}}]
+                [:!Psemicolon ["del-mode" 1]
+                        [:!ropt :!rcmd :!w-mode :!spacebarpress :!caps-mode :!t-mode :!a-mode :!sd-mode :!f-mode :!e-mode]
+                        {:afterup ["del-mode" 0] :alone {:key :semicolon :repeat false}}]
+        ;;W MODE: Window Management
+                [:w nil [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!a-mode :!sd-mode :!f-mode :!e-mode]
+                        {:alone {:key :w :halt true} :delayed {:canceled {:key :w}}
+                        :held {:set ["w-mode" 1] :repeat false}
+                        :afterup {:set ["w-mode" 0]}}]   
+        ;;E MODE: Numpad & Symbols
+                [:e nil [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!f-mode]
+                        {:alone {:key :e :halt true} :delayed {:canceled {:key :e}}
+                        :held {:set ["e-mode" 1] :repeat false}
+                        :afterup {:set ["e-mode" 0]}}] 
+        ;;T MODE: Markdown and Text Transformations
+                [:t nil [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!a-mode :!sd-mode :!w-mode :!f-mode :!e-mode]
+                        {:alone {:key :t :halt true} :delayed {:canceled {:key :t}}
+                        :held {:set ["t-mode" 1] :repeat false}
+                        :afterup {:set ["t-mode" 0]}}]
+        ;;CAPS & F19 MODES: Quick tap CAPS = ESCAPE and CAPS MODE. Held = f19 for Superkey Seek (closes CAPS MODE).
+                [:##caps_lock ["caps-mode" 1]
+                        [:!ropt :!rcmd :!del-mode :!f19-mode :!t-mode :!a-mode :!sd-mode :!w-mode :!f-mode :!e-mode]
+                        {:afterup [["caps-mode" 0] ["f19-mode" 0]] :alone {:key :escape}
+                        :held [["caps-mode" 0] ["f19-mode" 1] {:key :f19}]
+                        :params {:held 160 :delay 160 :alone 159}}]
+        ;;A MODE: KIKI AI
+                [:a nil [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!f-mode :!e-mode]
+                        {:alone {:key :a :halt true} :delayed {:canceled {:key :a}}
+                        :held {:set ["a-mode" 1] :repeat false}
+                        :afterup {:set ["a-mode" 0]}}]                      
+        ;;SD MODE: Text, Window, and Tabs Navigation (Super Duper Mode)
+               [{:sim [:s :d] :simo {:interrupt true :dorder :insensitive :uorder :insensitive
+                        :afterup {:set ["sd-mode" 0]}} :modi {:optional :any}} {:set ["sd-mode" 1]}
+                        [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!a-mode :!w-mode :!f-mode :!e-mode]]
+        ;;F MODE: Cursor Movement, Dragging and Clicking
+                [:f nil [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!e-mode]
+                        {:alone {:key :f :halt true} :delayed {:canceled {:key :f}}
+                        :held {:set ["f-mode" 1] :repeat false}
+                        :afterup {:set ["f-mode" 0]}}] 
+        ;;ITHILWEN SIMLAYER
+                [{:sim [:d :f] :simo {:interrupt true :dorder :insensitive :uorder :insensitive}}
+                :!Tf16 [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!e-mode]]
+        ;;APHYRA SIMLAYER
+                [{:sim [:s :f] :simo {:interrupt true :dorder :insensitive :uorder :insensitive}}
+                :!COf16 [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!e-mode]]
+        ;;TEXENDUR
+                [{:sim [:c :v] :simo {:interrupt true :dorder :insensitive :uorder :insensitive}}
+                :!TOf16 [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!e-mode]]
+        ;;SELDARIEN
+                [{:sim [:x :v] :simo {:interrupt true :dorder :insensitive :uorder :insensitive}}
+                :!Of16 [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!e-mode]]
+              ]
+       },
+
+;;-----------------------------------------CLEAN BASE LAYER---------------------------------------------------------------------------------------------------
+        {:des "Basics"
+                :rules [                        
+                        [:delete_or_backspace :vk_none]
+                        [:##non_us_backslash :grave_accent_and_tilde]
+                        [:##right_control :fn]
+                        [:!Cn " ~/Dropbox/2-Areas/SystemAndApps/Karabiner/bearNewNote.sh sameWindow" [:bear ["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ]
+        }
+
+        {:des "Capture One"
+                :rules [ :captureone
+                        [:!Cq :q]
+                        [:!Cw :w]
+                        [:!Ce :e]
+                        [:!Cr :r]
+                        [:!Ca :a]
+                        [:!Cs :s]
+                        [:!Cd :d]
+                        [:!Cf :f]]}
+
+        {:des "Final Cut Pro"                                                                                                                                                                                                                                                                                                  
+                :rules [ :finalcutpro
+                        [:!CSm :!T1]
+                        [:!CScomma :!T2]
+                        [:!CSperiod :!T3]
+                        [:!CSj :!T4]
+                        [:!CSk :!T5]
+                        [:!CSl :!T6]
+                        [:!CSu :!T7]
+                        [:!CSi :!T8]
+                        [:!CSo :!T9]
+                ]},
+                
+        {:des "F buttons with FN"
+                :rules [
+                ;;Numbers + FN = F Keys
+                        [:!Fequal_sign :f12]
+                        [:!Fhyphen :f11]
+                        [:!F0 :f10]
+                        [:!F9 :f9]
+                        [:!F8 :f8]
+                        [:!F7 :f7]
+                        [:!F6 :f6]
+                        [:!F5 :f5]
+                        [:!F4 :f4]
+                        [:!F3 :f3]
+                        [:!F2 :f2]
+                        [:!F1 :f1]
+                ]}
+
+;;--------------------------------------------DELETE MODS------------------------------------------------------------------------------------------------------
+        {:des "Delete Shortcuts"
+                :rules [
+                        [:!Sright_shift :caps_lock [:!ropt :!rcmd :!w-mode :!caps-mode :!t-mode :!a-mode :!sd-mode :!e-mode]]         ;;Enable caps lock left + right shift
+                        [:!PSright_shift :caps_lock [:!ropt :!rcmd :!w-mode :!caps-mode :!t-mode :!a-mode :!sd-mode :!e-mode]]        ;;Disable caps lock left + right shift while on caps lock
+                        [:##right_shift :right_shift [:!ropt :!rcmd :!w-mode :!caps-mode :!t-mode :!a-mode :!sd-mode :!e-mode]
+                                {:alone {:key :delete_forward}}]                                                                       ;;Single tap right shift delete forward
+                        [:##left_shift :left_shift [:!ropt :!rcmd :!w-mode :!caps-mode :!t-mode :!a-mode :!sd-mode :!e-mode]
+                                {:alone {:key :delete_or_backspace}}]                                                                  ;;Single tap left shift delete backward
+                ;;DEL MODE LAYER
+                        [:condi :del-mode :!terminal] [:##a :!Odelete_or_backspace]                                                     ;;Delete words backward while pressing semicolon + a | outside Terminal
+                        [:condi :del-mode :terminal] [:##a :!Tw]                                                                        ;;Delete words backward while pressing semicolon + a | in Terminal
+                ]},
+
+;;-----------------------------------------MOUSE & MOUSE LAYERS------------------------------------------------------------------------------------------------------
+        {:des "Mouse Mods"
+                :rules [
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>CTRL Modifier>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;Rewind Audio
+                        [{:pkey :button1 :modi :left_control} [:btt "SpotPrev"]]                                        
+                ;FWD Audio
+                        [{:pkey :button2 :modi :left_control} [:btt "SpotNext"]]                                        
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>MOUSE FCPX>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                        [{:pkey :button2} :l [:finalcutpro ["f-mode" 1]]]                                          ;l to speed up
+                        [{:pkey :button1} :j [:finalcutpro ["f-mode" 1]]]                                          ;j to reverse
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>MOUSE ARC>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                        [{:pkey :button1 :modi [:left_command :left_option]}
+                        [:km "6FDAC53E-DD84-453A-9590-E3231DB9E72B"] :arc]                                              ;Link under mouse as Float Little Arc
+                        [{:pkey :button2 :modi [:left_command :left_option]}
+                        [:km "ED25AFC7-32C6-4B8E-A474-333FE3EF3FD0"] :arc]                                              ;Link under mouse as Tiled Little Arc
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>MOUSE SD LAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;Left Arrow & Mirror Y Axis
+                        [{:pkey :button1 :modi {:optional [:left_shift :left_option :left_command :left_control]}} nil                                                                           
+                        [["sd-mode" 1]]          
+                        {:alone [:left_arrow] :held [:yabai "space --mirror y-axis"]}]                                                          
+                ;Right Arrow & Mirror X Axis
+                        [{:pkey :button2 :modi {:optional [:left_shift :left_option :left_command :left_control]}} nil                                                                           
+                        [["sd-mode" 1]]          
+                        {:alone [:right_arrow] :held [:yabai "space --mirror x-axis"]}]                                                         
+                ;Drag from Shelf & Toggle Split
+                        [{:pkey :button3} nil                                                                           
+                        [["sd-mode" 1]]
+                        {:alone [:km "95B8335C-1B11-4FA2-9AC6-1C67217DC48F"] :held [:yabai "window --toggle split"]
+                        :params {:alone 200 :held 201 :delay 201}}]   
+                ;Down Arrow
+                        [{:pkey :button4 :modi {:optional [:left_shift :left_option :left_command :left_control]}} nil                                                                           
+                        [["sd-mode" 1]]          
+                        {:alone [:down_arrow] :held [:alfred "activeApps" "com.yabaibai.com"]}]                                                         
+                ;Up Arrow
+                        [{:pkey :button5 :modi {:optional [:left_shift :left_option :left_command :left_control]}} nil                                                                           
+                        [["sd-mode" 1]]          
+                        {:alone [:up_arrow] :held [:alfred "activeSpaces" "com.yabaibai.com"]}]                                                           
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>MOUSE CAPS BASE LAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;TOGGLE SOLO SCRATCHPAD & ACTIVE SCRATCHPADS
+                        [{:pkey :button1} [:yabai "window --focus mouse"]                                                                           
+                        [["caps-mode" 1]["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]
+                        {:alone ["~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggle scratchpad"]
+                        :held [:alfred "activeScratchpads" "com.yabaibai.com"]}]
+
+                        [{:pkey :button1} [:yabai "window --focus mouse"]                                                                           
+                        [["f19-mode" 1]["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]
+                        {:alone ["~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggle scratchpad"]
+                        :held [:alfred "activeScratchpads" "com.yabaibai.com"]}]
+                ;SET/UNSET SOLO SCRATCHPAD & ACTIVE WINDOWS
+                        [{:pkey :button2} nil                                                                           
+                        [["caps-mode" 1]["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]
+                        {:alone ["~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadSet.sh"]
+                        :held [:alfred "activeWindows" "com.yabaibai.com"]}]
+                        
+                        [{:pkey :button2} nil                                                                           
+                        [["f19-mode" 1]["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]
+                        {:alone ["~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadSet.sh"]
+                        :held [:alfred "activeWindows" "com.yabaibai.com"]}]
+                ;TOGGLE FOCUSED SCRATCHPAD & REMOVE FOCUSED SCRATCHPAD
+                        [{:pkey :button3} nil                                                                           
+                        [["caps-mode" 1]["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]
+                        {:alone ["~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadOnFocus.sh toggle"]   
+                        :held ["~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadOnFocus.sh remove"]
+                        :params {:alone 200 :held 201 :delay 201}}]
+
+                        [{:pkey :button3} nil                                                                           
+                        [["f19-mode" 1]["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]
+                        {:alone ["~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadOnFocus.sh toggle"]   
+                        :held ["~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadOnFocus.sh remove"]
+                        :params {:alone 200 :held 201 :delay 201}}]
+                ;TOGGGLE ARC SCRATCHPAD & ACTIVATE ARC
+                        [{:pkey :button4} nil                                                                           
+                        [["caps-mode" 1]["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]
+                        {:alone ["~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggleOrNewArc arcScratchpad"]
+                        :held [:km "rcmd: Arc"]}]
+
+                        [{:pkey :button4} nil                                                                           
+                        [["f19-mode" 1]["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]
+                        {:alone ["~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggleOrNewArc arcScratchpad"]
+                        :held [:km "rcmd: Arc"]}]
+                ;TOGGLE BEAR SCRATCHPAD & ACTIVATE MAIN BEAR
+                        [{:pkey :button5} nil                                                                           
+                        [["caps-mode" 1]["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]
+                        {:alone ["~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggleOrNewBear bearScratchpad"]
+                        :held [:km "rcmd: Bear"]}]
+
+                        [{:pkey :button5} nil                                                                           
+                        [["f19-mode" 1]["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]
+                        {:alone ["~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggleOrNewBear bearScratchpad"]
+                        :held [:km "rcmd: Bear"]}]
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>MOUSE CAPS CMD LAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;TILED NEW LITTLE ARC
+                        [{:pkey :button4 :modi :left_command} [[:yabai "signal --add label=arcfloater app=\"^Arc$\" event=window_title_changed\\
+                        action=\"~/Dropbox/2-Areas/SystemAndApps/Yabai/arcFloater.sh tile\""] :!TOCn]                                                                           
+                        [["caps-mode" 1]["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+
+                        [{:pkey :button4 :modi :left_command} [[:yabai "signal --add label=arcfloater app=\"^Arc$\" event=window_title_changed\\
+                        action=\"~/Dropbox/2-Areas/SystemAndApps/Yabai/arcFloater.sh tile\""] :!TOCn]                                                                           
+                        [["f19-mode" 1]["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;TILED BEAR NEW NOTE    
+                        [{:pkey :button5 :modi :left_command} ["/opt/homebrew/bin/yabai -m signal --remove scratchpad_newBear;\\
+                        /opt/homebrew/bin/yabai -m signal --add label=tile_next app='^Bear$' event=window_created\\
+                        action='/opt/homebrew/bin/yabai -m signal --remove tile_next;\\
+                        /opt/homebrew/bin/yabai -m window $YABAI_WINDOW_ID --toggle float';\\
+                        ~/Dropbox/2-Areas/SystemAndApps/Karabiner/bearNewNote.sh; sleep 0.2;\\
+                        /opt/homebrew/bin/yabai -m signal --add label=scratchpad_newBear event=window_created app='^Bear$' title!='^Bear$'\\
+                        action='~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggleSpecial bearScratchpad'"]                                                                           
+                        [["caps-mode" 1]["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+
+                        [{:pkey :button5 :modi :left_command} ["/opt/homebrew/bin/yabai -m signal --remove scratchpad_newBear;\\
+                        /opt/homebrew/bin/yabai -m signal --add label=tile_next app='^Bear$' event=window_created\\
+                        action='/opt/homebrew/bin/yabai -m signal --remove tile_next;\\
+                        /opt/homebrew/bin/yabai -m window $YABAI_WINDOW_ID --toggle float';\\
+                        ~/Dropbox/2-Areas/SystemAndApps/Karabiner/bearNewNote.sh; sleep 0.2;\\
+                        /opt/homebrew/bin/yabai -m signal --add label=scratchpad_newBear event=window_created app='^Bear$' title!='^Bear$'\\
+                        action='~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggleSpecial bearScratchpad'"]                                                                           
+                        [["f19-mode" 1]["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        ]},
+        
+;;------------------------------------------W MODE - YABAI------------------------------------------------------------------------------------------------------
+        {:des "W Mode"
+                :rules [:w-mode
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>BASE LAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;;QUERY Current Window
+                        [:1 [:yabai "query --windows --window > ~/Desktop/yabai_output.txt"]]
+                ;;RESTART Yabai server
+                        [:tab "/opt/homebrew/bin/yabai --restart-service" [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                ;;TOGGLE Normal or Above subLayer
+                        [:q "layer=\"$(/opt/homebrew/bin/yabai --message query --windows --window | /opt/homebrew/bin/jq --raw-output '.\"sub-layer\"')\" && /opt/homebrew/bin/yabai --message window --sub-layer \"$([ \"$layer\" = 'normal' ] && echo 'below' || echo 'normal')\"" [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                ;;MISSION CONTROL or Show Desktop
+                        [:##e :mission_control [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                ;;TOGGLE Padding
+                        [:t [[:yabai "space --toggle padding; /opt/homebrew/bin/yabai -m space --toggle gap"]] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                ;;HIDE Every Other Window
+                        [:y :!COh [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                ;;MIRROR on Y Axis
+                        [:u [:yabai "space --mirror y-axis"] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                ;;MIRROR on X Axis
+                        [:i [:yabai "space --mirror x-axis"] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                ;;HIDE Current Window
+                        [:o :!Ch [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                ;;STOP Yabai Server
+                        [:caps_lock "/opt/homebrew/bin/yabai --stop-service" [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                ;;TOGGLE STICKY
+                        [:a "~/Dropbox/2-Areas/SystemAndApps/Yabai/ToggleStickyRememberSize.sh" [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                ;;MOVE (Warp) West
+                        [:h [:yabai "window --warp west"] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                ;;MOVE (Warp) South
+                        [:j [:yabai "window --warp south"] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                ;;MOVE (Warp) North
+                        [:k [:yabai "window --warp north"] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                ;;MOVE (Warp) East
+                        [:l [:yabai "window --warp east"] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                ;;CREATE Space & Don't Go
+                        [:semicolon [:yabai "space --create && echo \"refresh\" | nc -U /tmp/yabai-indicator.socket"] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                ;;CREATE Space & GO
+                        [:quote [:yabai "space --create && /opt/homebrew/bin/yabai -m space --focus last && sleep 0.1 && echo \"refresh\" | nc -U /tmp/yabai-indicator.socket"] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                ;;TOGGLE Fullscreen Zoom
+                        [:return_or_enter "~/Dropbox/2-Areas/SystemAndApps/Yabai/ToggleMaximize.sh" [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                ;;RESET Balance
+                        [:b [[:yabai "space --balance"]] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                ;;SWITCH to First Space
+                        [:n [:yabai "space --focus first"] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                ;;SWITCH to Space on the Left
+                        [:m ["~/Dropbox/2-Areas/SystemAndApps/Yabai/nextOrPrevSpace.sh prev"] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                ;;SWITCH to Space on the Right
+                        [:comma ["~/Dropbox/2-Areas/SystemAndApps/Yabai/nextOrPrevSpace.sh next"] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                ;;SWITCH to the Last Space
+                        [:period [:yabai "space --focus last"] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                ;;SWITCH to Previous Space
+                        [:right_shift [:yabai "space --focus recent"] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                ;;TOGGLE Float
+                        [:spacebar "~/Dropbox/2-Areas/SystemAndApps/Yabai/ToggleFloatRememberSize.sh" [:!bear :!arc ["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                        [:spacebar "~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggleSpecial bearScratchpad" [:bear ["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                        [:spacebar "~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggleSpecial arcScratchpad" [:arc ["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>CMD LAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;;YABAI SERVER - Start
+                        [:!Ccaps_lock "/opt/homebrew/bin/yabai --start-service" [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                ;;TOGGLE SPLIT (horizontal or vertical)
+                        [:!Ct [[:yabai "window --toggle split"]] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                ;;SWITCH to Space 7
+                        [:!Cu [:yabai "space --focus 7"] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                ;;SWITCH to Space 8
+                        [:!Ci [:yabai "space --focus 8"] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                ;;SWITCH to Space 9
+                        [:!Co [:yabai "space --focus 9"] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                ;;SWITCH to Space 4
+                        [:!Cj [:yabai "space --focus 4"] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                ;;SWITCH to Space 5
+                        [:!Ck [:yabai "space --focus 5"] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                ;;SWITCH to Space 6
+                        [:!Cl [:yabai "space --focus 6"] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                ;;DESTROY Current Space
+                        [:!Csemicolon [:yabai "space --destroy \"$(yabai -m query --spaces --display | jq -r 'map(select(.\"has-focus\" == true))[0].index')\""] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]                
+                ;;DESTROY Last Space                       
+                        [:!Cquote [:yabai "space --destroy last"] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                ;;TOGGLE Layout as Stack or Tiles with Command
+                        [:!Creturn_or_enter "/opt/homebrew/bin/yabai -m space --layout \"$(/opt/homebrew/bin/yabai -m query --spaces --space | /opt/homebrew/bin/jq -r 'if .type == \"bsp\" then \"stack\" else \"bsp\" end')\"" [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                ;;SWITCH to Space 1
+                        [:!Cm [:yabai "space --focus 1"] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                ;;SWITCH to Space 2
+                        [:!Ccomma [:yabai "space --focus 2"] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                ;;SWITCH to Space 3
+                        [:!Cperiod [:yabai "space --focus 3"] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                ;;CLEAR Cache of Floats position
+                        [:!Cspacebar "~/Dropbox/2-Areas/SystemAndApps/Yabai/ClearFloatCache.sh" [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>D(INSERT, STACK, THROW & DON'T GO) LAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;;D Layer Creation
+                        [:d [["dpress" 1]] [["cpress" 0]["vpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]] {:afterup {:set ["dpress" 0]}}]
+                ;;INSERT West
+                        [:y [:yabai "window --insert west"] ["dpress" 1]]
+                ;;INSERT South
+                        [:u [:yabai "window --insert south"] ["dpress" 1]]
+                ;;INSERT North
+                        [:i [:yabai "window --insert north"] ["dpress" 1]]
+                ;;INSERT East
+                        [:o [:yabai "window --insert east"] ["dpress" 1]]
+                ;;STACK Current Window West
+                        [:h [:yabai "window west --stack $(/opt/homebrew/bin/yabai -m query --windows --window | /opt/homebrew/bin/jq -r '.id')"] ["dpress" 1]]
+                ;;STACK Current Window South
+                        [:j [:yabai "window south --stack $(/opt/homebrew/bin/yabai -m query --windows --window | /opt/homebrew/bin/jq -r '.id')"] ["dpress" 1]]
+                ;;STACK Current Window North
+                        [:k [:yabai "window north --stack $(/opt/homebrew/bin/yabai -m query --windows --window | /opt/homebrew/bin/jq -r '.id')"] ["dpress" 1]]
+                ;;STACK Current Window East
+                        [:l [:yabai "window east --stack $(/opt/homebrew/bin/yabai -m query --windows --window | /opt/homebrew/bin/jq -r '.id')"] ["dpress" 1]]
+                ;;CREATE Space, Throw Window & Don't Go
+                        [:semicolon [:yabai "space --create && echo \"refresh\" | nc -U /tmp/yabai-indicator.socket && /opt/homebrew/bin/yabai -m window --space last"] ["dpress" 1]]
+                ;;INSERT as Scratchpad
+                        [:return_or_enter [:yabai "signal --add label=scratchpad_next event=window_created action='/opt/homebrew/bin/yabai -m signal --remove scratchpad_next; ~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh nextNew scratchpad'"] ["dpress" 1]]
+                ;;THROW window & DON'T GO to First Space
+                        [:n ["/Users/ognistik/Dropbox/2-Areas/SystemAndApps/Yabai/throwWindowDontGo.sh firstSpace"] ["dpress" 1]]
+                ;;THROW Window & DON'T GO to Space on Left
+                        [:m ["/Users/ognistik/Dropbox/2-Areas/SystemAndApps/Yabai/throwWindowDontGo.sh leftSpace"] ["dpress" 1]]
+                ;;THROW Window & DON'T GO to Space on Right
+                        [:comma ["/Users/ognistik/Dropbox/2-Areas/SystemAndApps/Yabai/throwWindowDontGo.sh rightSpace"] ["dpress" 1]]
+                ;;THROW Window & DON'T GO to Last Space
+                        [:period ["/Users/ognistik/Dropbox/2-Areas/SystemAndApps/Yabai/throwWindowDontGo.sh lastSpace"] ["dpress" 1]]
+                ;;INSERT as Stack
+                        [:right_shift [:yabai "window --insert stack"] ["dpress" 1]]
+                ;;INSERT as Float
+                        [:spacebar [:yabai "signal --add label=float_next_window_created event=window_created action='/opt/homebrew/bin/yabai -m signal --remove float_next_window_created; /opt/homebrew/bin/yabai -m window $YABAI_WINDOW_ID --toggle float --grid 11:11:1:1:9:9'"] ["dpress" 1]]
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>F(FOCUS) LAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;;F Layer Creation
+                        [:f [["fpress" 1]] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]] {:afterup {:set ["fpress" 0]}}]
+                ;;CYCLE Focus Backwards (WITHOUT Floats or Entering Stacks)
+                        [:y "~/Dropbox/2-Areas/SystemAndApps/Yabai/cycleFocusNoStackCounter.sh" ["fpress" 1]]
+                ;;FOCUS BELOW in Stack
+                        [:u [:yabai "window --focus stack.next || /opt/homebrew/bin/yabai -m window --focus stack.first"] ["fpress" 1]]
+                ;;FOCUS ABOVE in Stack
+                        [:i [:yabai "window --focus stack.prev || /opt/homebrew/bin/yabai -m window --focus stack.last"] ["fpress" 1]]
+                ;;CYCLE Focus Forward (WITHOUT Floats or Entering Stacks)
+                        [:o "~/Dropbox/2-Areas/SystemAndApps/Yabai/cycleFocusNoStackClock.sh" ["fpress" 1]]
+                ;;FOCUS West
+                        [:h [:yabai "window --focus west"] ["fpress" 1]]
+                ;;FOCUS South
+                        [:j [:yabai "window --focus south"] ["fpress" 1]]
+                ;;FOCUS North
+                        [:k [:yabai "window --focus north"] ["fpress" 1]]
+                ;;FOCUS East
+                        [:l [:yabai "window --focus east"] ["fpress" 1]]
+                ;;FULLSCREEN with BTT
+                        [:return_or_enter [:btt "RealFull"] ["fpress" 1]]
+                ;;CYCLE Focus Backwards (ALL)
+                        [:n "~/Dropbox/2-Areas/SystemAndApps/Yabai/cycleFocusAllBackward.sh" ["fpress" 1]]
+                ;;OPACITY Full Lock
+                        [:m [:yabai "window --opacity 1.0"] ["fpress" 1]]
+                ;;OPACITY Unlock (Back to Default)
+                        [:comma [:yabai "window --opacity 0.0"] ["fpress" 1]]
+                ;;CYCLE Focus Forward (ALL)
+                        [:period "~/Dropbox/2-Areas/SystemAndApps/Yabai/cycleFocusAllForward.sh" ["fpress" 1]] 
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>G(SWAP & THROW & GO) LAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;;G Layer Creation
+                        [:g [["gpress" 1]] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["fpress" 0]] {:afterup {:set ["gpress" 0]}}]
+                ;;SWAP West
+                        [:h [:yabai "window --swap west"] ["gpress" 1]]
+                ;;SWAP South
+                        [:j [:yabai "window --swap south"] ["gpress" 1]]
+                ;;SWAP North
+                        [:k [:yabai "window --swap north"] ["gpress" 1]]
+                ;;SWAP East
+                        [:l [:yabai "window --swap east"] ["gpress" 1]]
+                ;;CREATE Space, Throw Window and GO
+                        [:semicolon [:yabai "space --create && /opt/homebrew/bin/yabai -m window --space last && /opt/homebrew/bin/yabai -m space --focus last && sleep 0.2 && echo \"refresh\" | nc -U /tmp/yabai-indicator.socket"] ["gpress" 1]]
+                ;;THROW Window & GO to FIRST Space
+                        [:n ["{ /opt/homebrew/bin/yabai -m window --space first; /opt/homebrew/bin/yabai -m space --focus first; } || { /opt/homebrew/bin/yabai -m space --create && /opt/homebrew/bin/yabai -m window --space last && /opt/homebrew/bin/yabai -m space --focus last && sleep 0.2 && echo \"refresh\" | nc -U /tmp/yabai-indicator.socket; }"] ["gpress" 1]]
+                ;;THROW Window & GO to Space on LEFT
+                        [:m ["{ /opt/homebrew/bin/yabai -m window --space prev; /opt/homebrew/bin/yabai -m space --focus prev; } || { /opt/homebrew/bin/yabai -m space --create && /opt/homebrew/bin/yabai -m window --space last && /opt/homebrew/bin/yabai -m space --focus last && sleep 0.2 && echo \"refresh\" | nc -U /tmp/yabai-indicator.socket; }"] ["gpress" 1]]
+                ;;THROW Window & GO to Space on RIGHT
+                        [:comma ["{ /opt/homebrew/bin/yabai -m window --space next; /opt/homebrew/bin/yabai -m space --focus next; } || { /opt/homebrew/bin/yabai -m space --create && /opt/homebrew/bin/yabai -m window --space last && /opt/homebrew/bin/yabai -m space --focus last && sleep 0.2 && echo \"refresh\" | nc -U /tmp/yabai-indicator.socket; }"] ["gpress" 1]]
+                ;;THROW Window & GO to LAST Space
+                        [:period ["{ /opt/homebrew/bin/yabai -m window --space last; /opt/homebrew/bin/yabai -m space --focus last; } || { /opt/homebrew/bin/yabai -m space --create && /opt/homebrew/bin/yabai -m window --space last && /opt/homebrew/bin/yabai -m space --focus last && sleep 0.2 && echo \"refresh\" | nc -U /tmp/yabai-indicator.socket; }"] ["gpress" 1]]
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>R(RESIZE, ROTATE, MOVE) LAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;;R Layer Creation
+                        [:r [["rpress" 1]] [["cpress" 0]["vpress" 0]["dpress" 0]["gpress" 0]["fpress" 0]] {:afterup {:set ["rpress" 0]}}]
+                ;;REVEAL App Windows
+                        [:e [:btt "AppWindows"]["rpress" 1]]
+                ;;RESIZE West
+                        [:y [:yabai "window --resize right:-50:0 2> /dev/null || /opt/homebrew/bin/yabai -m window --resize left:-50:0 2> /dev/null"] ["rpress" 1]]
+                ;;RESIZE South
+                        [:u [:yabai "window --resize bottom:0:50 2> /dev/null || /opt/homebrew/bin/yabai -m window --resize top:0:50 2> /dev/null"] ["rpress" 1]]
+                ;;RESIZE North
+                        [:i [:yabai "window --resize bottom:0:-50 2> /dev/null || /opt/homebrew/bin/yabai -m window --resize top:0:-50 2> /dev/null"] ["rpress" 1]]
+                ;;RESIZE EAST
+                        [:o [:yabai "window --resize right:50:0 2> /dev/null || /opt/homebrew/bin/yabai -m window --resize left:50:0 2> /dev/null"] ["rpress" 1]]
+                ;;ROTATE Arrangement in Reverse
+                        [:h [:yabai "space --rotate 90"] ["rpress" 1]]
+                ;;ROTATE Windows Only in Reverse
+                        [:j "~/Dropbox/2-Areas/SystemAndApps/Yabai/rotateWindowsOnlyclockwise.sh" ["rpress" 1]]
+                ;;ROTATE Windows Only Forward
+                        [:k "~/Dropbox/2-Areas/SystemAndApps/Yabai/rotateWindowsOnlycounter.sh" ["rpress" 1]]
+                ;;ROTATE Arrangement Forward
+                        [:l [:yabai "space --rotate 270"] ["rpress" 1]]
+                ;;TOGGLE Zoom on Parent
+                        [:return_or_enter [:yabai "window --toggle zoom-parent"] ["rpress" 1]]
+                ;;MOVE Window Left
+                        [:n :!SFleft_arrow ["rpress" 1]]
+                ;;MOVE Window Down
+                        [:m :!SFdown_arrow ["rpress" 1]]
+                ;;MOVE Window Up
+                        [:comma :!SFup_arrow ["rpress" 1]]
+                ;;MOVE Window Right
+                        [:period :!SFright_arrow ["rpress" 1]]
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>C(THROW TO SPACE # & DON'T GO) LAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;;C Layer Creation
+                        [:c [["cpress" 1]] [["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]] {:afterup {:set ["cpress" 0]}}]
+                ;;THROW to Space # 7 & Don't Go
+                        [:u [:yabai "window --space 7"] ["cpress" 1]]
+                ;;THROW to Space # 8 & Don't Go       
+                        [:i [:yabai "window --space 8"] ["cpress" 1]]
+                ;;THROW to Space # 9 & Don't Go
+                        [:o [:yabai "window --space 9"] ["cpress" 1]]
+                ;;THROW to Space # 4 & Don't Go
+                        [:j [:yabai "window --space 4"] ["cpress" 1]]
+                ;;THROW to Space # 5 & Don't Go
+                        [:k [:yabai "window --space 5"] ["cpress" 1]]
+                ;;THROW to Space # 6 & Don't Go
+                        [:l [:yabai "window --space 6"] ["cpress" 1]]
+                ;;THROW to Space # 1 & Don't Go
+                        [:m [:yabai "window --space 1"] ["cpress" 1]]
+                ;;THROW to Space # 2 & Don't Go
+                        [:comma [:yabai "window --space 2"] ["cpress" 1]]
+                ;;THROW to Space # 3 & Don't Go
+                        [:period [:yabai "window --space 3"] ["cpress" 1]]
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>C(THROW TO SPACE # & GO) LAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;;V Layer Creation
+                        [:v [["vpress" 1]] [["cpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]] {:afterup {:set ["vpress" 0]}}]
+                ;;THROW to Space # 7 & Don't Go        
+                        [:u [:yabai "window --space 7; /opt/homebrew/bin/yabai -m space --focus 7"] ["vpress" 1]]
+                ;;THROW to Space # 8 & Don't Go       
+                        [:i [:yabai "window --space 8; /opt/homebrew/bin/yabai -m space --focus 8"] ["vpress" 1]]
+                ;;THROW to Space # 9 & Don't Go                        
+                        [:o [:yabai "window --space 9; /opt/homebrew/bin/yabai -m space --focus 9"] ["vpress" 1]]
+                ;;THROW to Space # 4 & Don't Go
+                        [:j [:yabai "window --space 4; /opt/homebrew/bin/yabai -m space --focus 4"] ["vpress" 1]]
+                ;;THROW to Space # 5 & Don't Go
+                        [:k [:yabai "window --space 5; /opt/homebrew/bin/yabai -m space --focus 5"] ["vpress" 1]]
+                ;;THROW to Space # 6 & Don't Go
+                        [:l [:yabai "window --space 6; /opt/homebrew/bin/yabai -m space --focus 6"] ["vpress" 1]]
+                ;;THROW to Space # 1 & Don't Go
+                        [:m [:yabai "window --space 1; /opt/homebrew/bin/yabai -m space --focus 1"] ["vpress" 1]]
+                ;;THROW to Space # 2 & Don't Go
+                        [:comma [:yabai "window --space 2; /opt/homebrew/bin/yabai -m space --focus 2"] ["vpress" 1]]
+                ;;THROW to Space # 3 & Don't Go
+                        [:period [:yabai "window --space 3; /opt/homebrew/bin/yabai -m space --focus 3"] ["vpress" 1]]
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        ]},
+
+;;--------------------------------------E MODE - Numpad & Symbols------------------------------------------------------------------------------------------------------
+        {:des "E Mode - Numpad & Symbols"
+                :rules [:e-mode
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>NUMPAD>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                        [:y :delete_or_backspace [["fpress" 0]["spress" 0]]]                            ;Delete
+                        [:#Cu :7 [["fpress" 0]["spress" 0]]]                                            ;Seven
+                        [:#Ci :8 [["fpress" 0]["spress" 0]]]                                            ;Eight
+                        [:#Co :9 [["fpress" 0]["spress" 0]]]                                            ;Nine
+                        [:#Ch :period [["fpress" 0]["spress" 0]]]                                       ;Period
+                        [:#Cj :4 [["fpress" 0]["spress" 0]]]                                            ;Four
+                        [:#Ck :5 [["fpress" 0]["spress" 0]]]                                            ;Five
+                        [:#Cl :6 [["fpress" 0]["spress" 0]]]                                            ;Six
+                        [:semicolon :hyphen [["fpress" 0]["spress" 0]]]                                 ;Minus
+                        [:#Cn :0 [["fpress" 0]["spress" 0]]]                                            ;Cero
+                        [:#Cm :1 [["fpress" 0]["spress" 0]]]                                            ;One
+                        [:#Ccomma :2 [["fpress" 0]["spress" 0]]]                                        ;Two
+                        [:#Cperiod :3 [["fpress" 0]["spress" 0]]]                                       ;Three
+                        [:right_shift :equal_sign [["fpress" 0]["spress" 0]]]                           ;Equal
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>F SUBLAYER - SYMBOLS I>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                        [:f [["fpress" 1]] ["spress" 0] {:afterup {:set ["fpress" 0]}}] ;F Layer Creation
+                        [:u :!S7 [["fpress" 1]]]                                        ;&
+                        [:i :!S8 ["fpress" 1]]                                          ;*
+                        [:o :!S9 ["fpress" 1]]                                          ;(
+                        [:j :!S4 ["fpress" 1]]                                          ;$
+                        [:k :!S5 ["fpress" 1]]                                          ;%
+                        [:l :!S6 ["fpress" 1]]                                          ;^
+                        [:semicolon :!Shyphen ["fpress" 1]]                             ;_
+                        [:n :!S0 ["fpress" 1]]                                          ;)
+                        [:m :!S1 ["fpress" 1]]                                          ;!
+                        [:comma :!S2 ["fpress" 1]]                                      ;@
+                        [:period :!S3 ["fpress" 1]]                                     ;#
+                        [:right_shift :!Sequal_sign ["fpress" 1]]                       ;+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>CMD SUBLAYER - SYMBOLS II>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                        [:s [["spress" 1]] ["fpress" 0] {:afterup {:set ["spress" 0]}}]
+                        [:i :!O8 [["spress" 1]]]                                        ;•
+                        [:semicolon :!OShyphen [["spress" 1]]]                          ;— (m-dash)
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        ]},
+
+;;---------------------------------------T MODE - TEXTSOAP & MD-----------------------------------------------------------------------------------------------------------
+        {:des "T Mode - Text Transformations"
+                :rules [:t-mode
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>BASE BLAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                        [:r [:alfred "myquill" "com.myquill.triggers" "replace"] ["spacepress" 0]]                      ;Search and Replace
+                        [:y [:alfred "myquill" "com.myquill.triggers" "caseSentence"] ["spacepress" 0]]                 ;Sentence Case
+                        [:u [:alfred "myquill" "com.myquill.triggers" "caseUpper"] ["spacepress" 0]]                    ;Uppercase
+                        [:i [:alfred "myquill" "com.myquill.triggers" "italics"] ["spacepress" 0]]                      ;Italics
+                        [:o [:alfred "myquill" "com.myquill.triggers" "caseTitle"] ["spacepress" 0]]                    ;Title Case
+                        [:p [:alfred "myquill" "com.myquill.triggers" "parentheses"] ["spacepress" 0]]                  ;Parenthesis
+                        [:open_bracket [:alfred "myquill" "com.myquill.triggers" "brackets"] ["spacepress" 0]]          ;Brackets
+                        [:h [:alfred "myquill" "com.myquill.triggers" "highlight"] ["spacepress" 0]]                    ;Highlight
+                        [:j [:alfred "myquill" "com.myquill.triggers" "underline"] ["spacepress" 0]]                    ;Underline
+                        [:k [:alfred "myquill" "com.myquill.triggers" "blockQuote"] ["spacepress" 0]]                   ;Block Quote
+                        [:l [:alfred "myquill" "com.myquill.triggers" "link"] ["spacepress" 0]]                         ;Add link
+                        [:semicolon [:alfred "myquill" "com.myquill.triggers" "strikethrough"] ["spacepress" 0]]        ;Strikethrough
+                        [:quote [:alfred "myquill" "com.myquill.triggers" "singleQuotes"] ["spacepress" 0]]             ;Single Quotes
+                        [:b [:alfred "myquill" "com.myquill.triggers" "bold"] ["spacepress" 0]]                         ;Bold
+                        [:n [:alfred "myquill" "com.myquill.triggers" "caseLower"] ["spacepress" 0]]                    ;Lowercase
+                        [:m [:alfred "myquill" "com.myquill.triggers" "betweenLines"] ["spacepress" 0]]                 ;Between Lines
+                        [:comma [:alfred "myquill" "com.myquill.triggers" "codeLine"] ["spacepress" 0]]                 ;Code Line
+                        [:period [:alfred "myquill" "com.myquill.triggers" "codeBlock"] ["spacepress" 0]]               ;Code Block
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>SPACEBAR SUBLAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                        [:##spacebar [["spacepress" 1]] nil {:afterup {:set ["spacepress" 0]}}]
+                        [:i [:alfred "myquill" "com.myquill.triggers" "boldItalic"] ["spacepress" 1]]                   ;Bold & Italics
+                        [:open_bracket [:alfred "myquill" "com.myquill.triggers" "curlyBrackets"] ["spacepress" 1]]     ;Curly Brackets
+                        [:h [:alfred "myquill" "com.myquill.triggers" "fullList"] ["spacepress" 1]]                     ;Quill Workflow
+                        [:j [:alfred "myquill" "com.myquill.triggers" "list,All"] ["spacepress" 1]]                     ;My Quill and Custom
+                        [:k [:alfred "myquill" "com.myquill.triggers" "list,Case"] ["spacepress" 1]]                    ;Case OPTIONS
+                        [:l [:alfred "myquill" "com.myquill.triggers" "linkRemoval"] ["spacepress" 1]]                  ;Remove link
+                        [:quote [:alfred "myquill" "com.myquill.triggers" "doubleQuotes"] ["spacepress" 1]]             ;Double Quotes
+                        [:n [:alfred "myquill" "com.myquill.triggers" "list,Wrap"] ["spacepress" 1]]                    ;Wrap OPTIONS
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+                ]},
+                        
+;;-------------------------------------------CAPS LOCK MODE------------------------------------------------------------------------------------------------------
+        {:des "Caps Mode Rules - Lasts only for a few milliseconds"
+                :rules [:caps-mode
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>MEDIA KEYS on NUMBERS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;MEDIA BUTTONS on numbers
+                ;HIGHER VOLUME
+                        [:equal_sign :volume_increment [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;SWITCH AUDIO OUTPUT to Airpods
+                        [:!Cequal_sign [:alfred "headphones" "com.beet.alfred_audio_switcher"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;LOWER VOLUME
+                        [:hyphen :volume_decrement [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;SWITCH AUDIO OUTPUT to Speakers
+                        [:!Chyphen [:alfred "speakers" "com.beet.alfred_audio_switcher"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;MUTE
+                        [:0 :mute [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;SWITCH AUDIO OUTPUT to Laptop
+                        [:!C0 [:alfred "laptop" "com.beet.alfred_audio_switcher"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;FAST FORWARD
+                        [:9 :fastforward [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;SWITCH AUDIO OUTPUT to UsbHeadphohes
+                        [:!C9 [:alfred "usbHeadphones" "com.beet.alfred_audio_switcher"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;PLAY OR PAUSE
+                        [:8 :play_or_pause [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;REWIND
+                        [:7 :rewind [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;NADA
+                        [:6 :vk_none [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;TOGLE DARK MODE
+                        [:5 [:km "5AE0141E-36C9-4CD3-A411-00135500323E"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;LAUNCHPAD
+                        [:4 :launchpad [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                        [:3 :mission_control [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                        [:2 :display_brightness_increment [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                        [:1 :display_brightness_decrement [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;KEYBOARD ILLUMINATION with CMD + 1 & 2
+                        [:!C2 :illumination_increment [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                        [:!C1 :illumination_decrement [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>BASE LAYER (CAPS LOCK)>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;;DELETE BEAR NOTE
+                        [:w [:km "9A812F68-7857-4ACE-A7BD-8AF3AEEE57CE"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;READWISE TO BEAR Shortcut
+                        [:r "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"604659A4-5CBD-4DBC-A9E4-2D2B6FAAC9F3\"';\\
+                                shortcuts run \"RW to Bear\"" [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;ANSWER IMESSAGE NOTIFICATION
+                        [:i [:km "DC6A4949-C8D1-4024-AC50-74D34142C8AC"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;DAY ONE MASTER SHORTCUT
+                        [:o [:sc "" "Day One Master"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;UPDATE PLEX SERVER
+                        [:p [:km "838EBFC2-7F83-48C5-AF0C-248638A8AD65"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;CAFFEINATE WORKFLOW
+                        [:a [:alfred "caff" "com.shawn.patrick.rice.caffeinate.control"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;FINDER WINDOW ON DROPBOX
+                        [:!Cd [:km "3D77AF72-BF60-4862-A651-5FB7AA67AD03"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;FINDER WINDOW ON DESKTOP
+                        [:f [:km "B5370FB0-9362-4130-87A2-F07A45C26E30"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;FINDER WINDOW ON DROPOVER
+                        [:!Cf [:km "9472030C-DA43-42D9-8030-B02945ACC681"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;FAVORITES ALFRED WORKFLOW
+                        [:g [:alfred "init" "com.zeitlings.favs"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;HOMEROW SCROLL
+                        [:h :!Of18 [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;HOMEROW HINTS
+                        [:j :!Cf18 [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;SUPERSEEK STATIC
+                        [:k :!Tf18 [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;GRAB LINK OF FRONTMOST APP
+                        [:l [:km "604659A4-5CBD-4DBC-A9E4-2D2B6FAAC9F3"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;SPANISH Ñ
+                        [:semicolon [:!On :n] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;SPANISH TILDE
+                        [:quote :!Oe [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;MENUBAR SEARCH
+                        [:b [:km "94B0B083-E25D-4B54-AFDA-46A14F0E7EDB"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;CLOSE NOTIFICATIONS
+                        [:n [:btt "CloseNotifications"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;MENU BAR WORKFLOW
+                        [:m [:alfred "menu" "com.tedwise.menubarsearch"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;MENU BAR OF CURRENT APP
+                        [:!Cm :!CSslash [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;SCREEN SAVER ON ","
+                        [:comma nil [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]] {:afterup [:alfred "screensaver" "com.chubamisc.afred"]}]
+                ;;SLEEP SYSTEM WITH DOUBLE TAP PERIOD OR SINGLE FOR SLEEP DISPLAY
+                        [:period [:alfred "sleepsystem" "com.chubamisc.afred"] [["sleep-press" 1]["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                        [:period [["sleep-press" 1]] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]
+                                {:delayed {:invoked [["sleep-press" 0] [:alfred "sleepscreen" "com.chubamisc.afred"]]
+                                :canceled ["sleep-press" 0]} :params {:delay 200}}]
+                ;;NEW FLOATING LITTLE ARC
+                        [:right_shift "~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggleOrNewArc arcScratchpad" [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;NEW TILED LITTLE ARC
+                        [:!Cright_shift [[:yabai "signal --add label=arcfloater app=\"^Arc$\" event=window_title_changed\\
+                                action=\"~/Dropbox/2-Areas/SystemAndApps/Yabai/arcFloater.sh tile\""] :!TOCn]
+                                [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;NEW FLOATING BEAR NOTE
+                        [:spacebar "~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggleOrNewBear bearScratchpad" [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;NEW TILED BEAR NOTE
+                        [:!Cspacebar ["/opt/homebrew/bin/yabai -m signal --remove scratchpad_newBear;\\
+                        /opt/homebrew/bin/yabai -m signal --add label=tile_next app='^Bear$' event=window_created\\
+                        action='/opt/homebrew/bin/yabai -m signal --remove tile_next;\\
+                        /opt/homebrew/bin/yabai -m window $YABAI_WINDOW_ID --toggle float';\\
+                        ~/Dropbox/2-Areas/SystemAndApps/Karabiner/bearNewNote.sh; sleep 0.2;\\
+                        /opt/homebrew/bin/yabai -m signal --add label=scratchpad_newBear event=window_created app='^Bear$' title!='^Bear$'\\
+                        action='~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggleSpecial bearScratchpad'"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]             
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+       
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>ARC EXTENSIONS SUBLAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                        [:e [["epress" 1]] [["dpress" 0]["spress" 0]["cpress" 0]] {:afterup {:set ["epress" 0]}}]
+                        [:spacebar :!CSx [["epress" 1] :arc]]           ;Close Overlay Extension
+                        [:r :!Or [["epress" 1] :arc]]                   ;Readwise Add
+                        [:y :!CSy [["epress" 1] :arc]]                  ;Activate Bitwarden Extension
+                        [:u :!CSu [["epress" 1] :arc]]                  ;Autofill with Bitwarden
+                        [:p [:btt "pipArc"] [["epress" 1] :arc]]        ;PiP for videos
+                        [:d :!Oe [["epress" 1] :arc]]                   ;Raindrop Add
+                        [:h [:btt "ArcSlower"] ["epress" 1]]            ;Arc Media - Slower
+                        [:j [:btt "ArcRewind15"] ["epress" 1]]          ;Arc Media - Rewind 15 Secs
+                        [:k [:btt "ArcForward15"] ["epress" 1]]         ;Arc Media - Forwad 15 Secs
+                        [:l [:btt "ArcFaster"] ["epress" 1]]            ;Arc Media - Faster
+                        [:m [:btt "ArcRewindABit"] ["epress" 1]]        ;Arc Media - Rewind a Bit
+                        [:comma [:btt "ArcForwardABit"] ["epress" 1]]   ;Arc Media - Forward a Bit
+                        [:period [:btt "ArcResetSpeed"] ["epress" 1]]   ;Arc Media - Reset Speed
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>ARC POPUPS AND MACROS SUBLAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                        [:s [["spress" 1]] [["dpress" 0]["epress" 0]["cpress" 0]] {:afterup {:set ["spress" 0]}}]
+                        [:return_or_enter [:alfred "archistory" "com.chubamisc.afred"] ["spress" 1]]            ;arc history workflow
+                        [:right_shift [:km "C85D1652-EDB6-4FA9-9220-6627FB3F9801"] [["spress" 1] :arc]]         ;Open current page in OpenIn
+                        [:!Cright_shift [:km "71671EF7-5DFF-4560-A1AB-34696D6604E8"] [["spress" 1] :arc]]       ;Open link under mouse in OpenIn
+                        [:spacebar [:km "7F5B9AD9-22E4-4FC4-82E3-78BB0BCEC2EC"] ["spress" 1]]                   ;Open Clipboard in OpenIn
+                        [:y [:km "EBA2B560-ED10-4AAA-A5E1-055F5B863CCD"] ["spress" 1]]                          ;Google selection as unpinned and see
+                        [:u [:km "60294873-DC1C-47B1-B08A-929993894468"] ["spress" 1]]                          ;Google selection as float
+                        [:i [:km "BB38D111-C565-4E1B-BB98-60CCA30EA8EE"] ["spress" 1]]                          ;Google selection as tile
+                        [:o [:km "0C7154AC-DF11-4A50-BA9E-349F7F1492A6"] ["spress" 1]]                          ;Google selection as unpinned in BG
+                        [:h [:km "AD5525D0-64FE-41DB-A81E-74C5F998B932"] [["spress" 1] :arc]]                   ;Open current page as unpinned and see
+                        [:j [:km "2FEBFB46-0BBB-4B15-AA7D-5CBBDA2E84FF"] [["spress" 1] :arc]]                   ;Open current page as float
+                        [:k [:km "64F77118-7AA7-4E6A-945B-E88E2A0EE634"] [["spress" 1] :arc]]                   ;Open current page as tile
+                        [:l [:km "5824E648-7B18-429A-AB7A-60167C6CD65B"] [["spress" 1] :arc]]                   ;Open current page as unpinned in BG
+                        [:n [:km "98DF4112-D153-487F-826F-9F124EA200D4"] [["spress" 1] :arc]]                   ;Open link under mouse as unpinned and see
+                        [:m [:km "6FDAC53E-DD84-453A-9590-E3231DB9E72B"] [["spress" 1] :arc]]                   ;Open link under mouse as float
+                        [:comma [:km "ED25AFC7-32C6-4B8E-A474-333FE3EF3FD0"] [["spress" 1] :arc]]               ;Open link under mouse as tile
+                        [:period {:pkey :button3} [["spress" 1] :arc]]                                          ;Open link under mouse as unpinned in BG
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>DROPOVER SUBLAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                        [:d [["dpress" 1]] [["spress" 0]["epress" 0]["cpress" 0]] {:afterup {:set ["dpress" 0]}}]
+                        [:r [:sc "" "Drop Reveal"] ["dpress" 1]]                                        ;Reveal Dropover Shelf content in Finder
+                        [:y [:sc "" "Drop Desktop"] ["dpress" 1]]                                       ;Move Content of Dropover Shelf to Desktop
+                        [:u [:sc "quick" "Drop Optimize"] ["dpress" 1]]                                 ;Quick Clop Optimize Media on Dropover Shelf
+                        [:i [:sc "aggressive" "Drop Optimize"] ["dpress" 1]]                            ;Aggressive Clop Optimize Media on Dropover Shelf
+                        [:o [:!TSc] ["dpress" 1]]                                                       ;Clop Optimize Clipboard
+                        [:p [:!TSa] ["dpress" 1]]                                                       ;Clop Optimize Clipboard Aggressive
+                        [:open_bracket [:alfred "clop_cb" "com.afadingthought.clop" "wf"] ["dpress" 1]] ;Clop WF on Clipboard
+                        [:s [:sc "" "Drop Pin"] ["dpress" 1]]                                           ;Pin Files from Shelf
+                        [:f [:km "Dropover OpenIn"] ["dpress" 1]]                                       ;Open Shelf in OpenIn
+                        [:g [:sc "" "Drop Gif"] ["dpress" 1]]                                           ;Open Gifski to convert video to Gif from Dropover Shelf
+                        [:h [:sc "" "Drop Previous"] ["dpress" 1]]                                      ;Open previous Dropover shelf
+                        [:j [:sc "" "Drop Move"] ["dpress" 1]]                                          ;Move contents of Dropover shelf to frontmost Finder path 
+                        [:k [:sc "" "Drop Airdrop"] ["dpress" 1]]                                       ;Airdrop content from Dropover shelf
+                        [:l [:sc "" "Drop Close"] ["dpress" 1]]                                         ;Close Dropover Shelf
+                        [:semicolon [:km "160B99AC-4009-4ABF-A1FE-D0C06CC5535B"] ["dpress" 1]]          ;Dock Shelf
+                        [:quote [:km "BCA60CEB-E76A-45B1-9873-B41070136668"] ["dpress" 1]]              ;Alfred Actions on Shelf
+                        [:c [:sc "" "Drop Cleanshot"] ["dpress" 1]]                                     ;Edit Dropover Shelf contents in Cleanshot
+                        [:n [:sc "" "Drop Delete"] ["dpress" 1]]                                        ;Delete the files in a Dropover shelf
+                        [:m [:alfred "finderClop" "com.afadingthought.clop" "quick"] ["dpress" 1]]      ;Clop Simple Optimization on Finder File
+                        [:comma [:alfred "finderClop" "com.afadingthought.clop" "aggressive"] ["dpress" 1]] ;Clop Aggressive Optimization on Finder File
+                        [:period [:alfred "finderClop" "com.afadingthought.clop" "workflow"] ["dpress" 1]]  ;Clop Workflow on Finder Selection
+                        [:right_shift [:sc "workflow" "Drop Optimize"] ["dpress" 1]]                    ;Clop Alfred Workflow for contents of Dropover Shelf
+                        [:return_or_enter [:km "7A9F80E0-042D-4620-B414-11B2D74736EB"] ["dpress" 1]]    ;Dropover search bar on shelf
+                        [:spacebar :!STv ["dpress" 1]]                                                  ;Dropover shelf from Clipboard
+                        [:left_command [:!Cc :!STv] ["dpress" 1]]                                       ;Dropover from selected file, through Clipboard
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>CLEANSHOT X SUBLAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                        [:c [["cpress" 1]] [["spress" 0]["epress" 0]["dpress" 0]] {:afterup {:set ["cpress" 0]}}]
+                ;OCR with Linebreaks
+                        [:y [:open-g "cleanshot://capture-text?linebreaks=true"] ["cpress" 1]]
+                ;OCR without Linebreaks
+                        [:u [:open-g "cleanshot://capture-text?linebreaks=false"] ["cpress" 1]]                                         
+                ;Scrolling Capture
+                        [:i [:open-g "cleanshot://scrolling-capture"] ["cpress" 1]]     
+                ;FullScreen Capture
+                        [:o [:open-g "cleanshot://capture-fullscreen"] ["cpress" 1]]
+                ;All in One bar    
+                        [:d [:open-g "cleanshot://all-in-one"] ["cpress" 1]]
+                ;Capture Area & Pin
+                        [:h [:open-g "cleanshot://capture-area?action=pin"] ["cpress" 1]]
+                ;Capture Area
+                        [:j [:open-g "cleanshot://capture-area"] ["cpress" 1]]
+                ;Capture Area to Clipboard                                         
+                        [:k [:open-g "cleanshot://capture-area?action=copy"] ["cpress" 1]]
+                ;Capture Area & Annotate
+                        [:l [:open-g "cleanshot://capture-area?action=annotate"] ["cpress" 1]]
+                ;Toggle Desktop Icons
+                        [:semicolon [:open-g "cleanshot://toggle-desktop-icons"] ["cpress" 1]]
+                ;Toggle Pins visibility
+                        [:quote :!CS3 ["cpress" 1]]
+                ;Annotate Selection on Finder
+                        [:return_or_enter [:km "706704E3-EEE1-44F4-A353-B747B116B942"] ["cpress" 1]]
+                ;Pin Selection on Finder
+                        [:s [:km "caps-s - Cleanshot: PinSelection"] ["cpress" 1]]
+                ;Cature History
+                        [:right_shift [:open-g "cleanshot://open-history"] ["cpress" 1]]
+                ;Annotate from Clipboard
+                        [:spacebar [:open-g "cleanshot://open-from-clipboard"] ["cpress" 1]]                                  
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ]},
+
+;;-----------------------------------------F19 MODE - SUPERKEY------------------------------------------------------------------------------------------------------
+        {:des "F19 Mode - (Seek from Superkey)"
+                :rules [:f19-mode
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>SPACEBAR SUBLAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                        [:spacebar nil nil {:alone {:key :spacebar :halt true} :delayed {:canceled [{:key :spacebar}            ;;Spacebar sublayer creation
+                                {:set ["spacebarpress" 0]}]} :held {:set ["spacebarpress" 1]}
+                                :afterup {:set ["spacebarpress" 0]}}]
+                        [:##e [["caps-mode" 1] {:key :escape}] [["spacebarpress" 1] ["f19-mode" 1]]]                            ;;Escape on Spacebar Sublayer
+                        [:semicolon [:!On :n] [["spacebarpress" 1] ["f19-mode" 1]]]                                             ;;Spanish ñ on Spacebar Sublayer
+                        [:quote :!Oe [["spacebarpress" 1] ["f19-mode" 1]]]                                                      ;;Spanish Tilde on Spacebar Sublayer
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>F19 BASE LAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                        [:##left_command :delete_or_backspace]                                                                  ;;Backspace
+                        [:##right_command :tab]                                                                                 ;;Tab
+                        [:##a nil nil {:alone {:key :a :halt true} :delayed {:canceled {:key :a}} :held {:key :left_control}}]  ;;Hold A for CTRL
+                        [:##s nil nil {:alone {:key :s :halt true} :delayed {:canceled {:key :s}} :held {:key :left_option}}]   ;;Hold S for OPT
+                        [:##d nil nil {:alone {:key :d :halt true} :delayed {:canceled {:key :d}} :held {:key :left_command}}]  ;;Hold D for CMD
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ]},
+
+;;--------------------------------------------KIKI AI LAYER--------------------------------------------------------------------------------------------------------
+        {:des "A Mode"
+                :rules [:a-mode
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>SUBLAYERS CREATION>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                        [:r [["rpress" 1]] [["dpress" 0]["bpress" 0]] {:afterup {:set ["rpress" 0]}}]
+                        [:b [["bpress" 1]] [["rpress" 0]["dpress" 0]] {:afterup {:set ["bpress" 0]}}]
+                        [:d [["dpress" 1]] [["rpress" 0]["bpress" 0]] {:afterup {:set ["dpress" 0]}}]
+                        [:w [["wpress" 1]] nil {:afterup {:set ["wpress" 0]}}]
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>BASE LAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;REVEAL Kiki Data Path
+                        [:f [:alfred "kikiFiles" "com.kiki.ai" "filesRevealPath"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+                ;REVEAL Kiki Workflow
+                        [:!Cf [:alfred "kikiFiles" "com.kiki.ai" "filesRevealWorkflow"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+                ;COPY Last Response
+                        [:h [:alfred "kikiFiles" "com.kiki.ai" "filesCopyResponse"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+                ;COPY Context File to Specified Path
+                        [:j [:alfred "kikiFiles" "com.kiki.ai" "filesCopyContext"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+                ;TRIGGER Markdown Chat
+                        [:return_or_enter [:alfred "kikiMD" "com.kiki.ai"] [:bear ["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+                ;PRESETS MENU
+                        [:m [:alfred "kikiActions" "com.kiki.ai" "menu,custom,1"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+                ;QUICK CHAT
+                        [:spacebar [:alfred "kikiChat" "com.kiki.ai"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>COMMAND LAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;WHISPER Escritor e Ideas
+                        [:!Ce [:alfred "kikiActions" "com.kiki.ai" "direct,whisper,4,translateEn"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+                ;WHISPER Transcribe and Paste
+                        [:!Cj [:alfred "kikiActions" "com.kiki.ai" "paste,whisper"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+                ;WHISPER Journal - Response in Dialog
+                        [:!Co [:alfred "kikiActions" "com.kiki.ai" "direct,whisper,1,diario"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+                ;TRANSLATE to English - Response in Dialog
+                        [:!Ct [:alfred "kikiActions" "com.kiki.ai" "direct,copy,1,translateEn"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+                ;SIMPLIFY - Paste in Frontmost
+                        [:!Cs [:alfred "kikiActions" "com.kiki.ai" "direct,copy,4,simpliRW"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+                ;WHISPER Transcription Prompt for Selected Text = Alfred Bar
+                        [:!Cright_shift [:alfred "kikiActions" "com.kiki.ai" "direct,copy,1,customWhisperPrompt"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+                ;WHISPER QUICK DIALOG REQUEST - Response in Dialog
+                        [:!Cspacebar [:alfred "kikiActions" "com.kiki.ai" "direct,whisper,1,useAsPrompt"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+                        [:!Cright_command [:alfred "kikiActions" "com.kiki.ai" "menu,whisper,1"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>SELECTED TEXT or WHISPER ACTIONS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;;PASTE IN FRONTMOST
+                ;Add a Custom Prompt to Selected Text
+                        [:spacebar [:alfred "kikiActions" "com.kiki.ai" "direct,copy,4,customPrompt"] [["rpress" 1]["wpress" 0]]]
+                ;Add a Custom Prompt to Whisper Transcription
+                        [:spacebar [:alfred "kikiActions" "com.kiki.ai" "direct,whisper,4,customPrompt"] [["rpress" 1]["wpress" 1]]]
+                ;Use Selected Text as Prompt
+                        [:p [:alfred "kikiActions" "com.kiki.ai" "direct,copy,4,useAsPrompt"] [["rpress" 1]["wpress" 0]]]
+                ;Use Whisper Transcription as Prompt
+                        [:p [:alfred "kikiActions" "com.kiki.ai" "direct,whisper,4,useAsPrompt"] [["rpress" 1]["wpress" 1]]]
+                ;Send Selected Text to Presets Menu
+                        [:m [:alfred "kikiActions" "com.kiki.ai" "menu,copy,4"] [["rpress" 1]["wpress" 0]]]
+                ;Send Whisper Transcription to Presets Menu
+                        [:m [:alfred "kikiActions" "com.kiki.ai" "menu,whisper,4"] [["rpress" 1]["wpress" 1]]]
+
+                ;;PLACE BELOW
+                ;Selected text as Input for Asking
+                        [:spacebar [:alfred "kikiActions" "com.kiki.ai" "direct,copy,6,customPrompt"] [["bpress" 1]["wpress" 0]]]
+                ;Whisper Transcription as Input for Asking
+                        [:spacebar [:alfred "kikiActions" "com.kiki.ai" "direct,whisper,6,customPrompt"] [["bpress" 1]["wpress" 1]]]
+                ;Selected text as Prompt
+                        [:p [:alfred "kikiActions" "com.kiki.ai" "direct,copy,6,useAsPrompt"] [["bpress" 1]["wpress" 0]]]
+                ;Whisper Transcription as Prompt
+                        [:p [:alfred "kikiActions" "com.kiki.ai" "direct,whisper,6,useAsPrompt"] [["bpress" 1]["wpress" 1]]]
+                ;Selected text as Input for Menu
+                        [:m [:alfred "kikiActions" "com.kiki.ai" "menu,copy,6"] [["bpress" 1]["wpress" 0]]]
+                ;Whisper Transcription as Input for Menu
+                        [:m [:alfred "kikiActions" "com.kiki.ai" "menu,whisper,6"] [["bpress" 1]["wpress" 1]]]
+
+                ;;DIALOG
+                ;Selected text as Input for Asking
+                        [:spacebar [:alfred "kikiActions" "com.kiki.ai" "direct,copy,1,customPrompt"] [["dpress" 1]["wpress" 0]]]
+                ;Whisper Transcription as Input for Asking
+                        [:spacebar [:alfred "kikiActions" "com.kiki.ai" "direct,whisper,1,customPrompt"] [["dpress" 1]["wpress" 1]]]
+                ;Selected text as Prompt
+                        [:p [:alfred "kikiActions" "com.kiki.ai" "direct,copy,1,useAsPrompt"] [["dpress" 1]["wpress" 0]]]
+                ;Whisper Transcription as Prompt
+                        [:p [:alfred "kikiActions" "com.kiki.ai" "direct,whisper,1,useAsPrompt"] [["dpress" 1]["wpress" 1]]]
+                ;Selected text as Input for Menu
+                        [:m [:alfred "kikiActions" "com.kiki.ai" "menu,copy,1"] [["dpress" 1]["wpress" 0]]]
+                ;Whisper Transcription as Input for Menu
+                        [:m [:alfred "kikiActions" "com.kiki.ai" "menu,whisper,1"] [["dpress" 1]["wpress" 1]]]
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+                ]},
+
+;;--------------------------------------------SUPER DUPER MODE---------------------------------------------------------------------------------------------------------
+        {:des "SuperDuper Mode Rules"
+                :rules [:sd-mode
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>ARROW KEYS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                        [:#SOCTh :left_arrow :!terminal]                 ;Left Arrow
+                        [:#SOCTj :down_arrow :!terminal]                 ;Down Arrow
+                        [:#SOCTk :up_arrow :!terminal]                   ;Up Arrow
+                        [:#SOCTl :right_arrow :!terminal]                ;Right Arrow
+                        [:#SOCTsemicolon :vk_none]                       ;Disabled to Avoid Typing
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>MODIFIERS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                        [:##caps_lock :!Cescape :!arc]                  ;Escape App switcher | EXCLUDING ARC
+                        [:#COPspacebar :left_shift]                     ;Shift
+                        [:##f :left_command :!terminal]                 ;Left Command | EXCLUDING TERMINAL
+                        [:##a :left_option :!terminal]                  ;Left OPT | EXCLUDING TERMINAL
+                        [:left_command :!CTleft_shift [:vscode]]        ;Expansion Shortcut for VSCode
+                        [:z :left_control]                              ;CTRL on Z no use so far... temporary solution. Not a lot of control option shortcuts.
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>DELETES>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                        [:#SOCn :delete_or_backspace :!terminal]        ;Delete Backspace on N | EXCLUDING TERMINAL
+                        [:#SOPperiod :delete_forward :!terminal]        ;Delete Forward on Period | EXCLUDING TERMINAL
+                        [:!Cperiod [:!Tk] :!terminal]                   ;Delete from current point to the end of line | EXCLUDING TERMINAL
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>SWITCHERS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                        [:y :!Otab :!arc]                               ;Window Switcher - Below| EXCLUDING ARC
+                        [:u :!Ttab :!arc]                               ;Tab Switcher - Below | EXCLUDING ARC
+                        [:i :!STtab :!arc]                              ;Tab Switcher - Above | EXCLUDING ARC
+                        [:o :!SOtab :!arc]                              ;Window Switcher - Above | EXCLUDING ARC
+                        [:m [:km "- rcmd previousApp"]]                 ;APP Switcher - Below
+                        [:comma ["~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadOnFocus.sh toggle"]] ;Toggle Any Scratchpad
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>ARC SPECIFIC>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;;Tab Nav for ARC
+                        [:condi :arc :sd-mode]
+                        [:y [:!STtab]]                                  ;Open Tabs Switcher - Previous
+                        [:u [:!COdown_arrow]]                           ;Tab Below
+                        [:i [:!COup_arrow]]                             ;Tab Above
+                        [:o [:!Ttab]]                                   ;Open Tabs Switcher - Next
+                        [:7 [:!Tw]]                                     ;Close Tab
+                        [:##caps_lock :!Tescape]                        ;Escape ARC Tab Switcher
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>TERMINAL SPECIFIC>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                        [:condi :terminal :sd-mode]
+                        [:##f [["cpress" 1]] nil {:afterup {:set ["cpress" 0]}}]        ;Faking Modifiers
+                        [:##a [["opress" 1]] nil {:afterup {:set ["opress" 0]}}]        ;Faking Modifiers
+                        [:##h :left_arrow [["cpress" 0]["opress" 0]]]                   ;Normal Left
+                        [:##h :!Ta [["cpress" 1]["opress" 0]]]                          ;Go to Beginning of Line
+                        [:##h :!Oleft_arrow [["cpress" 0]["opress" 1]]]                 ;Skip Word Backward
+                        [:##l :right_arrow [["cpress" 0]["opress" 0]]]                  ;Normal Right
+                        [:##l :!Te [["cpress" 1]["opress" 0]]]                          ;Go to End of Line
+                        [:##l :!Oright_arrow [["cpress" 0]["opress" 1]]]                ;Skip Word Forward
+                        [:##n :delete_or_backspace [["cpress" 0]["opress" 0]]]          ;Normal Delete Back
+                        [:##n :!Tu [["cpress" 1]["opress" 0]]]                          ;Delete Back to Beginning o Line
+                        [:##n :!Tw [["cpress" 0]["opress" 1]]]                          ;Delete Back a Word
+                        [:##period :delete_forward [["cpress" 0]["opress" 0]]]          ;Normal Delete Forward
+                        [:##period :!Tk [["cpress" 1]["opress" 0]]]                     ;Delete Forward to End of Line
+                        [:##period [:escape :d] [["cpress" 0]["opress" 1]]]             ;Delete Forward by word
+                        [:##j :down_arrow]                                              ;Normal Down
+                        [:##k :up_arrow]                                                ;Normal Up
+
+                        ;;Terminal profile must use Option as meta for next one to work.
+                        ;;In settings, profile, keyboard, in Terminal. 
+                        [:##period :!Od [["cpress" 0]["opress" 1]]]                     ;Delete Forward a Line
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        ]},
+        
+;;-------------------------------------------F CURSOR/MOUSE MODE---------------------------------------------------------------------------------------------------------
+        {:des "F Mode - Cursor"
+                :rules [:f-mode
+                        [:##spacebar [["spacepress" 1]] nil {:afterup {:set ["spacepress" 0]}}]
+                        [:caps_lock :escape]
+                        [:y {:pkey :button1}]
+                        [:u {:pkey :button2}]
+                        [:i {:pkey :button3}]
+                        [:##o [:km "95B8335C-1B11-4FA2-9AC6-1C67217DC48F"]]
+                        [:##s [:yabai "window --focus mouse"]]
+                        [:##d {:pkey :button1}]
+                        [:##h {:mkey {:x -3072 :speed 2.0}} ["spacepress" 0]]
+                        [:##j {:mkey {:y 3072 :speed 2.0}} ["spacepress" 0]]
+                        [:##k {:mkey {:y -3072 :speed 2.0}} ["spacepress" 0]]
+                        [:##l {:mkey {:x 3072 :speed 2.0}} ["spacepress" 0]]
+                        [:##h {:mkey {:x -3072 :speed 1.0}} ["spacepress" 1]]
+                        [:##j {:mkey {:y 3072 :speed 1.0}} ["spacepress" 1]]
+                        [:##k {:mkey {:y -3072 :speed 1.0}} ["spacepress" 1]]
+                        [:##l {:mkey {:x 3072 :speed 1.0}} ["spacepress" 1]]
+                        [:##n {:mkey {:x -1072 :speed 1.0}} ["spacepress" 0]]
+                        [:##m {:mkey {:y 1072 :speed 1.0}} ["spacepress" 0]]
+                        [:##comma {:mkey {:y -1072 :speed 1.0}} ["spacepress" 0]]
+                        [:##period {:mkey {:x 1072 :speed 1.0}} ["spacepress" 0]]
+                        [:##n {:mkey {:x -1072 :speed 0.5}} ["spacepress" 1]]
+                        [:##m {:mkey {:y 1072 :speed 0.5}} ["spacepress" 1]]
+                        [:##comma {:mkey {:y -1072 :speed 0.5}} ["spacepress" 1]]
+                        [:##period {:mkey {:x 1072 :speed 0.5}} ["spacepress" 1]]
+        ]},
+
+;;------------------------------------------------RCMD MODS--------------------------------------------------------------------------------------------------------------
+        {:des "rcmd"
+                :rules [
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD SUBLAYERS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                        [:##a [{:set ["a-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
+                        [:##b [{:set ["b-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
+                        [:##c [{:set ["c-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
+                        [:##d [{:set ["d-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
+                        [:##e [{:set ["e-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
+                        [:##f [{:set ["f-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
+                        [:##g [{:set ["g-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
+                        [:##h [{:set ["h-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
+                        [:##i [{:set ["i-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
+                        [:##j [{:set ["j-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
+                        [:##k [{:set ["k-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
+                        [:##l [{:set ["l-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
+                        [:##m [{:set ["m-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
+                        [:##n [{:set ["n-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
+                        [:##o [{:set ["o-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
+                        [:##p [{:set ["p-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
+                        [:##q [{:set ["q-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
+                        [:##r [{:set ["r-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
+                        [:##s [{:set ["s-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
+                        [:##t [{:set ["t-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
+                        [:##u [{:set ["u-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
+                        [:##v [{:set ["v-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
+                        [:##w [{:set ["w-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
+                        [:##x [{:set ["x-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
+                        [:##y [{:set ["y-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
+                        [:##z [{:set ["z-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD SIMPLES>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;FOCUS Current App Previous Window - Current Space
+                        [:comma "~/Dropbox/2-Areas/SystemAndApps/Yabai/prevWindowSameAppAllSpaces.sh" [:rcmd :!rshift-rcmd :!lshift-rcmd]]
+                ;FOCUS Current App Next Window - Current Space
+                        [:period "~/Dropbox/2-Areas/SystemAndApps/Yabai/nextWindowSameAppAllSpaces.sh" [:rcmd :!rshift-rcmd :!lshift-rcmd]]
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD HYPERLAYERS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                        [:caps_lock [{:set ["caps-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["semi-rcmd" 0]["quote-rcmd" 0]["return-rcmd" 0]["caps-rcmd" 0]["rshift-rcmd" 0]["lshift-rcmd" 0]["space-rcmd" 0]["ropt-rcmd" 0]["lcmd-rcmd" 0]]]
+                        [:semicolon [{:set ["semi-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["semi-rcmd" 0]["quote-rcmd" 0]["return-rcmd" 0]["caps-rcmd" 0]["rshift-rcmd" 0]["lshift-rcmd" 0]["space-rcmd" 0]["ropt-rcmd" 0]["lcmd-rcmd" 0]]]
+                        [:left_shift [{:set ["lshift-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["semi-rcmd" 0]["quote-rcmd" 0]["return-rcmd" 0]["caps-rcmd" 0]["rshift-rcmd" 0]["lshift-rcmd" 0]["space-rcmd" 0]["ropt-rcmd" 0]["lcmd-rcmd" 0]]]
+                        [:right_shift [{:set ["rshift-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["semi-rcmd" 0]["quote-rcmd" 0]["return-rcmd" 0]["caps-rcmd" 0]["rshift-rcmd" 0]["lshift-rcmd" 0]["space-rcmd" 0]["ropt-rcmd" 0]["lcmd-rcmd" 0]]]
+                        [:left_command [{:set ["lcmd-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["semi-rcmd" 0]["quote-rcmd" 0]["return-rcmd" 0]["caps-rcmd" 0]["rshift-rcmd" 0]["lshift-rcmd" 0]["space-rcmd" 0]["ropt-rcmd" 0]["lcmd-rcmd" 0]]]
+                        [:spacebar [{:set ["space-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["semi-rcmd" 0]["quote-rcmd" 0]["return-rcmd" 0]["caps-rcmd" 0]["rshift-rcmd" 0]["lshift-rcmd" 0]["space-rcmd" 0]["ropt-rcmd" 0]["lcmd-rcmd" 0]]]
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD HYPERACTIONS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;MINIMIZE - LSHIFT
+                        ;MINIMIZE All Windows of Current App
+                        [:caps_lock "~/Dropbox/2-Areas/SystemAndApps/Yabai/minimizeAllWindowsOfCurrentApp.sh" [:lshift-rcmd]]
+                        ;MINIMIZE All Windows of Current App Except Focused
+                        [:left_shift "~/Dropbox/2-Areas/SystemAndApps/Yabai/minimizeOtherWindowsSameApp.sh" [:lshift-rcmd]]
+                        ;MINIMIZE All Windows of All Apps Except Current Window
+                        [:right_shift "~/Dropbox/2-Areas/SystemAndApps/Yabai/minimizeOtherWindowsOfAllApps.sh" [:lshift-rcmd]]
+                        ;MINIMIZE All Windows of Other Apps (Not the Current App)
+                        [:!Cleft_shift "~/Dropbox/2-Areas/SystemAndApps/Yabai/minimizeAllWindowsOfOtherApps.sh" [:lshift-rcmd]]
+                        ;MINIMIZE All Windows of All Apps
+                        [:return_or_enter "~/Dropbox/2-Areas/SystemAndApps/Yabai/minimizeAllWindowsOfAllApps.sh" [:lshift-rcmd]]
+                ;DEMINIMIZE - LSHIFT LCMD
+                        ;DEMINIMIZE All Windows of Current App
+                        [:!Ccaps_lock "~/Dropbox/2-Areas/SystemAndApps/Yabai/deminimizeOtherWindowsSameApp.sh" [:lshift-rcmd]]
+                        ;DEMINIMIZE All Windows of All Apps
+                        [:!Creturn_or_enter "~/Dropbox/2-Areas/SystemAndApps/Yabai/deminimizeWindowsOfAllApps.sh" [:lshift-rcmd]]
+                ;CLOSE WINDOWS - LCMD
+                        ;CLOSE All Windows of Current App
+                        [:caps_lock "~/Dropbox/2-Areas/SystemAndApps/Yabai/closeCurrentAppAllWindows.sh"[:lcmd-rcmd]]
+                        ;CLOSE All Windows of Current App Except Focused
+                        [:left_shift "~/Dropbox/2-Areas/SystemAndApps/Yabai/closeAppWindowsKeepFocused.sh" [:lcmd-rcmd]]
+                        ;CLOSE All Windows of All Apps Except Current Window
+                        [:right_shift "~/Dropbox/2-Areas/SystemAndApps/Yabai/closeOtherWindows.sh" [:lcmd-rcmd]]
+                        ;CLOSE All Windows of Other Apps (Not the Current App)
+                        [:left_command "~/Dropbox/2-Areas/SystemAndApps/Yabai/closeOtherAppWindows.sh" [:lcmd-rcmd]]
+                        ;CLOSE All Windows of All Apps
+                        [:return_or_enter "~/Dropbox/2-Areas/SystemAndApps/Yabai/closeEveryWindow.sh" [:lcmd-rcmd]]
+                ;HIDE APPS - SPACEBAR
+                        ;HIDE Current App
+                        [:caps_lock :!Ch [:space-rcmd]]
+                        ;HIDE All Other Apps
+                        [:spacebar [:km "- rcmd hide: OtherApps"] [:space-rcmd]]
+                        ;HIDE ALL Apps
+                        [:return_or_enter [:km "- rcmd hide: All"] [:space-rcmd]]
+                ;UNHIDE ALL APPS
+                        ;I need to setup this shortcut in Mac settings for all apps in menu
+                        [:return_or_enter [:!TOCh] [:rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                ;QUIT APPS - SEMI
+                        ;QUIT All Other Apps
+                        [:semicolon [:km "- rcmd quit: Others"] [:semi-rcmd]]
+                        ;QUIT All Apps
+                        [:return_or_enter [:km "- rcmd quit: All"] [:semi-rcmd]]
+                ;WINDOWS PREVIOUS / NEXT / STATS - RSHIFT
+                        ;FOCUS Current App Previous Window - This Space
+                        [:comma "~/Dropbox/2-Areas/SystemAndApps/Yabai/prevWindowSameAppThisSpace.sh" [:lshift-rcmd :!rshift-rcmd]]
+                        [:comma "~/Dropbox/2-Areas/SystemAndApps/Yabai/prevWindowSameAppThisSpace.sh" [:rshift-rcmd :!lshift-rcmd]]
+                        ;FOCUS Current App Next Window - This Space
+                        [:period "~/Dropbox/2-Areas/SystemAndApps/Yabai/nextWindowSameAppThisSpace.sh" [:lshift-rcmd :!rshift-rcmd]]
+                        [:period "~/Dropbox/2-Areas/SystemAndApps/Yabai/nextWindowSameAppThisSpace.sh" [:rshift-rcmd :!lshift-rcmd]]
+                        [:quote [:km "rcmd: WindowsStats"] [:rshift-rcmd :!lshift-rcmd]]
+                ;SCRATCHPADS - RSHIFT  & LSHIFT
+                        [:caps_lock [:yabai "window --scratchpad recover"] [:rshift-rcmd :!lshift-rcmd]]
+                        [:return_or_enter [:km "rcmd: ScratchpadStats"] [:rshift-rcmd :!lshift-rcmd]]
+                        [:left_shift "~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadSet.sh" [:rshift-rcmd :!lshift-rcmd]]
+                        [:right_shift "~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggle scratchpad" [:rshift-rcmd :!lshift-rcmd]]
+                        ;yabai -m window --scratchpad to remove ... https://github.com/koekeishiya/yabai/issues/2203#issuecomment-2035539072%23ybf
+                        ;also check https://github.com/koekeishiya/yabai/issues/2325
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD A>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;ALFRED
+                        ;Activate
+                        [:l [:km "rcmd: Alfred"] [:a-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:l [:km "rcmd: Alfred" "m"] [:a-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Cl [:km "rcmd: Alfred" "dm"] [:a-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:l [:km "rcmd: Alfred" "x"] [:a-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:l [:km "rcmd: Alfred" "0"] [:a-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:l [:km "rcmd: Alfred" "xx"] [:a-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:l [:km "rcmd: Alfred" "1"] [:a-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:l [:km "rcmd: Alfred" "2"] [:a-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Rl [:km "rcmd: Alfred" "3"] [:a-rcmd :caps-rcmd]]
+                ;"APPSTORE"
+                        ;Activate
+                        [:s [:km "rcmd: AppStore"] [:a-rcmd :!space-rcmd :!ropt-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:s [:km "rcmd: AppStore" "m"] [:a-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Cs [:km "rcmd: AppStore" "dm"] [:a-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:s [:km "rcmd: AppStore" "x"] [:a-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:s [:km "rcmd: AppStore" "0"] [:a-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:s [:km "rcmd: AppStore" "xx"] [:a-rcmd :ropt-rcmd]]
+                        ;Activate & Hide Others
+                        [:s [:km "rcmd: AppStore" "1"] [:a-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:s [:km "rcmd: AppStore" "2"] [:a-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Rs [:km "rcmd: AppStore" "3"] [:a-rcmd :caps-rcmd]]
+                ;ARC
+                        ;Activate
+                        [:a [:km "rcmd: Arc"] [:a-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:a [:km "rcmd: Arc" "m"] [:a-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Ca [:km "rcmd: Arc" "dm"] [:a-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:a [:km "rcmd: Arc" "x"] [:a-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:a [:km "rcmd: Arc" "0"] [:a-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:a [:km "rcmd: Arc" "xx"] [:a-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:a [:km "rcmd: Arc" "1"] [:a-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:a [:km "rcmd: Arc" "2"] [:a-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Ra [:km "rcmd: Arc" "3"] [:a-rcmd :caps-rcmd]]
+                ;"AUDIOHIJACK"
+                        ;Activate
+                        [:h [:km "rcmd: AudioHijack"] [:a-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:h [:km "rcmd: AudioHijack" "m"] [:a-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Ch [:km "rcmd: AudioHijack" "dm"] [:a-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:h [:km "rcmd: AudioHijack" "x"] [:a-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:h [:km "rcmd: AudioHijack" "0"] [:a-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:h [:km "rcmd: AudioHijack" "xx"] [:a-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:h [:km "rcmd: AudioHijack" "1"] [:a-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:h [:km "rcmd: AudioHijack" "2"] [:a-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Rh [:km "rcmd: AudioHijack" "3"] [:a-rcmd :caps-rcmd]]
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD B>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;BEAR
+                        ;Activate
+                        [:b [:km "rcmd: Bear"] [:b-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:b [:km "rcmd: Bear" "m"] [:b-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Cb [:km "rcmd: Bear" "dm"] [:b-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:b [:km "rcmd: Bear" "x"] [:b-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:b [:km "rcmd: Bear" "0"] [:b-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:b [:km "rcmd: Bear" "xx"] [:b-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:b [:km "rcmd: Bear" "1"] [:b-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:b [:km "rcmd: Bear" "2"] [:b-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Rb [:km "rcmd: Bear" "3"] [:b-rcmd :caps-rcmd]]
+                ;BETTERMOUSE
+                        ;Activate
+                        [:m [:km "rcmd: BetterMouse"] [:b-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:m [:notification "App has no windows." "BetterMouse"] [:b-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Cm [:notification "App has no windows." "BetterMouse"] [:b-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:m [:notification "App has no windows." "BetterMouse"] [:b-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:m [:notification "App has no windows." "BetterMouse"] [:b-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:m [:km "rcmd: BetterMouse" "xx"] [:b-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:m [:km "rcmd: BetterMouse" "1"] [:b-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:m [:km "rcmd: BetterMouse" "2"] [:b-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Rm [:km "rcmd: BetterMouse" "3"] [:b-rcmd :caps-rcmd]]
+                ;BETTERTOUCHTOOL
+                        ;Activate
+                        [:t [:km "rcmd: BetterTouchTool"] [:b-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:t [:km "rcmd: BetterTouchTool" "m"] [:b-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Ct [:km "rcmd: BetterTouchTool" "dm"] [:b-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:t [:km "rcmd: BetterTouchTool" "x"] [:b-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:t [:km "rcmd: BetterTouchTool" "0"] [:b-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:t [:km "rcmd: BetterTouchTool" "xx"] [:b-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:t [:km "rcmd: BetterTouchTool" "1"] [:b-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:t [:km "rcmd: BetterTouchTool" "2"] [:b-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Rt [:km "rcmd: BetterTouchTool" "3"] [:b-rcmd :caps-rcmd]]
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD C>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;"CAPTUREONE"
+                        ;Activate
+                        [:o [:km "rcmd: CaptureOne"] [:c-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:o [:km "rcmd: CaptureOne" "m"] [:c-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Co [:km "rcmd: CaptureOne" "dm"] [:c-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:o [:km "rcmd: CaptureOne" "x"] [:c-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:o [:km "rcmd: CaptureOne" "0"] [:c-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:o [:km "rcmd: CaptureOne" "xx"] [:c-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:o [:km "rcmd: CaptureOne" "1"] [:c-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:o [:km "rcmd: CaptureOne" "2"] [:c-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Ro [:km "rcmd: CaptureOne" "3"] [:c-rcmd :caps-rcmd]]
+                ;"CLEANSHOT"
+                        ;Activate
+                        [:s [:km "rcmd: CleanShot"] [:c-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:s [:km "rcmd: CleanShot" "m"] [:c-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Cs [:km "rcmd: CleanShot" "dm"] [:c-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:s [:km "rcmd: CleanShot" "x"] [:c-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:s [:km "rcmd: CleanShot" "0"] [:c-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:s [:km "rcmd: CleanShot" "xx"] [:c-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:s [:km "rcmd: CleanShot" "1"] [:c-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:s [:km "rcmd: CleanShot" "2"] [:c-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Rs [:km "rcmd: CleanShot" "3"] [:c-rcmd :caps-rcmd]]
+                ;"CORK"
+                        ;Activate
+                        [:r [:km "rcmd: Cork"] [:c-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:r [:km "rcmd: Cork" "m"] [:c-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Cr [:km "rcmd: Cork" "dm"] [:c-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:r [:km "rcmd: Cork" "x"] [:c-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:r [:km "rcmd: Cork" "0"] [:c-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:r [:km "rcmd: Cork" "xx"] [:c-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:r [:km "rcmd: Cork" "1"] [:c-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:r [:km "rcmd: Cork" "2"] [:c-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Rr [:km "rcmd: Cork" "3"] [:c-rcmd :caps-rcmd]]                        
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD D>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;DAYONE
+                        ;Activate
+                        [:d [:km "rcmd: DayOne"] [:d-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:d [:km "rcmd: DayOne" "m"] [:d-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Cd [:km "rcmd: DayOne" "dm"] [:d-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:d [:km "rcmd: DayOne" "x"] [:d-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:d [:km "rcmd: DayOne" "0"] [:d-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:d [:km "rcmd: DayOne" "xx"] [:d-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:d [:km "rcmd: DayOne" "1"] [:d-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:d [:km "rcmd: DayOne" "2"] [:d-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Rd [:km "rcmd: DayOne" "3"] [:d-rcmd :caps-rcmd]]
+                ;"DEHANCER"
+                        ;Activate
+                        [:e "~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggle Dehancer" [:d-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;[:e [:km "rcmd: Dehancer"] [:d-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:e [:km "rcmd: Dehancer" "m"] [:d-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Ce [:km "rcmd: Dehancer" "dm"] [:d-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:e [:km "rcmd: Dehancer" "x"] [:d-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:e [:km "rcmd: Dehancer" "0"] [:d-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:e [:km "rcmd: Dehancer" "xx"] [:d-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:e [:km "rcmd: Dehancer" "1"] [:d-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:e [:km "rcmd: Dehancer" "2"] [:d-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Re [:km "rcmd: Dehancer" "3"] [:d-rcmd :caps-rcmd]]
+                ;"DROPOVER"
+                        ;Activate
+                        [:r [:km "rcmd: Dropover"] [:d-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:r [:notification "App has no windows." "Dropover"] [:d-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Cr [:notification "App has no windows." "Dropover"] [:d-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:r [:notification "App has no windows." "Dropover"] [:d-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:r [:notification "App has no windows." "Dropover"] [:d-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:r [:km "rcmd: Dropover" "xx"] [:d-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:r [:km "rcmd: Dropover" "1"] [:d-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:r [:km "rcmd: Dropover" "2"] [:d-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Rr [:km "rcmd: Dropover" "3"] [:d-rcmd :caps-rcmd]]
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD F>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;"FINDER"
+                        ;Activate
+                        [:f [:km "rcmd: Finder"] [:f-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:f [:km "rcmd: Finder" "m"] [:f-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Cf [:km "rcmd: Finder" "dm"] [:f-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:f [:km "rcmd: Finder" "x"] [:f-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:f [:km "rcmd: Finder" "0"] [:f-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:f [:km "rcmd: Finder" "xx"] [:f-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:f [:km "rcmd: Finder" "1"] [:f-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:f [:km "rcmd: Finder" "2"] [:f-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Rf [:km "rcmd: Finder" "3"] [:f-rcmd :caps-rcmd]]
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD I>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;"IMESSAGES"
+                        ;Activate
+                        [:i "~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggle iMessages" [:i-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;[:i [:km "rcmd: iMessages"] [:i-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:i [:km "rcmd: iMessages" "m"] [:i-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Ci [:km "rcmd: iMessages" "dm"] [:i-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:i [:km "rcmd: iMessages" "x"] [:i-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:i [:km "rcmd: iMessages" "0"] [:i-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:i [:km "rcmd: iMessages" "xx"] [:i-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:i [:km "rcmd: iMessages" "1"] [:i-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:i [:km "rcmd: iMessages" "2"] [:i-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Ri [:km "rcmd: iMessages" "3"] [:i-rcmd :caps-rcmd]]
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD K>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;"KARABINERELEMENTS"
+                        ;Activate
+                        [:e [:km "rcmd: KarabinerElements"] [:k-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:e [:km "rcmd: KarabinerElements" "m"] [:k-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Ce [:km "rcmd: KarabinerElements" "dm"] [:k-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:e [:km "rcmd: KarabinerElements" "x"] [:k-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:e [:km "rcmd: KarabinerElements" "0"] [:k-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:e [:km "rcmd: KarabinerElements" "xx"] [:k-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:e [:km "rcmd: KarabinerElements" "1"] [:k-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:e [:km "rcmd: KarabinerElements" "2"] [:k-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Re [:km "rcmd: KarabinerElements" "3"] [:k-rcmd :caps-rcmd]]
+                ;"KARABINEREVENT"
+                        ;Activate
+                        [:k [:km "rcmd: KarabinerEvent"] [:k-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:k [:km "rcmd: KarabinerEvent" "m"] [:k-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Ck [:km "rcmd: KarabinerEvent" "dm"] [:k-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:k [:km "rcmd: KarabinerEvent" "x"] [:k-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:k [:km "rcmd: KarabinerEvent" "0"] [:k-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:k [:km "rcmd: KarabinerEvent" "xx"] [:k-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:k [:km "rcmd: KarabinerEvent" "1"] [:k-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:k [:km "rcmd: KarabinerEvent" "2"] [:k-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Rk [:km "rcmd: KarabinerEvent" "3"] [:k-rcmd :caps-rcmd]]
+                ;"KEYBOARDMAESTRO"
+                        ;Activate
+                        [:m [:km "rcmd: KeyboardMaestro"] [:k-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:m [:km "rcmd: KeyboardMaestro" "m"] [:k-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Cm [:km "rcmd: KeyboardMaestro" "dm"] [:k-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:m [:km "rcmd: KeyboardMaestro" "x"] [:k-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:m [:km "rcmd: KeyboardMaestro" "0"] [:k-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:m [:km "rcmd: KeyboardMaestro" "xx"] [:k-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:m [:km "rcmd: KeyboardMaestro" "1"] [:k-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:m [:km "rcmd: KeyboardMaestro" "2"] [:k-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Rm [:km "rcmd: KeyboardMaestro" "3"] [:k-rcmd :caps-rcmd]]
+                ;"KLACK"
+                        ;Activate
+                        [:l [:km "rcmd: Klack"] [:k-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:l [:notification "App has no windows." "Klack"] [:k-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Cl [:notification "App has no windows." "Klack"] [:k-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:l [:notification "App has no windows." "Klack"] [:k-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:l [:km "rcmd: Klack" "0"] [:k-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:l [:km "rcmd: Klack" "xx"] [:k-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:l [:km "rcmd: Klack" "1"] [:k-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:l [:km "rcmd: Klack" "2"] [:k-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Rl [:km "rcmd: Klack" "3"] [:k-rcmd :caps-rcmd]]
+                ;"KONTAKT"
+                        ;Activate
+                        [:o [:km "rcmd: Kontakt"] [:k-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:o [:km "rcmd: Kontakt" "m"] [:k-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Co [:km "rcmd: Kontakt" "dm"] [:k-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:o [:km "rcmd: Kontakt" "x"] [:k-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:o [:km "rcmd: Kontakt" "0"] [:k-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:o [:km "rcmd: Kontakt" "xx"] [:k-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:o [:km "rcmd: Kontakt" "1"] [:k-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:o [:km "rcmd: Kontakt" "2"] [:k-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Ro [:km "rcmd: Kontakt" "3"] [:k-rcmd :caps-rcmd]] 
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD L>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;"LIGHTROOMCLASSIC"
+                        ;Activate
+                        [:c [:km "rcmd: LightroomClassic"] [:l-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:c [:km "rcmd: LightroomClassic" "m"] [:l-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Cc [:km "rcmd: LightroomClassic" "dm"] [:l-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:c [:km "rcmd: LightroomClassic" "x"] [:l-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:c [:km "rcmd: LightroomClassic" "0"] [:l-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:c [:km "rcmd: LightroomClassic" "xx"] [:l-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:c [:km "rcmd: LightroomClassic" "1"] [:l-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:c [:km "rcmd: LightroomClassic" "2"] [:l-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Rc [:km "rcmd: LightroomClassic" "3"] [:l-rcmd :caps-rcmd]]
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD M>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;"MACUPDATER"
+                        ;Activate
+                        [:u [:km "rcmd: MacUpdater"] [:m-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:u [:km "rcmd: MacUpdater" "m"] [:m-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Cu [:km "rcmd: MacUpdater" "dm"] [:m-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:u [:km "rcmd: MacUpdater" "x"] [:m-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:u [:km "rcmd: MacUpdater" "0"] [:m-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:u [:km "rcmd: MacUpdater" "xx"] [:m-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:u [:km "rcmd: MacUpdater" "1"] [:m-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:u [:km "rcmd: MacUpdater" "2"] [:m-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Ru [:km "rcmd: MacUpdater" "3"] [:m-rcmd :caps-rcmd]]
+                ;"MACWHISPER"
+                        ;Activate
+                        [:w [:km "rcmd: MacWhisper"] [:m-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:w [:km "rcmd: MacWhisper" "m"] [:m-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Cw [:km "rcmd: MacWhisper" "dm"] [:m-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:w [:km "rcmd: MacWhisper" "x"] [:m-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:w [:km "rcmd: MacWhisper" "0"] [:m-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:w [:km "rcmd: MacWhisper" "xx"] [:m-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:w [:km "rcmd: MacWhisper" "1"] [:m-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:w [:km "rcmd: MacWhisper" "2"] [:m-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Rw [:km "rcmd: MacWhisper" "3"] [:m-rcmd :caps-rcmd]]
+                ;"MOCHI"
+                        ;Activate
+                        [:o [:km "rcmd: Mochi"] [:m-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:o [:km "rcmd: Mochi" "m"] [:m-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Co [:km "rcmd: Mochi" "dm"] [:m-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:o [:km "rcmd: Mochi" "x"] [:m-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:o [:km "rcmd: Mochi" "0"] [:m-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:o [:km "rcmd: Mochi" "xx"] [:m-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:o [:km "rcmd: Mochi" "1"] [:m-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:o [:km "rcmd: Mochi" "2"] [:m-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Ro [:km "rcmd: Mochi" "3"] [:m-rcmd :caps-rcmd]]
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD P>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;"PLEX"
+                        ;Activate
+                        [:l [:km "rcmd: Plex"] [:p-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:l [:km "rcmd: Plex" "m"] [:p-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Cl [:km "rcmd: Plex" "dm"] [:p-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:l [:km "rcmd: Plex" "x"] [:p-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:l [:km "rcmd: Plex" "0"] [:p-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:l [:km "rcmd: Plex" "xx"] [:p-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:l [:km "rcmd: Plex" "1"] [:p-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:l [:km "rcmd: Plex" "2"] [:p-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Rl [:km "rcmd: Plex" "3"] [:p-rcmd :caps-rcmd]]
+                ;"PHOTOMECHANIC"
+                        ;Activate
+                        [:m [:km "rcmd: PhotoMechanic"] [:p-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:m [:km "rcmd: PhotoMechanic" "m"] [:p-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Cm [:km "rcmd: PhotoMechanic" "dm"] [:p-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:m [:km "rcmd: PhotoMechanic" "x"] [:p-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:m [:km "rcmd: PhotoMechanic" "0"] [:p-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:m [:km "rcmd: PhotoMechanic" "xx"] [:p-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:m [:km "rcmd: PhotoMechanic" "1"] [:p-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:m [:km "rcmd: PhotoMechanic" "2"] [:p-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Rm [:km "rcmd: PhotoMechanic" "3"] [:p-rcmd :caps-rcmd]]
+                ;"PHOTOSHOP"
+                        ;Activate
+                        [:s [:km "rcmd: Photoshop"] [:p-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:s [:km "rcmd: Photoshop" "m"] [:p-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Cs [:km "rcmd: Photoshop" "dm"] [:p-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:s [:km "rcmd: Photoshop" "x"] [:p-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:s [:km "rcmd: Photoshop" "0"] [:p-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:s [:km "rcmd: Photoshop" "xx"] [:p-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:s [:km "rcmd: Photoshop" "1"] [:p-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:s [:km "rcmd: Photoshop" "2"] [:p-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Rs [:km "rcmd: Photoshop" "3"] [:p-rcmd :caps-rcmd]]
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD S>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;"SCREENSTUDIO"
+                        ;Activate
+                        [:s [:km "rcmd: ScreenStudio"] [:s-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:s [:km "rcmd: ScreenStudio" "m"] [:s-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Cs [:km "rcmd: ScreenStudio" "dm"] [:s-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:s [:km "rcmd: ScreenStudio" "x"] [:s-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:s [:km "rcmd: ScreenStudio" "0"] [:s-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:s [:km "rcmd: ScreenStudio" "xx"] [:s-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:s [:km "rcmd: ScreenStudio" "1"] [:s-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:s [:km "rcmd: ScreenStudio" "2"] [:s-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Rs [:km "rcmd: ScreenStudio" "3"] [:s-rcmd :caps-rcmd]]
+                ;"SHORTCUTS"
+                        ;Activate
+                        [:h [:km "rcmd: Shortcuts"] [:s-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:h [:km "rcmd: Shortcuts" "m"] [:s-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Ch [:km "rcmd: Shortcuts" "dm"] [:s-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:h [:km "rcmd: Shortcuts" "x"] [:s-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:h [:km "rcmd: Shortcuts" "0"] [:s-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:h [:km "rcmd: Shortcuts" "xx"] [:s-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:h [:km "rcmd: Shortcuts" "1"] [:s-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:h [:km "rcmd: Shortcuts" "2"] [:s-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Rh [:km "rcmd: Shortcuts" "3"] [:s-rcmd :caps-rcmd]]
+                ;"SPOTIFY"
+                        ;Activate
+                        [:p "~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggle Spotify" [:s-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;[:p [:km "rcmd: Spotify"] [:s-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:p [:km "rcmd: Spotify" "m"] [:s-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Cp [:km "rcmd: Spotify" "dm"] [:s-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:p [:km "rcmd: Spotify" "x"] [:s-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:p [:km "rcmd: Spotify" "0"] [:s-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:p [:km "rcmd: Spotify" "xx"] [:s-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:p [:km "rcmd: Spotify" "1"] [:s-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:p [:km "rcmd: Spotify" "2"] [:s-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Rp [:km "rcmd: Spotify" "3"] [:s-rcmd :caps-rcmd]]
+                ;"SUPERKEY"
+                        ;Activate
+                        [:u [:km "rcmd: Superkey"] [:s-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:u [:notification "App has no windows." "Superkey"] [:s-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Cu [:notification "App has no windows." "Superkey"] [:s-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:u [:notification "App has no windows." "Superkey"] [:s-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:u [:notification "App has no windows." "Superkey"] [:s-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:u [:km "rcmd: Superkey" "xx"] [:s-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:u [:km "rcmd: Superkey" "1"] [:s-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:u [:km "rcmd: Superkey" "2"] [:s-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Ru [:km "rcmd: Superkey" "3"] [:s-rcmd :caps-rcmd]]
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD T>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;"TERMINAL"
+                        ;Activate
+                        [:t [:km "rcmd: Terminal"] [:t-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:t [:km "rcmd: Terminal" "m"] [:t-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Ct [:km "rcmd: Terminal" "dm"] [:t-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:t [:km "rcmd: Terminal" "x"] [:t-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:t [:km "rcmd: Terminal" "0"] [:t-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:t [:km "rcmd: Terminal" "xx"] [:t-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:t [:km "rcmd: Terminal" "1"] [:t-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:t [:km "rcmd: Terminal" "2"] [:t-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Rt [:km "rcmd: Terminal" "3"] [:t-rcmd :caps-rcmd]]
+                ;"TEXTSOAP"
+                        ;Activate
+                        [:s [:km "rcmd: TextSoap"] [:t-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:s [:km "rcmd: TextSoap" "m"] [:t-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Cs [:km "rcmd: TextSoap" "dm"] [:t-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:s [:km "rcmd: TextSoap" "x"] [:t-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:s [:km "rcmd: TextSoap" "0"] [:t-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:s [:km "rcmd: TextSoap" "xx"] [:t-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:s [:km "rcmd: TextSoap" "1"] [:t-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:s [:km "rcmd: TextSoap" "2"] [:t-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Rs [:km "rcmd: TextSoap" "3"] [:t-rcmd :caps-rcmd]]
+                ;"THINGS"
+                        ;Activate
+                        [:h [:km "rcmd: Things"] [:t-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:h [:km "rcmd: Things" "m"] [:t-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Ch [:km "rcmd: Things" "dm"] [:t-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:h [:km "rcmd: Things" "x"] [:t-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:h [:km "rcmd: Things" "0"] [:t-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:h [:km "rcmd: Things" "xx"] [:t-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:h [:km "rcmd: Things" "1"] [:t-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:h [:km "rcmd: Things" "2"] [:t-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Rh [:km "rcmd: Things" "3"] [:t-rcmd :caps-rcmd]]
+                ;"TRANSMISSION"
+                        ;Activate
+                        [:r "~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggle Transmission" [:t-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;[:r [:km "rcmd: Transmission"] [:t-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:r [:km "rcmd: Transmission" "m"] [:t-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Cr [:km "rcmd: Transmission" "dm"] [:t-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:r [:km "rcmd: Transmission" "x"] [:t-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:r [:km "rcmd: Transmission" "0"] [:t-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:r [:km "rcmd: Transmission" "xx"] [:t-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:r [:km "rcmd: Transmission" "1"] [:t-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:r [:km "rcmd: Transmission" "2"] [:t-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Rr [:km "rcmd: Transmission" "3"] [:t-rcmd :caps-rcmd]]
+                ;"TRASHME"
+                        ;Activate
+                        [:m [:km "rcmd: TrashMe"] [:t-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:m [:km "rcmd: TrashMe" "m"] [:t-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Cm [:km "rcmd: TrashMe" "dm"] [:t-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:m [:km "rcmd: TrashMe" "x"] [:t-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:m [:km "rcmd: TrashMe" "0"] [:t-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:m [:km "rcmd: TrashMe" "xx"] [:t-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:m [:km "rcmd: TrashMe" "1"] [:t-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:m [:km "rcmd: TrashMe" "2"] [:t-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Rm [:km "rcmd: TrashMe" "3"] [:t-rcmd :caps-rcmd]]
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD V>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;VISUALSTUDIOCODE
+                        ;Activate
+                        [:v [:km "rcmd: VisualStudioCode"] [:v-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:v [:km "rcmd: VisualStudioCode" "m"] [:v-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Cv [:km "rcmd: VisualStudioCode" "dm"] [:v-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:v [:km "rcmd: VisualStudioCode" "x"] [:v-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:v [:km "rcmd: VisualStudioCode" "0"] [:v-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:v [:km "rcmd: VisualStudioCode" "xx"] [:v-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:v [:km "rcmd: VisualStudioCode" "1"] [:v-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:v [:km "rcmd: VisualStudioCode" "2"] [:v-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Rv [:km "rcmd: VisualStudioCode" "3"] [:v-rcmd :caps-rcmd]]
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD X>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;FINALCUTPRO
+                        ;Activate
+                        [:x [:km "rcmd: FinalCutPro"] [:x-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:x [:km "rcmd: FinalCutPro" "m"] [:x-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Cx [:km "rcmd: FinalCutPro" "dm"] [:x-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:x [:km "rcmd: FinalCutPro" "x"] [:x-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:x [:km "rcmd: FinalCutPro" "0"] [:x-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:x [:km "rcmd: FinalCutPro" "xx"] [:x-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:x [:km "rcmd: FinalCutPro" "1"] [:x-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:x [:km "rcmd: FinalCutPro" "2"] [:x-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Rx [:km "rcmd: FinalCutPro" "3"] [:x-rcmd :caps-rcmd]]
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD Z>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;"LMSTUDIO"
+                        ;Activate
+                        [:z [:km "rcmd: LMStudio"] [:z-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:z [:km "rcmd: LMStudio" "m"] [:z-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Cz [:km "rcmd: LMStudio" "dm"] [:z-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:z [:km "rcmd: LMStudio" "x"] [:z-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:z [:km "rcmd: LMStudio" "0"] [:z-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:z [:km "rcmd: LMStudio" "xx"] [:z-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:z [:km "rcmd: LMStudio" "1"] [:z-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:z [:km "rcmd: LMStudio" "2"] [:z-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Rz [:km "rcmd: LMStudio" "3"] [:z-rcmd :caps-rcmd]]
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ]},
+
+;;-----------------------------------------------ROPT MODS---------------------------------------------------------------------------------------------------------
+        {:des "ropt"
+                :rules [:ropt
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>BEAR SPECIFIC>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;INBOX Note
+                        [:i [:open-g "bear://x-callback-url/open-note?title=INBOX"] :bear]
+                ;UPDATE Note
+                        [:u [:open-g "bear://x-callback-url/open-note?title=Update"] :bear]
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>VS CODE SPECIFIC>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;Karabiner EDN
+                        [:k [:km "ropt - VSCode: KarabinerEDN"] :vscode]
+                ;Notas TXT
+                        [:n [:km "ropt - VSCode: NotasTXT"] :vscode]
+                ;Yabairc
+                        [:y [:km "ropt - VSCode: Yabairc"] :vscode]
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ]}
+
+]
+}
+
+;; !  | means mandatory
+    ;; #  | means optional
+    ;; C  | left_command
+    ;; T  | left_control
+    ;; O  | left_option
+    ;; S  | left_shift
+    ;; F  | fn
+    ;; Q  | right_command
+    ;; W  | right_control
+    ;; E  | right_option
+    ;; R  | right_shift
+    ;; P  | caps_lock
+    ;; !! | mandatory command + control + optional + shift (hyper)
+    ;; ## | optional any
