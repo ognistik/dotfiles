@@ -1827,25 +1827,6 @@
                         [:t [:km "rcmd: Terminal" "2"] [:t-rcmd :caps-rcmd]]
                         ;Bring to Space, Activate & Hide Others
                         [:!Rt [:km "rcmd: Terminal" "3"] [:t-rcmd :caps-rcmd]]
-                ;"TEXTSOAP"
-                        ;Activate
-                        [:s [:km "rcmd: TextSoap"] [:t-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:s [:km "rcmd: TextSoap" "m"] [:t-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Cs [:km "rcmd: TextSoap" "dm"] [:t-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:s [:km "rcmd: TextSoap" "x"] [:t-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:s [:km "rcmd: TextSoap" "0"] [:t-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:s [:km "rcmd: TextSoap" "xx"] [:t-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:s [:km "rcmd: TextSoap" "1"] [:t-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:s [:km "rcmd: TextSoap" "2"] [:t-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Rs [:km "rcmd: TextSoap" "3"] [:t-rcmd :caps-rcmd]]
                 ;"THINGS"
                         ;Activate
                         [:h [:km "rcmd: Things"] [:t-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
