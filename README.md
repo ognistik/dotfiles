@@ -6,3 +6,14 @@ If you do not have Karabiner but also are interested in getting ideas for settin
 While most users control Yabai with [SKHD](https://github.com/koekeishiya/skhd), I just found Karabiner more than capable for this so [my Karabiner EDN](Karabiner/karabiner.edn) file includes some layers specifically for this.
 
 I must mention that these configuration files are not meant to simply be copied to someone else’s system. My hope is that others can use them for inspiration or to look for parts or pieces they can adapt to their own system. After all,  most of what I’ve implemented has been inspired by others and it’s a constant work in progress.
+
+---
+
+## YABAI
+1. [Scripts Folder](Yabai/Scripts/)
+2. [Yabairc Configuration](Yabai/yabairc)
+
+## KARABINER
+1. [Karabiner EDN File](Karabiner/karabiner.edn)
+2. [Note with Modifications](Karabiner/KARABINER%20-%20Config.md)
+3. [Additional Scripts](Karabiner/Scripts/)
