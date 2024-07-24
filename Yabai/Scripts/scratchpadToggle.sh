@@ -100,7 +100,7 @@ if [[ $ACTION == "toggle" ]]; then
 # For Bear, basically.
 elif [[ $ACTION == "toggleOrNewBear" ]]; then
   # Assigned to my quick note / note toggle shortcut. It will try to toggle bearScratchpad, if it fails it means there are NO floating Bear notes... so it will make a new one.
-  /opt/homebrew/bin/yabai -m window --toggle "$NAME" || ~/Dropbox/2-Areas/SystemAndApps/Karabiner/bearNewNote.sh
+  /opt/homebrew/bin/yabai -m window --toggle "$NAME" || ~/Documents/GitHubRepos/dotfiles/Karabiner/Scripts/bearNewNote.sh
 # For Little Arcs, basically.
 elif [[ $ACTION == "toggleOrNewArc" ]]; then
   /opt/homebrew/bin/yabai -m window --toggle "$NAME" || osascript -e "tell application \"Keyboard Maestro Engine\" to do script \"$NAME\""

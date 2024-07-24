@@ -12,7 +12,6 @@ hidden_minimized=$(yabai -m query --windows | jq 'map(select(."is-hidden" or ."i
 
 # Get a list of Kando window IDs
 kando_windows=$(yabai -m query --windows | jq -r 'map(select(.app == "Kando")) | map(."id")')
-# echo "$kando_windows" > "/Users/ognistik/Desktop/testo.txt"
 
 # Find and destroy empty, unfocused spaces
 yabai -m query --spaces | \

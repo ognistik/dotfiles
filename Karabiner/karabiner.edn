@@ -32,12 +32,6 @@
                 :notification "osascript -e 'display notification \"%s\" with title \"%s\"'"
                 :open "open \"%s\""
                 :open-g "open -g \"%s\""
-                :ts "osascript -e 'tell application \"System Events\" to keystroke \"c\" using {command down}'\\
-                        -e 'delay 0.1'\\
-                        -e 'tell application \"textsoapAgent\" to set oldTextValue to the Clipboard'\\
-                        -e 'tell application \"textsoapAgent\" to set newTextValue to cleanText oldTextValue with \"%s\"'\\
-                        -e 'tell application \"textsoapAgent\" to set the Clipboard to newTextValue'\\
-                        -e 'tell application \"System Events\" to keystroke \"v\" using {command down}'"
                 :sc "echo \"%s\"|shortcuts run \"%s\" -i -" ;;Pay attention that the Shortcut input goes before the Shortcut name.
                 :yabai "/opt/homebrew/bin/yabai -m %s"
                 }
@@ -128,7 +122,7 @@
                         [:delete_or_backspace :vk_none]
                         [:##non_us_backslash :grave_accent_and_tilde]
                         [:##right_control :fn]
-                        [:!Cn "Scripts/bearNewNote.sh sameWindow" [:bear ["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                        [:!Cn "~/Documents/GitHubRepos/dotfiles/Karabiner/Scripts/bearNewNote.sh sameWindow" [:bear ["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ]
         }
 
@@ -237,83 +231,83 @@
                 ;TOGGLE SOLO SCRATCHPAD & ACTIVE SCRATCHPADS
                         [{:pkey :button1} [:yabai "window --focus mouse"]                                                                           
                         [["caps-mode" 1]["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]
-                        {:alone ["~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggle scratchpad"]
+                        {:alone ["~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggle scratchpad"]
                         :held [:alfred "activeScratchpads" "com.yabaibai.com"]}]
 
                         [{:pkey :button1} [:yabai "window --focus mouse"]                                                                           
                         [["f19-mode" 1]["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]
-                        {:alone ["~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggle scratchpad"]
+                        {:alone ["~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggle scratchpad"]
                         :held [:alfred "activeScratchpads" "com.yabaibai.com"]}]
                 ;SET/UNSET SOLO SCRATCHPAD & ACTIVE WINDOWS
                         [{:pkey :button2} nil                                                                           
                         [["caps-mode" 1]["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]
-                        {:alone ["~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadSet.sh"]
+                        {:alone ["~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadSet.sh"]
                         :held [:alfred "activeWindows" "com.yabaibai.com"]}]
                         
                         [{:pkey :button2} nil                                                                           
                         [["f19-mode" 1]["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]
-                        {:alone ["~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadSet.sh"]
+                        {:alone ["~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadSet.sh"]
                         :held [:alfred "activeWindows" "com.yabaibai.com"]}]
                 ;TOGGLE FOCUSED SCRATCHPAD & REMOVE FOCUSED SCRATCHPAD
                         [{:pkey :button3} nil                                                                           
                         [["caps-mode" 1]["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]
-                        {:alone ["~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadOnFocus.sh toggle"]   
-                        :held ["~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadOnFocus.sh remove"]
+                        {:alone ["~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadOnFocus.sh toggle"]   
+                        :held ["~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadOnFocus.sh remove"]
                         :params {:alone 200 :held 201 :delay 201}}]
 
                         [{:pkey :button3} nil                                                                           
                         [["f19-mode" 1]["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]
-                        {:alone ["~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadOnFocus.sh toggle"]   
-                        :held ["~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadOnFocus.sh remove"]
+                        {:alone ["~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadOnFocus.sh toggle"]   
+                        :held ["~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadOnFocus.sh remove"]
                         :params {:alone 200 :held 201 :delay 201}}]
                 ;TOGGGLE ARC SCRATCHPAD & ACTIVATE ARC
                         [{:pkey :button4} nil                                                                           
                         [["caps-mode" 1]["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]
-                        {:alone ["~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggleOrNewArc arcScratchpad"]
+                        {:alone ["~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggleOrNewArc arcScratchpad"]
                         :held [:km "rcmd: Arc"]}]
 
                         [{:pkey :button4} nil                                                                           
                         [["f19-mode" 1]["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]
-                        {:alone ["~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggleOrNewArc arcScratchpad"]
+                        {:alone ["~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggleOrNewArc arcScratchpad"]
                         :held [:km "rcmd: Arc"]}]
                 ;TOGGLE BEAR SCRATCHPAD & ACTIVATE MAIN BEAR
                         [{:pkey :button5} nil                                                                           
                         [["caps-mode" 1]["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]
-                        {:alone ["~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggleOrNewBear bearScratchpad"]
+                        {:alone ["~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggleOrNewBear bearScratchpad"]
                         :held [:km "rcmd: Bear"]}]
 
                         [{:pkey :button5} nil                                                                           
                         [["f19-mode" 1]["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]
-                        {:alone ["~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggleOrNewBear bearScratchpad"]
+                        {:alone ["~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggleOrNewBear bearScratchpad"]
                         :held [:km "rcmd: Bear"]}]
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>MOUSE CAPS CMD LAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
                 ;TILED NEW LITTLE ARC
                         [{:pkey :button4 :modi :left_command} [[:yabai "signal --add label=arcfloater app=\"^Arc$\" event=window_title_changed\\
-                        action=\"~/Dropbox/2-Areas/SystemAndApps/Yabai/arcFloater.sh tile\""] :!TOCn]                                                                           
+                        action=\"~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/arcFloater.sh tile\""] :!TOCn]                                                                           
                         [["caps-mode" 1]["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
 
                         [{:pkey :button4 :modi :left_command} [[:yabai "signal --add label=arcfloater app=\"^Arc$\" event=window_title_changed\\
-                        action=\"~/Dropbox/2-Areas/SystemAndApps/Yabai/arcFloater.sh tile\""] :!TOCn]                                                                           
+                        action=\"~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/arcFloater.sh tile\""] :!TOCn]                                                                           
                         [["f19-mode" 1]["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;TILED BEAR NEW NOTE    
                         [{:pkey :button5 :modi :left_command} ["/opt/homebrew/bin/yabai -m signal --remove scratchpad_newBear;\\
                         /opt/homebrew/bin/yabai -m signal --add label=tile_next app='^Bear$' event=window_created\\
                         action='/opt/homebrew/bin/yabai -m signal --remove tile_next;\\
                         /opt/homebrew/bin/yabai -m window $YABAI_WINDOW_ID --toggle float';\\
-                        Scripts/bearNewNote.sh; sleep 0.2;\\
+                        ~/Documents/GitHubRepos/dotfiles/Karabiner/Scripts/bearNewNote.sh; sleep 0.2;\\
                         /opt/homebrew/bin/yabai -m signal --add label=scratchpad_newBear event=window_created app='^Bear$' title!='^Bear$'\\
-                        action='~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggleSpecial bearScratchpad'"]                                                                           
+                        action='~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggleSpecial bearScratchpad'"]                                                                           
                         [["caps-mode" 1]["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
 
                         [{:pkey :button5 :modi :left_command} ["/opt/homebrew/bin/yabai -m signal --remove scratchpad_newBear;\\
                         /opt/homebrew/bin/yabai -m signal --add label=tile_next app='^Bear$' event=window_created\\
                         action='/opt/homebrew/bin/yabai -m signal --remove tile_next;\\
                         /opt/homebrew/bin/yabai -m window $YABAI_WINDOW_ID --toggle float';\\
-                        Scripts/bearNewNote.sh; sleep 0.2;\\
+                        ~/Documents/GitHubRepos/dotfiles/Karabiner/Scripts/bearNewNote.sh; sleep 0.2;\\
                         /opt/homebrew/bin/yabai -m signal --add label=scratchpad_newBear event=window_created app='^Bear$' title!='^Bear$'\\
-                        action='~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggleSpecial bearScratchpad'"]                                                                           
+                        action='~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggleSpecial bearScratchpad'"]                                                                           
                         [["f19-mode" 1]["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         ]},
@@ -343,7 +337,7 @@
                 ;;STOP Yabai Server
                         [:caps_lock "/opt/homebrew/bin/yabai --stop-service" [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
                 ;;TOGGLE STICKY
-                        [:a "~/Dropbox/2-Areas/SystemAndApps/Yabai/ToggleStickyRememberSize.sh" [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                        [:a "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/ToggleStickyRememberSize.sh" [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
                 ;;MOVE (Warp) West
                         [:h [:yabai "window --warp west"] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
                 ;;MOVE (Warp) South
@@ -357,23 +351,23 @@
                 ;;CREATE Space & GO
                         [:quote [:yabai "space --create && /opt/homebrew/bin/yabai -m space --focus last && sleep 0.1 && echo \"refresh\" | nc -U /tmp/yabai-indicator.socket"] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
                 ;;TOGGLE Fullscreen Zoom
-                        [:return_or_enter "~/Dropbox/2-Areas/SystemAndApps/Yabai/ToggleMaximize.sh" [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                        [:return_or_enter "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/ToggleMaximize.sh" [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
                 ;;RESET Balance
                         [:b [[:yabai "space --balance"]] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
                 ;;SWITCH to First Space
                         [:n [:yabai "space --focus first"] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
                 ;;SWITCH to Space on the Left
-                        [:m ["~/Dropbox/2-Areas/SystemAndApps/Yabai/nextOrPrevSpace.sh prev"] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                        [:m ["~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/nextOrPrevSpace.sh prev"] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
                 ;;SWITCH to Space on the Right
-                        [:comma ["~/Dropbox/2-Areas/SystemAndApps/Yabai/nextOrPrevSpace.sh next"] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                        [:comma ["~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/nextOrPrevSpace.sh next"] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
                 ;;SWITCH to the Last Space
                         [:period [:yabai "space --focus last"] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
                 ;;SWITCH to Previous Space
                         [:right_shift [:yabai "space --focus recent"] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
                 ;;TOGGLE Float
-                        [:spacebar "~/Dropbox/2-Areas/SystemAndApps/Yabai/ToggleFloatRememberSize.sh" [:!bear :!arc ["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
-                        [:spacebar "~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggleSpecial bearScratchpad" [:bear ["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
-                        [:spacebar "~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggleSpecial arcScratchpad" [:arc ["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                        [:spacebar "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/ToggleFloatRememberSize.sh" [:!bear :!arc ["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                        [:spacebar "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggleSpecial bearScratchpad" [:bear ["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                        [:spacebar "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggleSpecial arcScratchpad" [:arc ["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>CMD LAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -406,7 +400,7 @@
                 ;;SWITCH to Space 3
                         [:!Cperiod [:yabai "space --focus 3"] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
                 ;;CLEAR Cache of Floats position
-                        [:!Cspacebar "~/Dropbox/2-Areas/SystemAndApps/Yabai/ClearFloatCache.sh" [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                        [:!Cspacebar "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/ClearFloatCache.sh" [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>D(INSERT, STACK, THROW & DON'T GO) LAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -431,15 +425,15 @@
                 ;;CREATE Space, Throw Window & Don't Go
                         [:semicolon [:yabai "space --create && echo \"refresh\" | nc -U /tmp/yabai-indicator.socket && /opt/homebrew/bin/yabai -m window --space last"] ["dpress" 1]]
                 ;;INSERT as Scratchpad
-                        [:return_or_enter [:yabai "signal --add label=scratchpad_next event=window_created action='/opt/homebrew/bin/yabai -m signal --remove scratchpad_next; ~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh nextNew scratchpad'"] ["dpress" 1]]
+                        [:return_or_enter [:yabai "signal --add label=scratchpad_next event=window_created action='/opt/homebrew/bin/yabai -m signal --remove scratchpad_next; ~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh nextNew scratchpad'"] ["dpress" 1]]
                 ;;THROW window & DON'T GO to First Space
-                        [:n ["/Users/ognistik/Dropbox/2-Areas/SystemAndApps/Yabai/throwWindowDontGo.sh firstSpace"] ["dpress" 1]]
+                        [:n ["~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/throwWindowDontGo.sh firstSpace"] ["dpress" 1]]
                 ;;THROW Window & DON'T GO to Space on Left
-                        [:m ["/Users/ognistik/Dropbox/2-Areas/SystemAndApps/Yabai/throwWindowDontGo.sh leftSpace"] ["dpress" 1]]
+                        [:m ["~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/throwWindowDontGo.sh leftSpace"] ["dpress" 1]]
                 ;;THROW Window & DON'T GO to Space on Right
-                        [:comma ["/Users/ognistik/Dropbox/2-Areas/SystemAndApps/Yabai/throwWindowDontGo.sh rightSpace"] ["dpress" 1]]
+                        [:comma ["~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/throwWindowDontGo.sh rightSpace"] ["dpress" 1]]
                 ;;THROW Window & DON'T GO to Last Space
-                        [:period ["/Users/ognistik/Dropbox/2-Areas/SystemAndApps/Yabai/throwWindowDontGo.sh lastSpace"] ["dpress" 1]]
+                        [:period ["~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/throwWindowDontGo.sh lastSpace"] ["dpress" 1]]
                 ;;INSERT as Stack
                         [:right_shift [:yabai "window --insert stack"] ["dpress" 1]]
                 ;;INSERT as Float
@@ -450,13 +444,13 @@
                 ;;F Layer Creation
                         [:f [["fpress" 1]] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]] {:afterup {:set ["fpress" 0]}}]
                 ;;CYCLE Focus Backwards (WITHOUT Floats or Entering Stacks)
-                        [:y "~/Dropbox/2-Areas/SystemAndApps/Yabai/cycleFocusNoStackCounter.sh" ["fpress" 1]]
+                        [:y "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/cycleFocusNoStackCounter.sh" ["fpress" 1]]
                 ;;FOCUS BELOW in Stack
                         [:u [:yabai "window --focus stack.next || /opt/homebrew/bin/yabai -m window --focus stack.first"] ["fpress" 1]]
                 ;;FOCUS ABOVE in Stack
                         [:i [:yabai "window --focus stack.prev || /opt/homebrew/bin/yabai -m window --focus stack.last"] ["fpress" 1]]
                 ;;CYCLE Focus Forward (WITHOUT Floats or Entering Stacks)
-                        [:o "~/Dropbox/2-Areas/SystemAndApps/Yabai/cycleFocusNoStackClock.sh" ["fpress" 1]]
+                        [:o "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/cycleFocusNoStackClock.sh" ["fpress" 1]]
                 ;;FOCUS West
                         [:h [:yabai "window --focus west"] ["fpress" 1]]
                 ;;FOCUS South
@@ -468,13 +462,13 @@
                 ;;FULLSCREEN with BTT
                         [:return_or_enter [:btt "RealFull"] ["fpress" 1]]
                 ;;CYCLE Focus Backwards (ALL)
-                        [:n "~/Dropbox/2-Areas/SystemAndApps/Yabai/cycleFocusAllBackward.sh" ["fpress" 1]]
+                        [:n "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/cycleFocusAllBackward.sh" ["fpress" 1]]
                 ;;OPACITY Full Lock
                         [:m [:yabai "window --opacity 1.0"] ["fpress" 1]]
                 ;;OPACITY Unlock (Back to Default)
                         [:comma [:yabai "window --opacity 0.0"] ["fpress" 1]]
                 ;;CYCLE Focus Forward (ALL)
-                        [:period "~/Dropbox/2-Areas/SystemAndApps/Yabai/cycleFocusAllForward.sh" ["fpress" 1]] 
+                        [:period "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/cycleFocusAllForward.sh" ["fpress" 1]] 
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>G(SWAP & THROW & GO) LAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -516,9 +510,9 @@
                 ;;ROTATE Arrangement in Reverse
                         [:h [:yabai "space --rotate 90"] ["rpress" 1]]
                 ;;ROTATE Windows Only in Reverse
-                        [:j "~/Dropbox/2-Areas/SystemAndApps/Yabai/rotateWindowsOnlyclockwise.sh" ["rpress" 1]]
+                        [:j "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/rotateWindowsOnlyclockwise.sh" ["rpress" 1]]
                 ;;ROTATE Windows Only Forward
-                        [:k "~/Dropbox/2-Areas/SystemAndApps/Yabai/rotateWindowsOnlycounter.sh" ["rpress" 1]]
+                        [:k "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/rotateWindowsOnlycounter.sh" ["rpress" 1]]
                 ;;ROTATE Arrangement Forward
                         [:l [:yabai "space --rotate 270"] ["rpress" 1]]
                 ;;TOGGLE Zoom on Parent
@@ -750,21 +744,21 @@
                                 {:delayed {:invoked [["sleep-press" 0] [:alfred "sleepscreen" "com.chubamisc.afred"]]
                                 :canceled ["sleep-press" 0]} :params {:delay 200}}]
                 ;;NEW FLOATING LITTLE ARC
-                        [:right_shift "~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggleOrNewArc arcScratchpad" [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                        [:right_shift "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggleOrNewArc arcScratchpad" [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;NEW TILED LITTLE ARC
                         [:!Cright_shift [[:yabai "signal --add label=arcfloater app=\"^Arc$\" event=window_title_changed\\
-                                action=\"~/Dropbox/2-Areas/SystemAndApps/Yabai/arcFloater.sh tile\""] :!TOCn]
+                                action=\"~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/arcFloater.sh tile\""] :!TOCn]
                                 [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;NEW FLOATING BEAR NOTE
-                        [:spacebar "~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggleOrNewBear bearScratchpad" [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                        [:spacebar "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggleOrNewBear bearScratchpad" [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;NEW TILED BEAR NOTE
                         [:!Cspacebar ["/opt/homebrew/bin/yabai -m signal --remove scratchpad_newBear;\\
                         /opt/homebrew/bin/yabai -m signal --add label=tile_next app='^Bear$' event=window_created\\
                         action='/opt/homebrew/bin/yabai -m signal --remove tile_next;\\
                         /opt/homebrew/bin/yabai -m window $YABAI_WINDOW_ID --toggle float';\\
-                        Scripts/bearNewNote.sh; sleep 0.2;\\
+                        ~/Documents/GitHubRepos/dotfiles/Karabiner/Scripts/bearNewNote.sh; sleep 0.2;\\
                         /opt/homebrew/bin/yabai -m signal --add label=scratchpad_newBear event=window_created app='^Bear$' title!='^Bear$'\\
-                        action='~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggleSpecial bearScratchpad'"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]             
+                        action='~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggleSpecial bearScratchpad'"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]             
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
        
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>ARC EXTENSIONS SUBLAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -1012,7 +1006,7 @@
                         [:i :!STtab :!arc]                              ;Tab Switcher - Above | EXCLUDING ARC
                         [:o :!SOtab :!arc]                              ;Window Switcher - Above | EXCLUDING ARC
                         [:m [:km "- rcmd previousApp"]]                 ;APP Switcher - Below
-                        [:comma ["~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadOnFocus.sh toggle"]] ;Toggle Any Scratchpad
+                        [:comma ["~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadOnFocus.sh toggle"]] ;Toggle Any Scratchpad
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>ARC SPECIFIC>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -1114,9 +1108,9 @@
 
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD SIMPLES>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
                 ;FOCUS Current App Previous Window - Current Space
-                        [:comma "~/Dropbox/2-Areas/SystemAndApps/Yabai/prevWindowSameAppAllSpaces.sh" [:rcmd :!rshift-rcmd :!lshift-rcmd]]
+                        [:comma "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/prevWindowSameAppAllSpaces.sh" [:rcmd :!rshift-rcmd :!lshift-rcmd]]
                 ;FOCUS Current App Next Window - Current Space
-                        [:period "~/Dropbox/2-Areas/SystemAndApps/Yabai/nextWindowSameAppAllSpaces.sh" [:rcmd :!rshift-rcmd :!lshift-rcmd]]
+                        [:period "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/nextWindowSameAppAllSpaces.sh" [:rcmd :!rshift-rcmd :!lshift-rcmd]]
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD HYPERLAYERS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -1131,31 +1125,31 @@
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD HYPERACTIONS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
                 ;MINIMIZE - LSHIFT
                         ;MINIMIZE All Windows of Current App
-                        [:caps_lock "~/Dropbox/2-Areas/SystemAndApps/Yabai/minimizeAllWindowsOfCurrentApp.sh" [:lshift-rcmd]]
+                        [:caps_lock "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/minimizeAllWindowsOfCurrentApp.sh" [:lshift-rcmd]]
                         ;MINIMIZE All Windows of Current App Except Focused
-                        [:left_shift "~/Dropbox/2-Areas/SystemAndApps/Yabai/minimizeOtherWindowsSameApp.sh" [:lshift-rcmd]]
+                        [:left_shift "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/minimizeOtherWindowsSameApp.sh" [:lshift-rcmd]]
                         ;MINIMIZE All Windows of All Apps Except Current Window
-                        [:right_shift "~/Dropbox/2-Areas/SystemAndApps/Yabai/minimizeOtherWindowsOfAllApps.sh" [:lshift-rcmd]]
+                        [:right_shift "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/minimizeOtherWindowsOfAllApps.sh" [:lshift-rcmd]]
                         ;MINIMIZE All Windows of Other Apps (Not the Current App)
-                        [:!Cleft_shift "~/Dropbox/2-Areas/SystemAndApps/Yabai/minimizeAllWindowsOfOtherApps.sh" [:lshift-rcmd]]
+                        [:!Cleft_shift "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/minimizeAllWindowsOfOtherApps.sh" [:lshift-rcmd]]
                         ;MINIMIZE All Windows of All Apps
-                        [:return_or_enter "~/Dropbox/2-Areas/SystemAndApps/Yabai/minimizeAllWindowsOfAllApps.sh" [:lshift-rcmd]]
+                        [:return_or_enter "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/minimizeAllWindowsOfAllApps.sh" [:lshift-rcmd]]
                 ;DEMINIMIZE - LSHIFT LCMD
                         ;DEMINIMIZE All Windows of Current App
-                        [:!Ccaps_lock "~/Dropbox/2-Areas/SystemAndApps/Yabai/deminimizeOtherWindowsSameApp.sh" [:lshift-rcmd]]
+                        [:!Ccaps_lock "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/deminimizeOtherWindowsSameApp.sh" [:lshift-rcmd]]
                         ;DEMINIMIZE All Windows of All Apps
-                        [:!Creturn_or_enter "~/Dropbox/2-Areas/SystemAndApps/Yabai/deminimizeWindowsOfAllApps.sh" [:lshift-rcmd]]
+                        [:!Creturn_or_enter "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/deminimizeWindowsOfAllApps.sh" [:lshift-rcmd]]
                 ;CLOSE WINDOWS - LCMD
                         ;CLOSE All Windows of Current App
-                        [:caps_lock "~/Dropbox/2-Areas/SystemAndApps/Yabai/closeCurrentAppAllWindows.sh"[:lcmd-rcmd]]
+                        [:caps_lock "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/closeCurrentAppAllWindows.sh"[:lcmd-rcmd]]
                         ;CLOSE All Windows of Current App Except Focused
-                        [:left_shift "~/Dropbox/2-Areas/SystemAndApps/Yabai/closeAppWindowsKeepFocused.sh" [:lcmd-rcmd]]
+                        [:left_shift "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/closeAppWindowsKeepFocused.sh" [:lcmd-rcmd]]
                         ;CLOSE All Windows of All Apps Except Current Window
-                        [:right_shift "~/Dropbox/2-Areas/SystemAndApps/Yabai/closeOtherWindows.sh" [:lcmd-rcmd]]
+                        [:right_shift "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/closeOtherWindows.sh" [:lcmd-rcmd]]
                         ;CLOSE All Windows of Other Apps (Not the Current App)
-                        [:left_command "~/Dropbox/2-Areas/SystemAndApps/Yabai/closeOtherAppWindows.sh" [:lcmd-rcmd]]
+                        [:left_command "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/closeOtherAppWindows.sh" [:lcmd-rcmd]]
                         ;CLOSE All Windows of All Apps
-                        [:return_or_enter "~/Dropbox/2-Areas/SystemAndApps/Yabai/closeEveryWindow.sh" [:lcmd-rcmd]]
+                        [:return_or_enter "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/closeEveryWindow.sh" [:lcmd-rcmd]]
                 ;HIDE APPS - SPACEBAR
                         ;HIDE Current App
                         [:caps_lock :!Ch [:space-rcmd]]
@@ -1173,17 +1167,17 @@
                         [:return_or_enter [:km "- rcmd quit: All"] [:semi-rcmd]]
                 ;WINDOWS PREVIOUS / NEXT / STATS - RSHIFT
                         ;FOCUS Current App Previous Window - This Space
-                        [:comma "~/Dropbox/2-Areas/SystemAndApps/Yabai/prevWindowSameAppThisSpace.sh" [:lshift-rcmd :!rshift-rcmd]]
-                        [:comma "~/Dropbox/2-Areas/SystemAndApps/Yabai/prevWindowSameAppThisSpace.sh" [:rshift-rcmd :!lshift-rcmd]]
+                        [:comma "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/prevWindowSameAppThisSpace.sh" [:lshift-rcmd :!rshift-rcmd]]
+                        [:comma "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/prevWindowSameAppThisSpace.sh" [:rshift-rcmd :!lshift-rcmd]]
                         ;FOCUS Current App Next Window - This Space
-                        [:period "~/Dropbox/2-Areas/SystemAndApps/Yabai/nextWindowSameAppThisSpace.sh" [:lshift-rcmd :!rshift-rcmd]]
-                        [:period "~/Dropbox/2-Areas/SystemAndApps/Yabai/nextWindowSameAppThisSpace.sh" [:rshift-rcmd :!lshift-rcmd]]
+                        [:period "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/nextWindowSameAppThisSpace.sh" [:lshift-rcmd :!rshift-rcmd]]
+                        [:period "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/nextWindowSameAppThisSpace.sh" [:rshift-rcmd :!lshift-rcmd]]
                         [:quote [:km "rcmd: WindowsStats"] [:rshift-rcmd :!lshift-rcmd]]
                 ;SCRATCHPADS - RSHIFT  & LSHIFT
                         [:caps_lock [:yabai "window --scratchpad recover"] [:rshift-rcmd :!lshift-rcmd]]
                         [:return_or_enter [:km "rcmd: ScratchpadStats"] [:rshift-rcmd :!lshift-rcmd]]
-                        [:left_shift "~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadSet.sh" [:rshift-rcmd :!lshift-rcmd]]
-                        [:right_shift "~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggle scratchpad" [:rshift-rcmd :!lshift-rcmd]]
+                        [:left_shift "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadSet.sh" [:rshift-rcmd :!lshift-rcmd]]
+                        [:right_shift "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggle scratchpad" [:rshift-rcmd :!lshift-rcmd]]
                         ;yabai -m window --scratchpad to remove ... https://github.com/koekeishiya/yabai/issues/2203#issuecomment-2035539072%23ybf
                         ;also check https://github.com/koekeishiya/yabai/issues/2325
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -1409,7 +1403,7 @@
                         [:!Rd [:km "rcmd: DayOne" "3"] [:d-rcmd :caps-rcmd]]
                 ;"DEHANCER"
                         ;Activate
-                        [:e "~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggle Dehancer" [:d-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        [:e "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggle Dehancer" [:d-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
                         ;[:e [:km "rcmd: Dehancer"] [:d-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
                         ;Minimize
                         [:e [:km "rcmd: Dehancer" "m"] [:d-rcmd :lshift-rcmd]]
@@ -1473,7 +1467,7 @@
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD I>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
                 ;"IMESSAGES"
                         ;Activate
-                        [:i "~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggle iMessages" [:i-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        [:i "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggle iMessages" [:i-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
                         ;[:i [:km "rcmd: iMessages"] [:i-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
                         ;Minimize
                         [:i [:km "rcmd: iMessages" "m"] [:i-rcmd :lshift-rcmd]]
@@ -1774,7 +1768,7 @@
                         [:!Rh [:km "rcmd: Shortcuts" "3"] [:s-rcmd :caps-rcmd]]
                 ;"SPOTIFY"
                         ;Activate
-                        [:p "~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggle Spotify" [:s-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        [:p "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggle Spotify" [:s-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
                         ;[:p [:km "rcmd: Spotify"] [:s-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
                         ;Minimize
                         [:p [:km "rcmd: Spotify" "m"] [:s-rcmd :lshift-rcmd]]
@@ -1873,7 +1867,7 @@
                         [:!Rh [:km "rcmd: Things" "3"] [:t-rcmd :caps-rcmd]]
                 ;"TRANSMISSION"
                         ;Activate
-                        [:r "~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggle Transmission" [:t-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        [:r "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggle Transmission" [:t-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
                         ;[:r [:km "rcmd: Transmission"] [:t-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
                         ;Minimize
                         [:r [:km "rcmd: Transmission" "m"] [:t-rcmd :lshift-rcmd]]

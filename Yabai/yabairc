@@ -34,7 +34,7 @@ yabai -m config window_gap                   50
 # yabai -m rule --add app!="^(CleanShot X|Screen Studio)$" sub-layer=normal
 
 # Destroy Empty Spaces
-yabai -m signal --add label=destroyEmptySpaces event=space_changed action="~/Dropbox/2-Areas/SystemAndApps/Yabai/destroyEmptySpaces.sh"
+yabai -m signal --add label=destroyEmptySpaces event=space_changed action="~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/destroyEmptySpaces.sh"
 
 # Scratchpads
 yabai -m rule --add app="^Spotify$" scratchpad="Spotify" grid="11:11:1:1:9:9"
@@ -50,7 +50,7 @@ yabai -m rule --add app="^Screen Studio$|^Kando$" manage=off opacity=1.0
 
 # Bear Scratchpads and Main Window
 yabai -m rule --add app="^Bear$" title!="^Bear$" manage=off grid="11:11:1:1:9:9"
-yabai -m signal --add label=scratchpad_newBear event=window_created app="^Bear$" title!="^Bear$" action='~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggleSpecial bearScratchpad'
+yabai -m signal --add label=scratchpad_newBear event=window_created app="^Bear$" title!="^Bear$" action='~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggleSpecial bearScratchpad'
 
 # Apps to Keep Unmanaged
 yabai -m rule --add app="^(Keyboard Maestro|TestFlight|LaunchPalette|iZotope RX 11|MacWhisper|FxFactory Agent|TrashMe 3|CrossOver|Find Any File|Keka|Bartender 5|DaisyDisk|OpenIn|Sideloadly!|iStat Menus Status|iStat Menus|Problem Reporter|PastePal|App Store|IINA|System Information|Dropover|Homerow|System Settings|Alfred Preferences|Karabiner-Elements|X-Title Import|Karabiner-EventViewer|BetterTouchTool)$" manage=off opacity=1.0
