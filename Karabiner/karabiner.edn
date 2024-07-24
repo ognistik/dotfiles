@@ -1968,6 +1968,8 @@
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>VS CODE SPECIFIC>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
                 ;Karabiner EDN
                         [:k [:km "ropt - VSCode: KarabinerEDN"] :vscode]
+                ;Menus JSON from Kando
+                        [:m [:km "ropt - VSCode: KandoMenus"] :vscode]
                 ;Notas TXT
                         [:n [:km "ropt - VSCode: NotasTXT"] :vscode]
                 ;Yabairc
