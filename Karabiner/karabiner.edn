@@ -128,7 +128,7 @@
                         [:delete_or_backspace :vk_none]
                         [:##non_us_backslash :grave_accent_and_tilde]
                         [:##right_control :fn]
-                        [:!Cn " ~/Dropbox/2-Areas/SystemAndApps/Karabiner/bearNewNote.sh sameWindow" [:bear ["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                        [:!Cn "Scripts/bearNewNote.sh sameWindow" [:bear ["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ]
         }
 
@@ -302,7 +302,7 @@
                         /opt/homebrew/bin/yabai -m signal --add label=tile_next app='^Bear$' event=window_created\\
                         action='/opt/homebrew/bin/yabai -m signal --remove tile_next;\\
                         /opt/homebrew/bin/yabai -m window $YABAI_WINDOW_ID --toggle float';\\
-                        ~/Dropbox/2-Areas/SystemAndApps/Karabiner/bearNewNote.sh; sleep 0.2;\\
+                        Scripts/bearNewNote.sh; sleep 0.2;\\
                         /opt/homebrew/bin/yabai -m signal --add label=scratchpad_newBear event=window_created app='^Bear$' title!='^Bear$'\\
                         action='~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggleSpecial bearScratchpad'"]                                                                           
                         [["caps-mode" 1]["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
@@ -311,7 +311,7 @@
                         /opt/homebrew/bin/yabai -m signal --add label=tile_next app='^Bear$' event=window_created\\
                         action='/opt/homebrew/bin/yabai -m signal --remove tile_next;\\
                         /opt/homebrew/bin/yabai -m window $YABAI_WINDOW_ID --toggle float';\\
-                        ~/Dropbox/2-Areas/SystemAndApps/Karabiner/bearNewNote.sh; sleep 0.2;\\
+                        Scripts/bearNewNote.sh; sleep 0.2;\\
                         /opt/homebrew/bin/yabai -m signal --add label=scratchpad_newBear event=window_created app='^Bear$' title!='^Bear$'\\
                         action='~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggleSpecial bearScratchpad'"]                                                                           
                         [["f19-mode" 1]["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
@@ -762,7 +762,7 @@
                         /opt/homebrew/bin/yabai -m signal --add label=tile_next app='^Bear$' event=window_created\\
                         action='/opt/homebrew/bin/yabai -m signal --remove tile_next;\\
                         /opt/homebrew/bin/yabai -m window $YABAI_WINDOW_ID --toggle float';\\
-                        ~/Dropbox/2-Areas/SystemAndApps/Karabiner/bearNewNote.sh; sleep 0.2;\\
+                        Scripts/bearNewNote.sh; sleep 0.2;\\
                         /opt/homebrew/bin/yabai -m signal --add label=scratchpad_newBear event=window_created app='^Bear$' title!='^Bear$'\\
                         action='~/Dropbox/2-Areas/SystemAndApps/Yabai/scratchpadToggle.sh toggleSpecial bearScratchpad'"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]             
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
