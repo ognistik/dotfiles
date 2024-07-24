@@ -112,10 +112,10 @@
                 :!Tf16 [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!e-mode]]
         ;;APHYRA SIMLAYER
                 [{:sim [:s :f] :simo {:interrupt true :dorder :insensitive :uorder :insensitive}}
-                :!COf16 [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!e-mode]]
+                :!TOf16 [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!e-mode]]
         ;;TEXENDUR
                 [{:sim [:c :v] :simo {:interrupt true :dorder :insensitive :uorder :insensitive}}
-                :!TOf16 [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!e-mode]]
+                :!COf16 [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!e-mode]]
         ;;SELDARIEN
                 [{:sim [:x :v] :simo {:interrupt true :dorder :insensitive :uorder :insensitive}}
                 :!Of16 [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!e-mode]]
@@ -918,7 +918,7 @@
 
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>COMMAND LAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
                 ;WHISPER Escritor e Ideas
-                        [:!Ce [:alfred "kikiActions" "com.kiki.ai" "direct,whisper,4,translateEn"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+                        [:!Ce [:alfred "kikiActions" "com.kiki.ai" "direct,whisper,4,escritor"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;WHISPER Transcribe and Paste
                         [:!Cj [:alfred "kikiActions" "com.kiki.ai" "paste,whisper"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;WHISPER Journal - Response in Dialog
@@ -1051,7 +1051,7 @@
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         ]},
         
-;;-------------------------------------------POINTER/MOUSE MODE---------------------------------------------------------------------------------------------------------
+;;-------------------------------------------F POINTER/MOUSE MODE---------------------------------------------------------------------------------------------------------
         {:des "F Mode - Cursor"
                 :rules [:f-mode
                         [:##spacebar [["spacepress" 1]] nil {:afterup {:set ["spacepress" 0]}}]
