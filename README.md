@@ -10,8 +10,8 @@ I must mention that these configuration files are not meant to simply be copied 
 ---
 
 ## YABAI
-1. [Scripts Folder](Yabai/Scripts/)
-2. [Yabairc Configuration](Yabai/yabairc)
+1. [Yabairc Configuration](Yabai/yabairc)
+2. [Scripts Folder](Yabai/Scripts/)
 
 ## KARABINER
 1. [Karabiner EDN File](Karabiner/karabiner.edn)
