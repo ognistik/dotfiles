@@ -1,5 +1,5 @@
 # About this Repo
-**The way I interact with my system has never been the same after discovering [Yabai](https://github.com/koekeishiya/yabai) & [Karabiner](https://karabiner-elements.pqrs.org/).** In this repository I am sharing my config files of these to incredible apps. For Karabiner, since the default json file is quite complicated to setup and keep up with any changes, I am using an EDN file created for use with [Goku](https://github.com/yqrashawn/GokuRakuJoudo) (another lifesaver of an app). 
+**The way I interact with my system has never been the same after discovering [Yabai](https://github.com/koekeishiya/yabai) & [Karabiner](https://github.com/pqrs-org/Karabiner-Elements).** In this repository I am sharing my config files of these to incredible apps. For Karabiner, since the default json file is quite complicated to setup and keep up with any changes, I am using an EDN file created for use with [Goku](https://github.com/yqrashawn/GokuRakuJoudo) (another lifesaver of an app). 
 
 If you do not have Karabiner but also are interested in getting ideas for setting up your Keyboard layers, I have included [a note](Karabiner/KARABINER%20-%20Config.md) that I keep with all my modifications in a format that may be easier to read. This may give you some ideas on what to do. Please feel free to ask for any questions.
 
