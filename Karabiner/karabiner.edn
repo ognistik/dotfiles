@@ -213,10 +213,8 @@
                         [["sd-mode" 1]]          
                         {:alone [:right_arrow] :held [:yabai "space --mirror x-axis"]}]                                                         
                 ;Drag from Shelf & Toggle Split
-                        [{:pkey :button3} nil                                                                           
-                        [["sd-mode" 1]]
-                        {:alone [:km "95B8335C-1B11-4FA2-9AC6-1C67217DC48F"] :held [:yabai "window --toggle split"]
-                        :params {:alone 200 :held 201 :delay 201}}]   
+                        [{:pkey :button3} [:yabai "window --toggle split"]                                                                           
+                        [["sd-mode" 1]]]   
                 ;Down Arrow
                         [{:pkey :button4 :modi {:optional [:left_shift :left_option :left_command :left_control]}} nil                                                                           
                         [["sd-mode" 1]]          
@@ -1172,10 +1170,10 @@
                         ;FOCUS Current App Next Window - This Space
                         [:period "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/nextWindowSameAppThisSpace.sh" [:lshift-rcmd :!rshift-rcmd]]
                         [:period "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/nextWindowSameAppThisSpace.sh" [:rshift-rcmd :!lshift-rcmd]]
-                        [:quote [:km "rcmd: WindowsStats"] [:rshift-rcmd :!lshift-rcmd]]
                 ;SCRATCHPADS - RSHIFT  & LSHIFT
                         [:caps_lock [:yabai "window --scratchpad recover"] [:rshift-rcmd :!lshift-rcmd]]
-                        [:return_or_enter [:km "rcmd: ScratchpadStats"] [:rshift-rcmd :!lshift-rcmd]]
+                        [:quote [:alfred "activeSpaceWindows" "com.yabaibai.com"] [:rshift-rcmd :!lshift-rcmd]]
+                        [:return_or_enter [:alfred "activeScratchpads" "com.yabaibai.com"] [:rshift-rcmd :!lshift-rcmd]]
                         [:left_shift "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadSet.sh" [:rshift-rcmd :!lshift-rcmd]]
                         [:right_shift "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggle scratchpad" [:rshift-rcmd :!lshift-rcmd]]
                         ;yabai -m window --scratchpad to remove ... https://github.com/koekeishiya/yabai/issues/2203#issuecomment-2035539072%23ybf
