@@ -66,7 +66,7 @@ yabai -m signal --add label=unmanagedAndCenteredTitles event=window_created titl
 # I am not including sub-layer in this rule, since I apply a sub-layer=normal to all apps anyway. I know I can target the first created window with this.
 yabai -m rule --add app="^Arc$" manage=off
 yabai -m signal --add app="^Arc$" event=window_title_changed action="yabai -m config focus_follows_mouse autoraise"
-yabai -m signal --add label="arcrules" app="^Arc$" title!="^Space [0-9]+$|^$" event=window_created action="yabai -m window $YABAI_WINDOW_ID --toggle float"
+yabai -m signal --add label="arcrules" event=window_created app="^Arc$" title!="^Space [0-9]+$|^$" action="yabai -m window $YABAI_WINDOW_ID --toggle float"
 
 # focus window after active space changes
 # yabai -m signal --add event=space_changed action="yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)"
