@@ -779,20 +779,20 @@
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>ARC POPUPS AND MACROS SUBLAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
                         [:s [["spress" 1]] [["dpress" 0]["epress" 0]["cpress" 0]] {:afterup {:set ["spress" 0]}}]
                         [:return_or_enter [:alfred "archistory" "com.chubamisc.afred"] ["spress" 1]]            ;arc history workflow
-                        [:right_shift [:km "C85D1652-EDB6-4FA9-9220-6627FB3F9801"] [["spress" 1] :arc]]         ;Open current page in OpenIn
-                        [:!Cright_shift [:km "71671EF7-5DFF-4560-A1AB-34696D6604E8"] [["spress" 1] :arc]]       ;Open link under mouse in OpenIn
-                        [:spacebar [:km "7F5B9AD9-22E4-4FC4-82E3-78BB0BCEC2EC"] ["spress" 1]]                   ;Open Clipboard in OpenIn
-                        [:y [:km "EBA2B560-ED10-4AAA-A5E1-055F5B863CCD"] ["spress" 1]]                          ;Google selection as unpinned and see
-                        [:u [:km "60294873-DC1C-47B1-B08A-929993894468"] ["spress" 1]]                          ;Google selection as float
-                        [:i [:km "BB38D111-C565-4E1B-BB98-60CCA30EA8EE"] ["spress" 1]]                          ;Google selection as tile
-                        [:o [:km "0C7154AC-DF11-4A50-BA9E-349F7F1492A6"] ["spress" 1]]                          ;Google selection as unpinned in BG
-                        [:h [:km "AD5525D0-64FE-41DB-A81E-74C5F998B932"] [["spress" 1] :arc]]                   ;Open current page as unpinned and see
-                        [:j [:km "2FEBFB46-0BBB-4B15-AA7D-5CBBDA2E84FF"] [["spress" 1] :arc]]                   ;Open current page as float
-                        [:k [:km "64F77118-7AA7-4E6A-945B-E88E2A0EE634"] [["spress" 1] :arc]]                   ;Open current page as tile
-                        [:l [:km "5824E648-7B18-429A-AB7A-60167C6CD65B"] [["spress" 1] :arc]]                   ;Open current page as unpinned in BG
-                        [:n [:km "98DF4112-D153-487F-826F-9F124EA200D4"] [["spress" 1] :arc]]                   ;Open link under mouse as unpinned and see
-                        [:m [:km "6FDAC53E-DD84-453A-9590-E3231DB9E72B"] [["spress" 1] :arc]]                   ;Open link under mouse as float
-                        [:comma [:km "ED25AFC7-32C6-4B8E-A474-333FE3EF3FD0"] [["spress" 1] :arc]]               ;Open link under mouse as tile
+                        [:right_shift [:km "Open Current Page in Open In"] [["spress" 1] :arc]]                 ;Open current page in OpenIn
+                        [:!Cright_shift [:km "Open Link Under Mouse in Openin"] [["spress" 1] :arc]]            ;Open link under mouse in OpenIn
+                        [:spacebar [:km "Open Link in Clipboard in OpenIn"] ["spress" 1]]                       ;Open Clipboard in OpenIn
+                        [:y [:km "Google Selection as Unpinned"] ["spress" 1]]                                  ;Google selection as unpinned and see
+                        [:u [:km "Google Selection as Float"] ["spress" 1]]                                     ;Google selection as float
+                        [:i [:km "Google Selection as Tile"] ["spress" 1]]                                      ;Google selection as tile
+                        [:o [:km "Google Selection as Unpinned"] ["spress" 1]]                                  ;Google selection as unpinned in BG
+                        [:h [:km "Open Current Page as Unpined"] [["spress" 1] :arc]]                           ;Open current page as unpinned and see
+                        [:j [:km "Open Current Page as Float"] [["spress" 1] :arc]]                             ;Open current page as float
+                        [:k [:km "Google Selection as Tile"] [["spress" 1] :arc]]                               ;Open current page as tile
+                        [:l [:km "Open Current Page as Unpined in BG"] [["spress" 1] :arc]]                     ;Open current page as unpinned in BG
+                        [:n [:km "Open Link Under Mouse as Unpinned"] [["spress" 1] :arc]]                      ;Open link under mouse as unpinned and see
+                        [:m [:km "Open Link Under Mouse as Float"] [["spress" 1] :arc]]                         ;Open link under mouse as float
+                        [:comma [:km "Open Link Under Mouse as Tile"] [["spress" 1] :arc]]                      ;Open link under mouse as tile
                         [:period {:pkey :button3} [["spress" 1] :arc]]                                          ;Open link under mouse as unpinned in BG
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -898,6 +898,8 @@
                         [:!Cf [:alfred "kikiFiles" "com.kiki.ai" "filesRevealWorkflow"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;COPY Last Response
                         [:h [:alfred "kikiFiles" "com.kiki.ai" "filesCopyResponse"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+                ;RESUME Last Chat
+                        [:!Ch [:alfred "kikiWorkflow" "com.kiki.ai" "actionResumeLast"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;COPY Context File to Specified Path
                         [:j [:alfred "kikiFiles" "com.kiki.ai" "filesCopyContext"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;TRIGGER Markdown Chat
