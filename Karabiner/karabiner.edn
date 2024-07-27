@@ -893,34 +893,42 @@
 
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>BASE LAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
                 ;REVEAL Kiki Data Path
-                        [:f [:alfred "kikiFiles" "com.kiki.ai" "filesRevealPath"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
-                ;REVEAL Kiki Workflow
-                        [:!Cf [:alfred "kikiFiles" "com.kiki.ai" "filesRevealWorkflow"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
-                ;COPY Last Response
-                        [:h [:alfred "kikiFiles" "com.kiki.ai" "filesCopyResponse"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+                        [:f [:alfred "kikiWorkflow" "com.kiki.ai" "wfData"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;RESUME Last Chat
-                        [:!Ch [:alfred "kikiWorkflow" "com.kiki.ai" "actionResumeLast"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+                        [:h [:alfred "kikiWorkflow" "com.kiki.ai" "actionResumeLast"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;COPY Context File to Specified Path
-                        [:j [:alfred "kikiFiles" "com.kiki.ai" "filesCopyContext"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+                        [:j [:alfred "kikiWorkflow" "com.kiki.ai" "wfCopyContext"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;TRIGGER Markdown Chat
                         [:return_or_enter [:alfred "kikiMD" "com.kiki.ai"] [:bear ["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
-                ;PRESETS MENU
+                ;COPY Last Response
+                        [:c [:alfred "kikiWorkflow" "com.kiki.ai" "wfCopyLastRep"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+                ;PRESETS MENU - simple version with kikiWorkflow trigger "kikiWorkflow" "com.kiki.ai" "actionPresets"
                         [:m [:alfred "kikiActions" "com.kiki.ai" "menu,custom,1"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;QUICK CHAT
-                        [:spacebar [:alfred "kikiChat" "com.kiki.ai"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+                        [:spacebar [:alfred "kikiWorkflow" "com.kiki.ai" "actionChat"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>COMMAND LAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;WHISPER Simple Transcription
+                        [:!Cw [:alfred "kikiWorkflow" "com.kiki.ai" "actionWhisper"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;WHISPER Escritor e Ideas
                         [:!Ce [:alfred "kikiActions" "com.kiki.ai" "direct,whisper,4,escritor"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
-                ;WHISPER Transcribe and Paste
-                        [:!Cj [:alfred "kikiActions" "com.kiki.ai" "paste,whisper"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
-                ;WHISPER Journal - Response in Dialog
-                        [:!Co [:alfred "kikiActions" "com.kiki.ai" "direct,whisper,1,diario"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;TRANSLATE to English - Response in Dialog
                         [:!Ct [:alfred "kikiActions" "com.kiki.ai" "direct,copy,1,translateEn"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+                ;WHISPER Journal - Response in Dialog
+                        [:!Co [:alfred "kikiActions" "com.kiki.ai" "direct,whisper,1,diario"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;SIMPLIFY - Paste in Frontmost
                         [:!Cs [:alfred "kikiActions" "com.kiki.ai" "direct,copy,4,simpliRW"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+                ;REVEAL Kiki Workflow
+                        [:!Cf [:alfred "kikiWorkflow" "com.kiki.ai" "wfEdit"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+                ;RESUME Last Chat Model B
+                        [:!Ch [:alfred "kikiWorkflow" "com.kiki.ai" "resumeLastAlt"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+                ;RESUME Last Chat CHOOSE MODEL
+                        [:!Oh [:alfred "kikiWorkflow" "com.kiki.ai" "resumeLastList"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+                ;WHISPER Transcribe and Paste
+                        [:!Cj [:alfred "kikiActions" "com.kiki.ai" "paste,whisper"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+                ;COPY Last Response
+                        [:!Cc [:alfred "kikiWorkflow" "com.kiki.ai" "wfCopyLastTran"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;WHISPER Transcription Prompt for Selected Text = Alfred Bar
                         [:!Cright_shift [:alfred "kikiActions" "com.kiki.ai" "direct,copy,1,customWhisperPrompt"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;WHISPER QUICK DIALOG REQUEST - Response in Dialog
