@@ -921,6 +921,8 @@
                         [:!Cs [:alfred "kikiActions" "com.kiki.ai" "direct,copy,4,simpliRW"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;REVEAL Kiki Workflow
                         [:!Cf [:alfred "kikiWorkflow" "com.kiki.ai" "wfEdit"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+                ;REVEAL Kiki SCRIPTS Folder
+                        [:!Of [:alfred "kikiWorkflow" "com.kiki.ai" "wfDir"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;RESUME Last Chat Model B
                         [:!Ch [:alfred "kikiWorkflow" "com.kiki.ai" "resumeLastAlt"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;RESUME Last Chat CHOOSE MODEL
