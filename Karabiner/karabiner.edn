@@ -726,6 +726,10 @@
                         [:semicolon [:!On :n] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;SPANISH TILDE
                         [:quote :!Oe [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;ANYBOX QUICK SAVE
+                        [:x [:open-g "anybox://quick-save"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;ANYBOX INSTANT SEND (save selected file)
+                        [:!Cx :!CTSx [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;MENUBAR SEARCH
                         [:b [:km "94B0B083-E25D-4B54-AFDA-46A14F0E7EDB"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;CLOSE NOTIFICATIONS
@@ -766,7 +770,7 @@
                         [:y :!CSy [["epress" 1] :arc]]                  ;Activate Bitwarden Extension
                         [:u :!CSu [["epress" 1] :arc]]                  ;Autofill with Bitwarden
                         [:p [:btt "pipArc"] [["epress" 1] :arc]]        ;PiP for videos
-                        [:d :!Oe [["epress" 1] :arc]]                   ;Raindrop Add
+                        [:f :!Of [["epress" 1] :arc]]                   ;Raindrop Add
                         [:h [:btt "ArcSlower"] ["epress" 1]]            ;Arc Media - Slower
                         [:j [:btt "ArcRewind15"] ["epress" 1]]          ;Arc Media - Rewind 15 Secs
                         [:k [:btt "ArcForward15"] ["epress" 1]]         ;Arc Media - Forwad 15 Secs
@@ -1212,7 +1216,7 @@
                         [:l [:km "rcmd: Alfred" "2"] [:a-rcmd :caps-rcmd]]
                         ;Bring to Space, Activate & Hide Others
                         [:!Rl [:km "rcmd: Alfred" "3"] [:a-rcmd :caps-rcmd]]
-                ;"APPSTORE"
+                ;APPSTORE
                         ;Activate
                         [:s [:km "rcmd: AppStore"] [:a-rcmd :!space-rcmd :!ropt-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
                         ;Minimize
@@ -1250,7 +1254,26 @@
                         [:a [:km "rcmd: Arc" "2"] [:a-rcmd :caps-rcmd]]
                         ;Bring to Space, Activate & Hide Others
                         [:!Ra [:km "rcmd: Arc" "3"] [:a-rcmd :caps-rcmd]]
-                ;"AUDIOHIJACK"
+                ;ANYBOX
+                        ;Activate
+                        [:n [:km "rcmd: Anybox"] [:a-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:n [:km "rcmd: Anybox" "m"] [:a-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Cn [:km "rcmd: Anybox" "dm"] [:a-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:n [:km "rcmd: Anybox" "x"] [:a-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:n [:km "rcmd: Anybox" "0"] [:a-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:n [:km "rcmd: Anybox" "xx"] [:a-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:n [:km "rcmd: Anybox" "1"] [:a-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:n [:km "rcmd: Anybox" "2"] [:a-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Rn [:km "rcmd: Anybox" "3"] [:a-rcmd :caps-rcmd]]
+                ;AUDIOHIJACK
                         ;Activate
                         [:h [:km "rcmd: AudioHijack"] [:a-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
                         ;Minimize
