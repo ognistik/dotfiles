@@ -198,9 +198,9 @@
 
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>MOUSE ARC>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
                         [{:pkey :button1 :modi [:left_command :left_option]}
-                        [:km "6FDAC53E-DD84-453A-9590-E3231DB9E72B"] :arc]                                              ;Link under mouse as Float Little Arc
+                        [:km "Open Link Under Mouse as Float"] :arc]                                          ;Link under mouse as Float Little Arc
                         [{:pkey :button2 :modi [:left_command :left_option]}
-                        [:km "ED25AFC7-32C6-4B8E-A474-333FE3EF3FD0"] :arc]                                              ;Link under mouse as Tiled Little Arc
+                        [:km "Open Link Under Mouse as Tile"] :arc]                                          ;Link under mouse as Tiled Little Arc
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>MOUSE SD LAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
