@@ -727,9 +727,12 @@
                 ;;SPANISH TILDE
                         [:quote :!Oe [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;ANYBOX QUICK SAVE
-                        [:x [:open-g "anybox://quick-save"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                        [:x [:open-g "anybox://quick-save"] [:!arc ["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                        [:x [:!Of] [:arc ["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;ANYBOX INSTANT SEND (save selected file)
                         [:!Cx :!CTSx [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;ANYBOX SAVE CLIPBOARD SHORTCUT - LINE SEPARATED LIST
+                        [:!Ox [:sc "" "Anybox Clipboard List"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;MENUBAR SEARCH
                         [:b [:km "94B0B083-E25D-4B54-AFDA-46A14F0E7EDB"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;CLOSE NOTIFICATIONS
@@ -802,31 +805,34 @@
 
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>DROPOVER SUBLAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
                         [:d [["dpress" 1]] [["spress" 0]["epress" 0]["cpress" 0]] {:afterup {:set ["dpress" 0]}}]
-                        [:r [:sc "" "Drop Reveal"] ["dpress" 1]]                                        ;Reveal Dropover Shelf content in Finder
-                        [:y [:sc "" "Drop Desktop"] ["dpress" 1]]                                       ;Move Content of Dropover Shelf to Desktop
-                        [:u [:sc "quick" "Drop Optimize"] ["dpress" 1]]                                 ;Quick Clop Optimize Media on Dropover Shelf
-                        [:i [:sc "aggressive" "Drop Optimize"] ["dpress" 1]]                            ;Aggressive Clop Optimize Media on Dropover Shelf
-                        [:o [:!TSc] ["dpress" 1]]                                                       ;Clop Optimize Clipboard
-                        [:p [:!TSa] ["dpress" 1]]                                                       ;Clop Optimize Clipboard Aggressive
-                        [:open_bracket [:alfred "clop_cb" "com.afadingthought.clop" "wf"] ["dpress" 1]] ;Clop WF on Clipboard
-                        [:s [:sc "" "Drop Pin"] ["dpress" 1]]                                           ;Pin Files from Shelf
-                        [:f [:km "Dropover OpenIn"] ["dpress" 1]]                                       ;Open Shelf in OpenIn
-                        [:g [:sc "" "Drop Gif"] ["dpress" 1]]                                           ;Open Gifski to convert video to Gif from Dropover Shelf
-                        [:h [:sc "" "Drop Previous"] ["dpress" 1]]                                      ;Open previous Dropover shelf
-                        [:j [:sc "" "Drop Move"] ["dpress" 1]]                                          ;Move contents of Dropover shelf to frontmost Finder path 
-                        [:k [:sc "" "Drop Airdrop"] ["dpress" 1]]                                       ;Airdrop content from Dropover shelf
-                        [:l [:sc "" "Drop Close"] ["dpress" 1]]                                         ;Close Dropover Shelf
-                        [:semicolon [:km "160B99AC-4009-4ABF-A1FE-D0C06CC5535B"] ["dpress" 1]]          ;Dock Shelf
-                        [:quote [:km "BCA60CEB-E76A-45B1-9873-B41070136668"] ["dpress" 1]]              ;Alfred Actions on Shelf
-                        [:c [:sc "" "Drop Cleanshot"] ["dpress" 1]]                                     ;Edit Dropover Shelf contents in Cleanshot
-                        [:n [:sc "" "Drop Delete"] ["dpress" 1]]                                        ;Delete the files in a Dropover shelf
-                        [:m [:alfred "finderClop" "com.afadingthought.clop" "quick"] ["dpress" 1]]      ;Clop Simple Optimization on Finder File
-                        [:comma [:alfred "finderClop" "com.afadingthought.clop" "aggressive"] ["dpress" 1]] ;Clop Aggressive Optimization on Finder File
-                        [:period [:alfred "finderClop" "com.afadingthought.clop" "workflow"] ["dpress" 1]]  ;Clop Workflow on Finder Selection
-                        [:right_shift [:sc "workflow" "Drop Optimize"] ["dpress" 1]]                    ;Clop Alfred Workflow for contents of Dropover Shelf
-                        [:return_or_enter [:km "7A9F80E0-042D-4620-B414-11B2D74736EB"] ["dpress" 1]]    ;Dropover search bar on shelf
-                        [:spacebar :!STv ["dpress" 1]]                                                  ;Dropover shelf from Clipboard
-                        [:left_command [:!Cc :!STv] ["dpress" 1]]                                       ;Dropover from selected file, through Clipboard
+                        [:r [:sc "" "Drop Reveal"] ["dpress" 1]]                                                ;Reveal Dropover Shelf content in Finder
+                        [:y [:sc "" "Drop Desktop"] ["dpress" 1]]                                               ;Move Content of Dropover Shelf to Desktop
+                        [:u [:sc "quick" "Drop Optimize"] ["dpress" 1]]                                         ;Quick Clop Optimize Media on Dropover Shelf
+                        [:i [:sc "aggressive" "Drop Optimize"] ["dpress" 1]]                                    ;Aggressive Clop Optimize Media on Dropover Shelf
+                        [:o [:!TSc] ["dpress" 1]]                                                               ;Clop Optimize Clipboard
+                        [:p [:!TSa] ["dpress" 1]]                                                               ;Clop Optimize Clipboard Aggressive
+                        [:open_bracket [:alfred "clop_cb" "com.afadingthought.clop" "wf"] ["dpress" 1]]         ;Clop WF on Clipboard
+                        [:s [:sc "" "Drop Pin"] ["dpress" 1]]                                                   ;Pin Files from Shelf
+                        [:f [:km "Dropover OpenIn"] ["dpress" 1]]                                               ;Open Shelf in OpenIn
+                        [:g [:sc "" "Drop Gif"] ["dpress" 1]]                                                   ;Open Gifski to convert video to Gif from Dropover Shelf
+                        [:h [:sc "" "Drop Previous"] ["dpress" 1]]                                              ;Open previous Dropover shelf
+                        [:!Ch [:sc "" "Drop Anybox"] ["dpress" 1]]                                              ;Save to Anybox
+                        [:j [:sc "" "Drop Move"] ["dpress" 1]]                                                  ;Move contents of Dropover shelf to frontmost Finder path
+                        [:!Cj [:km "Dropover Cloud Link"] ["dpress" 1]]                                         ;Dropover Cloud Link 
+                        [:k [:sc "" "Drop Airdrop"] ["dpress" 1]]                                               ;Airdrop content from Dropover shelf
+                        [:!Ck [:km "Dropover Imgur Link"] ["dpress" 1]]                                         ;Dropover Imgur Link
+                        [:l [:sc "" "Drop Close"] ["dpress" 1]]                                                 ;Close Dropover Shelf
+                        [:semicolon [:km "160B99AC-4009-4ABF-A1FE-D0C06CC5535B"] ["dpress" 1]]                  ;Dock Shelf
+                        [:quote [:km "BCA60CEB-E76A-45B1-9873-B41070136668"] ["dpress" 1]]                      ;Alfred Actions on Shelf
+                        [:c [:sc "" "Drop Cleanshot"] ["dpress" 1]]                                             ;Edit Dropover Shelf contents in Cleanshot
+                        [:v [:!Cc :!STv] ["dpress" 1]]                                                          ;Dropover from selected file, through Clipboard
+                        [:n [:sc "" "Drop Delete"] ["dpress" 1]]                                                ;Delete the files in a Dropover shelf
+                        [:m [:alfred "finderClop" "com.afadingthought.clop" "quick"] ["dpress" 1]]              ;Clop Simple Optimization on Finder File
+                        [:comma [:alfred "finderClop" "com.afadingthought.clop" "aggressive"] ["dpress" 1]]     ;Clop Aggressive Optimization on Finder File
+                        [:period [:alfred "finderClop" "com.afadingthought.clop" "workflow"] ["dpress" 1]]      ;Clop Workflow on Finder Selection
+                        [:right_shift [:sc "workflow" "Drop Optimize"] ["dpress" 1]]                            ;Clop Alfred Workflow for contents of Dropover Shelf
+                        [:return_or_enter [:km "7A9F80E0-042D-4620-B414-11B2D74736EB"] ["dpress" 1]]            ;Dropover search bar on shelf
+                        [:spacebar :!STv ["dpress" 1]]                                                          ;Dropover shelf from Clipboard
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>CLEANSHOT X SUBLAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -933,13 +939,12 @@
                         [:!Oh [:alfred "kikiWorkflow" "com.kiki.ai" "resumeLastList"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;WHISPER Transcribe and Paste
                         [:!Cj [:alfred "kikiActions" "com.kiki.ai" "paste,whisper"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
-                ;COPY Last Response
+                ;COPY Last TRANSCRIPTION
                         [:!Cc [:alfred "kikiWorkflow" "com.kiki.ai" "wfCopyLastTran"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;WHISPER Transcription Prompt for Selected Text = Alfred Bar
                         [:!Cright_shift [:alfred "kikiActions" "com.kiki.ai" "direct,copy,1,customWhisperPrompt"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;WHISPER QUICK DIALOG REQUEST - Response in Dialog
                         [:!Cspacebar [:alfred "kikiActions" "com.kiki.ai" "direct,whisper,1,useAsPrompt"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
-                        [:!Cright_command [:alfred "kikiActions" "com.kiki.ai" "menu,whisper,1"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>SELECTED TEXT or WHISPER ACTIONS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
