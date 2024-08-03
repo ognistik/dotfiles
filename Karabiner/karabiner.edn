@@ -773,7 +773,6 @@
                         [:y :!CSy [["epress" 1] :arc]]                  ;Activate Bitwarden Extension
                         [:u :!CSu [["epress" 1] :arc]]                  ;Autofill with Bitwarden
                         [:p [:btt "pipArc"] [["epress" 1] :arc]]        ;PiP for videos
-                        [:f :!Of [["epress" 1] :arc]]                   ;Raindrop Add
                         [:h [:btt "ArcSlower"] ["epress" 1]]            ;Arc Media - Slower
                         [:j [:btt "ArcRewind15"] ["epress" 1]]          ;Arc Media - Rewind 15 Secs
                         [:k [:btt "ArcForward15"] ["epress" 1]]         ;Arc Media - Forwad 15 Secs
@@ -785,7 +784,8 @@
 
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>ARC POPUPS AND MACROS SUBLAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
                         [:s [["spress" 1]] [["dpress" 0]["epress" 0]["cpress" 0]] {:afterup {:set ["spress" 0]}}]
-                        [:return_or_enter [:alfred "archistory" "com.chubamisc.afred"] ["spress" 1]]            ;arc history workflow
+                        [:return_or_enter [:alfred "archistory" "com.chubamisc.afred"] ["spress" 1]]            ;Arc history workflow
+                        [:!Creturn_or_enter [:alfred "arctabs" "com.chubamisc.afred"] ["spress" 1]]             ;Arc tabs workflow
                         [:right_shift [:km "Open Current Page in Open In"] [["spress" 1] :arc]]                 ;Open current page in OpenIn
                         [:!Cright_shift [:km "Open Link Under Mouse in Openin"] [["spress" 1] :arc]]            ;Open link under mouse in OpenIn
                         [:spacebar [:km "Open Link in Clipboard in OpenIn"] ["spress" 1]]                       ;Open Clipboard in OpenIn
