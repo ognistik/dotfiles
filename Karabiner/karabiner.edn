@@ -122,7 +122,7 @@
                         [:delete_or_backspace :vk_none]
                         [:##non_us_backslash :grave_accent_and_tilde]
                         [:##right_control :fn]
-                        [:!Cn "~/Documents/GitHubRepos/dotfiles/Karabiner/Scripts/bearNewNote.sh sameWindow" [:bear ["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                        [:!Cn [:km "New Bear Note - Same Window"] [:bear ["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ]
         }
 

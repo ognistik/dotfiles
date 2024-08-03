@@ -12,7 +12,7 @@ encoded_date=$(python3 -c "import urllib.parse; print(urllib.parse.quote('''$for
 if [[ -z "$sameWindow" ]]; then
 callback_url="bear://x-callback-url/create?text=%23%20${encoded_date}%0A---%0A%230-inbox%0A---%0A&new_window=yes&open_note=yes&edit=yes"
 else
-callback_url="bear://x-callback-url/create?text=%23%20${encoded_date}%0A---%0A%230-inbox%0A---%0A&new_window=no&open_note=yes&edit=yes"
+callback_url="bear://x-callback-url/create?text=%23%20${encoded_date}%0A---%0A${sameWindow}%0A---%0A&new_window=no&open_note=yes&edit=yes"
 fi
 
 # Use open command to open the URL (works on macOS)
