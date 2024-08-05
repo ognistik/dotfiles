@@ -938,7 +938,7 @@
                 ;RESUME Last Chat CHOOSE MODEL
                         [:!Oh [:alfred "kikiWorkflow" "com.kiki.ai" "resumeLastList"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;WHISPER Transcribe and Paste
-                        [:!Cj [:alfred "kikiActions" "com.kiki.ai" "paste,whisper"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+                        [:!Cj [:km "AI Dictate"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;COPY Last TRANSCRIPTION
                         [:!Cc [:alfred "kikiWorkflow" "com.kiki.ai" "wfCopyLastTran"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;WHISPER Transcription Prompt for Selected Text = Alfred Bar
