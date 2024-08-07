@@ -733,8 +733,6 @@
                         [:!Cx :!CTSx [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;ANYBOX SAVE CLIPBOARD SHORTCUT - LINE SEPARATED LIST
                         [:!Ox [:sc "" "Anybox Clipboard List"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
-                ;;MENUBAR SEARCH
-                        [:b [:km "94B0B083-E25D-4B54-AFDA-46A14F0E7EDB"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;CLOSE NOTIFICATIONS
                         [:n [:btt "CloseNotifications"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;MENU BAR WORKFLOW
@@ -754,6 +752,8 @@
                         [:!Cright_shift [[:yabai "signal --add label=arcfloater app=\"^Arc$\" event=window_title_changed\\
                                 action=\"~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/arcFloater.sh tile\""] :!TOCn]
                                 [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;MENUBAR SEARCH
+                        [:left_option [:km "94B0B083-E25D-4B54-AFDA-46A14F0E7EDB"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;NEW FLOATING BEAR NOTE
                         [:spacebar "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggleOrNewBear bearScratchpad" [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;NEW TILED BEAR NOTE
@@ -805,6 +805,7 @@
 
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>DROPOVER SUBLAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
                         [:d [["dpress" 1]] [["spress" 0]["epress" 0]["cpress" 0]] {:afterup {:set ["dpress" 0]}}]
+                        [:w [:sc "" "Drop AIFile Transcribe"] ["dpress" 1]]                                     ;Transcribe with AI - MacWhisper or Kiki
                         [:r [:sc "" "Drop Reveal"] ["dpress" 1]]                                                ;Reveal Dropover Shelf content in Finder
                         [:y [:sc "" "Drop Desktop"] ["dpress" 1]]                                               ;Move Content of Dropover Shelf to Desktop
                         [:u [:sc "quick" "Drop Optimize"] ["dpress" 1]]                                         ;Quick Clop Optimize Media on Dropover Shelf
@@ -824,8 +825,8 @@
                         [:l [:sc "" "Drop Close"] ["dpress" 1]]                                                 ;Close Dropover Shelf
                         [:semicolon [:km "160B99AC-4009-4ABF-A1FE-D0C06CC5535B"] ["dpress" 1]]                  ;Dock Shelf
                         [:quote [:km "BCA60CEB-E76A-45B1-9873-B41070136668"] ["dpress" 1]]                      ;Alfred Actions on Shelf
-                        [:c [:sc "" "Drop Cleanshot"] ["dpress" 1]]                                             ;Edit Dropover Shelf contents in Cleanshot
-                        [:v [:!Cc :!STv] ["dpress" 1]]                                                          ;Dropover from selected file, through Clipboard
+                        [:c [:!Cc :!STv] ["dpress" 1]]                                                          ;Dropover from selected file, through Clipboard
+                        [:!Cc [:sc "" "Drop Cleanshot"] ["dpress" 1]]                                           ;Edit Dropover Shelf contents in Cleanshot
                         [:n [:sc "" "Drop Delete"] ["dpress" 1]]                                                ;Delete the files in a Dropover shelf
                         [:m [:alfred "finderClop" "com.afadingthought.clop" "quick"] ["dpress" 1]]              ;Clop Simple Optimization on Finder File
                         [:comma [:alfred "finderClop" "com.afadingthought.clop" "aggressive"] ["dpress" 1]]     ;Clop Aggressive Optimization on Finder File
