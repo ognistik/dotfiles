@@ -695,6 +695,12 @@
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>BASE LAYER (CAPS LOCK)>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
                 ;;DELETE BEAR NOTE
                         [:w [:km "9A812F68-7857-4ACE-A7BD-8AF3AEEE57CE"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;TOGGLE TAPTIX
+                        [:q [:alfred "cmd" "com.taptix.aft" "toggle"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;TAPTIX MAIN MENU
+                        [:!Cq [:alfred "mainMenu" "com.taptix.aft"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;TAPTIX MAIN MENU
+                        [:!Oq [:alfred "cmd" "com.taptix.aft" "set_keyboard"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;READWISE TO BEAR Shortcut
                         [:r "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"604659A4-5CBD-4DBC-A9E4-2D2B6FAAC9F3\"';\\
                                 shortcuts run \"RW to Bear\"" [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
@@ -753,7 +759,7 @@
                                 action=\"~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/arcFloater.sh tile\""] :!TOCn]
                                 [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;MENUBAR SEARCH
-                        [:left_option [:km "94B0B083-E25D-4B54-AFDA-46A14F0E7EDB"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                        [:q [:km "94B0B083-E25D-4B54-AFDA-46A14F0E7EDB"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;NEW FLOATING BEAR NOTE
                         [:spacebar "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggleOrNewBear bearScratchpad" [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;NEW TILED BEAR NOTE
@@ -1073,7 +1079,7 @@
                         [:y {:pkey :button1}]
                         [:u {:pkey :button2}]
                         [:i {:pkey :button3}]
-                        [:##o [:km "95B8335C-1B11-4FA2-9AC6-1C67217DC48F"]]
+                        [:##o [:km "Dropover Drag to Mouse"]]
                         [:##s [:yabai "window --focus mouse"]]
                         [:##d {:pkey :button1}]
                         [:##h {:mkey {:x -3072 :speed 2.0}} ["spacepress" 0]]
