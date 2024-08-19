@@ -696,6 +696,7 @@
                 ;;DELETE BEAR NOTE
                         [:w [:km "9A812F68-7857-4ACE-A7BD-8AF3AEEE57CE"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;TOGGLE TAPTIX
+                        ;[:q "osascript -e \"tell application id \\\"com.runningwithcrayons.Alfred\\\" to run trigger \\\"cmd\\\" in workflow \\\"com.taptix.aft\\\" with argument \\\"set_keyboard \\\\\\\"Kandas Woods\\\\\\\"\\\"\"" [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                         [:q [:alfred "cmd" "com.taptix.aft" "toggle"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;TAPTIX MAIN MENU
                         [:!Cq [:alfred "mainMenu" "com.taptix.aft"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
@@ -758,8 +759,8 @@
                         [:!Cright_shift [[:yabai "signal --add label=arcfloater app=\"^Arc$\" event=window_title_changed\\
                                 action=\"~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/arcFloater.sh tile\""] :!TOCn]
                                 [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
-                ;;MENUBAR SEARCH
-                        [:q [:km "94B0B083-E25D-4B54-AFDA-46A14F0E7EDB"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;MENUBAR SEARCH BARTENDER
+                        [:left_control [:km "94B0B083-E25D-4B54-AFDA-46A14F0E7EDB"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;NEW FLOATING BEAR NOTE
                         [:spacebar "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggleOrNewBear bearScratchpad" [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;NEW TILED BEAR NOTE
