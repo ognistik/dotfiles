@@ -777,7 +777,7 @@
                         [:e [["epress" 1]] [["dpress" 0]["spress" 0]["cpress" 0]] {:afterup {:set ["epress" 0]}}]
                         [:spacebar :!CSx [["epress" 1] :arc]]           ;Close Overlay Extension
                         [:r :!Or [["epress" 1] :arc]]                   ;Readwise Add
-                        [:y :!CSy [["epress" 1] :arc]]                  ;Activate Bitwarden Extension
+                        [:y [[:yabai "signal --add label=float_next_window_created event=window_created action='/opt/homebrew/bin/yabai -m signal --remove float_next_window_created; /opt/homebrew/bin/yabai -m window $YABAI_WINDOW_ID --toggle float'"] {:key :y :modi [:left_command :left_shift]}] [["epress" 1] :arc]]                  ;Activate Bitwarden Extension
                         [:u :!CSu [["epress" 1] :arc]]                  ;Autofill with Bitwarden
                         [:p [:btt "pipArc"] [["epress" 1] :arc]]        ;PiP for videos
                         [:h [:btt "ArcSlower"] ["epress" 1]]            ;Arc Media - Slower
@@ -802,7 +802,7 @@
                         [:o [:km "Google Selection as Unpinned"] ["spress" 1]]                                  ;Google selection as unpinned in BG
                         [:h [:km "Open Current Page as Unpined"] [["spress" 1] :arc]]                           ;Open current page as unpinned and see
                         [:j [:km "Open Current Page as Float"] [["spress" 1] :arc]]                             ;Open current page as float
-                        [:k [:km "Google Selection as Tile"] [["spress" 1] :arc]]                               ;Open current page as tile
+                        [:k [:km "Open Current Page as Tile"] [["spress" 1] :arc]]                              ;Open current page as tile
                         [:l [:km "Open Current Page as Unpined in BG"] [["spress" 1] :arc]]                     ;Open current page as unpinned in BG
                         [:n [:km "Open Link Under Mouse as Unpinned"] [["spress" 1] :arc]]                      ;Open link under mouse as unpinned and see
                         [:m [:km "Open Link Under Mouse as Float"] [["spress" 1] :arc]]                         ;Open link under mouse as float
