@@ -121,7 +121,7 @@
                 :rules [                        
                         [:delete_or_backspace :vk_none]
                         [:##non_us_backslash :grave_accent_and_tilde]
-                        [:##right_control :fn]
+                        [:##right_control :fn :!caps-mode]
                         [:!Cn [:km "New Bear Note - Same Window"] [:bear :!sd-mode ["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ]
         }
@@ -693,15 +693,21 @@
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>BASE LAYER (CAPS LOCK)>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                ;;DELETE BEAR NOTE
-                        [:w [:km "9A812F68-7857-4ACE-A7BD-8AF3AEEE57CE"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;TOGGLE TAPTIX
-                        ;[:q "osascript -e \"tell application id \\\"com.runningwithcrayons.Alfred\\\" to run trigger \\\"cmd\\\" in workflow \\\"com.taptix.aft\\\" with argument \\\"set_keyboard \\\\\\\"Kandas Woods\\\\\\\"\\\"\"" [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                         [:q [:alfred "cmd" "com.taptix.aft" "toggle"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;TAPTIX MAIN MENU
                         [:!Cq [:alfred "mainMenu" "com.taptix.aft"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;TAPTIX MAIN MENU
                         [:!Oq [:alfred "cmd" "com.taptix.aft" "set_keyboard"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;DELETE BEAR NOTE
+                        [:w [:km "9A812F68-7857-4ACE-A7BD-8AF3AEEE57CE"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;ANYBOX QUICK SAVE
+                        [:e [:open-g "anybox://quick-save"] [:!arc ["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                        [:e [:!Of] [:arc ["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;ANYBOX INSTANT SAVE (save selected file or text)
+                        [:!Ce :!CTSx [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;ANYBOX SAVE CLIPBOARD SHORTCUT - LINE SEPARATED LIST
+                        [:!Oe [:sc "" "Anybox Clipboard List"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;READWISE TO BEAR Shortcut
                         [:r "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"604659A4-5CBD-4DBC-A9E4-2D2B6FAAC9F3\"';\\
                                 shortcuts run \"RW to Bear\"" [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
@@ -711,8 +717,10 @@
                         [:o [:sc "" "Day One Master"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;UPDATE PLEX SERVER
                         [:p [:km "838EBFC2-7F83-48C5-AF0C-248638A8AD65"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
-                ;;CAFFEINATE WORKFLOW
-                        [:a [:alfred "caff" "com.shawn.patrick.rice.caffeinate.control"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;SUPERWHISPER WORKFLOW MODES
+                        [:a [:alfred "sw" "com.superwhisper.aft" "selectMode"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;SUPERWHISPER WORKFLOW MAIN MENU
+                        [:!Ca [:alfred "sw" "com.superwhisper.aft"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;FINDER WINDOW ON DROPBOX
                         [:!Cd [:km "3D77AF72-BF60-4862-A651-5FB7AA67AD03"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;FINDER WINDOW ON DESKTOP
@@ -733,21 +741,53 @@
                         [:semicolon [:!On :n] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;SPANISH TILDE
                         [:quote :!Oe [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
-                ;ANYBOX QUICK SAVE
-                        [:x [:open-g "anybox://quick-save"] [:!arc ["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
-                        [:x [:!Of] [:arc ["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
-                ;ANYBOX INSTANT SEND (save selected file)
-                        [:!Cx :!CTSx [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
-                ;ANYBOX SAVE CLIPBOARD SHORTCUT - LINE SEPARATED LIST
-                        [:!Ox [:sc "" "Anybox Clipboard List"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;PasteFlow Clear Stack
+                        [:!Cw [:alfred "cmd" "com.pasteflow.aft" "clearList"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;PasteFlow Reset Next Item
+                        [:!Ow [:alfred "cmd" "com.pasteflow.aft" "resetNext"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;PasteFlow Copy Next
+                        [:!Cz [:alfred "cmd" "com.pasteflow.aft" "copyNext"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;PasteFlow Copy Previous
+                        [:!Oz [:alfred "cmd" "com.pasteflow.aft" "copyNext,0,1"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;PasteFlow paste entire stack INVERTED
+                        [:!Sz [:alfred "cmd" "com.pasteflow.aft" "pasteStack,0,1,0"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;PasteFlow Selective Processing Menu
+                        [:z [:alfred "cmd" "com.pasteflow.aft" "inputPasteItem"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;Insert Selection in PasteFlow (In Next Item Index)
+                        [:!Cx [:alfred "cmd" "com.pasteflow.aft" "c!!addCurrentClip,0,0,1"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;Split & Insert in PasteFlow (In Next Item Index)
+                        [:!Ox [:alfred "cmd" "com.pasteflow.aft" "c!!addSplitClip,0,0,1"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;PasteFlow paste entire stack
+                        [:!Sx [:alfred "cmd" "com.pasteflow.aft" "pasteStack"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;PasteFlow Main Menu
+                        [:d [:alfred "cmd" "com.pasteflow.aft" "mainMenu"] [["dpress" 0]["spress" 1]["epress" 0]["cpress" 0]]]
+                ;PasteFlow Textview
+                        [:x [:alfred "cmd" "com.pasteflow.aft" "viewStack"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;PasteFlow Insert in PasteFlow
+                        [:!Cc [:alfred "cmd" "com.pasteflow.aft" "c!!addCurrentClip"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;PasteFlow Split & Add
+                        [:!Oc [:alfred "cmd" "com.pasteflow.aft" "c!!addSplitClip"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;Pasteflow Paste Next
+                        [:!Cv [:alfred "cmd" "com.pasteflow.aft" "pasteNext"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;PasteFlow Insert Current Clipboard (S LAYER)
+                        [:c [:alfred "cmd" "com.pasteflow.aft" "!addCurrentClip"] [["dpress" 0]["spress" 1]["epress" 0]["cpress" 0]]]
+                ;PasteFlow Insert Current Clipboard NEXT (S LAYER)
+                        [:x [:alfred "cmd" "com.pasteflow.aft" "!addCurrentClip,0,0,1"] [["dpress" 0]["spress" 1]["epress" 0]["cpress" 0]]]
+                ;Pasteflow Paste Previous
+                        [:!Ov [:alfred "cmd" "com.pasteflow.aft" "pasteNext,0,1,0"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;Pasteflow INSERT FROM CB NEW!
+                        [:v [:alfred "cmd" "com.pasteflow.aft" "clipFilter"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;CLOSE NOTIFICATIONS
                         [:n [:btt "CloseNotifications"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;MENU BAR WORKFLOW
-                        [:m [:alfred "menu" "com.tedwise.menubarsearch"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                        [:m [:alfred "menu" "com.folded-paper.menu-bar-search"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;MENU BAR OF CURRENT APP
                         [:!Cm :!CSslash [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
-                ;;SCREEN SAVER ON ","
-                        [:comma nil [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]] {:afterup [:alfred "screensaver" "com.chubamisc.afred"]}]
+                ;;SCREEN SAVER ON Double Comma & Alfred Caffeinate on Single
+                        [:comma [:alfred "screensaver" "com.chubamisc.afred"] [["comma-press" 1]["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                        [:comma [["comma-press" 1]] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]
+                                {:delayed {:invoked [["comma-press" 0] [:alfred "caff" "com.shawn.patrick.rice.caffeinate.control"]]
+                                :canceled ["comma-press" 0]} :params {:delay 200}}]    
                 ;;SLEEP SYSTEM WITH DOUBLE TAP PERIOD OR SINGLE FOR SLEEP DISPLAY
                         [:period [:alfred "sleepsystem" "com.chubamisc.afred"] [["sleep-press" 1]["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                         [:period [["sleep-press" 1]] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]
@@ -759,8 +799,8 @@
                         [:!Cright_shift [[:yabai "signal --add label=arcfloater app=\"^Arc$\" event=window_title_changed\\
                                 action=\"~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/arcFloater.sh tile\""] :!TOCn]
                                 [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
-                ;;MENUBAR SEARCH BARTENDER
-                        [:left_control [:km "94B0B083-E25D-4B54-AFDA-46A14F0E7EDB"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;MENUBAR SEARCH BARTENDER (this is fn, actually)
+                        [:right_control [:km "94B0B083-E25D-4B54-AFDA-46A14F0E7EDB"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;NEW FLOATING BEAR NOTE
                         [:spacebar "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggleOrNewBear bearScratchpad" [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;NEW TILED BEAR NOTE
@@ -799,7 +839,7 @@
                         [:y [:km "Google Selection as Unpinned"] ["spress" 1]]                                  ;Google selection as unpinned and see
                         [:u [:km "Google Selection as Float"] ["spress" 1]]                                     ;Google selection as float
                         [:i [:km "Google Selection as Tile"] ["spress" 1]]                                      ;Google selection as tile
-                        [:o [:km "Google Selection as Unpinned"] ["spress" 1]]                                  ;Google selection as unpinned in BG
+                        [:o [:km "Google Selection as Unpinned in BG"] ["spress" 1]]                                  ;Google selection as unpinned in BG
                         [:h [:km "Open Current Page as Unpined"] [["spress" 1] :arc]]                           ;Open current page as unpinned and see
                         [:j [:km "Open Current Page as Float"] [["spress" 1] :arc]]                             ;Open current page as float
                         [:k [:km "Open Current Page as Tile"] [["spress" 1] :arc]]                              ;Open current page as tile
@@ -1692,25 +1732,6 @@
                         [:w [:km "rcmd: MacWhisper" "2"] [:m-rcmd :caps-rcmd]]
                         ;Bring to Space, Activate & Hide Others
                         [:!Rw [:km "rcmd: MacWhisper" "3"] [:m-rcmd :caps-rcmd]]
-                ;"MOCHI"
-                        ;Activate
-                        [:o [:km "rcmd: Mochi"] [:m-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:o [:km "rcmd: Mochi" "m"] [:m-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Co [:km "rcmd: Mochi" "dm"] [:m-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:o [:km "rcmd: Mochi" "x"] [:m-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:o [:km "rcmd: Mochi" "0"] [:m-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:o [:km "rcmd: Mochi" "xx"] [:m-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:o [:km "rcmd: Mochi" "1"] [:m-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:o [:km "rcmd: Mochi" "2"] [:m-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Ro [:km "rcmd: Mochi" "3"] [:m-rcmd :caps-rcmd]]
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD P>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
