@@ -123,6 +123,10 @@
                         [:##non_us_backslash :grave_accent_and_tilde]
                         [:##right_control :fn :!caps-mode]
                         [:!Cn [:km "New Bear Note - Same Window"] [:bear :!sd-mode ["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                        [:!Cf [:alfred "sw" "com.superwhisper.aft" "record"] [["fpress" 1]["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                        [:!Cf [["fpress" 1]] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]
+                                {:delayed {:invoked [["fpress" 0] {:key :f :modi :left_command}]
+                                :canceled ["fpress" 0]} :params {:delay 160}}]
                 ]
         }
 
@@ -701,6 +705,10 @@
                         [:!Oq [:alfred "cmd" "com.taptix.aft" "set_keyboard"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;DELETE BEAR NOTE
                         [:w [:km "9A812F68-7857-4ACE-A7BD-8AF3AEEE57CE"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;PasteFlow Clear Stack
+                        [:!Cw [:alfred "cmd" "com.pasteflow.aft" "clearList"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;PasteFlow Reset Next Item
+                        [:!Ow [:alfred "cmd" "com.pasteflow.aft" "resetNext"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;ANYBOX QUICK SAVE
                         [:e [:open-g "anybox://quick-save"] [:!arc ["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                         [:e [:!Of] [:arc ["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
@@ -721,6 +729,8 @@
                         [:a [:alfred "sw" "com.superwhisper.aft" "selectMode"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;SUPERWHISPER WORKFLOW MAIN MENU
                         [:!Ca [:alfred "sw" "com.superwhisper.aft"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;SUPERWHISPER TextView Last
+                        [:!Oa [:alfred "sw" "com.superwhisper.aft" "viewLastResult"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;FINDER WINDOW ON DROPBOX
                         [:!Cd [:km "3D77AF72-BF60-4862-A651-5FB7AA67AD03"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;FINDER WINDOW ON DESKTOP
@@ -741,10 +751,6 @@
                         [:semicolon [:!On :n] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;SPANISH TILDE
                         [:quote :!Oe [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
-                ;;PasteFlow Clear Stack
-                        [:!Cw [:alfred "cmd" "com.pasteflow.aft" "clearList"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
-                ;PasteFlow Reset Next Item
-                        [:!Ow [:alfred "cmd" "com.pasteflow.aft" "resetNext"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;PasteFlow Copy Next
                         [:!Cz [:alfred "cmd" "com.pasteflow.aft" "copyNext"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;PasteFlow Copy Previous
@@ -1872,6 +1878,25 @@
                         [:u [:km "rcmd: Superkey" "2"] [:s-rcmd :caps-rcmd]]
                         ;Bring to Space, Activate & Hide Others
                         [:!Ru [:km "rcmd: Superkey" "3"] [:s-rcmd :caps-rcmd]]
+                ;SUPERWHISPER
+                        ;Activate
+                        [:w [:km "rcmd: SuperWhisper"] [:s-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:w [:km "rcmd: SuperWhisper" "m"] [:s-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Cw [:km "rcmd: SuperWhisper" "dm"] [:s-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:w [:km "rcmd: SuperWhisper" "x"] [:s-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:w [:km "rcmd: SuperWhisper" "0"] [:s-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:w [:km "rcmd: SuperWhisper" "xx"] [:s-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:w [:km "rcmd: SuperWhisper" "1"] [:s-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:w [:km "rcmd: SuperWhisper" "2"] [:s-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Rw [:km "rcmd: SuperWhisper" "3"] [:s-rcmd :caps-rcmd]]
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD T>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
