@@ -123,10 +123,10 @@
                         [:##non_us_backslash :grave_accent_and_tilde]
                         [:##right_control :fn :!caps-mode]
                         [:!Cn [:km "New Bear Note - Same Window"] [:bear :!sd-mode ["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
-                        [:!Cf [:alfred "sw" "com.superwhisper.aft" "record"] [["fpress" 1]["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
-                        [:!Cf [["fpress" 1]] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]
-                                {:delayed {:invoked [["fpress" 0] {:key :f :modi :left_command}]
-                                :canceled ["fpress" 0]} :params {:delay 160}}]
+                        [:!Cf [:alfred "sw" "com.superwhisper.aft" "record"] [["swpress" 1]["dpress" 0]["spress" 0]["epress" 0]["cpress" 0] :!a-mode :!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!f-mode :!e-mode]]
+                        [:!Cf [["swpress" 1]] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0] :!a-mode :!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!f-mode :!e-mode]
+                                {:delayed {:invoked [["swpress" 0] {:key :f :modi :left_command}]
+                                :canceled ["swpress" 0]} :params {:delay 160}}]
                 ]
         }
 
