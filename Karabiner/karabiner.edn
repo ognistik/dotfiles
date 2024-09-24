@@ -126,7 +126,7 @@
                         [:!Cf [:alfred "sw" "com.superwhisper.aft" "record"] [["swpress" 1]["dpress" 0]["spress" 0]["epress" 0]["cpress" 0] :!a-mode :!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!f-mode :!e-mode]]
                         [:!Cf [["swpress" 1]] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0] :!a-mode :!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!f-mode :!e-mode]
                                 {:delayed {:invoked [["swpress" 0] {:key :f :modi :left_command}]
-                                :canceled ["swpress" 0]} :params {:delay 160}}]
+                                :canceled ["swpress" 0]} :params {:delay 180}}]
                 ]
         }
 
@@ -354,6 +354,8 @@
                         [:quote [:yabai "space --create && /opt/homebrew/bin/yabai -m space --focus last && sleep 0.1 && echo \"refresh\" | nc -U /tmp/yabai-indicator.socket"] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
                 ;;TOGGLE Fullscreen Zoom
                         [:return_or_enter "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/ToggleMaximize.sh" [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                ;;TOGGLE Fullscreen Zoom No Padding
+                        [:!Oreturn_or_enter [:yabai "window --toggle windowed-fullscreen"] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
                 ;;RESET Balance
                         [:b [[:yabai "space --balance"]] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
                 ;;SWITCH to First Space
@@ -964,8 +966,8 @@
                         [:j [:alfred "kikiWorkflow" "com.kiki.ai" "wfCopyContext"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;TRIGGER Markdown Chat
                         [:return_or_enter [:alfred "kikiMD" "com.kiki.ai"] [:bear ["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
-                ;COPY Last Response
-                        [:c [:alfred "kikiWorkflow" "com.kiki.ai" "wfCopyLastRep"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+                ;SuperWhisper Last JSON
+                        [:c [:alfred "sw" "com.superwhisper.aft" "viewLastJSON"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;PRESETS MENU - simple version with kikiWorkflow trigger "kikiWorkflow" "com.kiki.ai" "actionPresets"
                         [:m [:alfred "kikiActions" "com.kiki.ai" "menu,custom,1"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;QUICK CHAT
@@ -973,20 +975,16 @@
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>COMMAND LAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                ;WHISPER Escritor e Ideas
-                        ;[:!Ce [:alfred "kikiActions" "com.kiki.ai" "direct,whisper,4,escritor"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+                ;WHISPER Escritor e Ideas CB
                         [:!Ce [:alfred "sw" "com.superwhisper.aft" "openModeRecord,superwhisper://mode?key=custom-NCDC"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;WHISPER Helper CB
-                        ;[:!Cw [:alfred "kikiWorkflow" "com.kiki.ai" "actionWhisper"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                         [:!Cr [:alfred "sw" "com.superwhisper.aft" "openModeRecord,superwhisper://mode?key=custom-GAXH"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;TRANSLATE to English - Response in Dialog
                         [:!Ct [:alfred "kikiActions" "com.kiki.ai" "direct,copy,1,translateEn"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
-                ;WHISPER Journal - Response in Dialog
-                        ;[:!Co [:alfred "kikiActions" "com.kiki.ai" "direct,whisper,1,diario"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
-                ;WHISPER CODER
+                ;WHISPER CODER CX
                         [:!Co [:alfred "sw" "com.superwhisper.aft" "openModeRecord,superwhisper://mode?key=custom"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
-                ;SIMPLIFY - Paste in Frontmost
-                        [:!Cs [:alfred "kikiActions" "com.kiki.ai" "direct,copy,4,simpliRW"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+                ;WHISPER SIMPLIFY RW CB
+                        [:!Cs [:alfred "sw" "com.superwhisper.aft" "openModeRecord,superwhisper://mode?key=custom-GNIX"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;REVEAL Kiki Workflow
                         [:!Cf [:alfred "kikiWorkflow" "com.kiki.ai" "wfEdit"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;REVEAL Kiki SCRIPTS Folder
@@ -995,21 +993,14 @@
                         [:!Ch [:alfred "kikiWorkflow" "com.kiki.ai" "resumeLastAlt"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;RESUME Last Chat CHOOSE MODEL
                         [:!Oh [:alfred "kikiWorkflow" "com.kiki.ai" "resumeLastList"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
-
-
-
-
-                        
-                ;WHISPER Transcribe and Paste
-                        ;[:!Cj [:km "AI Dictate"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
-                ;WHISPER IMPROVER
-                        [:!Cj [:alfred "sw" "com.superwhisper.aft" "openModeRecord,superwhisper://mode?key=custom-IQVV"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
-                ;COPY Last TRANSCRIPTION
-                        ;[:!Cc [:alfred "kikiWorkflow" "com.kiki.ai" "wfCopyLastTran"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
-                ;WHISPER Transcription Prompt for Selected Text = Alfred Bar
-                        [:!Cright_shift [:alfred "kikiActions" "com.kiki.ai" "direct,copy,1,customWhisperPrompt"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
-                ;WHISPER QUICK DIALOG REQUEST - Response in Dialog
-                        [:!Cspacebar [:alfred "kikiActions" "com.kiki.ai" "direct,whisper,1,useAsPrompt"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+                ;WHISPER Dictation
+                        [:!Cj [:alfred "sw" "com.superwhisper.aft" "openModeRecord,superwhisper://mode?key=custom-SWJG"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]                        
+                ;SuperWhisper Last JSON
+                        [:!Cc [:alfred "sw" "com.superwhisper.aft" "viewLastResult"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+                ;WHISPER Improver CB
+                        [:!Cright_shift [:alfred "sw" "com.superwhisper.aft" "openModeRecord,superwhisper://mode?key=custom-IQVV"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+                ;WHISPER Helper CX
+                        [:!Cspacebar [:alfred "sw" "com.superwhisper.aft" "openModeRecord,superwhisper://mode?key=custom-KYFL"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]                        
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>SELECTED TEXT or WHISPER ACTIONS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

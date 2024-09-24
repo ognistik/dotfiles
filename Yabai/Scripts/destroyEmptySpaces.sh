@@ -13,10 +13,13 @@ hidden_minimized=$(yabai -m query --windows | jq 'map(select(."is-hidden" or ."i
 # Get a list of Kando window IDs
 kando_windows=$(yabai -m query --windows | jq -r 'map(select(.app == "Kando")) | map(."id")')
 
+# Get a list of BetterMouse window IDs
+bettermouse_windows=$(yabai -m query --windows | jq -r 'map(select(.app == "BetterMouse")) | map(."id")')
+
 # Find and destroy empty, unfocused spaces
 yabai -m query --spaces | \
 jq -re "map(select((.\"has-focus\" | not) and (\
-  .\"windows\" | map(select(. as \$window | $hidden_minimized + $kando_windows  | index(\$window) | not))\
+  .\"windows\" | map(select(. as \$window | $hidden_minimized + $kando_windows + $bettermouse_windows | index(\$window) | not))\
   ) == []).index) | reverse | .[]" | \
 xargs -I % sh -c 'yabai -m space % --destroy' 
 
