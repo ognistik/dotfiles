@@ -96,11 +96,9 @@
                [{:sim [:s :d] :simo {:interrupt true :dorder :insensitive :uorder :insensitive
                         :afterup {:set ["sd-mode" 0]}} :modi {:optional :any}} {:set ["sd-mode" 1]}
                         [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!a-mode :!w-mode :!f-mode :!e-mode]]
-        ;;F MODE: Cursor Movement, Dragging and Clicking
-                [:f nil [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!e-mode]
-                        {:alone {:key :f :halt true} :delayed {:canceled {:key :f}}
-                        :held {:set ["f-mode" 1] :repeat false}
-                        :afterup {:set ["f-mode" 0]}}] 
+        ;;SW SIMLAYER
+                [{:sim [:f :g] :simo {:interrupt true :dorder :insensitive :uorder :insensitive :afterup {:set ["sw-mode" 0]}}}
+                [[:alfred "copySelect" "com.superwhisper.aft"] {:set ["sw-mode" 1]} :!CTO0] [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!e-mode :!f-mode]]
         ;;ITHILWEN SIMLAYER
                 [{:sim [:d :f] :simo {:interrupt true :dorder :insensitive :uorder :insensitive}}
                 :!Tf16 [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!e-mode]]
@@ -113,6 +111,11 @@
         ;;SELDARIEN
                 [{:sim [:x :v] :simo {:interrupt true :dorder :insensitive :uorder :insensitive}}
                 :!Of16 [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!e-mode]]
+        ;;F MODE: Cursor Movement, Dragging and Clicking
+                [:f nil [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!e-mode]
+                        {:alone {:key :f :halt true} :delayed {:canceled {:key :f}}
+                        :held {:set ["f-mode" 1] :repeat false}
+                        :afterup {:set ["f-mode" 0]}}]
               ]
        },
 
@@ -123,10 +126,6 @@
                         [:##non_us_backslash :grave_accent_and_tilde]
                         [:##right_control :fn :!caps-mode]
                         [:!Cn [:km "New Bear Note - Same Window"] [:bear :!sd-mode ["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
-                        [:!Cf [:alfred "sw" "com.superwhisper.aft" "record"] [["swpress" 1]["dpress" 0]["spress" 0]["epress" 0]["cpress" 0] :!a-mode :!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!f-mode :!e-mode]]
-                        [:!Cf [["swpress" 1]] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0] :!a-mode :!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!f-mode :!e-mode]
-                                {:delayed {:invoked [["swpress" 0] {:key :f :modi :left_command}]
-                                :canceled ["swpress" 0]} :params {:delay 180}}]
                 ]
         }
 
@@ -157,7 +156,7 @@
         {:des "F buttons with FN"
                 :rules [
                 ;;Numbers + FN = F Keys
-                        [:!Fequal_sign :f12]
+                        [:!Fequal_sign :!Ff12]
                         [:!Fhyphen :f11]
                         [:!F0 :f10]
                         [:!F9 :f9]
@@ -677,7 +676,7 @@
                 ;SWITCH AUDIO OUTPUT to Laptop
                         [:!C0 [:alfred "laptop" "com.beet.alfred_audio_switcher"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;FAST FORWARD
-                        [:9 :fastforward [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                        [:9 :fast_forward [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;SWITCH AUDIO OUTPUT to UsbHeadphohes
                         [:!C9 [:alfred "usbHeadphones" "com.beet.alfred_audio_switcher"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;PLAY OR PAUSE
@@ -712,8 +711,8 @@
                 ;PasteFlow Reset Next Item
                         [:!Ow [:alfred "cmd" "com.pasteflow.aft" "resetNext"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;ANYBOX QUICK SAVE
-                        [:e [:open-g "anybox://quick-save"] [:!arc ["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
-                        [:e [:!Of] [:arc ["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                        [:w [:open-g "anybox://quick-save"] [:!arc ["dpress" 0]["spress" 0]["epress" 1]["cpress" 0]]]
+                        [:w [:!Of] [:arc ["dpress" 0]["spress" 0]["epress" 1]["cpress" 0]]]
                 ;ANYBOX INSTANT SAVE (save selected file or text)
                         [:!Ce :!CTSx [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;ANYBOX SAVE CLIPBOARD SHORTCUT - LINE SEPARATED LIST
@@ -951,13 +950,15 @@
         {:des "A Mode"
                 :rules [:a-mode
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>SUBLAYERS CREATION>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                        [:r [["rpress" 1]] [["dpress" 0]["bpress" 0]] {:afterup {:set ["rpress" 0]}}]
-                        [:b [["bpress" 1]] [["rpress" 0]["dpress" 0]] {:afterup {:set ["bpress" 0]}}]
-                        [:d [["dpress" 1]] [["rpress" 0]["bpress" 0]] {:afterup {:set ["dpress" 0]}}]
-                        [:w [["wpress" 1]] nil {:afterup {:set ["wpress" 0]}}]
+                        [:r [["rpress" 1]] [["dpress" 0]["bpress" 0]["wpress" 0]] {:afterup {:set ["rpress" 0]}}]
+                        [:b [["bpress" 1]] [["rpress" 0]["dpress" 0]["wpress" 0]] {:afterup {:set ["bpress" 0]}}]
+                        [:d [["dpress" 1]] [["rpress" 0]["bpress" 0]["wpress" 0]] {:afterup {:set ["dpress" 0]}}]
+                        [:w [["wpress" 1]] [["rpress" 0]["bpress" 0]["dpress" 0]] {:afterup {:set ["wpress" 0]}}]
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>BASE LAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;Swith Paste or Window SW
+                        [:spacebar [:km "SW Window"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 1]]]
                 ;REVEAL Kiki Data Path
                         [:f [:alfred "kikiWorkflow" "com.kiki.ai" "wfData"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;RESUME Last Chat
@@ -965,18 +966,18 @@
                 ;COPY Context File to Specified Path
                         [:j [:alfred "kikiWorkflow" "com.kiki.ai" "wfCopyContext"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;TRIGGER Markdown Chat
-                        [:return_or_enter [:alfred "kikiMD" "com.kiki.ai"] [:bear ["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+                        ;[:return_or_enter [:alfred "kikiMD" "com.kiki.ai"] [:bear ["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;SuperWhisper Last JSON
                         [:c [:alfred "sw" "com.superwhisper.aft" "viewLastJSON"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;PRESETS MENU - simple version with kikiWorkflow trigger "kikiWorkflow" "com.kiki.ai" "actionPresets"
-                        [:m [:alfred "kikiActions" "com.kiki.ai" "menu,custom,1"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+                        ;[:m [:alfred "kikiActions" "com.kiki.ai" "menu,custom,1"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;QUICK CHAT
                         [:spacebar [:alfred "kikiWorkflow" "com.kiki.ai" "actionChat"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>COMMAND LAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
                 ;WHISPER Escritor e Ideas CB
-                        [:!Ce [:alfred "sw" "com.superwhisper.aft" "openModeRecord,superwhisper://mode?key=custom-NCDC"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+                        [:!Ce [[:alfred "sw" "com.superwhisper.aft" "openModeRecord,superwhisper://mode?key=custom-NCDC"]] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;WHISPER Helper CB
                         [:!Cr [:alfred "sw" "com.superwhisper.aft" "openModeRecord,superwhisper://mode?key=custom-GAXH"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;TRANSLATE to English - Response in Dialog
@@ -1119,7 +1120,14 @@
                         [:##period :!Od [["cpress" 0]["opress" 1]]]                     ;Delete Forward a Line
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         ]},
-        
+
+;;-------------------------------------------SUPERWHISPER MODE---------------------------------------------------------------------------------------------------------
+        {:des "SuperWhisper Mode"
+                :rules [:sw-mode
+                        [:d [:km "SW Action_Set" "pasteResult"]]
+                        [:spacebar [:km "SW Action_Set" "pasteChat"]]
+        ]},
+
 ;;-------------------------------------------F POINTER/MOUSE MODE---------------------------------------------------------------------------------------------------------
         {:des "F Mode - Cursor"
                 :rules [:f-mode
@@ -1740,6 +1748,28 @@
                         [:w [:km "rcmd: MacWhisper" "2"] [:m-rcmd :caps-rcmd]]
                         ;Bring to Space, Activate & Hide Others
                         [:!Rw [:km "rcmd: MacWhisper" "3"] [:m-rcmd :caps-rcmd]]
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD O>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;OPENIN
+                        ;Activate
+                        [:i [:km "rcmd: OpenIn"] [:o-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:i [:km "rcmd: OpenIn" "m"] [:o-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Ci [:km "rcmd: OpenIn" "dm"] [:o-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:i [:km "rcmd: OpenIn" "x"] [:o-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:i [:km "rcmd: OpenIn" "0"] [:o-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:i [:km "rcmd: OpenIn" "xx"] [:o-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:i [:km "rcmd: OpenIn" "1"] [:o-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:i [:km "rcmd: OpenIn" "2"] [:o-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Ri [:km "rcmd: OpenIn" "3"] [:o-rcmd :caps-rcmd]]
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD P>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
