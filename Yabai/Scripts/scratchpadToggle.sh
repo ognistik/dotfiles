@@ -76,7 +76,7 @@ toggleSpecial() {
     else
       # The stupid auto act resizing needs this extra delay when clicking links directly. Not necessary with litle arc shortcut.
       if [ "$ARCDELAY" != "" ]; then
-      sleep 0.2
+      sleep 0.3
       fi
       /opt/homebrew/bin/yabai -m window $theWindow --scratchpad arcScratchpad --grid 11:11:1:1:9:9
     fi
