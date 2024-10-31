@@ -990,14 +990,24 @@
                         [:c [:alfred "sw" "com.superwhisper.aft" "viewLastJSON"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;SW Last Result in Alfred
                         [:!Cc [:alfred "sw" "com.superwhisper.aft" "viewLastResult"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
+                ;SW CLEAN CX
+                        [:v [:alfred "sw" "com.superwhisper.aft" "openMode,superwhisper://mode?key=custom-UTIY"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;QUICK CHAT
                         [:spacebar [:alfred "kikiWorkflow" "com.kiki.ai" "actionChat"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                         ;!Cspacebar
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>W & D LAYERS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;History Filter by Result
+                        [:e [:alfred "sw" "com.superwhisper.aft" "selectHistoryResult"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 1]]]
+                ;History Filter by User
+                        [:r [:alfred "sw" "com.superwhisper.aft" "selectHistoryVoice"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 1]]]
+                ;SW Recording Window Toggle
+                        [:t [:km "SW Window Toggle"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 1]]]
                 ;Switch Paste or Window SW
-                        [:e [:km "SW Window Toggle"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 1]]]
+                        [:left_command [:alfred "sw" "com.superwhisper.aft" "editLastResult"] [["rpress" 0]["bpress" 0]["dpress" 1]["wpress" 0]]]
+                ;Switch Paste or Window SW
+                        [:t [:km "SW Window Toggle"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 1]]]
                 ;SW Action Mode pasteChat
                         [:r [:km "SW Action_Set" "pasteChat"] [["rpress" 0]["bpress" 0]["dpress" 1]["wpress" 0]]]
                 ;SW Action Mode pasteResult
