@@ -12,6 +12,14 @@ toggle() {
 toggleSpecial() { 
   # First let's deal with the Bear scratchpad case.
   if [[ $NAME == "bearScratchpad" ]]; then
+    # Check if window has no title and close it if so
+    if [ "$YABAI_WINDOW_ID" != "" ]; then
+        windowTitle=$(/opt/homebrew/bin/yabai -m query --windows --window $YABAI_WINDOW_ID | /opt/homebrew/bin/jq -r '.title')
+        if [ "$windowTitle" = "" ]; then
+            /opt/homebrew/bin/yabai -m window $YABAI_WINDOW_ID --close
+            exit 0  # This will stop the entire script
+        fi
+    fi
     # If there is a Yabai Window ID it means this action was triggered by the signal in Yabairc for any new non-main windows.
     theWindow=$YABAI_WINDOW_ID
     # If we do not have a Yabai Window ID it means this action was triggered by manually floating or unfloating an existing window. We need its ID.

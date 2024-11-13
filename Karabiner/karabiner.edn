@@ -24,7 +24,7 @@
                 }
         :simlayer-threshold 30          ;; simultaneous_threshold_milliseconds (def: 50)
 
-;;--------------------------------------TEMPLATES, APPS---------------------------------------------------------------------------------------------------
+;;------------------------------------------TEMPLATES, APPS---------------------------------------------------------------------------------------------------
         :templates {
                 :alfred "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"%s\" in workflow \"%s\" with argument \"%s\"'"
                 :btt "osascript -e 'tell application \"BetterTouchTool\"' -e 'trigger_named \"%s\"' -e 'end tell'"
@@ -42,6 +42,7 @@
                 :terminal ["com.apple.Terminal"]
                 :vscode ["com.microsoft.VSCode"]
                 :captureone ["com.captureone.captureone16" :condi [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!e-mode]]
+                :bananotate ["com.amantinband.bananotate"]
                 }
 
         :layers {
@@ -61,34 +62,40 @@
                 :rules [
         ;;DEL MODE - I need it to work with modifiers and could not figure out how to do it as template. Works on F19. NOT on SD Mode.
                 [:semicolon ["del-mode" 1]
-                        [:!ropt :!rcmd :!w-mode :!spacebarpress :!caps-mode :!t-mode :!a-mode :!sd-mode :!f-mode :!e-mode]
+                        [:!ropt :!rcmd :!w-mode :!spacebarpress :!caps-mode :!t-mode :!a-mode :!sd-mode :!f-mode :!e-mode :!bana-mode]
                         {:afterup ["del-mode" 0] :alone {:key :semicolon :repeat false}}]
                 [:!Psemicolon ["del-mode" 1]
-                        [:!ropt :!rcmd :!w-mode :!spacebarpress :!caps-mode :!t-mode :!a-mode :!sd-mode :!f-mode :!e-mode]
+                        [:!ropt :!rcmd :!w-mode :!spacebarpress :!caps-mode :!t-mode :!a-mode :!sd-mode :!f-mode :!e-mode :!bana-mode]
                         {:afterup ["del-mode" 0] :alone {:key :semicolon :repeat false}}]
         ;;W MODE: Window Management
-                [:w nil [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!a-mode :!sd-mode :!f-mode :!e-mode]
+                [:w nil [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!a-mode :!sd-mode :!f-mode :!e-mode :!bananotate]
                         {:alone {:key :w :halt true} :delayed {:canceled {:key :w}}
                         :held {:set ["w-mode" 1] :repeat false}
                         :afterup {:set ["w-mode" 0]}}]   
         ;;E MODE: Numpad & Symbols
-                [:e nil [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!f-mode]
+                [:e nil [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!f-mode :!bananotate]
                         {:alone {:key :e :halt true} :delayed {:canceled {:key :e}}
                         :held {:set ["e-mode" 1] :repeat false}
                         :afterup {:set ["e-mode" 0]}}] 
         ;;T MODE: Markdown and Text Transformations
-                [:t nil [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!a-mode :!sd-mode :!w-mode :!f-mode :!e-mode]
+                [:t nil [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!a-mode :!sd-mode :!w-mode :!f-mode :!e-mode :!bananotate]
                         {:alone {:key :t :halt true} :delayed {:canceled {:key :t}}
                         :held {:set ["t-mode" 1] :repeat false}
                         :afterup {:set ["t-mode" 0]}}]
         ;;CAPS & F19 MODES: Quick tap CAPS = ESCAPE and CAPS MODE. Held = f19 for Superkey Seek (closes CAPS MODE).
                 [:##caps_lock ["caps-mode" 1]
-                        [:!ropt :!rcmd :!del-mode :!f19-mode :!t-mode :!a-mode :!sd-mode :!w-mode :!f-mode :!e-mode]
+                        [:!ropt :!rcmd :!del-mode :!f19-mode :!t-mode :!a-mode :!sd-mode :!w-mode :!f-mode :!e-mode :!bananotate]
                         {:afterup [["caps-mode" 0] ["f19-mode" 0]] :alone {:key :escape}
                         :held [["caps-mode" 0] ["f19-mode" 1] {:key :f19}]
                         :params {:held 160 :delay 160 :alone 159}}]
+        ;;BANA & HOLD BANA MODES: Quick tap CAPS = ESCAPE and BANA MODE.
+                [:##caps_lock ["bana-mode" 1]
+                        [:bananotate :!caps-mode :!ropt :!rcmd :!del-mode :!f19-mode :!t-mode :!a-mode :!sd-mode :!w-mode :!f-mode :!e-mode]
+                        {:afterup [["bana-mode" 0] ["holdbana-mode" 0]] :alone {:key :escape}
+                        :held [["bana-mode" 0] ["holdbana-mode" 1]]
+                        :params {:held 160 :delay 160 :alone 159}}]
         ;;A MODE: KIKI AI
-                [:a nil [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!f-mode :!e-mode]
+                [:a nil [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!f-mode :!e-mode :!bananotate]
                         {:alone {:key :a :halt true} :delayed {:canceled {:key :a}}
                         :held {:set ["a-mode" 1] :repeat false}
                         :afterup {:set ["a-mode" 0]}}]                      
@@ -96,9 +103,9 @@
                [{:sim [:s :d] :simo {:interrupt true :dorder :insensitive :uorder :insensitive
                         :afterup {:set ["sd-mode" 0]}} :modi {:optional :any}} {:set ["sd-mode" 1]}
                         [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!a-mode :!w-mode :!f-mode :!e-mode]]
-        ;;SW SIMLAYER
+        ;;SW SuperWhisper SIMLAYER
                 [{:sim [:f :g] :simo {:interrupt true :dorder :insensitive :uorder :insensitive :afterup {:set ["sw-mode" 0]}}}
-                [[:alfred "copySelect" "com.superwhisper.aft"] {:set ["sw-mode" 1]} :!CTO0] [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!e-mode :!f-mode]]
+                [[:alfred "copySelect" "com.superwhisper.aft"] {:set ["sw-mode" 1]} :!CTO0] [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!e-mode :!f-mode :!bananotate]]
         ;;ITHILWEN SIMLAYER
                 [{:sim [:d :f] :simo {:interrupt true :dorder :insensitive :uorder :insensitive}}
                 :!Tf16 [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!e-mode]]
@@ -112,7 +119,7 @@
                 [{:sim [:x :v] :simo {:interrupt true :dorder :insensitive :uorder :insensitive}}
                 :!Of16 [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!e-mode]]
         ;;F MODE: Cursor Movement, Dragging and Clicking
-                [:f nil [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!e-mode]
+                [:f nil [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!e-mode :!bananotate]
                         {:alone {:key :f :halt true} :delayed {:canceled {:key :f}}
                         :held {:set ["f-mode" 1] :repeat false}
                         :afterup {:set ["f-mode" 0]}}]
@@ -124,7 +131,7 @@
                 :rules [                        
                         [:delete_or_backspace :vk_none]
                         [:##non_us_backslash :grave_accent_and_tilde]
-                        [:##right_control :fn :!caps-mode]
+                        [:##right_control :fn]
                         [:!Cn [:km "New Bear Note - Same Window"] [:bear :!sd-mode ["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ]
         }
@@ -157,17 +164,17 @@
                 :rules [
                 ;;Numbers + FN = F Keys
                         [:!Fequal_sign :!Ff12]
-                        [:!Fhyphen :f11]
-                        [:!F0 :f10]
-                        [:!F9 :f9]
-                        [:!F8 :f8]
-                        [:!F7 :f7]
-                        [:!F6 :f6]
-                        [:!F5 :f5]
-                        [:!F4 :f4]
-                        [:!F3 :f3]
-                        [:!F2 :f2]
-                        [:!F1 :f1]
+                        ;[:!Fhyphen :f11]
+                        ;[:!F0 :f10]
+                        ;[:!F9 :f9]
+                        ;[:!F8 :f8]
+                        ;[:!F7 :f7]
+                        ;[:!F6 :f6]
+                        ;[:!F5 :f5]
+                        ;[:!F4 :f4]
+                        ;[:!F3 :f3]
+                        ;[:!F2 :f2]
+                        ;[:!F1 :f1]
                 ]}
 
 ;;--------------------------------------------DELETE MODS------------------------------------------------------------------------------------------------------
@@ -579,7 +586,7 @@
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         ]},
 
-;;--------------------------------------E MODE - Numpad & Symbols------------------------------------------------------------------------------------------------------
+;;---------------------------------------E MODE - Numpad & Symbols------------------------------------------------------------------------------------------------------
         {:des "E Mode - Numpad & Symbols"
                 :rules [:e-mode
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>NUMPAD>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -708,10 +715,6 @@
                         [:!Oq [:alfred "cmd" "com.taptix.aft" "set_keyboard"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;DELETE BEAR NOTE
                         [:w [:km "9A812F68-7857-4ACE-A7BD-8AF3AEEE57CE"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
-                ;;PasteFlow Clear Stack
-                        [:!Cw [:alfred "cmd" "com.pasteflow.aft" "clearList"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
-                ;PasteFlow Reset Next Item
-                        [:!Ow [:alfred "cmd" "com.pasteflow.aft" "resetNext"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;ANYBOX QUICK SAVE
                         [:w [:open-g "anybox://quick-save"] [:!arc ["dpress" 0]["spress" 0]["epress" 1]["cpress" 0]]]
                         [:w [:!Of] [:arc ["dpress" 0]["spress" 0]["epress" 1]["cpress" 0]]]
@@ -754,38 +757,6 @@
                         [:semicolon [:!On :n] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;SPANISH TILDE
                         [:quote :!Oe [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
-                ;;PasteFlow Copy Next
-                        [:!Cz [:alfred "cmd" "com.pasteflow.aft" "copyNext"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
-                ;;PasteFlow Copy Previous
-                        [:!Oz [:alfred "cmd" "com.pasteflow.aft" "copyNext,0,1"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
-                ;PasteFlow paste entire stack INVERTED
-                        [:!Sz [:alfred "cmd" "com.pasteflow.aft" "pasteStack,0,1,0"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
-                ;;PasteFlow Selective Processing Menu
-                        [:z [:alfred "cmd" "com.pasteflow.aft" "inputPasteItem"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
-                ;Insert Selection in PasteFlow (In Next Item Index)
-                        [:!Cx [:alfred "cmd" "com.pasteflow.aft" "c!!addCurrentClip,0,0,1"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
-                ;Split & Insert in PasteFlow (In Next Item Index)
-                        [:!Ox [:alfred "cmd" "com.pasteflow.aft" "c!!addSplitClip,0,0,1"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
-                ;PasteFlow paste entire stack
-                        [:!Sx [:alfred "cmd" "com.pasteflow.aft" "pasteStack"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
-                ;PasteFlow Main Menu
-                        [:d [:alfred "cmd" "com.pasteflow.aft" "mainMenu"] [["dpress" 0]["spress" 1]["epress" 0]["cpress" 0]]]
-                ;PasteFlow Textview
-                        [:x [:alfred "cmd" "com.pasteflow.aft" "viewStack"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
-                ;PasteFlow Insert in PasteFlow
-                        [:!Cc [:alfred "cmd" "com.pasteflow.aft" "c!!addCurrentClip"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
-                ;PasteFlow Split & Add
-                        [:!Oc [:alfred "cmd" "com.pasteflow.aft" "c!!addSplitClip"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
-                ;Pasteflow Paste Next
-                        [:!Cv [:alfred "cmd" "com.pasteflow.aft" "pasteNext"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
-                ;PasteFlow Insert Current Clipboard (S LAYER)
-                        [:c [:alfred "cmd" "com.pasteflow.aft" "!addCurrentClip"] [["dpress" 0]["spress" 1]["epress" 0]["cpress" 0]]]
-                ;PasteFlow Insert Current Clipboard NEXT (S LAYER)
-                        [:x [:alfred "cmd" "com.pasteflow.aft" "!addCurrentClip,0,0,1"] [["dpress" 0]["spress" 1]["epress" 0]["cpress" 0]]]
-                ;Pasteflow Paste Previous
-                        [:!Ov [:alfred "cmd" "com.pasteflow.aft" "pasteNext,0,1,0"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
-                ;Pasteflow INSERT FROM CB NEW!
-                        [:v [:alfred "cmd" "com.pasteflow.aft" "clipFilter"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;CLOSE NOTIFICATIONS
                         [:n [:btt "CloseNotifications"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;MENU BAR WORKFLOW
@@ -808,9 +779,8 @@
                         [:!Cright_shift [[:yabai "signal --add label=arcfloater app=\"^Arc$\" event=window_title_changed\\
                                 action=\"~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/arcFloater.sh tile\""] :!TOCn]
                                 [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
-                ;;MENUBAR SEARCH BARTENDER (this is fn, actually)
-                        [:right_control [:km "94B0B083-E25D-4B54-AFDA-46A14F0E7EDB"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
-                        [:fn [:km "94B0B083-E25D-4B54-AFDA-46A14F0E7EDB"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;;MENUBAR SEARCH BARTENDER
+                        [:tab [:km "94B0B083-E25D-4B54-AFDA-46A14F0E7EDB"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;NEW FLOATING BEAR NOTE
                         [:spacebar "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggleOrNewBear bearScratchpad" [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;NEW TILED BEAR NOTE
@@ -822,7 +792,46 @@
                         /opt/homebrew/bin/yabai -m signal --add label=scratchpad_newBear event=window_created app='^Bear$' title!='^Bear$'\\
                         action='~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggleSpecial bearScratchpad'"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]             
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-       
+
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>PASTEFLOW BASE CAPS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;Add Current Clipboard NEXT (S LAYER)
+                        [:c [:alfred "cmd" "com.pasteflow.aft" "!addCurrentClip,0,0,1"] [["dpress" 0]["spress" 1]["epress" 0]["cpress" 0]]]
+                ;Add Selection to PasteFlow
+                        [:!Cc [:alfred "cmd" "com.pasteflow.aft" "c!!addCurrentClip"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;Split & Add
+                        [:!Oc [:alfred "cmd" "com.pasteflow.aft" "c!!addSplitClip"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;Main Menu (S LAYER)
+                        [:d [:alfred "cmd" "com.pasteflow.aft" "mainMenu"] [["dpress" 0]["spress" 1]["epress" 0]["cpress" 0]]]
+                ;Paste entire stack (S LAYER)
+                        [:e [:alfred "cmd" "com.pasteflow.aft" "pasteStack"] [["dpress" 0]["spress" 1]["epress" 0]["cpress" 0]]]
+                ;Paste entire stack INVERTED (S LAYER)
+                        [:r [:alfred "cmd" "com.pasteflow.aft" "pasteStack,0,1,0"] [["dpress" 0]["spress" 1]["epress" 0]["cpress" 0]]]
+                ;Add Current Clipboard SPLIT
+                        [:v [:alfred "cmd" "com.pasteflow.aft" "!addSplitClip"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;Paste Next
+                        [:!Cv [:alfred "cmd" "com.pasteflow.aft" "pasteNext"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;Paste Previous
+                        [:!Ov [:alfred "cmd" "com.pasteflow.aft" "pasteNext,0,1,0"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;Clear Stack
+                        [:!Cw [:alfred "cmd" "com.pasteflow.aft" "clearList"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;Reset Next Item
+                        [:!Ow [:alfred "cmd" "com.pasteflow.aft" "resetNext"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;Text view
+                        [:x [:alfred "cmd" "com.pasteflow.aft" "viewStack"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;Add Current Clipboard (S LAYER)
+                        [:x [:alfred "cmd" "com.pasteflow.aft" "!addCurrentClip"] [["dpress" 0]["spress" 1]["epress" 0]["cpress" 0]]]
+                ;Add Selection in PasteFlow (In Next Item Index)
+                        [:!Cx [:alfred "cmd" "com.pasteflow.aft" "c!!addCurrentClip,0,0,1"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;Split & Insert in PasteFlow (In Next Item Index)
+                        [:!Ox [:alfred "cmd" "com.pasteflow.aft" "c!!addSplitClip,0,0,1"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;Selective Processing Menu
+                        [:z [:alfred "cmd" "com.pasteflow.aft" "inputPasteItem"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;Edit List
+                        [:!Cz [:alfred "cmd" "com.pasteflow.aft" "textEditListX"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                ;Add in Text View
+                        [:!Oz [:alfred "cmd" "com.pasteflow.aft" "textEditManual"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>ARC EXTENSIONS SUBLAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
                         [:e [["epress" 1]] [["dpress" 0]["spress" 0]["cpress" 0]] {:afterup {:set ["epress" 0]}}]
                         [:spacebar :!CSx [["epress" 1] :arc]]           ;Close Overlay Extension
@@ -928,6 +937,44 @@
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
                 ]},
 
+;;-------------------------------------------BANANOTATE CAPS LOCK------------------------------------------------------------------------------------------------
+        {:des "Banananotate Mode"
+                        :rules [:bana-mode
+                        [:semicolon [:!On :n]]  ;SPANISH Ñ for Bananotate
+                        [:quote :!Oe]           ;SPANISH TILDE for Bananotate
+                        [:q :!Oq]               ;Black
+                        [:w :!Ow]               ;White
+                        [:e :!COe]              ;Yellow
+                        [:r :!Oh]               ;Center Horizontally
+                        [:!Cr :!Or]             ;Align Horizontally
+                        [:!Or :!Sh]              ;Flip Horizontally
+                        [:a :!Oa]               ;Gradient light
+                        [:s :!Os]               ;Gradient dark
+                        [:d :!Od]               ;Red
+                        [:f :!Of]               ;Orange
+                        [:g :!Og]               ;Green
+                        [:x :!Ox]               ;Purple
+                        [:c :!Oc]               ;Blue
+                        [:v :!CSv]              ;Center Vertically
+                        [:!Cv :!Ov]             ;Align Vertically
+                        [:!Ov :!CTb]            ;Flip Vertically
+        ]},
+        {:des "Hold Bananotate Mode"
+                        :rules [:holdbana-mode
+                        [:q :6]                 ;Size
+                        [:w :7]
+                        [:e :8]
+                        [:r :9]
+                        [:z :!C6]             ;Corner Radius
+                        [:x :!C7]
+                        [:c :!C8]
+                        [:v :!C9]
+                        [:a :!O6]             ;Transparency
+                        [:s :!O7]
+                        [:d :!O8]
+                        [:f :!O9]
+        ]},
+
 ;;-----------------------------------------F19 MODE - SUPERKEY------------------------------------------------------------------------------------------------------
         {:des "F19 Mode - (Seek from Superkey)"
                 :rules [:f19-mode
@@ -1004,14 +1051,12 @@
                         [:r [:alfred "sw" "com.superwhisper.aft" "selectHistoryVoice"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 1]]]
                 ;SW Recording Window Toggle
                         [:t [:km "SW Window Toggle"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 1]]]
-                ;Switch Paste or Window SW
-                        [:left_command [:alfred "sw" "com.superwhisper.aft" "editLastResult"] [["rpress" 0]["bpress" 0]["dpress" 1]["wpress" 0]]]
-                ;Switch Paste or Window SW
-                        [:t [:km "SW Window Toggle"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 1]]]
                 ;SW Action Mode pasteChat
                         [:r [:km "SW Action_Set" "pasteChat"] [["rpress" 0]["bpress" 0]["dpress" 1]["wpress" 0]]]
                 ;SW Action Mode pasteResult
                         [:f [:km "SW Action_Set" "pasteResult"] [["rpress" 0]["bpress" 0]["dpress" 1]["wpress" 0]]]
+                ;Switch Paste or Window SW
+                        [:left_command [:alfred "sw" "com.superwhisper.aft" "editLastResult"] [["rpress" 0]["bpress" 0]["dpress" 1]["wpress" 0]]]
                 ;Selected text as Input for Asking
                         [:spacebar [:alfred "kikiActions" "com.kiki.ai" "direct,copy,1,customPrompt"] [["dpress" 1]["wpress" 0]]]
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
