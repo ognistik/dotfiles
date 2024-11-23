@@ -12,7 +12,8 @@ toggle() {
 toggleSpecial() { 
   # First let's deal with the Bear scratchpad case.
   if [[ $NAME == "bearScratchpad" ]]; then
-    # Check if window has no title and close it if so
+
+    # Check if window has no title and close it if so. Seems to be a bug that only happens with Bear and this is a workaround...
     if [ "$YABAI_WINDOW_ID" != "" ]; then
         windowTitle=$(/opt/homebrew/bin/yabai -m query --windows --window $YABAI_WINDOW_ID | /opt/homebrew/bin/jq -r '.title')
         if [ "$windowTitle" = "" ]; then
@@ -20,30 +21,65 @@ toggleSpecial() {
             exit 0  # This will stop the entire script
         fi
     fi
+
     # If there is a Yabai Window ID it means this action was triggered by the signal in Yabairc for any new non-main windows.
     theWindow=$YABAI_WINDOW_ID
+
     # If we do not have a Yabai Window ID it means this action was triggered by manually floating or unfloating an existing window. We need its ID.
     if [ "$theWindow" = "" ]; then
       theWindow=$(/opt/homebrew/bin/yabai -m query --windows --window | /opt/homebrew/bin/jq -r '.id')
     fi
+
     # First we look for any existing Bear Scratchpads
     bearScratchpadId=$(/opt/homebrew/bin/yabai -m query --windows | /opt/homebrew/bin/jq -r '.[] | select(.scratchpad == "bearScratchpad") | .id')
+
     # There is already a Bear Scratchpad so...
     if [ "$bearScratchpadId" != "" ]; then
       # If we are focused on the Bear Scratchpad we want to toggle/remove it.
       if [ "$bearScratchpadId" = "$theWindow" ]; then
       /opt/homebrew/bin/yabai -m window $theWindow --scratchpad ""
-      else
+      
       # If we are not on the Bear Scratchpad, this means we want it on our current window. Which means we have to remove it from whichever window has it and give it to the one in front of the user.
+      else
       /opt/homebrew/bin/yabai -m window $bearScratchpadId --scratchpad ""
       /opt/homebrew/bin/yabai -m window $theWindow --scratchpad bearScratchpad --grid 11:11:1:1:9:9
       fi
+
     # There are no existing Bear Scratchpads... We simply assign the Bear Scratchpad to the window.
     else
       /opt/homebrew/bin/yabai -m window $theWindow --scratchpad bearScratchpad --grid 11:11:1:1:9:9
     fi
-  # This is for the case in which I plan to open a window that I want directly to have the Solo Scratchpad property.
+
+  elif [[ $NAME == "Safari" ]]; then
+    # If there is a Yabai Window ID it means this action was triggered by the signal in Yabairc... or clicking a link.
+    theWindow=$YABAI_WINDOW_ID
+
+    # If we do not have a Yabai Window ID it means this action was triggered by manually floating or unfloating an existing window. We need its ID.
+    if [ "$theWindow" = "" ]; then
+      theWindow=$(/opt/homebrew/bin/yabai -m query --windows --window | /opt/homebrew/bin/jq -r '.id')
+    fi
+
+    # First we look for any existing Safari Scratchpads
+    safariScratchpadId=$(/opt/homebrew/bin/yabai -m query --windows | /opt/homebrew/bin/jq -r '.[] | select(.scratchpad == "Safari") | .id')
+
+    # There is already a Safari Scratchpad so...
+    if [ "$safariScratchpadId" != "" ]; then
+      # If we are focused on the Safari Scratchpad we want to toggle/remove it.
+      if [ "$safariScratchpadId" = "$theWindow" ]; then
+      /opt/homebrew/bin/yabai -m window $theWindow --scratchpad ""
+      
+      # If we are not on the Safari Scratchpad, this means we want it on our current window. Which means we have to remove it from whichever window has it and give it to the one in front of the user.
+      else
+      /opt/homebrew/bin/yabai -m window $safariScratchpadId --scratchpad ""
+      /opt/homebrew/bin/yabai -m window $theWindow --scratchpad Safari --grid 11:11:1:1:9:9
+      fi
+
+    # There are no existing Safari Scratchpads... We simply assign the Safari Scratchpad to the window.
+    else
+      /opt/homebrew/bin/yabai -m window $theWindow --scratchpad Safari --grid 11:11:1:1:9:9
+    fi
   elif [[ $ACTION == "nextNew" ]]; then
+    # This is for the case in which I plan to open a window that I want directly to have the Solo Scratchpad property.
     # First it finds the existing scratchpad
     scratchpadId=$(/opt/homebrew/bin/yabai -m query --windows | /opt/homebrew/bin/jq -r '.[] | select(.scratchpad == "scratchpad") | .id')
     # If it got to this point, it means that there is already an existing scratchpad... so let's do the switch.
@@ -69,10 +105,10 @@ toggleSpecial() {
       # If we are not on the Arc Scratchpad, this means we want it on our current window. Which means we have to remove it from whichever window has it and give it to the one in front of the user.
           /opt/homebrew/bin/yabai -m window $arcScratchpadId --scratchpad ""
           # Query the window's floating status
-           isFloating=$(yabai -m query --windows --window $arcScratchpadId | jq '.["is-floating"]')
+           isFloating=$(/opt/homebrew/bin/yabai -m query --windows --window $arcScratchpadId | /opt/homebrew/bin/jq '.["is-floating"]')
           # If the window is floating, unfloat it (tile it)
            if [ "$isFloating" = "true" ]; then
-              yabai -m window $arcScratchpadId --toggle float
+              /opt/homebrew/bin/yabai -m window $arcScratchpadId --toggle float
           fi
       # The stupid auto act resizing needs this extra delay when clicking links directly. Not necessary with litle arc shortcut.
       if [ "$ARCDELAY" != "" ]; then

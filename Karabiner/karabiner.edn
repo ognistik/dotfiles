@@ -43,6 +43,7 @@
                 :vscode ["com.microsoft.VSCode"]
                 :captureone ["com.captureone.captureone16" :condi [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!e-mode]]
                 :bananotate ["com.amantinband.bananotate"]
+                :safari ["com.apple.Safari"]
                 }
 
         :layers {
@@ -133,8 +134,14 @@
                         [:##non_us_backslash :grave_accent_and_tilde]
                         [:##right_control :fn]
                         [:!Cn [:km "New Bear Note - Same Window"] [:bear :!sd-mode ["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                        ;[:!CSTe ["osascript -e 'tell application \"Safari\" to make new document at end'"]]
                 ]
         }
+
+        {:des "Safari"
+                :rules [ :safari
+                        [:!Cs :!CSg]
+                        ]}
 
         {:des "Capture One"
                 :rules [ :captureone
@@ -377,9 +384,10 @@
                 ;;SWITCH to Previous Space
                         [:right_shift [:yabai "space --focus recent"] [["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
                 ;;TOGGLE Float
-                        [:spacebar "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/ToggleFloatRememberSize.sh" [:!bear :!arc ["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                        [:spacebar "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/ToggleFloatRememberSize.sh" [:!bear :!arc :!safari ["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
                         [:spacebar "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggleSpecial bearScratchpad" [:bear ["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
                         [:spacebar "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggleSpecial arcScratchpad" [:arc ["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
+                        [:spacebar "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggleSpecial Safari" [:safari ["cpress" 0]["vpress" 0]["dpress" 0]["rpress" 0]["gpress" 0]["fpress" 0]]]
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>CMD LAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -707,6 +715,7 @@
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>BASE LAYER (CAPS LOCK)>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
                 ;;TOGGLE TAPTIX
                         [:q [:alfred "cmd" "com.taptix.aft" "toggle"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;;TAPTIX MAIN MENU
@@ -794,11 +803,11 @@
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>PASTEFLOW BASE CAPS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                ;Add Current Clipboard NEXT (S LAYER)
+                ;Add Current Clipboard NEXT to PasteFlow (S LAYER)
                         [:c [:alfred "cmd" "com.pasteflow.aft" "!addCurrentClip,0,0,1"] [["dpress" 0]["spress" 1]["epress" 0]["cpress" 0]]]
                 ;Add Selection to PasteFlow
                         [:!Cc [:alfred "cmd" "com.pasteflow.aft" "c!!addCurrentClip"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
-                ;Split & Add
+                ;Split & Add Selected Text to PasteFlow 
                         [:!Oc [:alfred "cmd" "com.pasteflow.aft" "c!!addSplitClip"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;Main Menu (S LAYER)
                         [:d [:alfred "cmd" "com.pasteflow.aft" "mainMenu"] [["dpress" 0]["spress" 1]["epress" 0]["cpress" 0]]]
@@ -806,7 +815,11 @@
                         [:e [:alfred "cmd" "com.pasteflow.aft" "pasteStack"] [["dpress" 0]["spress" 1]["epress" 0]["cpress" 0]]]
                 ;Paste entire stack INVERTED (S LAYER)
                         [:r [:alfred "cmd" "com.pasteflow.aft" "pasteStack,0,1,0"] [["dpress" 0]["spress" 1]["epress" 0]["cpress" 0]]]
-                ;Add Current Clipboard SPLIT
+                ;Copy entire stack (S LAYER)
+                        [:!Ce [:alfred "cmd" "com.pasteflow.aft" "copyStack"] [["dpress" 0]["spress" 1]["epress" 0]["cpress" 0]]]
+                ;Copy entire stack INVERTED (S LAYER)
+                        [:!Cr [:alfred "cmd" "com.pasteflow.aft" "copyStack,0,1,0"] [["dpress" 0]["spress" 1]["epress" 0]["cpress" 0]]]
+                ;Split & Add Current Clipboard to PasteFlow
                         [:v [:alfred "cmd" "com.pasteflow.aft" "!addSplitClip"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;Paste Next
                         [:!Cv [:alfred "cmd" "com.pasteflow.aft" "pasteNext"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
@@ -818,11 +831,11 @@
                         [:!Ow [:alfred "cmd" "com.pasteflow.aft" "resetNext"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;Text view
                         [:x [:alfred "cmd" "com.pasteflow.aft" "viewStack"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
-                ;Add Current Clipboard (S LAYER)
+                ;Add Current Clipboard to PasteFlow (S LAYER)
                         [:x [:alfred "cmd" "com.pasteflow.aft" "!addCurrentClip"] [["dpress" 0]["spress" 1]["epress" 0]["cpress" 0]]]
-                ;Add Selection in PasteFlow (In Next Item Index)
+                ;Add Selection to PasteFlow (In NEXT Item Index)
                         [:!Cx [:alfred "cmd" "com.pasteflow.aft" "c!!addCurrentClip,0,0,1"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
-                ;Split & Insert in PasteFlow (In Next Item Index)
+                ;Split & Insert in PasteFlow (In NEXT Item Index)
                         [:!Ox [:alfred "cmd" "com.pasteflow.aft" "c!!addSplitClip,0,0,1"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;Selective Processing Menu
                         [:z [:alfred "cmd" "com.pasteflow.aft" "inputPasteItem"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
@@ -858,7 +871,7 @@
                         [:y [:km "Google Selection as Unpinned"] ["spress" 1]]                                  ;Google selection as unpinned and see
                         [:u [:km "Google Selection as Float"] ["spress" 1]]                                     ;Google selection as float
                         [:i [:km "Google Selection as Tile"] ["spress" 1]]                                      ;Google selection as tile
-                        [:o [:km "Google Selection as Unpinned in BG"] ["spress" 1]]                                  ;Google selection as unpinned in BG
+                        [:o [:km "Google Selection as Unpinned in BG"] ["spress" 1]]                            ;Google selection as unpinned in BG
                         [:h [:km "Open Current Page as Unpined"] [["spress" 1] :arc]]                           ;Open current page as unpinned and see
                         [:j [:km "Open Current Page as Float"] [["spress" 1] :arc]]                             ;Open current page as float
                         [:k [:km "Open Current Page as Tile"] [["spress" 1] :arc]]                              ;Open current page as tile
@@ -891,7 +904,7 @@
                         [:l [:sc "" "Drop Close"] ["dpress" 1]]                                                 ;Close Dropover Shelf
                         [:semicolon [:km "160B99AC-4009-4ABF-A1FE-D0C06CC5535B"] ["dpress" 1]]                  ;Dock Shelf
                         [:quote [:km "BCA60CEB-E76A-45B1-9873-B41070136668"] ["dpress" 1]]                      ;Alfred Actions on Shelf
-                        [:c [:!Cc :!STv] ["dpress" 1]]                                                          ;Dropover from selected file, through Clipboard
+                        [:c [:!Cc :!OTv] ["dpress" 1]]                                                          ;Dropover from selected file, through Clipboard
                         [:!Cc [:sc "" "Drop Cleanshot"] ["dpress" 1]]                                           ;Edit Dropover Shelf contents in Cleanshot
                         [:n [:sc "" "Drop Delete"] ["dpress" 1]]                                                ;Delete the files in a Dropover shelf
                         [:m [:alfred "finderClop" "com.afadingthought.clop" "quick"] ["dpress" 1]]              ;Clop Simple Optimization on Finder File
@@ -912,6 +925,8 @@
                         [:i [:open-g "cleanshot://scrolling-capture"] ["cpress" 1]]     
                 ;FullScreen Capture
                         [:o [:open-g "cleanshot://capture-fullscreen"] ["cpress" 1]]
+                ;FullScreen Capture to Clipboard
+                        [:!Co [:open-g "cleanshot://capture-fullscreen?action=copy"] ["cpress" 1]]
                 ;All in One bar    
                         [:d [:open-g "cleanshot://all-in-one"] ["cpress" 1]]
                 ;Capture Area & Pin
@@ -1843,28 +1858,48 @@
                         [:h [:km "rcmd: Photos" "2"] [:p-rcmd :caps-rcmd]]
                         ;Bring to Space, Activate & Hide Others
                         [:!Rh [:km "rcmd: Photos" "3"] [:p-rcmd :caps-rcmd]]
-                ;"PHOTOSHOP"
+                ;PIXELMATOR PRO
                         ;Activate
-                        [:s [:km "rcmd: Photoshop"] [:p-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        [:p [:km "rcmd: Pixelmator Pro"] [:p-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
                         ;Minimize
-                        [:s [:km "rcmd: Photoshop" "m"] [:p-rcmd :lshift-rcmd]]
+                        [:p [:km "rcmd: Pixelmator Pro" "m"] [:p-rcmd :lshift-rcmd]]
                         ;Deminimize
-                        [:!Cs [:km "rcmd: Photoshop" "dm"] [:p-rcmd :lshift-rcmd]]
+                        [:!Cp [:km "rcmd: Pixelmator Pro" "dm"] [:p-rcmd :lshift-rcmd]]
                         ;Close Windows
-                        [:s [:km "rcmd: Photoshop" "x"] [:p-rcmd :lcmd-rcmd]]
+                        [:p [:km "rcmd: Pixelmator Pro" "x"] [:p-rcmd :lcmd-rcmd]]
                         ;Hide App
-                        [:s [:km "rcmd: Photoshop" "0"] [:p-rcmd :space-rcmd]]
+                        [:p [:km "rcmd: Pixelmator Pro" "0"] [:p-rcmd :space-rcmd]]
                         ;QUIT
-                        [:s [:km "rcmd: Photoshop" "xx"] [:p-rcmd :semi-rcmd]]
+                        [:p [:km "rcmd: Pixelmator Pro" "xx"] [:p-rcmd :semi-rcmd]]
                         ;Activate & Hide Others
-                        [:s [:km "rcmd: Photoshop" "1"] [:p-rcmd :rshift-rcmd]]
+                        [:p [:km "rcmd: Pixelmator Pro" "1"] [:p-rcmd :rshift-rcmd]]
                         ;Bring to Space & Activate
-                        [:s [:km "rcmd: Photoshop" "2"] [:p-rcmd :caps-rcmd]]
+                        [:p [:km "rcmd: Pixelmator Pro" "2"] [:p-rcmd :caps-rcmd]]
                         ;Bring to Space, Activate & Hide Others
-                        [:!Rs [:km "rcmd: Photoshop" "3"] [:p-rcmd :caps-rcmd]]
+                        [:!Rp [:km "rcmd: Pixelmator Pro" "3"] [:p-rcmd :caps-rcmd]]
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD S>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                ;SAFARI
+                        ;Activate
+                        [:a "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggle Safari" [:s-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;[:a [:km "rcmd: Safari"] [:s-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                        ;Minimize
+                        [:a [:km "rcmd: Safari" "m"] [:s-rcmd :lshift-rcmd]]
+                        ;Deminimize
+                        [:!Ca [:km "rcmd: Safari" "dm"] [:s-rcmd :lshift-rcmd]]
+                        ;Close Windows
+                        [:a [:km "rcmd: Safari" "x"] [:s-rcmd :lcmd-rcmd]]
+                        ;Hide App
+                        [:a [:km "rcmd: Safari" "0"] [:s-rcmd :space-rcmd]]
+                        ;QUIT
+                        [:a [:km "rcmd: Safari" "xx"] [:s-rcmd :semi-rcmd]]
+                        ;Activate & Hide Others
+                        [:a [:km "rcmd: Safari" "1"] [:s-rcmd :rshift-rcmd]]
+                        ;Bring to Space & Activate
+                        [:a [:km "rcmd: Safari" "2"] [:s-rcmd :caps-rcmd]]
+                        ;Bring to Space, Activate & Hide Others
+                        [:!Ra [:km "rcmd: Safari" "3"] [:s-rcmd :caps-rcmd]]
                 ;"SCREENSTUDIO"
                         ;Activate
                         [:s [:km "rcmd: ScreenStudio"] [:s-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
