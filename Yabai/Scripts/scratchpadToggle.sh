@@ -2,7 +2,7 @@
 
 # Toggle specific for apps that have a scratchpad by default (set in Yabairc)
 toggle() {
-  /opt/homebrew/bin/yabai -m window --toggle "$NAME" || osascript -e "tell application \"Keyboard Maestro Engine\" to do script \"rcmd: $NAME\""
+  /opt/homebrew/bin/yabai -m window --toggle "$NAME" 2>/dev/null || osascript -e "tell application \"Keyboard Maestro Engine\" to do script \"rcmd: $NAME\"" > /dev/null 2>&1
 }
 
 # Notification for debugging
@@ -132,7 +132,7 @@ toggle_others() {
     /opt/homebrew/bin/yabai -m query --windows | 
       /opt/homebrew/bin/jq -r "[.[] | select(.scratchpad != \"\" and .scratchpad != \"$NAME\" and .\"is-visible\"==true) 
           | \"--toggle \" + .scratchpad ] | join(\" \")"
-  )
+  ) 2>/dev/null
 }
 
 ACTION="$1"
@@ -161,3 +161,5 @@ else
   toggleSpecial
 fi
 toggle_others
+
+exit 0

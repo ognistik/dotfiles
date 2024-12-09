@@ -63,10 +63,10 @@
                 :rules [
         ;;DEL MODE - I need it to work with modifiers and could not figure out how to do it as template. Works on F19. NOT on SD Mode.
                 [:semicolon ["del-mode" 1]
-                        [:!ropt :!rcmd :!w-mode :!spacebarpress :!caps-mode :!t-mode :!a-mode :!sd-mode :!f-mode :!e-mode :!bana-mode]
+                        [:!ropt :!rcmd :!w-mode :!spacebarpress :!caps-mode :!t-mode :!a-mode :!sd-mode :!f-mode :!e-mode]
                         {:afterup ["del-mode" 0] :alone {:key :semicolon :repeat false}}]
                 [:!Psemicolon ["del-mode" 1]
-                        [:!ropt :!rcmd :!w-mode :!spacebarpress :!caps-mode :!t-mode :!a-mode :!sd-mode :!f-mode :!e-mode :!bana-mode]
+                        [:!ropt :!rcmd :!w-mode :!spacebarpress :!caps-mode :!t-mode :!a-mode :!sd-mode :!f-mode :!e-mode]
                         {:afterup ["del-mode" 0] :alone {:key :semicolon :repeat false}}]
         ;;W MODE: Window Management
                 [:w nil [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!a-mode :!sd-mode :!f-mode :!e-mode :!bananotate]
@@ -78,8 +78,12 @@
                         {:alone {:key :e :halt true} :delayed {:canceled {:key :e}}
                         :held {:set ["e-mode" 1] :repeat false}
                         :afterup {:set ["e-mode" 0]}}] 
+                [:e nil [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!f-mode :bananotate :!holdbana-mode]
+                        {:alone {:key :e :halt true} :delayed {:canceled {:key :e}}
+                        :held {:set ["e-mode" 1] :repeat false}
+                        :afterup {:set ["e-mode" 0]}}]
         ;;T MODE: Markdown and Text Transformations
-                [:t nil [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!a-mode :!sd-mode :!w-mode :!f-mode :!e-mode :!bananotate]
+                [:t nil [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!a-mode :!sd-mode :!w-mode :!f-mode :!e-mode]
                         {:alone {:key :t :halt true} :delayed {:canceled {:key :t}}
                         :held {:set ["t-mode" 1] :repeat false}
                         :afterup {:set ["t-mode" 0]}}]
@@ -90,10 +94,10 @@
                         :held [["caps-mode" 0] ["f19-mode" 1] {:key :f19}]
                         :params {:held 160 :delay 160 :alone 159}}]
         ;;BANA & HOLD BANA MODES: Quick tap CAPS = ESCAPE and BANA MODE.
-                [:##caps_lock ["bana-mode" 1]
+                [:##caps_lock ["caps-mode" 1]
                         [:bananotate :!caps-mode :!ropt :!rcmd :!del-mode :!f19-mode :!t-mode :!a-mode :!sd-mode :!w-mode :!f-mode :!e-mode]
-                        {:afterup [["bana-mode" 0] ["holdbana-mode" 0]] :alone {:key :escape}
-                        :held [["bana-mode" 0] ["holdbana-mode" 1]]
+                        {:afterup [["caps-mode" 0] ["holdbana-mode" 0]] :alone {:key :escape}
+                        :held [["caps-mode" 0] ["holdbana-mode" 1]]
                         :params {:held 160 :delay 160 :alone 159}}]
         ;;A MODE: KIKI AI
                 [:a nil [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!f-mode :!e-mode :!bananotate]
@@ -803,20 +807,31 @@
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>PASTEFLOW BASE CAPS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                ;Add Current Clipboard NEXT to PasteFlow (S LAYER)
-                        [:c [:alfred "cmd" "com.pasteflow.aft" "!addCurrentClip,0,0,1"] [["dpress" 0]["spress" 1]["epress" 0]["cpress" 0]]]
+                ;Clear Single Items toggle (S LAYER)
+                        [:c [:alfred "cmd" "com.pasteflow.aft" "toggleSingleClear,0,0,0"] [["dpress" 0]["spress" 1]["epress" 0]["cpress" 0]]]
+                ;Do not disturb toggle (S LAYER)
+                        [:!Cc [:alfred "cmd" "com.pasteflow.aft" "toggleDnd,0,0,0"] [["dpress" 0]["spress" 1]["epress" 0]["cpress" 0]]]
                 ;Add Selection to PasteFlow
                         [:!Cc [:alfred "cmd" "com.pasteflow.aft" "c!!addCurrentClip"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;Split & Add Selected Text to PasteFlow 
                         [:!Oc [:alfred "cmd" "com.pasteflow.aft" "c!!addSplitClip"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;Main Menu (S LAYER)
                         [:d [:alfred "cmd" "com.pasteflow.aft" "mainMenu"] [["dpress" 0]["spress" 1]["epress" 0]["cpress" 0]]]
+                ;Add Selection as RAW CLIPBOARD (E LAYER)
+                        [:d [:alfred "cmd" "com.pasteflow.aft" "c!addRawClip"] [:!bear ["dpress" 0]["spress" 0]["epress" 1]["cpress" 0]]]
+                        [:d [:km "Copy as Rich Text"] [:bear ["dpress" 0]["spress" 0]["epress" 1]["cpress" 0]]]
+                ;Add Selection as RAW CLIPBOARD NEXT (E LAYER)
+                        [:!Cd [:alfred "cmd" "com.pasteflow.aft" "c!addRawClip,0,0,1"] [["dpress" 0]["spress" 0]["epress" 1]["cpress" 0]]]
                 ;Paste entire stack (S LAYER)
                         [:e [:alfred "cmd" "com.pasteflow.aft" "pasteStack"] [["dpress" 0]["spress" 1]["epress" 0]["cpress" 0]]]
-                ;Paste entire stack INVERTED (S LAYER)
-                        [:r [:alfred "cmd" "com.pasteflow.aft" "pasteStack,0,1,0"] [["dpress" 0]["spress" 1]["epress" 0]["cpress" 0]]]
                 ;Copy entire stack (S LAYER)
                         [:!Ce [:alfred "cmd" "com.pasteflow.aft" "copyStack"] [["dpress" 0]["spress" 1]["epress" 0]["cpress" 0]]]
+                ;Add Current Clipboard as RAW CLIPBOARD (E LAYER)
+                        [:f [:alfred "cmd" "com.pasteflow.aft" "addRawClip"] [["dpress" 0]["spress" 0]["epress" 1]["cpress" 0]]]
+                ;Add Current Clipboard as RAW CLIPBOARD NEXT (E LAYER)
+                        [:!Cf [:alfred "cmd" "com.pasteflow.aft" "addRawClip,0,0,1"] [["dpress" 0]["spress" 0]["epress" 1]["cpress" 0]]]
+                ;Paste entire stack INVERTED (S LAYER)
+                        [:r [:alfred "cmd" "com.pasteflow.aft" "pasteStack,0,1,0"] [["dpress" 0]["spress" 1]["epress" 0]["cpress" 0]]]
                 ;Copy entire stack INVERTED (S LAYER)
                         [:!Cr [:alfred "cmd" "com.pasteflow.aft" "copyStack,0,1,0"] [["dpress" 0]["spress" 1]["epress" 0]["cpress" 0]]]
                 ;Split & Add Current Clipboard to PasteFlow
@@ -831,9 +846,11 @@
                         [:!Ow [:alfred "cmd" "com.pasteflow.aft" "resetNext"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;Text view
                         [:x [:alfred "cmd" "com.pasteflow.aft" "viewStack"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
-                ;Add Current Clipboard to PasteFlow (S LAYER)
+                ;Add Current Clipboard (S LAYER)
                         [:x [:alfred "cmd" "com.pasteflow.aft" "!addCurrentClip"] [["dpress" 0]["spress" 1]["epress" 0]["cpress" 0]]]
-                ;Add Selection to PasteFlow (In NEXT Item Index)
+                ;Add Current Clipboard NEXT to PasteFlow (S LAYER)
+                        [:!Cx [:alfred "cmd" "com.pasteflow.aft" "!addCurrentClip,0,0,1"] [["dpress" 0]["spress" 1]["epress" 0]["cpress" 0]]]
+                ;Add Selection (In NEXT Item Index)
                         [:!Cx [:alfred "cmd" "com.pasteflow.aft" "c!!addCurrentClip,0,0,1"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;Split & Insert in PasteFlow (In NEXT Item Index)
                         [:!Ox [:alfred "cmd" "com.pasteflow.aft" "c!!addSplitClip,0,0,1"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
@@ -842,7 +859,7 @@
                 ;Edit List
                         [:!Cz [:alfred "cmd" "com.pasteflow.aft" "textEditListX"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
                 ;Add in Text View
-                        [:!Oz [:alfred "cmd" "com.pasteflow.aft" "textEditManual"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
+                        [:!Oz [:alfred "cmd" "com.pasteflow.aft" "inputManual"] [["dpress" 0]["spress" 0]["epress" 0]["cpress" 0]]]
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>ARC EXTENSIONS SUBLAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -912,7 +929,7 @@
                         [:period [:alfred "finderClop" "com.afadingthought.clop" "workflow"] ["dpress" 1]]      ;Clop Workflow on Finder Selection
                         [:right_shift [:sc "workflow" "Drop Optimize"] ["dpress" 1]]                            ;Clop Alfred Workflow for contents of Dropover Shelf
                         [:return_or_enter [:km "7A9F80E0-042D-4620-B414-11B2D74736EB"] ["dpress" 1]]            ;Dropover search bar on shelf
-                        [:spacebar :!STv ["dpress" 1]]                                                          ;Dropover shelf from Clipboard
+                        [:spacebar :!OTv ["dpress" 1]]                                                          ;Dropover shelf from Clipboard
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>CLEANSHOT X SUBLAYER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -953,41 +970,35 @@
                 ]},
 
 ;;-------------------------------------------BANANOTATE CAPS LOCK------------------------------------------------------------------------------------------------
-        {:des "Banananotate Mode"
-                        :rules [:bana-mode
-                        [:semicolon [:!On :n]]  ;SPANISH Ñ for Bananotate
-                        [:quote :!Oe]           ;SPANISH TILDE for Bananotate
+
+        {:des "Hold Bananotate Mode"
+                        :rules [:holdbana-mode
                         [:q :!Oq]               ;Black
+                        [:!Cq :!OSq]            ;Previous Black
                         [:w :!Ow]               ;White
+                        [:!Cw :!OSw]            ;Previous White
                         [:e :!COe]              ;Yellow
+                        [:!Ce :!OSe]            ;Previous Yellow
                         [:r :!Oh]               ;Center Horizontally
                         [:!Cr :!Or]             ;Align Horizontally
-                        [:!Or :!Sh]              ;Flip Horizontally
+                        [:!Or :!Sh]             ;Flip Horizontally
                         [:a :!Oa]               ;Gradient light
+                        [:!Ca :!OSa]            ;Previous Gradient light
                         [:s :!Os]               ;Gradient dark
+                        [:!Cs :!OSs]            ;Previous Gradient dark
                         [:d :!Od]               ;Red
+                        [:!Cd :!OSd]            ;Previous Red
                         [:f :!Of]               ;Orange
+                        [:!Cf :!OSf]            ;Previous Orange
                         [:g :!Og]               ;Green
+                        [:!Cg :!OSg]            ;Previous Green
                         [:x :!Ox]               ;Purple
+                        [:!Cx :!OSx]            ;Previous Purple
                         [:c :!Oc]               ;Blue
+                        [:!Cc :!OSc]            ;Previous Blue
                         [:v :!CSv]              ;Center Vertically
                         [:!Cv :!Ov]             ;Align Vertically
                         [:!Ov :!CTb]            ;Flip Vertically
-        ]},
-        {:des "Hold Bananotate Mode"
-                        :rules [:holdbana-mode
-                        [:q :6]                 ;Size
-                        [:w :7]
-                        [:e :8]
-                        [:r :9]
-                        [:z :!C6]             ;Corner Radius
-                        [:x :!C7]
-                        [:c :!C8]
-                        [:v :!C9]
-                        [:a :!O6]             ;Transparency
-                        [:s :!O7]
-                        [:d :!O8]
-                        [:f :!O9]
         ]},
 
 ;;-----------------------------------------F19 MODE - SUPERKEY------------------------------------------------------------------------------------------------------
@@ -1036,7 +1047,7 @@
                         [:!Ct [:alfred "kikiActions" "com.kiki.ai" "direct,copy,1,translateEn"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;SW SIMPLIFY RW CB
                         [:s [:alfred "sw" "com.superwhisper.aft" "openMode,superwhisper://mode?key=custom-GNIX"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
-                        ;!Cs
+                        [:!Cs [:km "SuperWhisper Hide Unhide"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;SW Simple Dictate
                         [:f [:alfred "sw" "com.superwhisper.aft" "openMode,superwhisper://mode?key=custom-SWJU"] [["rpress" 0]["bpress" 0]["dpress" 0]["wpress" 0]]]
                 ;SW Dictation

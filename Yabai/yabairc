@@ -24,11 +24,11 @@ yabai -m config mouse_drop_action            swap
 
 # general space settings
 yabai -m config layout                       bsp
-yabai -m config top_padding                  50
-yabai -m config bottom_padding               50
-yabai -m config left_padding                 50
-yabai -m config right_padding                50
-yabai -m config window_gap                   50
+yabai -m config top_padding                  30
+yabai -m config bottom_padding               30
+yabai -m config left_padding                 30
+yabai -m config right_padding                30
+yabai -m config window_gap                   30
 
 # yabai -m rule --add app=".*" sub-layer=normal
 # yabai -m rule --add app!="^(CleanShot X|Screen Studio)$" sub-layer=normal
@@ -45,10 +45,14 @@ yabai -m rule --add app="^Soundly$" scratchpad="scratchpad" grid="11:11:1:1:9:9"
 
 # Misc 
 yabai -m rule --add app="^CleanShot X$" sticky=on manage=off opacity=1.0
-yabai -m rule --add app="CurrentKey.*" manage=off subrole="AXStandardWindow" opacity=0.0
-yabai -m rule --add app="superwhisper" subrole="AXDialog" manage=off sticky=on opacity=1.0
-yabai -m rule --add app="^Screen Studio$|^Screen Studio Beta$|^Kando$" manage=off opacity=1.0
+yabai -m rule --add app="^Kando$" manage=off opacity=1.0
+yabai -m rule --add app="^Screen Studio$|^Screen Studio Beta$" subrole="AXDialog" title!="Camera Preview" manage=off opacity=0.0001
+yabai -m rule --add app="^Screen Studio$|^Screen Studio Beta$" subrole!="AXDialog" manage=off opacity=1.0
 yabai -m rule --add app="^Anybox$" title!=".* – .*" manage=off opacity=1.0
+
+# SuperWhisper
+yabai -m rule --add app="superwhisper" subrole="AXDialog" grid="1:2:0:0:1:1" sticky=on manage=off opacity=1.0
+yabai -m signal --add label="swWin" event=window_created app="superwhisper" action="osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"SW Window State\"'"
 
 # Bear Scratchpads and Main Window
 yabai -m rule --add app="^Bear$" title!="^Bear$" manage=off grid="11:11:1:1:9:9"
