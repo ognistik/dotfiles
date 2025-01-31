@@ -50,9 +50,9 @@
                 :safari ["com.apple.Safari"]
         }
         
-        ; 👇️ This way of creating layers is simple (which is a pro) but it doesn't seem to allow the use of :modi (which is a neg)
+        ; 👇️ This way of creating layers is simple (which is a pro), it allows :condi and :alone, but it doesn't seem to allow the use of :modi (which is a neg). In simlayers it seems to work
         :layers { 
-                :rcmd {:key :right_command :condi [:!ropt :!f19-mode] 
+                :rcmd {:key :right_command :condi [:!ropt :!f19-mode]
                         :afterup [{:set ["rcmd" 0]}{:set ["a-rcmd" 0]}{:set ["b-rcmd" 0]}{:set ["c-rcmd" 0]}
                                 {:set ["d-rcmd" 0]}{:set ["e-rcmd" 0]}{:set ["f-rcmd" 0]}{:set ["g-rcmd" 0]}
                                 {:set ["h-rcmd" 0]}{:set ["i-rcmd" 0]}{:set ["j-rcmd" 0]}{:set ["k-rcmd" 0]}
@@ -84,13 +84,13 @@
                                         :held {:set ["w-mode" 1] :repeat false}
                                         :afterup {:set ["w-mode" 0]}}]   
                         ; E MODE: Numpad & Symbols
-                                        [:e nil [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!f-mode :!holdbana-mode]
+                                        [:#Pe nil [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!f-mode :!holdbana-mode]
                                         {:alone {:key :e :halt true} :delayed {:canceled {:key :e}}
                                         :held {:set ["e-mode" 1] :repeat false}
                                         :afterup {:set ["e-mode" 0]}
                                         :params {:held 120 :delay 120 :alone 119}}]
                         ; T MODE: Markdown and Text Transformations
-                                [:t nil [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!a-mode :!sd-mode :!w-mode :!f-mode :!e-mode]
+                                [:#Pt nil [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!a-mode :!sd-mode :!w-mode :!f-mode :!e-mode]
                                         {:alone {:key :t :halt true} :delayed {:canceled {:key :t}}
                                         :held {:set ["t-mode" 1] :repeat false}
                                         :afterup {:set ["t-mode" 0]}}]
@@ -116,8 +116,9 @@
                                         :afterup {:set ["sd-mode" 0]}} :modi {:optional :any}} {:set ["sd-mode" 1]}
                                         [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!a-mode :!w-mode :!f-mode :!e-mode]]
                         ; SW SuperWhisper Rec & Mode
-                                [{:sim [:f :g] :simo {:interrupt true :dorder :insensitive :uorder :insensitive :afterup [{:set ["sw-mode" 0]}]}}
-                                        [[:km "SW Goku Trigger"] {:set ["sw-mode" 1]} :!CTO0] [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!e-mode :!f-mode]]     
+                                [{:sim [:f :g] :simo {:interrupt true :dorder :insensitive :uorder :insensitive}} [[:km "SW Goku Trigger"] {:set ["sw-mode" 1]} :!CTO0]
+                                        [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!e-mode :!f-mode]
+                                        {:afterup [[:km "SW Goku Trigger"] {:set ["sw-mode" 0]}]}]    
                         ; F MODE: Cursor Movement, Dragging and Clicking
                                         [:f nil [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!e-mode]
                                                 {:alone {:key :f :halt true} :delayed {:canceled {:key :f}}
@@ -139,9 +140,9 @@
                         ; wV-Press
                                 [:v [["wV-press" 1]] [["w-mode" 1]["wC-press" 0]["wD-press" 0]["wR-press" 0]["wG-press" 0]["wF-press" 0]] {:afterup {:set ["wV-press" 0]}}]
                         ; eF-Press
-                                [:f [["eF-press" 1]] [["e-mode" 1]["eS-press" 0]] {:afterup {:set ["eF-press" 0]}}]
+                                [:#Pf [["eF-press" 1]] [["e-mode" 1]["eS-press" 0]] {:afterup {:set ["eF-press" 0]}}]
                         ; eS-Press
-                                [:s [["eS-press" 1]] [["e-mode" 1]["eF-press" 0]] {:afterup {:set ["eS-press" 0]}}]
+                                [:#Ps [["eS-press" 1]] [["e-mode" 1]["eF-press" 0]] {:afterup {:set ["eS-press" 0]}}]
                         ; tSpace-press
                                 [:##spacebar [["tSpace-press" 1]] ["t-mode" 1] {:afterup {:set ["tSpace-press" 0]}}]
                         ; capsE-press
@@ -169,9 +170,9 @@
                         ; Unused - Make New Safari Window
                                 ;[:!CSTe ["osascript -e 'tell application \"Safari\" to make new document at end'"]]
                         ; MUTE - (Should be in Caps Lock Mode... but doesn't work there)
-                                [{:sim [:y :u] :simo {:interrupt true :dorder :insensitive :uorder :insensitive}} :mute [["caps-mode" 1]["capsD-press" 0]["capsS-press" 0]["capsE-press" 0]["capsC-press" 0]]]                        
+                                ;[{:sim [:y :u] :simo {:interrupt true :dorder :insensitive :uorder :insensitive}} :mute [["caps-mode" 1]["capsD-press" 0]["capsS-press" 0]["capsE-press" 0]["capsC-press" 0]]]                        
                         ; PLAY/PAUSE - (Should be in Caps Lock Mode... but doesn't work there)
-                                [{:sim [:y :u] :modi [:left_command] :simo {:interrupt true :dorder :insensitive :uorder :insensitive}} :play_or_pause [["caps-mode" 1]["capsD-press" 0]["capsS-press" 0]["capsE-press" 0]["capsC-press" 0]]]
+                                ;[{:sim [:y :u] :modi [:left_command] :simo {:interrupt true :dorder :insensitive :uorder :insensitive}} :play_or_pause [["caps-mode" 1]["capsD-press" 0]["capsS-press" 0]["capsE-press" 0]["capsC-press" 0]]]
                 ]},
 
                 {:des "Kando Menus" :rules [
@@ -282,18 +283,18 @@
 
                 {:des "Mouse SD SubLayer" :rules [
                         ; Left Arrow & Mirror Y Axis
-                                [{:pkey :button1 :modi {:optional [:left_shift :left_option :left_command :left_control]}} nil [["sd-mode" 1]]          
+                                [{:pkey :button1 :modi {:optional [:left_shift :left_option :left_command :left_control :caps_lock]}} nil [["sd-mode" 1]]          
                                         {:alone [:left_arrow] :held [:yabai "space --mirror y-axis"]}]                                                          
                         ; Right Arrow & Mirror X Axis
-                                [{:pkey :button2 :modi {:optional [:left_shift :left_option :left_command :left_control]}} nil [["sd-mode" 1]]          
+                                [{:pkey :button2 :modi {:optional [:left_shift :left_option :left_command :left_control :caps_lock]}} nil [["sd-mode" 1]]          
                                         {:alone [:right_arrow] :held [:yabai "space --mirror x-axis"]}]                                                         
                         ; Toggle Split
                                 [{:pkey :button3} [:yabai "window --toggle split"] [["sd-mode" 1]]]   
                         ; Down Arrow
-                                [{:pkey :button4 :modi {:optional [:left_shift :left_option :left_command :left_control]}} nil [["sd-mode" 1]]          
+                                [{:pkey :button4 :modi {:optional [:left_shift :left_option :left_command :left_control :caps_lock]}} nil [["sd-mode" 1]]          
                                         {:alone [:down_arrow] :held [:alfred "activeApps" "com.yabaibai.com"]}]                                                         
                         ; Up Arrow
-                                [{:pkey :button5 :modi {:optional [:left_shift :left_option :left_command :left_control]}} nil [["sd-mode" 1]]          
+                                [{:pkey :button5 :modi {:optional [:left_shift :left_option :left_command :left_control :caps_lock]}} nil [["sd-mode" 1]]          
                                         {:alone [:up_arrow] :held [:alfred "activeSpaces" "com.yabaibai.com"]}]
                 ]},                                                         
         
@@ -614,7 +615,7 @@
 
 ; -- E MODE / NUMPAD & SYMBOLS --
                 {:des "E Mode Base Sublayer" :rules [[:condi :e-mode :!eF-press :!eS-press]
-                        [:y :delete_or_backspace]                            ;Delete
+                        [:##y :delete_or_backspace]                            ;Delete
                         [:##u :7]                                            ;Seven
                         [:##i :8]                                            ;Eight
                         [:##o :9]                                            ;Nine
@@ -627,67 +628,67 @@
                         [:##m :1]                                            ;One
                         [:##comma :2]                                        ;Two
                         [:##period :3]                                       ;Three
-                        [:right_shift :equal_sign]                           ;Equal
+                        [:##right_shift :equal_sign]                           ;Equal
                 ]},
 
                 {:des "E Mode F Sublayer — Symbols I" :rules [:eF-press
-                        [:u :!S7 ["eF-press" 1]]                                          ;&
-                        [:i :!S8 ["eF-press" 1]]                                          ;*
-                        [:o :!S9 ["eF-press" 1]]                                          ;(
-                        [:j :!S4 ["eF-press" 1]]                                          ;$
-                        [:k :!S5 ["eF-press" 1]]                                          ;%
-                        [:l :!S6 ["eF-press" 1]]                                          ;^
-                        [:semicolon :!Shyphen ["eF-press" 1]]                             ;_
-                        [:n :!S0 ["eF-press" 1]]                                          ;)
-                        [:m :!S1 ["eF-press" 1]]                                          ;!
-                        [:comma :!S2 ["eF-press" 1]]                                      ;@
-                        [:period :!S3 ["eF-press" 1]]                                     ;#
-                        [:right_shift :!Sequal_sign ["eF-press" 1]]                       ;+
+                        [:##u :!S7 ["eF-press" 1]]                                          ;&
+                        [:##i :!S8 ["eF-press" 1]]                                          ;*
+                        [:##o :!S9 ["eF-press" 1]]                                          ;(
+                        [:##j :!S4 ["eF-press" 1]]                                          ;$
+                        [:##k :!S5 ["eF-press" 1]]                                          ;%
+                        [:##l :!S6 ["eF-press" 1]]                                          ;^
+                        [:##semicolon :!Shyphen ["eF-press" 1]]                             ;_
+                        [:##n :!S0 ["eF-press" 1]]                                          ;)
+                        [:##m :!S1 ["eF-press" 1]]                                          ;!
+                        [:##comma :!S2 ["eF-press" 1]]                                      ;@
+                        [:##period :!S3 ["eF-press" 1]]                                     ;#
+                        [:##right_shift :!Sequal_sign ["eF-press" 1]]                       ;+
                 ]},
 
                 {:des "E Mode S Sublayer — Symbols II" :rules [:eS-press
-                        [:i :!O8 [["eS-press" 1]]]                                                ;•
-                        [:o :!OShyphen [["eS-press" 1]]]                                          ;— (m-dash)
-                        [:m [:alfred "activeWindows" "com.yabaibai.com"] ["eS-press" 1]]          ;activeWindows
-                        [:comma [:alfred "activeSpaceWindows" "com.yabaibai.com"] ["eS-press" 1]] ;activeSpaceWindows
-                        [:period [:alfred "focusedAppWindows" "com.yabaibai.com"] ["eS-press" 1]] ;focusedAppWindows
-                        [:j [:alfred "activeApps" "com.yabaibai.com"] ["eS-press" 1]]             ;activeApps
-                        [:k [:alfred "activeSpaces" "com.yabaibai.com"] ["eS-press" 1]]           ;activeSpaces
-                        [:l [:alfred "activeScratchpads" "com.yabaibai.com"] ["eS-press" 1]]      ;activeScratchpads
+                        [:##i :!O8 [["eS-press" 1]]]                                                ;•
+                        [:##semicolon :!OShyphen [["eS-press" 1]]]                                  ;— (m-dash)
+                        [:##m [:alfred "activeWindows" "com.yabaibai.com"] ["eS-press" 1]]          ;activeWindows
+                        [:##comma [:alfred "activeSpaceWindows" "com.yabaibai.com"] ["eS-press" 1]] ;activeSpaceWindows
+                        [:##period [:alfred "focusedAppWindows" "com.yabaibai.com"] ["eS-press" 1]] ;focusedAppWindows
+                        [:##j [:alfred "activeApps" "com.yabaibai.com"] ["eS-press" 1]]             ;activeApps
+                        [:##k [:alfred "activeSpaces" "com.yabaibai.com"] ["eS-press" 1]]           ;activeSpaces
+                        [:##l [:alfred "activeScratchpads" "com.yabaibai.com"] ["eS-press" 1]]      ;activeScratchpads
                 ]},
 
 ; -- T MODE / TEXT TRANSFORMATIONS --
                 {:des "T Mode Base Sublayer" :rules [[:condi :t-mode :!tSpace-press]
-                                [:r [:km "Replace Selection without Regex"]]                                   ; Search and Replace with Regex
-                                [:y [:alfred "myquill" "com.myquill.triggers" "caseSentence"]]                 ; Sentence Case
-                                [:u [:alfred "myquill" "com.myquill.triggers" "caseUpper"]]                    ; Uppercase
-                                [:i [:alfred "myquill" "com.myquill.triggers" "italics"]]                      ; Italics
-                                [:o [:alfred "myquill" "com.myquill.triggers" "caseTitle"]]                    ; Title Case
-                                [:p [:alfred "myquill" "com.myquill.triggers" "parentheses"]]                  ; Parenthesis
-                                [:open_bracket [:alfred "myquill" "com.myquill.triggers" "brackets"]]          ; Brackets
-                                [:h [:alfred "myquill" "com.myquill.triggers" "highlight"]]                    ; Highlight
-                                [:j [:alfred "myquill" "com.myquill.triggers" "underline"]]                    ; Underline
-                                [:k [:alfred "myquill" "com.myquill.triggers" "blockQuote"]]                   ; Block Quote
-                                [:l [:alfred "myquill" "com.myquill.triggers" "link"]]                         ; Add link
-                                [:semicolon [:alfred "myquill" "com.myquill.triggers" "strikethrough"]]        ; Strikethrough
-                                [:quote [:alfred "myquill" "com.myquill.triggers" "singleQuotes"]]             ; Single Quotes
-                                [:b [:alfred "myquill" "com.myquill.triggers" "bold"]]                         ; Bold
-                                [:n [:alfred "myquill" "com.myquill.triggers" "caseLower"]]                    ; Lowercase
-                                [:m [:semicolon :b :t :semicolon]]                                             ; Between Lines (Alfred Snippet)
-                                [:comma [:alfred "myquill" "com.myquill.triggers" "codeLine"]]                 ; Code Line
-                                [:period [:alfred "myquill" "com.myquill.triggers" "codeBlock"]]               ; Code Block
+                                [:##r [:km "Replace Selection without Regex"]]                                   ; Search and Replace with Regex
+                                [:##y [:alfred "myquill" "com.myquill.triggers" "caseSentence"]]                 ; Sentence Case
+                                [:##u [:alfred "myquill" "com.myquill.triggers" "caseUpper"]]                    ; Uppercase
+                                [:##i [:alfred "myquill" "com.myquill.triggers" "italics"]]                      ; Italics
+                                [:##o [:alfred "myquill" "com.myquill.triggers" "caseTitle"]]                    ; Title Case
+                                [:##p [:alfred "myquill" "com.myquill.triggers" "parentheses"]]                  ; Parenthesis
+                                [:##open_bracket [:alfred "myquill" "com.myquill.triggers" "brackets"]]          ; Brackets
+                                [:##h [:alfred "myquill" "com.myquill.triggers" "highlight"]]                    ; Highlight
+                                [:##j [:alfred "myquill" "com.myquill.triggers" "underline"]]                    ; Underline
+                                [:##k [:alfred "myquill" "com.myquill.triggers" "blockQuote"]]                   ; Block Quote
+                                [:##l [:alfred "myquill" "com.myquill.triggers" "link"]]                         ; Add link
+                                [:##semicolon [:alfred "myquill" "com.myquill.triggers" "strikethrough"]]        ; Strikethrough
+                                [:##quote [:alfred "myquill" "com.myquill.triggers" "singleQuotes"]]             ; Single Quotes
+                                [:##b [:alfred "myquill" "com.myquill.triggers" "bold"]]                         ; Bold
+                                [:##n [:alfred "myquill" "com.myquill.triggers" "caseLower"]]                    ; Lowercase
+                                [:##m [:semicolon :b :t :semicolon]]                                             ; Between Lines (Alfred Snippet)
+                                [:##comma [:alfred "myquill" "com.myquill.triggers" "codeLine"]]                 ; Code Line
+                                [:##period [:alfred "myquill" "com.myquill.triggers" "codeBlock"]]               ; Code Block
                 ]},
 
                 {:des "T Mode Space Sublayer" :rules [:tSpace-press
-                                [:r [:km "Replace Selection with Regex"]]                                      ; Search and Replace with Regex
-                                [:i [:alfred "myquill" "com.myquill.triggers" "boldItalic"]]                   ; Bold & Italics
-                                [:open_bracket [:alfred "myquill" "com.myquill.triggers" "curlyBrackets"]]     ; Curly Brackets
-                                [:h [:alfred "myquill" "com.myquill.triggers" "fullList"]]                     ; Quill Workflow
-                                [:j [:alfred "myquill" "com.myquill.triggers" "list,All"]]                     ; My Quill and Custom
-                                [:k [:alfred "myquill" "com.myquill.triggers" "list,Case"]]                    ; Case OPTIONS
-                                [:l [:alfred "myquill" "com.myquill.triggers" "linkRemoval"]]                  ; Remove link
-                                [:quote [:alfred "myquill" "com.myquill.triggers" "doubleQuotes"]]             ; Double Quotes
-                                [:n [:alfred "myquill" "com.myquill.triggers" "list,Wrap"]]                    ; Wrap OPTIONS
+                                [:##r [:km "Replace Selection with Regex"]]                                      ; Search and Replace with Regex
+                                [:##i [:alfred "myquill" "com.myquill.triggers" "boldItalic"]]                   ; Bold & Italics
+                                [:##open_bracket [:alfred "myquill" "com.myquill.triggers" "curlyBrackets"]]     ; Curly Brackets
+                                [:##h [:alfred "myquill" "com.myquill.triggers" "fullList"]]                     ; Quill Workflow
+                                [:##j [:alfred "myquill" "com.myquill.triggers" "list,All"]]                     ; My Quill and Custom
+                                [:##k [:alfred "myquill" "com.myquill.triggers" "list,Case"]]                    ; Case OPTIONS
+                                [:##l [:alfred "myquill" "com.myquill.triggers" "linkRemoval"]]                  ; Remove link
+                                [:##quote [:alfred "myquill" "com.myquill.triggers" "doubleQuotes"]]             ; Double Quotes
+                                [:##n [:alfred "myquill" "com.myquill.triggers" "list,Wrap"]]                    ; Wrap OPTIONS
                 ]},
 
 ; -- CAPS MODE (LASTS FEW MILISECONDS) --
@@ -710,7 +711,9 @@
                                 [:5 [:km "5AE0141E-36C9-4CD3-A411-00135500323E"]]
                         ; LAUNCHPAD
                                 [:4 :launchpad]
+                        ; MISSION CONTROL
                                 [:3 :mission_control]
+                        ; BRIGHTNESS
                                 [:2 :display_brightness_increment]
                                 [:1 :display_brightness_decrement]
                         ; KEYBOARD ILLUMINATION with CMD + 1 & 2
@@ -718,7 +721,7 @@
                                 [:!C1 :illumination_decrement]
                 ]},
 
-                {:des "Caps Mode Base Sublayer - Misc Macros" :rules [[:condi :caps-mode :!capsD-press :!capsS-press :!capsE-press :!capsC-press]
+                {:des "Caps Mode Base Sublayer - Macros" :rules [[:condi :caps-mode :!capsD-press :!capsS-press :!capsE-press :!capsC-press]
                         ; TOGGLE TAPTIX
                                 [:q [:alfred "cmd" "com.taptix.aft" "toggle"]]
                         ; TAPTIX MAIN MENU
@@ -734,6 +737,12 @@
                         ; READWISE TO BEAR Shortcut
                                 [:r "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"604659A4-5CBD-4DBC-A9E4-2D2B6FAAC9F3\"';\\
                                         shortcuts run \"RW to Bear\""]
+                        ; MUTE (IMPORTANT: The order of this rule matters. Can't be after y or u individual rules)
+                                [{:sim [:y :u] :simo {:interrupt true :dorder :insensitive :uorder :insensitive}} :mute]
+                        ; PLAY/PAUSE
+                                [{:sim [:y :u] :modi [:left_command] :simo {:interrupt true :dorder :insensitive :uorder :insensitive}} :play_or_pause]
+                        ; SoundSource
+                                [{:sim [:y :u] :modi [:left_option] :simo {:interrupt true :dorder :insensitive :uorder :insensitive}} :!Ff12]
                         ; VOLUME DOWN
                                 [:y :volume_decrement]
                         ; REWIND / PREVIOUS
@@ -745,8 +754,7 @@
                         ; FORWARD
                                 [:!Cu :fast_forward]
                         ; SET INPUT SOUNDSOURCE
-                                [:!Ou [:!Ff12 :!C0 :spacebar]]
-                        ; NOTE: 👉️ PLAY/PAUSE/MUTE is under Clean Main Layer because of simlayers limitation       
+                                [:!Ou [:!Ff12 :!C0 :spacebar]] 
                         ; ANSWER IMESSAGE NOTIFICATION
                                 [:i [:km "DC6A4949-C8D1-4024-AC50-74D34142C8AC"]]
                         ; DAY ONE MASTER SHORTCUT
@@ -769,8 +777,6 @@
                                 [:h :!Of18]
                         ; MOUSELESS GRID
                                 [:j :!Cf18]
-                        ; SoundSource
-                                [:k :!Ff12]
                         ; GRAB LINK OF FRONTMOST APP
                                 [:l [:km "604659A4-5CBD-4DBC-A9E4-2D2B6FAAC9F3"]]
                         ; SPANISH Ñ
@@ -793,9 +799,9 @@
                                 [:period [["capsPeriod-press" 1]] nil
                                         {:delayed {:invoked [["capsPeriod-press" 0] [:alfred "sleepscreen" "com.chubamisc.afred"]]
                                         :canceled ["capsPeriod-press" 0]} :params {:delay 200}}]
-                        ;Question mark key
-                                [:#Sright_shift :slash]
-                                [:!Cright_shift :!Sslash]
+                        ; QUESTION MARK KEY
+                                [:#SPright_shift :slash]
+                                [:!C#Pright_shift :!Sslash]
                         ; NEW FLOATING LITTLE ARC
                                 [:return_or_enter "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggleOrNewArc arcScratchpad"]
                         ; NEW TILED LITTLE ARC
@@ -1080,29 +1086,30 @@
 ; -- SUPER DUPER MODE --
                 {:des "SuperDuper Mode" :rules [:sd-mode
                         ; ARROW KEYS
-                                [:#SOCTh :left_arrow :!terminal]                 ;Left Arrow
-                                [:#SOCTj :down_arrow :!terminal]                 ;Down Arrow
-                                [:#SOCTk :up_arrow :!terminal]                   ;Up Arrow
-                                [:#SOCTl :right_arrow :!terminal]                ;Right Arrow
-                                [:#SOCTsemicolon :vk_none]                       ;Disabled to Avoid Typing
+                                [:#PSOCTh :left_arrow :!terminal]               ;Left Arrow
+                                [:#PSOCTj :down_arrow :!terminal]               ;Down Arrow
+                                [:#PSOCTk :up_arrow :!terminal]                 ;Up Arrow
+                                [:#PSOCTl :right_arrow :!terminal]              ;Right Arrow
+                                [:#PSOCTsemicolon :vk_none]                     ;Disabled to Avoid Typing
                         ; MODIFIERS
                                 [:##caps_lock :!Cescape :!arc]                  ;Escape App switcher | EXCLUDING ARC
                                 [:#COPspacebar :left_shift]                     ;Shift
                                 [:##f :left_command :!terminal]                 ;Left Command | EXCLUDING TERMINAL
                                 [:##a :left_option :!terminal]                  ;Left OPT | EXCLUDING TERMINAL
-                                [:left_command :!CTleft_shift [:vscode]]        ;Expansion Shortcut for VSCode
-                                [:left_command :left_control [:!vscode]]        ;CTRL on left command no use so far... temporary solution. Not a lot of control option shortcuts.
+                                [:#Pleft_command :!CTleft_shift [:vscode]]      ;Expansion Shortcut for VSCode
+                                [:#Pleft_command :left_control [:!vscode]]      ;CTRL on left command no use so far... temporary solution. Not a lot of control option shortcuts.
                         ; DELETES
-                                [:#SOCn :delete_or_backspace :!terminal]        ;Delete Backspace on N | EXCLUDING TERMINAL
+                                [:#PSOCn :delete_or_backspace :!terminal]       ;Delete Backspace on N | EXCLUDING TERMINAL
                                 [:#SOPperiod :delete_forward :!terminal]        ;Delete Forward on Period | EXCLUDING TERMINAL
                                 [:!Cperiod [:!Tk] :!terminal]                   ;Delete from current point to the end of line | EXCLUDING TERMINAL
+                                [:!PCperiod [:!PTk] :!terminal]                 ;Same as above... seems like a need separate rule for caps lock. Plus I need it to also press Caps lock so it doesn't remove it
                         ; SWITCHERS
-                                [:y :!Otab :!arc]                               ;Window Switcher - Below| EXCLUDING ARC
-                                [:u :!Ttab :!arc]                               ;Tab Switcher - Below | EXCLUDING ARC
-                                [:i :!STtab :!arc]                              ;Tab Switcher - Above | EXCLUDING ARC
-                                [:o :!SOtab :!arc]                              ;Window Switcher - Above | EXCLUDING ARC
-                                [:m [:km "- rcmd previousApp"]]                 ;APP Switcher - Below
-                                [:comma ["~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadOnFocus.sh toggle"]] ;Toggle Any Scratchpad
+                                [:#Py :!Otab :!arc]                             ;Window Switcher - Below| EXCLUDING ARC
+                                [:#Pu :!Ttab :!arc]                             ;Tab Switcher - Below | EXCLUDING ARC
+                                [:#Pi :!STtab :!arc]                            ;Tab Switcher - Above | EXCLUDING ARC
+                                [:#Po :!SOtab :!arc]                            ;Window Switcher - Above | EXCLUDING ARC
+                                [:#Pm [:km "- rcmd previousApp"]]               ;APP Switcher - Below
+                                [:#Pcomma ["~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadOnFocus.sh toggle"]] ;Toggle Any Scratchpad
                         ; ARC SPECIFIC TAB NAVIGATION
                                 [:condi :arc :sd-mode]
                                 [:y [:!STtab]]                                  ;Open Tabs Switcher - Previous
@@ -1176,114 +1183,134 @@
                 ]},
 
 ; -- RCMD MODS --
-        {:des "rcmd"
-                :rules [
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD SUBLAYERS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                        [:##a [{:set ["a-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
-                        [:##b [{:set ["b-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
-                        [:##c [{:set ["c-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
-                        [:##d [{:set ["d-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
-                        [:##e [{:set ["e-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
-                        [:##f [{:set ["f-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
-                        [:##g [{:set ["g-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
-                        [:##h [{:set ["h-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
-                        [:##i [{:set ["i-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
-                        [:##j [{:set ["j-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
-                        [:##k [{:set ["k-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
-                        [:##l [{:set ["l-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
-                        [:##m [{:set ["m-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
-                        [:##n [{:set ["n-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
-                        [:##o [{:set ["o-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
-                        [:##p [{:set ["p-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
-                        [:##q [{:set ["q-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
-                        [:##r [{:set ["r-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
-                        [:##s [{:set ["s-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
-                        [:##t [{:set ["t-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
-                        [:##u [{:set ["u-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
-                        [:##v [{:set ["v-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
-                        [:##w [{:set ["w-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
-                        [:##x [{:set ["x-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
-                        [:##y [{:set ["y-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
-                        [:##z [{:set ["z-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["quote-rcmd" 0]["ropt-rcmd" 0]["return-rcmd" 0]]]
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                {:des "RCMD Sublayers Creation" :rules [[:condi :rcmd :!a-rcmd :!b-rcmd :!c-rcmd :!d-rcmd :!e-rcmd :!f-rcmd :!g-rcmd
+                        :!h-rcmd :!i-rcmd :!j-rcmd :!k-rcmd :!l-rcmd :!m-rcmd :!n-rcmd :!o-rcmd :!p-rcmd :!q-rcmd :!r-rcmd :!s-rcmd 
+                        :!t-rcmd :!u-rcmd :!v-rcmd :!w-rcmd :!x-rcmd :!y-rcmd :!z-rcmd :!openbracket-rcmd :!closebracket-rcmd :!bslash-rcmd
+                        :!quote-rcmd :!ropt-rcmd :!return-rcmd]
+                        [:##a [{:set ["a-rcmd" 1]}]]
+                        [:##b [{:set ["b-rcmd" 1]}]]
+                        [:##c [{:set ["c-rcmd" 1]}]]
+                        [:##d [{:set ["d-rcmd" 1]}]]
+                        [:##e [{:set ["e-rcmd" 1]}]]
+                        [:##f [{:set ["f-rcmd" 1]}]]
+                        [:##g [{:set ["g-rcmd" 1]}]]
+                        [:##h [{:set ["h-rcmd" 1]}]]
+                        [:##i [{:set ["i-rcmd" 1]}]]
+                        [:##j [{:set ["j-rcmd" 1]}]]
+                        [:##k [{:set ["k-rcmd" 1]}]]
+                        [:##l [{:set ["l-rcmd" 1]}]]
+                        [:##m [{:set ["m-rcmd" 1]}]]
+                        [:##n [{:set ["n-rcmd" 1]}]]
+                        [:##o [{:set ["o-rcmd" 1]}]]
+                        [:##p [{:set ["p-rcmd" 1]}]]
+                        [:##q [{:set ["q-rcmd" 1]}]]
+                        [:##r [{:set ["r-rcmd" 1]}]]
+                        [:##s [{:set ["s-rcmd" 1]}]]
+                        [:##t [{:set ["t-rcmd" 1]}]]
+                        [:##u [{:set ["u-rcmd" 1]}]]
+                        [:##v [{:set ["v-rcmd" 1]}]]
+                        [:##w [{:set ["w-rcmd" 1]}]]
+                        [:##x [{:set ["x-rcmd" 1]}]]
+                        [:##y [{:set ["y-rcmd" 1]}]]
+                        [:##z [{:set ["z-rcmd" 1]}]]
+                ]},
 
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD SIMPLES>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                ;FOCUS Current App Previous Window - Current Space
-                        [:comma "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/prevWindowSameAppAllSpaces.sh" [:rcmd :!rshift-rcmd :!lshift-rcmd]]
-                ;FOCUS Current App Next Window - Current Space
-                        [:period "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/nextWindowSameAppAllSpaces.sh" [:rcmd :!rshift-rcmd :!lshift-rcmd]]
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                {:des "RCMD Base Layer Mods" :rules [[:condi :rcmd :!rshift-rcmd :!lshift-rcmd]
+                        ; FOCUS Current App Previous Window - Current Space
+                                [:comma "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/prevWindowSameAppAllSpaces.sh"]
+                        ; FOCUS Current App Next Window - Current Space
+                                [:period "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/nextWindowSameAppAllSpaces.sh"]
+                ]},
 
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD HYPERLAYERS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                        [:caps_lock [{:set ["caps-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["semi-rcmd" 0]["quote-rcmd" 0]["return-rcmd" 0]["caps-rcmd" 0]["rshift-rcmd" 0]["lshift-rcmd" 0]["space-rcmd" 0]["ropt-rcmd" 0]["lcmd-rcmd" 0]]]
-                        [:semicolon [{:set ["semi-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["semi-rcmd" 0]["quote-rcmd" 0]["return-rcmd" 0]["caps-rcmd" 0]["rshift-rcmd" 0]["lshift-rcmd" 0]["space-rcmd" 0]["ropt-rcmd" 0]["lcmd-rcmd" 0]]]
-                        [:left_shift [{:set ["lshift-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["semi-rcmd" 0]["quote-rcmd" 0]["return-rcmd" 0]["caps-rcmd" 0]["rshift-rcmd" 0]["lshift-rcmd" 0]["space-rcmd" 0]["ropt-rcmd" 0]["lcmd-rcmd" 0]]]
-                        [:right_shift [{:set ["rshift-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["semi-rcmd" 0]["quote-rcmd" 0]["return-rcmd" 0]["caps-rcmd" 0]["rshift-rcmd" 0]["lshift-rcmd" 0]["space-rcmd" 0]["ropt-rcmd" 0]["lcmd-rcmd" 0]]]
-                        [:left_command [{:set ["lcmd-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["semi-rcmd" 0]["quote-rcmd" 0]["return-rcmd" 0]["caps-rcmd" 0]["rshift-rcmd" 0]["lshift-rcmd" 0]["space-rcmd" 0]["ropt-rcmd" 0]["lcmd-rcmd" 0]]]
-                        [:spacebar [{:set ["space-rcmd" 1]}] [["rcmd" 1]["a-rcmd" 0]["b-rcmd" 0]["c-rcmd" 0]["d-rcmd" 0]["e-rcmd" 0]["f-rcmd" 0]["g-rcmd" 0]["h-rcmd" 0]["i-rcmd" 0]["j-rcmd" 0]["k-rcmd" 0]["l-rcmd" 0]["m-rcmd" 0]["n-rcmd" 0]["o-rcmd" 0]["p-rcmd" 0]["q-rcmd" 0]["r-rcmd" 0]["s-rcmd" 0]["t-rcmd" 0]["u-rcmd" 0]["v-rcmd" 0]["w-rcmd" 0]["x-rcmd" 0]["y-rcmd" 0]["z-rcmd" 0]["openbracket-rcmd" 0]["closebracket-rcmd" 0]["bslash-rcmd" 0]["semi-rcmd" 0]["quote-rcmd" 0]["return-rcmd" 0]["caps-rcmd" 0]["rshift-rcmd" 0]["lshift-rcmd" 0]["space-rcmd" 0]["ropt-rcmd" 0]["lcmd-rcmd" 0]]]
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-        
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD HYPERACTIONS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                ;MINIMIZE - LSHIFT
-                        ;MINIMIZE All Windows of Current App
-                        [:caps_lock "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/minimizeAllWindowsOfCurrentApp.sh" [:lshift-rcmd]]
-                        ;MINIMIZE All Windows of Current App Except Focused
-                        [:left_shift "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/minimizeOtherWindowsSameApp.sh" [:lshift-rcmd]]
-                        ;MINIMIZE All Windows of All Apps Except Current Window
-                        [:right_shift "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/minimizeOtherWindowsOfAllApps.sh" [:lshift-rcmd]]
-                        ;MINIMIZE All Windows of Other Apps (Not the Current App)
-                        [:!Cleft_shift "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/minimizeAllWindowsOfOtherApps.sh" [:lshift-rcmd]]
-                        ;MINIMIZE All Windows of All Apps
-                        [:return_or_enter "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/minimizeAllWindowsOfAllApps.sh" [:lshift-rcmd]]
-                ;DEMINIMIZE - LSHIFT LCMD
-                        ;DEMINIMIZE All Windows of Current App
-                        [:!Ccaps_lock "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/deminimizeOtherWindowsSameApp.sh" [:lshift-rcmd]]
-                        ;DEMINIMIZE All Windows of All Apps
-                        [:!Creturn_or_enter "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/deminimizeWindowsOfAllApps.sh" [:lshift-rcmd]]
-                ;CLOSE WINDOWS - LCMD
-                        ;CLOSE All Windows of Current App
-                        [:caps_lock "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/closeCurrentAppAllWindows.sh"[:lcmd-rcmd]]
-                        ;CLOSE All Windows of Current App Except Focused
-                        [:left_shift "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/closeAppWindowsKeepFocused.sh" [:lcmd-rcmd]]
-                        ;CLOSE All Windows of All Apps Except Current Window
-                        [:right_shift "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/closeOtherWindows.sh" [:lcmd-rcmd]]
-                        ;CLOSE All Windows of Other Apps (Not the Current App)
-                        [:left_command "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/closeOtherAppWindows.sh" [:lcmd-rcmd]]
-                        ;CLOSE All Windows of All Apps
-                        [:return_or_enter "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/closeEveryWindow.sh" [:lcmd-rcmd]]
-                ;HIDE APPS - SPACEBAR
-                        ;HIDE Current App
-                        [:caps_lock :!Ch [:space-rcmd]]
-                        ;HIDE All Other Apps
-                        [:spacebar [:km "- rcmd hide: OtherApps"] [:space-rcmd]]
-                        ;HIDE ALL Apps
-                        [:return_or_enter [:km "- rcmd hide: All"] [:space-rcmd]]
-                ;UNHIDE ALL APPS
-                        ;I need to setup this shortcut in Mac settings for all apps in menu
-                        [:return_or_enter [:!TOCh] [:rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                ;QUIT APPS - SEMI
-                        ;QUIT All Other Apps
-                        [:semicolon [:km "- rcmd quit: Others"] [:semi-rcmd]]
-                        ;QUIT All Apps
-                        [:return_or_enter [:km "- rcmd quit: All"] [:semi-rcmd]]
-                ;WINDOWS PREVIOUS / NEXT / STATS - RSHIFT
-                        ;FOCUS Current App Previous Window - This Space
-                        [:comma "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/prevWindowSameAppThisSpace.sh" [:lshift-rcmd :!rshift-rcmd]]
-                        [:comma "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/prevWindowSameAppThisSpace.sh" [:rshift-rcmd :!lshift-rcmd]]
-                        ;FOCUS Current App Next Window - This Space
-                        [:period "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/nextWindowSameAppThisSpace.sh" [:lshift-rcmd :!rshift-rcmd]]
-                        [:period "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/nextWindowSameAppThisSpace.sh" [:rshift-rcmd :!lshift-rcmd]]
-                ;SCRATCHPADS - RSHIFT  & LSHIFT
-                        [:caps_lock [:yabai "window --scratchpad recover"] [:rshift-rcmd :!lshift-rcmd]]
-                        [:return_or_enter [:alfred "activeScratchpads" "com.yabaibai.com"] [:rshift-rcmd :!lshift-rcmd]]
-                        [:left_shift "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadSet.sh" [:rshift-rcmd :!lshift-rcmd]]
-                        [:right_shift "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggle scratchpad" [:rshift-rcmd :!lshift-rcmd]]
-                        ;yabai -m window --scratchpad to remove ... https://github.com/koekeishiya/yabai/issues/2203#issuecomment-2035539072%23ybf
-                        ;also check https://github.com/koekeishiya/yabai/issues/2325
-                ;Yabai Bai
-                        [:quote [:alfred "activeSpaceWindows" "com.yabaibai.com"] [:rshift-rcmd :!lshift-rcmd]]
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                {:des "RCMD Hyperlayers Creation" :rules [[:condi :rcmd :!a-rcmd :!b-rcmd :!c-rcmd :!d-rcmd :!e-rcmd :!f-rcmd :!g-rcmd
+                        :!h-rcmd :!i-rcmd :!j-rcmd :!k-rcmd :!l-rcmd :!m-rcmd :!n-rcmd :!o-rcmd :!p-rcmd :!q-rcmd :!r-rcmd :!s-rcmd 
+                        :!t-rcmd :!u-rcmd :!v-rcmd :!w-rcmd :!x-rcmd :!y-rcmd :!z-rcmd :!openbracket-rcmd :!closebracket-rcmd :!bslash-rcmd :!quote-rcmd :!ropt-rcmd :!return-rcmd
+                        :!semi-rcmd :!caps-rcmd :!rshift-rcmd :!lshift-rcmd :!space-rcmd :!lcmd-rcmd] ; <- This last line actually is the hyperlayers I'm creating. Only difference from main layer above
+                        [:caps_lock [{:set ["caps-rcmd" 1]}]]
+                        [:semicolon [{:set ["semi-rcmd" 1]}]]
+                        [:left_shift [{:set ["lshift-rcmd" 1]}]]
+                        [:right_shift [{:set ["rshift-rcmd" 1]}]]
+                        [:left_command [{:set ["lcmd-rcmd" 1]}]]
+                        [:spacebar [{:set ["space-rcmd" 1]}]]
+                ]},
 
+                {:des "RCMD HyperActions" :rules [
+                        [:condi :lshift-rcmd]
+                        ; MINIMIZE - LSHIFT
+                                ;MINIMIZE All Windows of Current App
+                                [:caps_lock "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/minimizeAllWindowsOfCurrentApp.sh"]
+                                ;MINIMIZE All Windows of Current App Except Focused
+                                [:left_shift "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/minimizeOtherWindowsSameApp.sh"]
+                                ;MINIMIZE All Windows of All Apps Except Current Window
+                                [:right_shift "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/minimizeOtherWindowsOfAllApps.sh"]
+                                ;MINIMIZE All Windows of Other Apps (Not the Current App)
+                                [:!Cleft_shift "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/minimizeAllWindowsOfOtherApps.sh"]
+                                ;MINIMIZE All Windows of All Apps
+                                [:return_or_enter "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/minimizeAllWindowsOfAllApps.sh"]
+
+                        ;DEMINIMIZE - LSHIFT LCMD
+                                ;DEMINIMIZE All Windows of Current App
+                                [:!Ccaps_lock "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/deminimizeOtherWindowsSameApp.sh"]
+                                ;DEMINIMIZE All Windows of All Apps
+                                [:!Creturn_or_enter "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/deminimizeWindowsOfAllApps.sh"]
+
+                        [:condi :lcmd-rcmd]
+                        ;CLOSE WINDOWS - LCMD
+                                ;CLOSE All Windows of Current App
+                                [:caps_lock "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/closeCurrentAppAllWindows.sh"]
+                                ;CLOSE All Windows of Current App Except Focused
+                                [:left_shift "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/closeAppWindowsKeepFocused.sh"]
+                                ;CLOSE All Windows of All Apps Except Current Window
+                                [:right_shift "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/closeOtherWindows.sh"]
+                                ;CLOSE All Windows of Other Apps (Not the Current App)
+                                [:left_command "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/closeOtherAppWindows.sh"]
+                                ;CLOSE All Windows of All Apps
+                                [:return_or_enter "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/closeEveryWindow.sh"]
+
+                        [:condi :space-rcmd]
+                        ;HIDE APPS - SPACEBAR
+                                ;HIDE Current App
+                                [:caps_lock :!Ch]
+                                ;HIDE All Other Apps
+                                [:spacebar [:km "- rcmd hide: OtherApps"]]
+                                ;HIDE ALL Apps
+                                [:return_or_enter [:km "- rcmd hide: All"]]
+
+                        [:condi :rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]
+                        ;UNHIDE ALL APPS
+                                ; I need to setup this shortcut in Mac settings.
+                                ; In Keyboard Shortcuts/AppShortcuts/All Applications set CTRL + OPT + CMD + H to "Show All" (because that's the menu option)
+                                [:return_or_enter [:!TOCh]]
+
+                        [:condi :semi-rcmd]
+                        ;QUIT APPS - SEMI
+                                ;QUIT All Other Apps
+                                [:semicolon [:km "- rcmd quit: Others"]]
+                                ;QUIT All Apps
+                                [:return_or_enter [:km "- rcmd quit: All"]]
+
+                        [:condi :lshift-rcmd :!rshift-rcmd]
+                        ;WINDOWS PREVIOUS / NEXT in Same Space - LSHIFT
+                                ;FOCUS Current App Previous Window - This Space
+                                [:comma "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/prevWindowSameAppThisSpace.sh"]
+                                ;FOCUS Current App Next Window - This Space
+                                [:period "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/nextWindowSameAppThisSpace.sh"]
+
+                        [:condi :rshift-rcmd :!lshift-rcmd]
+                        ;WINDOWS PREVIOUS / NEXT in Same Space - RSHIFT
+                                ;FOCUS Current App Previous Window - This Space
+                                [:comma "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/prevWindowSameAppThisSpace.sh"]
+                                ;FOCUS Current App Next Window - This Space
+                                [:period "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/nextWindowSameAppThisSpace.sh"]
+
+                        [:condi :rshift-rcmd :!lshift-rcmd]
+                        ;SCRATCHPADS - RSHIFT
+                                [:caps_lock [:yabai "window --scratchpad recover"]]
+                                [:left_shift "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadSet.sh"]
+                                [:right_shift "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggle scratchpad"]
+                ]},
+
+                {:des "RCMD Apps" :rules [
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD A>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
                 ;ALFRED
                         ;Activate
@@ -2229,7 +2256,6 @@
         ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         ]}
-
         ]
 }
 

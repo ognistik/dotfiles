@@ -46,7 +46,7 @@ yabai -m rule --add app="^Soundly$" scratchpad="scratchpad" grid="11:11:1:1:9:9"
 # Misc 
 yabai -m rule --add app="^CleanShot X$" sticky=on manage=off opacity=1.0
 yabai -m rule --add app="^Loopback$" manage=off opacity=1.0 grid="11:11:1:1:9:9"
-yabai -m rule --add app="^Karabiner-Elements$" manage=off opacity=1.0 grid="11:11:1:1:9:9"
+yabai -m rule --add app="^Karabiner-.*" manage=off opacity=1.0 grid="11:11:1:1:9:9"
 yabai -m rule --add app="^Kando$" manage=off opacity=1.0
 yabai -m rule --add app="^Screen Studio$|^Screen Studio Beta$" subrole="AXDialog" title!="Camera Preview" manage=off opacity=0.0001
 yabai -m rule --add app="^Screen Studio$|^Screen Studio Beta$" subrole!="AXDialog" manage=off opacity=1.0
@@ -66,9 +66,9 @@ yabai -m rule --add app="^Safari$" manage=off grid="11:11:1:1:9:9"
 yabai -m signal --add label=scratchpad_newSafari event=window_created app="^Safari$" title!="^(General|Extensions)$" action='~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggleSpecial Safari'
 
 # Apps to Keep Unmanaged
-yabai -m rule --add app="^(TestFlight|iZotope RX 11|MacWhisper|FxFactory Agent|TrashMe 3|CrossOver|Find Any File|Keka|Bartender 5|DaisyDisk|OpenIn|Sideloadly!|iStat Menus Status|iStat Menus|Problem Reporter|PastePal|App Store|IINA|System Information|Dropover|Homerow|System Settings|Alfred Preferences|X-Title Import|Karabiner-EventViewer|BetterTouchTool)$" manage=off opacity=1.0
+yabai -m rule --add app="^(TestFlight|iZotope RX 11|MacWhisper|FxFactory Agent|TrashMe 3|CrossOver|Find Any File|Keka|Bartender 5|DaisyDisk|OpenIn|Sideloadly!|iStat Menus Status|iStat Menus|Problem Reporter|PastePal|App Store|IINA|System Information|Dropover|Homerow|System Settings|Alfred Preferences|X-Title Import|BetterTouchTool)$" manage=off opacity=1.0
 # Centered Unmanaged Apps - Without Resizing
-yabai -m signal --add label=unmanagedAndCenteredApps event=window_created app='^(TestFlight|iZotope RX 11|MacWhisper|TrashMe 3|CrossOver|Find Any File|Keka|Bartender 5|DaisyDisk|Sideloadly!|iStat Menus|Problem Reporter|App Store|IINA|System Information|Dropover|System Settings|Alfred Preferences|X-Title Import|Karabiner-EventViewer|BetterTouchTool)$' action='window="$(yabai -m query --windows --window)"; display="$(/opt/homebrew/bin/yabai -m query --displays --window)"; coords="$(/opt/homebrew/bin/jq --argjson window "$window" --argjson display "$display" -nr "((\$display.frame | .x + .w / 2) - (\$window.frame.w / 2) | tostring) + \":\" + ((\$display.frame | .y + .h / 2) - (\$window.frame.h / 2) | tostring)")"; /opt/homebrew/bin/yabai -m window --move "abs:$coords"'
+yabai -m signal --add label=unmanagedAndCenteredApps event=window_created app='^(TestFlight|iZotope RX 11|MacWhisper|TrashMe 3|CrossOver|Find Any File|Keka|Bartender 5|DaisyDisk|Sideloadly!|iStat Menus|Problem Reporter|App Store|IINA|System Information|Dropover|System Settings|Alfred Preferences|X-Title Import|BetterTouchTool)$' action='window="$(yabai -m query --windows --window)"; display="$(/opt/homebrew/bin/yabai -m query --displays --window)"; coords="$(/opt/homebrew/bin/jq --argjson window "$window" --argjson display "$display" -nr "((\$display.frame | .x + .w / 2) - (\$window.frame.w / 2) | tostring) + \":\" + ((\$display.frame | .y + .h / 2) - (\$window.frame.h / 2) | tostring)")"; /opt/homebrew/bin/yabai -m window --move "abs:$coords"'
 
 # Window Titles to Keep Unmanaged
 yabai -m rule --add title="^(Audio Hijack Session List|.*Info|Copy|Robert|Trash|Open|Finder Settings)$" manage=off opacity=1.0
