@@ -1183,7 +1183,7 @@
                 ]},
 
 ; -- RCMD MODS --
-                {:des "RCMD Sublayers Creation" :rules [[:condi :rcmd :!a-rcmd :!b-rcmd :!c-rcmd :!d-rcmd :!e-rcmd :!f-rcmd :!g-rcmd
+                {:des "RCMD Character Layer Setup" :rules [[:condi :rcmd :!a-rcmd :!b-rcmd :!c-rcmd :!d-rcmd :!e-rcmd :!f-rcmd :!g-rcmd
                         :!h-rcmd :!i-rcmd :!j-rcmd :!k-rcmd :!l-rcmd :!m-rcmd :!n-rcmd :!o-rcmd :!p-rcmd :!q-rcmd :!r-rcmd :!s-rcmd 
                         :!t-rcmd :!u-rcmd :!v-rcmd :!w-rcmd :!x-rcmd :!y-rcmd :!z-rcmd :!openbracket-rcmd :!closebracket-rcmd :!bslash-rcmd
                         :!quote-rcmd :!ropt-rcmd :!return-rcmd]
@@ -1222,7 +1222,7 @@
                                 [:period "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/nextWindowSameAppAllSpaces.sh"]
                 ]},
 
-                {:des "RCMD Hyperlayers Creation" :rules [[:condi :rcmd :!a-rcmd :!b-rcmd :!c-rcmd :!d-rcmd :!e-rcmd :!f-rcmd :!g-rcmd
+                {:des "RCMD HyperLayer Setup" :rules [[:condi :rcmd :!a-rcmd :!b-rcmd :!c-rcmd :!d-rcmd :!e-rcmd :!f-rcmd :!g-rcmd
                         :!h-rcmd :!i-rcmd :!j-rcmd :!k-rcmd :!l-rcmd :!m-rcmd :!n-rcmd :!o-rcmd :!p-rcmd :!q-rcmd :!r-rcmd :!s-rcmd 
                         :!t-rcmd :!u-rcmd :!v-rcmd :!w-rcmd :!x-rcmd :!y-rcmd :!z-rcmd :!openbracket-rcmd :!closebracket-rcmd :!bslash-rcmd :!quote-rcmd :!ropt-rcmd :!return-rcmd
                         :!semi-rcmd :!caps-rcmd :!rshift-rcmd :!lshift-rcmd :!space-rcmd :!lcmd-rcmd] ; <- This last line actually is the hyperlayers I'm creating. Only difference from main layer above
@@ -1268,7 +1268,7 @@
                                 [:return_or_enter "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/closeEveryWindow.sh"]
 
                         [:condi :space-rcmd]
-                        ;HIDE APPS - SPACEBAR
+                        ; HIDE APPS - SPACEBAR
                                 ;HIDE Current App
                                 [:caps_lock :!Ch]
                                 ;HIDE All Other Apps
@@ -1277,985 +1277,946 @@
                                 [:return_or_enter [:km "- rcmd hide: All"]]
 
                         [:condi :rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]
-                        ;UNHIDE ALL APPS
+                        ; UNHIDE ALL APPS
                                 ; I need to setup this shortcut in Mac settings.
                                 ; In Keyboard Shortcuts/AppShortcuts/All Applications set CTRL + OPT + CMD + H to "Show All" (because that's the menu option)
                                 [:return_or_enter [:!TOCh]]
 
                         [:condi :semi-rcmd]
-                        ;QUIT APPS - SEMI
+                        ; QUIT APPS - SEMI
                                 ;QUIT All Other Apps
                                 [:semicolon [:km "- rcmd quit: Others"]]
                                 ;QUIT All Apps
                                 [:return_or_enter [:km "- rcmd quit: All"]]
 
                         [:condi :lshift-rcmd :!rshift-rcmd]
-                        ;WINDOWS PREVIOUS / NEXT in Same Space - LSHIFT
+                        ; WINDOWS PREVIOUS / NEXT in Same Space - LSHIFT
                                 ;FOCUS Current App Previous Window - This Space
                                 [:comma "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/prevWindowSameAppThisSpace.sh"]
                                 ;FOCUS Current App Next Window - This Space
                                 [:period "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/nextWindowSameAppThisSpace.sh"]
 
                         [:condi :rshift-rcmd :!lshift-rcmd]
-                        ;WINDOWS PREVIOUS / NEXT in Same Space - RSHIFT
+                        ; WINDOWS PREVIOUS / NEXT in Same Space - RSHIFT
                                 ;FOCUS Current App Previous Window - This Space
                                 [:comma "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/prevWindowSameAppThisSpace.sh"]
                                 ;FOCUS Current App Next Window - This Space
                                 [:period "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/nextWindowSameAppThisSpace.sh"]
 
                         [:condi :rshift-rcmd :!lshift-rcmd]
-                        ;SCRATCHPADS - RSHIFT
+                        ; SCRATCHPADS - RSHIFT
                                 [:caps_lock [:yabai "window --scratchpad recover"]]
                                 [:left_shift "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadSet.sh"]
                                 [:right_shift "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggle scratchpad"]
                 ]},
 
                 {:des "RCMD Apps" :rules [
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD A>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                ;ALFRED
-                        ;Activate
-                        [:l [:km "rcmd: Alfred"] [:a-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:l [:km "rcmd: Alfred" "m"] [:a-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Cl [:km "rcmd: Alfred" "dm"] [:a-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:l [:km "rcmd: Alfred" "x"] [:a-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:l [:km "rcmd: Alfred" "0"] [:a-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:l [:km "rcmd: Alfred" "xx"] [:a-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:l [:km "rcmd: Alfred" "1"] [:a-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:l [:km "rcmd: Alfred" "2"] [:a-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Rl [:km "rcmd: Alfred" "3"] [:a-rcmd :caps-rcmd]]
-                ;APPSTORE
-                        ;Activate
-                        [:s [:km "rcmd: AppStore"] [:a-rcmd :!space-rcmd :!ropt-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:s [:km "rcmd: AppStore" "m"] [:a-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Cs [:km "rcmd: AppStore" "dm"] [:a-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:s [:km "rcmd: AppStore" "x"] [:a-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:s [:km "rcmd: AppStore" "0"] [:a-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:s [:km "rcmd: AppStore" "xx"] [:a-rcmd :ropt-rcmd]]
-                        ;Activate & Hide Others
-                        [:s [:km "rcmd: AppStore" "1"] [:a-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:s [:km "rcmd: AppStore" "2"] [:a-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Rs [:km "rcmd: AppStore" "3"] [:a-rcmd :caps-rcmd]]
-                ;ARC
-                        ;Activate
-                        [:a [:km "rcmd: Arc"] [:a-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:a [:km "rcmd: Arc" "m"] [:a-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Ca [:km "rcmd: Arc" "dm"] [:a-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:a [:km "rcmd: Arc" "x"] [:a-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:a [:km "rcmd: Arc" "0"] [:a-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:a [:km "rcmd: Arc" "xx"] [:a-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:a [:km "rcmd: Arc" "1"] [:a-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:a [:km "rcmd: Arc" "2"] [:a-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Ra [:km "rcmd: Arc" "3"] [:a-rcmd :caps-rcmd]]
-                ;ANYBOX
-                        ;Activate
-                        [:n [:km "rcmd: Anybox"] [:a-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:n [:km "rcmd: Anybox" "m"] [:a-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Cn [:km "rcmd: Anybox" "dm"] [:a-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:n [:km "rcmd: Anybox" "x"] [:a-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:n [:km "rcmd: Anybox" "0"] [:a-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:n [:km "rcmd: Anybox" "xx"] [:a-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:n [:km "rcmd: Anybox" "1"] [:a-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:n [:km "rcmd: Anybox" "2"] [:a-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Rn [:km "rcmd: Anybox" "3"] [:a-rcmd :caps-rcmd]]
-                ;AUDIOHIJACK
-                        ;Activate
-                        [:h [:km "rcmd: AudioHijack"] [:a-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:h [:km "rcmd: AudioHijack" "m"] [:a-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Ch [:km "rcmd: AudioHijack" "dm"] [:a-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:h [:km "rcmd: AudioHijack" "x"] [:a-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:h [:km "rcmd: AudioHijack" "0"] [:a-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:h [:km "rcmd: AudioHijack" "xx"] [:a-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:h [:km "rcmd: AudioHijack" "1"] [:a-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:h [:km "rcmd: AudioHijack" "2"] [:a-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Rh [:km "rcmd: AudioHijack" "3"] [:a-rcmd :caps-rcmd]]
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD B>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                ;BEAR
-                        ;Activate
-                        [:b [:km "rcmd: Bear"] [:b-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:b [:km "rcmd: Bear" "m"] [:b-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Cb [:km "rcmd: Bear" "dm"] [:b-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:b [:km "rcmd: Bear" "x"] [:b-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:b [:km "rcmd: Bear" "0"] [:b-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:b [:km "rcmd: Bear" "xx"] [:b-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:b [:km "rcmd: Bear" "1"] [:b-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:b [:km "rcmd: Bear" "2"] [:b-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Rb [:km "rcmd: Bear" "3"] [:b-rcmd :caps-rcmd]]
-                ;BETTERMOUSE
-                        ;Activate
-                        [:m [:km "rcmd: BetterMouse"] [:b-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:m [:notification "App has no windows." "BetterMouse"] [:b-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Cm [:notification "App has no windows." "BetterMouse"] [:b-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:m [:notification "App has no windows." "BetterMouse"] [:b-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:m [:notification "App has no windows." "BetterMouse"] [:b-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:m [:km "rcmd: BetterMouse" "xx"] [:b-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:m [:km "rcmd: BetterMouse" "1"] [:b-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:m [:km "rcmd: BetterMouse" "2"] [:b-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Rm [:km "rcmd: BetterMouse" "3"] [:b-rcmd :caps-rcmd]]
-                ;BETTERTOUCHTOOL
-                        ;Activate
-                        [:t [:km "rcmd: BetterTouchTool"] [:b-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:t [:km "rcmd: BetterTouchTool" "m"] [:b-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Ct [:km "rcmd: BetterTouchTool" "dm"] [:b-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:t [:km "rcmd: BetterTouchTool" "x"] [:b-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:t [:km "rcmd: BetterTouchTool" "0"] [:b-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:t [:km "rcmd: BetterTouchTool" "xx"] [:b-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:t [:km "rcmd: BetterTouchTool" "1"] [:b-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:t [:km "rcmd: BetterTouchTool" "2"] [:b-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Rt [:km "rcmd: BetterTouchTool" "3"] [:b-rcmd :caps-rcmd]]
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD C>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                ;"CAPTUREONE"
-                        ;Activate
-                        [:o [:km "rcmd: CaptureOne"] [:c-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:o [:km "rcmd: CaptureOne" "m"] [:c-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Co [:km "rcmd: CaptureOne" "dm"] [:c-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:o [:km "rcmd: CaptureOne" "x"] [:c-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:o [:km "rcmd: CaptureOne" "0"] [:c-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:o [:km "rcmd: CaptureOne" "xx"] [:c-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:o [:km "rcmd: CaptureOne" "1"] [:c-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:o [:km "rcmd: CaptureOne" "2"] [:c-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Ro [:km "rcmd: CaptureOne" "3"] [:c-rcmd :caps-rcmd]]
-                ;"CLEANSHOT"
-                        ;Activate
-                        [:s [:km "rcmd: CleanShot"] [:c-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:s [:km "rcmd: CleanShot" "m"] [:c-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Cs [:km "rcmd: CleanShot" "dm"] [:c-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:s [:km "rcmd: CleanShot" "x"] [:c-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:s [:km "rcmd: CleanShot" "0"] [:c-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:s [:km "rcmd: CleanShot" "xx"] [:c-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:s [:km "rcmd: CleanShot" "1"] [:c-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:s [:km "rcmd: CleanShot" "2"] [:c-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Rs [:km "rcmd: CleanShot" "3"] [:c-rcmd :caps-rcmd]]
-                ;"CORK"
-                        ;Activate
-                        [:r [:km "rcmd: Cork"] [:c-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:r [:km "rcmd: Cork" "m"] [:c-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Cr [:km "rcmd: Cork" "dm"] [:c-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:r [:km "rcmd: Cork" "x"] [:c-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:r [:km "rcmd: Cork" "0"] [:c-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:r [:km "rcmd: Cork" "xx"] [:c-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:r [:km "rcmd: Cork" "1"] [:c-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:r [:km "rcmd: Cork" "2"] [:c-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Rr [:km "rcmd: Cork" "3"] [:c-rcmd :caps-rcmd]]                        
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD D>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                ;DAYONE
-                        ;Activate
-                        [:d [:km "rcmd: DayOne"] [:d-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:d [:km "rcmd: DayOne" "m"] [:d-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Cd [:km "rcmd: DayOne" "dm"] [:d-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:d [:km "rcmd: DayOne" "x"] [:d-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:d [:km "rcmd: DayOne" "0"] [:d-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:d [:km "rcmd: DayOne" "xx"] [:d-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:d [:km "rcmd: DayOne" "1"] [:d-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:d [:km "rcmd: DayOne" "2"] [:d-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Rd [:km "rcmd: DayOne" "3"] [:d-rcmd :caps-rcmd]]
-                ;"DEHANCER"
-                        ;Activate
-                        [:e "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggle Dehancer" [:d-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;[:e [:km "rcmd: Dehancer"] [:d-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:e [:km "rcmd: Dehancer" "m"] [:d-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Ce [:km "rcmd: Dehancer" "dm"] [:d-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:e [:km "rcmd: Dehancer" "x"] [:d-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:e [:km "rcmd: Dehancer" "0"] [:d-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:e [:km "rcmd: Dehancer" "xx"] [:d-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:e [:km "rcmd: Dehancer" "1"] [:d-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:e [:km "rcmd: Dehancer" "2"] [:d-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Re [:km "rcmd: Dehancer" "3"] [:d-rcmd :caps-rcmd]]
-                ;"DROPOVER"
-                        ;Activate
-                        [:r [:km "rcmd: Dropover"] [:d-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:r [:notification "App has no windows." "Dropover"] [:d-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Cr [:notification "App has no windows." "Dropover"] [:d-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:r [:notification "App has no windows." "Dropover"] [:d-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:r [:notification "App has no windows." "Dropover"] [:d-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:r [:km "rcmd: Dropover" "xx"] [:d-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:r [:km "rcmd: Dropover" "1"] [:d-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:r [:km "rcmd: Dropover" "2"] [:d-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Rr [:km "rcmd: Dropover" "3"] [:d-rcmd :caps-rcmd]]
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD F>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                ;"FINDER"
-                        ;Activate
-                        [:f [:km "rcmd: Finder"] [:f-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:f [:km "rcmd: Finder" "m"] [:f-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Cf [:km "rcmd: Finder" "dm"] [:f-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:f [:km "rcmd: Finder" "x"] [:f-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:f [:km "rcmd: Finder" "0"] [:f-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:f [:km "rcmd: Finder" "xx"] [:f-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:f [:km "rcmd: Finder" "1"] [:f-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:f [:km "rcmd: Finder" "2"] [:f-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Rf [:km "rcmd: Finder" "3"] [:f-rcmd :caps-rcmd]]
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD I>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                ;"IMESSAGES"
-                        ;Activate
-                        [:i "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggle iMessages" [:i-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;[:i [:km "rcmd: iMessages"] [:i-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:i [:km "rcmd: iMessages" "m"] [:i-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Ci [:km "rcmd: iMessages" "dm"] [:i-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:i [:km "rcmd: iMessages" "x"] [:i-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:i [:km "rcmd: iMessages" "0"] [:i-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:i [:km "rcmd: iMessages" "xx"] [:i-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:i [:km "rcmd: iMessages" "1"] [:i-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:i [:km "rcmd: iMessages" "2"] [:i-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Ri [:km "rcmd: iMessages" "3"] [:i-rcmd :caps-rcmd]]
-                ;IA WRITER
-                        ;Activate
-                        [:a [:km "rcmd: iA Writer"] [:i-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:a [:km "rcmd: iA Writer" "m"] [:i-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Ca [:km "rcmd: iA Writer" "dm"] [:i-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:a [:km "rcmd: iA Writer" "x"] [:i-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:a [:km "rcmd: iA Writer" "0"] [:i-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:a [:km "rcmd: iA Writer" "xx"] [:i-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:a [:km "rcmd: iA Writer" "1"] [:i-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:a [:km "rcmd: iA Writer" "2"] [:i-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Ra [:km "rcmd: iA Writer" "3"] [:i-rcmd :caps-rcmd]]
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD K>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                ;"KARABINERELEMENTS"
-                        ;Activate
-                        [:e [:km "rcmd: KarabinerElements"] [:k-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:e [:km "rcmd: KarabinerElements" "m"] [:k-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Ce [:km "rcmd: KarabinerElements" "dm"] [:k-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:e [:km "rcmd: KarabinerElements" "x"] [:k-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:e [:km "rcmd: KarabinerElements" "0"] [:k-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:e [:km "rcmd: KarabinerElements" "xx"] [:k-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:e [:km "rcmd: KarabinerElements" "1"] [:k-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:e [:km "rcmd: KarabinerElements" "2"] [:k-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Re [:km "rcmd: KarabinerElements" "3"] [:k-rcmd :caps-rcmd]]
-                ;"KARABINEREVENT"
-                        ;Activate
-                        [:k [:km "rcmd: KarabinerEvent"] [:k-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:k [:km "rcmd: KarabinerEvent" "m"] [:k-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Ck [:km "rcmd: KarabinerEvent" "dm"] [:k-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:k [:km "rcmd: KarabinerEvent" "x"] [:k-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:k [:km "rcmd: KarabinerEvent" "0"] [:k-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:k [:km "rcmd: KarabinerEvent" "xx"] [:k-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:k [:km "rcmd: KarabinerEvent" "1"] [:k-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:k [:km "rcmd: KarabinerEvent" "2"] [:k-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Rk [:km "rcmd: KarabinerEvent" "3"] [:k-rcmd :caps-rcmd]]
-                ;"KEYBOARDMAESTRO"
-                        ;Activate
-                        [:m [:km "rcmd: KeyboardMaestro"] [:k-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:m [:km "rcmd: KeyboardMaestro" "m"] [:k-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Cm [:km "rcmd: KeyboardMaestro" "dm"] [:k-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:m [:km "rcmd: KeyboardMaestro" "x"] [:k-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:m [:km "rcmd: KeyboardMaestro" "0"] [:k-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:m [:km "rcmd: KeyboardMaestro" "xx"] [:k-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:m [:km "rcmd: KeyboardMaestro" "1"] [:k-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:m [:km "rcmd: KeyboardMaestro" "2"] [:k-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Rm [:km "rcmd: KeyboardMaestro" "3"] [:k-rcmd :caps-rcmd]]
-                ;"KLACK"
-                        ;Activate
-                        [:l [:km "rcmd: Klack"] [:k-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:l [:notification "App has no windows." "Klack"] [:k-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Cl [:notification "App has no windows." "Klack"] [:k-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:l [:notification "App has no windows." "Klack"] [:k-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:l [:km "rcmd: Klack" "0"] [:k-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:l [:km "rcmd: Klack" "xx"] [:k-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:l [:km "rcmd: Klack" "1"] [:k-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:l [:km "rcmd: Klack" "2"] [:k-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Rl [:km "rcmd: Klack" "3"] [:k-rcmd :caps-rcmd]]
-                ;"KONTAKT"
-                        ;Activate
-                        [:o [:km "rcmd: Kontakt"] [:k-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:o [:km "rcmd: Kontakt" "m"] [:k-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Co [:km "rcmd: Kontakt" "dm"] [:k-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:o [:km "rcmd: Kontakt" "x"] [:k-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:o [:km "rcmd: Kontakt" "0"] [:k-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:o [:km "rcmd: Kontakt" "xx"] [:k-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:o [:km "rcmd: Kontakt" "1"] [:k-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:o [:km "rcmd: Kontakt" "2"] [:k-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Ro [:km "rcmd: Kontakt" "3"] [:k-rcmd :caps-rcmd]] 
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-        
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD L>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                ;"LIGHTROOMCLASSIC"
-                        ;Activate
-                        [:c [:km "rcmd: LightroomClassic"] [:l-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:c [:km "rcmd: LightroomClassic" "m"] [:l-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Cc [:km "rcmd: LightroomClassic" "dm"] [:l-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:c [:km "rcmd: LightroomClassic" "x"] [:l-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:c [:km "rcmd: LightroomClassic" "0"] [:l-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:c [:km "rcmd: LightroomClassic" "xx"] [:l-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:c [:km "rcmd: LightroomClassic" "1"] [:l-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:c [:km "rcmd: LightroomClassic" "2"] [:l-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Rc [:km "rcmd: LightroomClassic" "3"] [:l-rcmd :caps-rcmd]]
-                ;LOOPBACK
-                        ;Activate
-                        [:l [:km "rcmd: Loopback"] [:l-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:l [:km "rcmd: Loopback" "m"] [:l-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Cl [:km "rcmd: Loopback" "dm"] [:l-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:l [:km "rcmd: Loopback" "x"] [:l-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:l [:km "rcmd: Loopback" "0"] [:l-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:l [:km "rcmd: Loopback" "xx"] [:l-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:l [:km "rcmd: Loopback" "1"] [:l-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:l [:km "rcmd: Loopback" "2"] [:l-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Rl [:km "rcmd: Loopback" "3"] [:l-rcmd :caps-rcmd]]                
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD M>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                ;"MACUPDATER"
-                        ;Activate
-                        [:u [:km "rcmd: MacUpdater"] [:m-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:u [:km "rcmd: MacUpdater" "m"] [:m-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Cu [:km "rcmd: MacUpdater" "dm"] [:m-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:u [:km "rcmd: MacUpdater" "x"] [:m-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:u [:km "rcmd: MacUpdater" "0"] [:m-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:u [:km "rcmd: MacUpdater" "xx"] [:m-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:u [:km "rcmd: MacUpdater" "1"] [:m-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:u [:km "rcmd: MacUpdater" "2"] [:m-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Ru [:km "rcmd: MacUpdater" "3"] [:m-rcmd :caps-rcmd]]
-                ;"MACWHISPER"
-                        ;Activate
-                        [:w [:km "rcmd: MacWhisper"] [:m-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:w [:km "rcmd: MacWhisper" "m"] [:m-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Cw [:km "rcmd: MacWhisper" "dm"] [:m-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:w [:km "rcmd: MacWhisper" "x"] [:m-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:w [:km "rcmd: MacWhisper" "0"] [:m-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:w [:km "rcmd: MacWhisper" "xx"] [:m-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:w [:km "rcmd: MacWhisper" "1"] [:m-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:w [:km "rcmd: MacWhisper" "2"] [:m-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Rw [:km "rcmd: MacWhisper" "3"] [:m-rcmd :caps-rcmd]]
-                ;MOUSELESS
-                        ;Activate
-                        [:o [:km "rcmd: Mouseless"] [:m-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:o [:km "rcmd: Mouseless" "m"] [:m-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Co [:km "rcmd: Mouseless" "dm"] [:m-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:o [:km "rcmd: Mouseless" "x"] [:m-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:o [:km "rcmd: Mouseless" "0"] [:m-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:o [:km "rcmd: Mouseless" "xx"] [:m-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:o [:km "rcmd: Mouseless" "1"] [:m-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:o [:km "rcmd: Mouseless" "2"] [:m-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Ro [:km "rcmd: Mouseless" "3"] [:m-rcmd :caps-rcmd]]
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD O>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                ;OPENIN
-                        ;Activate
-                        [:i [:km "rcmd: OpenIn"] [:o-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:i [:km "rcmd: OpenIn" "m"] [:o-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Ci [:km "rcmd: OpenIn" "dm"] [:o-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:i [:km "rcmd: OpenIn" "x"] [:o-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:i [:km "rcmd: OpenIn" "0"] [:o-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:i [:km "rcmd: OpenIn" "xx"] [:o-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:i [:km "rcmd: OpenIn" "1"] [:o-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:i [:km "rcmd: OpenIn" "2"] [:o-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Ri [:km "rcmd: OpenIn" "3"] [:o-rcmd :caps-rcmd]]
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD P>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                ;"PLEX"
-                        ;Activate
-                        [:l [:km "rcmd: Plex"] [:p-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:l [:km "rcmd: Plex" "m"] [:p-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Cl [:km "rcmd: Plex" "dm"] [:p-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:l [:km "rcmd: Plex" "x"] [:p-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:l [:km "rcmd: Plex" "0"] [:p-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:l [:km "rcmd: Plex" "xx"] [:p-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:l [:km "rcmd: Plex" "1"] [:p-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:l [:km "rcmd: Plex" "2"] [:p-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Rl [:km "rcmd: Plex" "3"] [:p-rcmd :caps-rcmd]]
-                ;"PHOTOMECHANIC"
-                        ;Activate
-                        [:m [:km "rcmd: PhotoMechanic"] [:p-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:m [:km "rcmd: PhotoMechanic" "m"] [:p-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Cm [:km "rcmd: PhotoMechanic" "dm"] [:p-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:m [:km "rcmd: PhotoMechanic" "x"] [:p-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:m [:km "rcmd: PhotoMechanic" "0"] [:p-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:m [:km "rcmd: PhotoMechanic" "xx"] [:p-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:m [:km "rcmd: PhotoMechanic" "1"] [:p-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:m [:km "rcmd: PhotoMechanic" "2"] [:p-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Rm [:km "rcmd: PhotoMechanic" "3"] [:p-rcmd :caps-rcmd]]
-                ;PHOTOS
-                        ;Activate
-                        [:h [:km "rcmd: Photos"] [:p-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:h [:km "rcmd: Photos" "m"] [:p-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Ch [:km "rcmd: Photos" "dm"] [:p-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:h [:km "rcmd: Photos" "x"] [:p-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:h [:km "rcmd: Photos" "0"] [:p-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:h [:km "rcmd: Photos" "xx"] [:p-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:h [:km "rcmd: Photos" "1"] [:p-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:h [:km "rcmd: Photos" "2"] [:p-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Rh [:km "rcmd: Photos" "3"] [:p-rcmd :caps-rcmd]]
-                ;PIXELMATOR PRO
-                        ;Activate
-                        [:p [:km "rcmd: Pixelmator Pro"] [:p-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:p [:km "rcmd: Pixelmator Pro" "m"] [:p-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Cp [:km "rcmd: Pixelmator Pro" "dm"] [:p-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:p [:km "rcmd: Pixelmator Pro" "x"] [:p-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:p [:km "rcmd: Pixelmator Pro" "0"] [:p-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:p [:km "rcmd: Pixelmator Pro" "xx"] [:p-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:p [:km "rcmd: Pixelmator Pro" "1"] [:p-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:p [:km "rcmd: Pixelmator Pro" "2"] [:p-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Rp [:km "rcmd: Pixelmator Pro" "3"] [:p-rcmd :caps-rcmd]]
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD S>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                ;SAFARI
-                        ;Activate
-                        [:a "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggle Safari" [:s-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;[:a [:km "rcmd: Safari"] [:s-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:a [:km "rcmd: Safari" "m"] [:s-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Ca [:km "rcmd: Safari" "dm"] [:s-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:a [:km "rcmd: Safari" "x"] [:s-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:a [:km "rcmd: Safari" "0"] [:s-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:a [:km "rcmd: Safari" "xx"] [:s-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:a [:km "rcmd: Safari" "1"] [:s-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:a [:km "rcmd: Safari" "2"] [:s-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Ra [:km "rcmd: Safari" "3"] [:s-rcmd :caps-rcmd]]
-                ;"SCREENSTUDIO"
-                        ;Activate
-                        [:s [:km "rcmd: ScreenStudio"] [:s-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:s [:km "rcmd: ScreenStudio" "m"] [:s-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Cs [:km "rcmd: ScreenStudio" "dm"] [:s-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:s [:km "rcmd: ScreenStudio" "x"] [:s-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:s [:km "rcmd: ScreenStudio" "0"] [:s-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:s [:km "rcmd: ScreenStudio" "xx"] [:s-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:s [:km "rcmd: ScreenStudio" "1"] [:s-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:s [:km "rcmd: ScreenStudio" "2"] [:s-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Rs [:km "rcmd: ScreenStudio" "3"] [:s-rcmd :caps-rcmd]]
-                ;"SHORTCUTS"
-                        ;Activate
-                        [:h [:km "rcmd: Shortcuts"] [:s-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:h [:km "rcmd: Shortcuts" "m"] [:s-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Ch [:km "rcmd: Shortcuts" "dm"] [:s-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:h [:km "rcmd: Shortcuts" "x"] [:s-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:h [:km "rcmd: Shortcuts" "0"] [:s-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:h [:km "rcmd: Shortcuts" "xx"] [:s-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:h [:km "rcmd: Shortcuts" "1"] [:s-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:h [:km "rcmd: Shortcuts" "2"] [:s-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Rh [:km "rcmd: Shortcuts" "3"] [:s-rcmd :caps-rcmd]]
-                ;"SPOTIFY"
-                        ;Activate
-                        [:p "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggle Spotify" [:s-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;[:p [:km "rcmd: Spotify"] [:s-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:p [:km "rcmd: Spotify" "m"] [:s-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Cp [:km "rcmd: Spotify" "dm"] [:s-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:p [:km "rcmd: Spotify" "x"] [:s-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:p [:km "rcmd: Spotify" "0"] [:s-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:p [:km "rcmd: Spotify" "xx"] [:s-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:p [:km "rcmd: Spotify" "1"] [:s-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:p [:km "rcmd: Spotify" "2"] [:s-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Rp [:km "rcmd: Spotify" "3"] [:s-rcmd :caps-rcmd]]
-                ;"SUPERKEY"
-                        ;Activate
-                        [:u [:km "rcmd: Superkey"] [:s-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:u [:notification "App has no windows." "Superkey"] [:s-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Cu [:notification "App has no windows." "Superkey"] [:s-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:u [:notification "App has no windows." "Superkey"] [:s-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:u [:notification "App has no windows." "Superkey"] [:s-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:u [:km "rcmd: Superkey" "xx"] [:s-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:u [:km "rcmd: Superkey" "1"] [:s-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:u [:km "rcmd: Superkey" "2"] [:s-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Ru [:km "rcmd: Superkey" "3"] [:s-rcmd :caps-rcmd]]
-                ;SUPERWHISPER
-                        ;Activate
-                        [:w [:km "rcmd: SuperWhisper"] [:s-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:w [:km "rcmd: SuperWhisper" "m"] [:s-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Cw [:km "rcmd: SuperWhisper" "dm"] [:s-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:w [:km "rcmd: SuperWhisper" "x"] [:s-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:w [:km "rcmd: SuperWhisper" "0"] [:s-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:w [:km "rcmd: SuperWhisper" "xx"] [:s-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:w [:km "rcmd: SuperWhisper" "1"] [:s-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:w [:km "rcmd: SuperWhisper" "2"] [:s-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Rw [:km "rcmd: SuperWhisper" "3"] [:s-rcmd :caps-rcmd]]
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD T>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                ;"TERMINAL"
-                        ;Activate
-                        [:t [:km "rcmd: Terminal"] [:t-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:t [:km "rcmd: Terminal" "m"] [:t-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Ct [:km "rcmd: Terminal" "dm"] [:t-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:t [:km "rcmd: Terminal" "x"] [:t-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:t [:km "rcmd: Terminal" "0"] [:t-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:t [:km "rcmd: Terminal" "xx"] [:t-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:t [:km "rcmd: Terminal" "1"] [:t-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:t [:km "rcmd: Terminal" "2"] [:t-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Rt [:km "rcmd: Terminal" "3"] [:t-rcmd :caps-rcmd]]
-                ;"THINGS"
-                        ;Activate
-                        [:h [:km "rcmd: Things"] [:t-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:h [:km "rcmd: Things" "m"] [:t-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Ch [:km "rcmd: Things" "dm"] [:t-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:h [:km "rcmd: Things" "x"] [:t-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:h [:km "rcmd: Things" "0"] [:t-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:h [:km "rcmd: Things" "xx"] [:t-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:h [:km "rcmd: Things" "1"] [:t-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:h [:km "rcmd: Things" "2"] [:t-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Rh [:km "rcmd: Things" "3"] [:t-rcmd :caps-rcmd]]
-                ;"TRANSMISSION"
-                        ;Activate
-                        [:r "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggle Transmission" [:t-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;[:r [:km "rcmd: Transmission"] [:t-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:r [:km "rcmd: Transmission" "m"] [:t-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Cr [:km "rcmd: Transmission" "dm"] [:t-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:r [:km "rcmd: Transmission" "x"] [:t-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:r [:km "rcmd: Transmission" "0"] [:t-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:r [:km "rcmd: Transmission" "xx"] [:t-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:r [:km "rcmd: Transmission" "1"] [:t-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:r [:km "rcmd: Transmission" "2"] [:t-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Rr [:km "rcmd: Transmission" "3"] [:t-rcmd :caps-rcmd]]
-                ;"TRASHME"
-                        ;Activate
-                        [:m [:km "rcmd: TrashMe"] [:t-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:m [:km "rcmd: TrashMe" "m"] [:t-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Cm [:km "rcmd: TrashMe" "dm"] [:t-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:m [:km "rcmd: TrashMe" "x"] [:t-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:m [:km "rcmd: TrashMe" "0"] [:t-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:m [:km "rcmd: TrashMe" "xx"] [:t-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:m [:km "rcmd: TrashMe" "1"] [:t-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:m [:km "rcmd: TrashMe" "2"] [:t-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Rm [:km "rcmd: TrashMe" "3"] [:t-rcmd :caps-rcmd]]
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD V>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                ;VISUALSTUDIOCODE
-                        ;Activate
-                        [:v [:km "rcmd: VisualStudioCode"] [:v-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:v [:km "rcmd: VisualStudioCode" "m"] [:v-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Cv [:km "rcmd: VisualStudioCode" "dm"] [:v-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:v [:km "rcmd: VisualStudioCode" "x"] [:v-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:v [:km "rcmd: VisualStudioCode" "0"] [:v-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:v [:km "rcmd: VisualStudioCode" "xx"] [:v-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:v [:km "rcmd: VisualStudioCode" "1"] [:v-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:v [:km "rcmd: VisualStudioCode" "2"] [:v-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Rv [:km "rcmd: VisualStudioCode" "3"] [:v-rcmd :caps-rcmd]]
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD X>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                ;FINALCUTPRO
-                        ;Activate
-                        [:x [:km "rcmd: FinalCutPro"] [:x-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:x [:km "rcmd: FinalCutPro" "m"] [:x-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Cx [:km "rcmd: FinalCutPro" "dm"] [:x-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:x [:km "rcmd: FinalCutPro" "x"] [:x-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:x [:km "rcmd: FinalCutPro" "0"] [:x-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:x [:km "rcmd: FinalCutPro" "xx"] [:x-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:x [:km "rcmd: FinalCutPro" "1"] [:x-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:x [:km "rcmd: FinalCutPro" "2"] [:x-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Rx [:km "rcmd: FinalCutPro" "3"] [:x-rcmd :caps-rcmd]]
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RCMD Z>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                ;"LMSTUDIO"
-                        ;Activate
-                        [:z [:km "rcmd: LMStudio"] [:z-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
-                        ;Minimize
-                        [:z [:km "rcmd: LMStudio" "m"] [:z-rcmd :lshift-rcmd]]
-                        ;Deminimize
-                        [:!Cz [:km "rcmd: LMStudio" "dm"] [:z-rcmd :lshift-rcmd]]
-                        ;Close Windows
-                        [:z [:km "rcmd: LMStudio" "x"] [:z-rcmd :lcmd-rcmd]]
-                        ;Hide App
-                        [:z [:km "rcmd: LMStudio" "0"] [:z-rcmd :space-rcmd]]
-                        ;QUIT
-                        [:z [:km "rcmd: LMStudio" "xx"] [:z-rcmd :semi-rcmd]]
-                        ;Activate & Hide Others
-                        [:z [:km "rcmd: LMStudio" "1"] [:z-rcmd :rshift-rcmd]]
-                        ;Bring to Space & Activate
-                        [:z [:km "rcmd: LMStudio" "2"] [:z-rcmd :caps-rcmd]]
-                        ;Bring to Space, Activate & Hide Others
-                        [:!Rz [:km "rcmd: LMStudio" "3"] [:z-rcmd :caps-rcmd]]
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
+                        ; >> RCMD A >>
+                                ; ALFRED
+                                        ; Activate
+                                        [:l [:km "rcmd: Alfred"] [:a-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:l [:km "rcmd: Alfred" "m"] [:a-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Cl [:km "rcmd: Alfred" "dm"] [:a-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:l [:km "rcmd: Alfred" "x"] [:a-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:l [:km "rcmd: Alfred" "0"] [:a-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:l [:km "rcmd: Alfred" "xx"] [:a-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:l [:km "rcmd: Alfred" "1"] [:a-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:l [:km "rcmd: Alfred" "2"] [:a-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Rl [:km "rcmd: Alfred" "3"] [:a-rcmd :caps-rcmd]]
+                                ; APPSTORE
+                                        ; Activate
+                                        [:s [:km "rcmd: AppStore"] [:a-rcmd :!space-rcmd :!ropt-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:s [:km "rcmd: AppStore" "m"] [:a-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Cs [:km "rcmd: AppStore" "dm"] [:a-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:s [:km "rcmd: AppStore" "x"] [:a-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:s [:km "rcmd: AppStore" "0"] [:a-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:s [:km "rcmd: AppStore" "xx"] [:a-rcmd :ropt-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:s [:km "rcmd: AppStore" "1"] [:a-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:s [:km "rcmd: AppStore" "2"] [:a-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Rs [:km "rcmd: AppStore" "3"] [:a-rcmd :caps-rcmd]]
+                                ; ARC
+                                        ; Activate
+                                        [:a [:km "rcmd: Arc"] [:a-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:a [:km "rcmd: Arc" "m"] [:a-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Ca [:km "rcmd: Arc" "dm"] [:a-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:a [:km "rcmd: Arc" "x"] [:a-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:a [:km "rcmd: Arc" "0"] [:a-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:a [:km "rcmd: Arc" "xx"] [:a-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:a [:km "rcmd: Arc" "1"] [:a-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:a [:km "rcmd: Arc" "2"] [:a-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Ra [:km "rcmd: Arc" "3"] [:a-rcmd :caps-rcmd]]
+                                ; ANYBOX
+                                        ; Activate
+                                        [:n [:km "rcmd: Anybox"] [:a-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:n [:km "rcmd: Anybox" "m"] [:a-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Cn [:km "rcmd: Anybox" "dm"] [:a-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:n [:km "rcmd: Anybox" "x"] [:a-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:n [:km "rcmd: Anybox" "0"] [:a-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:n [:km "rcmd: Anybox" "xx"] [:a-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:n [:km "rcmd: Anybox" "1"] [:a-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:n [:km "rcmd: Anybox" "2"] [:a-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Rn [:km "rcmd: Anybox" "3"] [:a-rcmd :caps-rcmd]]
+                                ; AUDIOHIJACK
+                                        ; Activate
+                                        [:h [:km "rcmd: AudioHijack"] [:a-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:h [:km "rcmd: AudioHijack" "m"] [:a-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Ch [:km "rcmd: AudioHijack" "dm"] [:a-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:h [:km "rcmd: AudioHijack" "x"] [:a-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:h [:km "rcmd: AudioHijack" "0"] [:a-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:h [:km "rcmd: AudioHijack" "xx"] [:a-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:h [:km "rcmd: AudioHijack" "1"] [:a-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:h [:km "rcmd: AudioHijack" "2"] [:a-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Rh [:km "rcmd: AudioHijack" "3"] [:a-rcmd :caps-rcmd]]
+                        ; >> RCMD B >>
+                                ; BEAR
+                                        ; Activate
+                                        [:b [:km "rcmd: Bear"] [:b-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:b [:km "rcmd: Bear" "m"] [:b-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Cb [:km "rcmd: Bear" "dm"] [:b-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:b [:km "rcmd: Bear" "x"] [:b-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:b [:km "rcmd: Bear" "0"] [:b-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:b [:km "rcmd: Bear" "xx"] [:b-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:b [:km "rcmd: Bear" "1"] [:b-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:b [:km "rcmd: Bear" "2"] [:b-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Rb [:km "rcmd: Bear" "3"] [:b-rcmd :caps-rcmd]]
+                                ; BETTERMOUSE
+                                        ; Activate
+                                        [:m [:km "rcmd: BetterMouse"] [:b-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:m [:notification "App has no windows." "BetterMouse"] [:b-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Cm [:notification "App has no windows." "BetterMouse"] [:b-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:m [:notification "App has no windows." "BetterMouse"] [:b-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:m [:notification "App has no windows." "BetterMouse"] [:b-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:m [:km "rcmd: BetterMouse" "xx"] [:b-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:m [:km "rcmd: BetterMouse" "1"] [:b-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:m [:km "rcmd: BetterMouse" "2"] [:b-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Rm [:km "rcmd: BetterMouse" "3"] [:b-rcmd :caps-rcmd]]
+                                ; BETTERTOUCHTOOL
+                                        ; Activate
+                                        [:t [:km "rcmd: BetterTouchTool"] [:b-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:t [:km "rcmd: BetterTouchTool" "m"] [:b-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Ct [:km "rcmd: BetterTouchTool" "dm"] [:b-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:t [:km "rcmd: BetterTouchTool" "x"] [:b-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:t [:km "rcmd: BetterTouchTool" "0"] [:b-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:t [:km "rcmd: BetterTouchTool" "xx"] [:b-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:t [:km "rcmd: BetterTouchTool" "1"] [:b-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:t [:km "rcmd: BetterTouchTool" "2"] [:b-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Rt [:km "rcmd: BetterTouchTool" "3"] [:b-rcmd :caps-rcmd]]
+                        ; >> RCMD C >>
+                                ; "CAPTUREONE"
+                                        ; Activate
+                                        [:o [:km "rcmd: CaptureOne"] [:c-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:o [:km "rcmd: CaptureOne" "m"] [:c-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Co [:km "rcmd: CaptureOne" "dm"] [:c-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:o [:km "rcmd: CaptureOne" "x"] [:c-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:o [:km "rcmd: CaptureOne" "0"] [:c-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:o [:km "rcmd: CaptureOne" "xx"] [:c-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:o [:km "rcmd: CaptureOne" "1"] [:c-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:o [:km "rcmd: CaptureOne" "2"] [:c-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Ro [:km "rcmd: CaptureOne" "3"] [:c-rcmd :caps-rcmd]]
+                                ; "CLEANSHOT"
+                                        ; Activate
+                                        [:s [:km "rcmd: CleanShot"] [:c-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:s [:km "rcmd: CleanShot" "m"] [:c-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Cs [:km "rcmd: CleanShot" "dm"] [:c-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:s [:km "rcmd: CleanShot" "x"] [:c-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:s [:km "rcmd: CleanShot" "0"] [:c-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:s [:km "rcmd: CleanShot" "xx"] [:c-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:s [:km "rcmd: CleanShot" "1"] [:c-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:s [:km "rcmd: CleanShot" "2"] [:c-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Rs [:km "rcmd: CleanShot" "3"] [:c-rcmd :caps-rcmd]]
+                                ; "CORK"
+                                        ; Activate
+                                        [:r [:km "rcmd: Cork"] [:c-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:r [:km "rcmd: Cork" "m"] [:c-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Cr [:km "rcmd: Cork" "dm"] [:c-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:r [:km "rcmd: Cork" "x"] [:c-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:r [:km "rcmd: Cork" "0"] [:c-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:r [:km "rcmd: Cork" "xx"] [:c-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:r [:km "rcmd: Cork" "1"] [:c-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:r [:km "rcmd: Cork" "2"] [:c-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Rr [:km "rcmd: Cork" "3"] [:c-rcmd :caps-rcmd]]                        
+                        ; >> RCMD D >>
+                                ; DAYONE
+                                        ; Activate
+                                        [:d [:km "rcmd: DayOne"] [:d-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:d [:km "rcmd: DayOne" "m"] [:d-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Cd [:km "rcmd: DayOne" "dm"] [:d-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:d [:km "rcmd: DayOne" "x"] [:d-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:d [:km "rcmd: DayOne" "0"] [:d-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:d [:km "rcmd: DayOne" "xx"] [:d-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:d [:km "rcmd: DayOne" "1"] [:d-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:d [:km "rcmd: DayOne" "2"] [:d-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Rd [:km "rcmd: DayOne" "3"] [:d-rcmd :caps-rcmd]]
+                                ; DEHANCER
+                                        ; Activate
+                                        [:e "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggle Dehancer" [:d-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; [:e [:km "rcmd: Dehancer"] [:d-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:e [:km "rcmd: Dehancer" "m"] [:d-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Ce [:km "rcmd: Dehancer" "dm"] [:d-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:e [:km "rcmd: Dehancer" "x"] [:d-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:e [:km "rcmd: Dehancer" "0"] [:d-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:e [:km "rcmd: Dehancer" "xx"] [:d-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:e [:km "rcmd: Dehancer" "1"] [:d-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:e [:km "rcmd: Dehancer" "2"] [:d-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Re [:km "rcmd: Dehancer" "3"] [:d-rcmd :caps-rcmd]]
+                                ; DROPOVER
+                                        ; Activate
+                                        [:r [:km "rcmd: Dropover"] [:d-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:r [:notification "App has no windows." "Dropover"] [:d-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Cr [:notification "App has no windows." "Dropover"] [:d-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:r [:notification "App has no windows." "Dropover"] [:d-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:r [:notification "App has no windows." "Dropover"] [:d-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:r [:km "rcmd: Dropover" "xx"] [:d-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:r [:km "rcmd: Dropover" "1"] [:d-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:r [:km "rcmd: Dropover" "2"] [:d-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Rr [:km "rcmd: Dropover" "3"] [:d-rcmd :caps-rcmd]]               
+                        ; >> RCMD F >>
+                                ; FINDER
+                                        ; Activate
+                                        [:f [:km "rcmd: Finder"] [:f-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:f [:km "rcmd: Finder" "m"] [:f-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Cf [:km "rcmd: Finder" "dm"] [:f-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:f [:km "rcmd: Finder" "x"] [:f-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:f [:km "rcmd: Finder" "0"] [:f-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:f [:km "rcmd: Finder" "xx"] [:f-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:f [:km "rcmd: Finder" "1"] [:f-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:f [:km "rcmd: Finder" "2"] [:f-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Rf [:km "rcmd: Finder" "3"] [:f-rcmd :caps-rcmd]]
+                        ; >> RCMD I >>
+                                ; IMESSAGES
+                                        ; Activate
+                                        [:i "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggle iMessages" [:i-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; [:i [:km "rcmd: iMessages"] [:i-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:i [:km "rcmd: iMessages" "m"] [:i-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Ci [:km "rcmd: iMessages" "dm"] [:i-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:i [:km "rcmd: iMessages" "x"] [:i-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:i [:km "rcmd: iMessages" "0"] [:i-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:i [:km "rcmd: iMessages" "xx"] [:i-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:i [:km "rcmd: iMessages" "1"] [:i-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:i [:km "rcmd: iMessages" "2"] [:i-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Ri [:km "rcmd: iMessages" "3"] [:i-rcmd :caps-rcmd]]
+                                ; IA WRITER
+                                        ; Activate
+                                        [:a [:km "rcmd: iA Writer"] [:i-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:a [:km "rcmd: iA Writer" "m"] [:i-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Ca [:km "rcmd: iA Writer" "dm"] [:i-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:a [:km "rcmd: iA Writer" "x"] [:i-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:a [:km "rcmd: iA Writer" "0"] [:i-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:a [:km "rcmd: iA Writer" "xx"] [:i-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:a [:km "rcmd: iA Writer" "1"] [:i-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:a [:km "rcmd: iA Writer" "2"] [:i-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Ra [:km "rcmd: iA Writer" "3"] [:i-rcmd :caps-rcmd]]
+                        ; >> RCMD K >>
+                                ; KARABINERELEMENTS
+                                        ; Activate
+                                        [:e [:km "rcmd: KarabinerElements"] [:k-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:e [:km "rcmd: KarabinerElements" "m"] [:k-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Ce [:km "rcmd: KarabinerElements" "dm"] [:k-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:e [:km "rcmd: KarabinerElements" "x"] [:k-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:e [:km "rcmd: KarabinerElements" "0"] [:k-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:e [:km "rcmd: KarabinerElements" "xx"] [:k-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:e [:km "rcmd: KarabinerElements" "1"] [:k-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:e [:km "rcmd: KarabinerElements" "2"] [:k-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Re [:km "rcmd: KarabinerElements" "3"] [:k-rcmd :caps-rcmd]]
+                                ; KARABINEREVENT
+                                        ; Activate
+                                        [:k [:km "rcmd: KarabinerEvent"] [:k-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:k [:km "rcmd: KarabinerEvent" "m"] [:k-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Ck [:km "rcmd: KarabinerEvent" "dm"] [:k-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:k [:km "rcmd: KarabinerEvent" "x"] [:k-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:k [:km "rcmd: KarabinerEvent" "0"] [:k-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:k [:km "rcmd: KarabinerEvent" "xx"] [:k-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:k [:km "rcmd: KarabinerEvent" "1"] [:k-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:k [:km "rcmd: KarabinerEvent" "2"] [:k-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Rk [:km "rcmd: KarabinerEvent" "3"] [:k-rcmd :caps-rcmd]]
+                                ; KEYBOARDMAESTRO
+                                        ; Activate
+                                        [:m [:km "rcmd: KeyboardMaestro"] [:k-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:m [:km "rcmd: KeyboardMaestro" "m"] [:k-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Cm [:km "rcmd: KeyboardMaestro" "dm"] [:k-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:m [:km "rcmd: KeyboardMaestro" "x"] [:k-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:m [:km "rcmd: KeyboardMaestro" "0"] [:k-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:m [:km "rcmd: KeyboardMaestro" "xx"] [:k-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:m [:km "rcmd: KeyboardMaestro" "1"] [:k-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:m [:km "rcmd: KeyboardMaestro" "2"] [:k-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Rm [:km "rcmd: KeyboardMaestro" "3"] [:k-rcmd :caps-rcmd]]
+                                ; KLACK
+                                        ; Activate
+                                        [:l [:km "rcmd: Klack"] [:k-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:l [:notification "App has no windows." "Klack"] [:k-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Cl [:notification "App has no windows." "Klack"] [:k-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:l [:notification "App has no windows." "Klack"] [:k-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:l [:km "rcmd: Klack" "0"] [:k-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:l [:km "rcmd: Klack" "xx"] [:k-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:l [:km "rcmd: Klack" "1"] [:k-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:l [:km "rcmd: Klack" "2"] [:k-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Rl [:km "rcmd: Klack" "3"] [:k-rcmd :caps-rcmd]]
+                                ; KONTAKT
+                                        ; Activate
+                                        [:o [:km "rcmd: Kontakt"] [:k-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:o [:km "rcmd: Kontakt" "m"] [:k-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Co [:km "rcmd: Kontakt" "dm"] [:k-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:o [:km "rcmd: Kontakt" "x"] [:k-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:o [:km "rcmd: Kontakt" "0"] [:k-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:o [:km "rcmd: Kontakt" "xx"] [:k-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:o [:km "rcmd: Kontakt" "1"] [:k-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:o [:km "rcmd: Kontakt" "2"] [:k-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Ro [:km "rcmd: Kontakt" "3"] [:k-rcmd :caps-rcmd]]                        
+                        ; >> RCMD L >>
+                                ; LIGHTROOMCLASSIC
+                                        ; Activate
+                                        [:c [:km "rcmd: LightroomClassic"] [:l-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:c [:km "rcmd: LightroomClassic" "m"] [:l-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Cc [:km "rcmd: LightroomClassic" "dm"] [:l-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:c [:km "rcmd: LightroomClassic" "x"] [:l-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:c [:km "rcmd: LightroomClassic" "0"] [:l-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:c [:km "rcmd: LightroomClassic" "xx"] [:l-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:c [:km "rcmd: LightroomClassic" "1"] [:l-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:c [:km "rcmd: LightroomClassic" "2"] [:l-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Rc [:km "rcmd: LightroomClassic" "3"] [:l-rcmd :caps-rcmd]]
+                                ; LOOPBACK
+                                        ; Activate
+                                        [:l [:km "rcmd: Loopback"] [:l-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:l [:km "rcmd: Loopback" "m"] [:l-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Cl [:km "rcmd: Loopback" "dm"] [:l-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:l [:km "rcmd: Loopback" "x"] [:l-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:l [:km "rcmd: Loopback" "0"] [:l-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:l [:km "rcmd: Loopback" "xx"] [:l-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:l [:km "rcmd: Loopback" "1"] [:l-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:l [:km "rcmd: Loopback" "2"] [:l-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Rl [:km "rcmd: Loopback" "3"] [:l-rcmd :caps-rcmd]]                
+                        ; >> RCMD M >>
+                                ; MACUPDATER
+                                        ; Activate
+                                        [:u [:km "rcmd: MacUpdater"] [:m-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:u [:km "rcmd: MacUpdater" "m"] [:m-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Cu [:km "rcmd: MacUpdater" "dm"] [:m-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:u [:km "rcmd: MacUpdater" "x"] [:m-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:u [:km "rcmd: MacUpdater" "0"] [:m-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:u [:km "rcmd: MacUpdater" "xx"] [:m-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:u [:km "rcmd: MacUpdater" "1"] [:m-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:u [:km "rcmd: MacUpdater" "2"] [:m-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Ru [:km "rcmd: MacUpdater" "3"] [:m-rcmd :caps-rcmd]]
+                                ; MACWHISPER
+                                        ; Activate
+                                        [:w [:km "rcmd: MacWhisper"] [:m-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:w [:km "rcmd: MacWhisper" "m"] [:m-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Cw [:km "rcmd: MacWhisper" "dm"] [:m-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:w [:km "rcmd: MacWhisper" "x"] [:m-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:w [:km "rcmd: MacWhisper" "0"] [:m-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:w [:km "rcmd: MacWhisper" "xx"] [:m-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:w [:km "rcmd: MacWhisper" "1"] [:m-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:w [:km "rcmd: MacWhisper" "2"] [:m-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Rw [:km "rcmd: MacWhisper" "3"] [:m-rcmd :caps-rcmd]]
+                                ; MOUSELESS
+                                        ; Activate
+                                        [:o [:km "rcmd: Mouseless"] [:m-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:o [:km "rcmd: Mouseless" "m"] [:m-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Co [:km "rcmd: Mouseless" "dm"] [:m-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:o [:km "rcmd: Mouseless" "x"] [:m-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:o [:km "rcmd: Mouseless" "0"] [:m-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:o [:km "rcmd: Mouseless" "xx"] [:m-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:o [:km "rcmd: Mouseless" "1"] [:m-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:o [:km "rcmd: Mouseless" "2"] [:m-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Ro [:km "rcmd: Mouseless" "3"] [:m-rcmd :caps-rcmd]]
+                        ; >> RCMD O >>
+                                ; OPENIN
+                                        ; Activate
+                                        [:i [:km "rcmd: OpenIn"] [:o-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:i [:km "rcmd: OpenIn" "m"] [:o-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Ci [:km "rcmd: OpenIn" "dm"] [:o-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:i [:km "rcmd: OpenIn" "x"] [:o-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:i [:km "rcmd: OpenIn" "0"] [:o-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:i [:km "rcmd: OpenIn" "xx"] [:o-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:i [:km "rcmd: OpenIn" "1"] [:o-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:i [:km "rcmd: OpenIn" "2"] [:o-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Ri [:km "rcmd: OpenIn" "3"] [:o-rcmd :caps-rcmd]]
+                        ; >> RCMD P >>
+                                ; PLEX
+                                        ; Activate
+                                        [:l [:km "rcmd: Plex"] [:p-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:l [:km "rcmd: Plex" "m"] [:p-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Cl [:km "rcmd: Plex" "dm"] [:p-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:l [:km "rcmd: Plex" "x"] [:p-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:l [:km "rcmd: Plex" "0"] [:p-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:l [:km "rcmd: Plex" "xx"] [:p-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:l [:km "rcmd: Plex" "1"] [:p-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:l [:km "rcmd: Plex" "2"] [:p-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Rl [:km "rcmd: Plex" "3"] [:p-rcmd :caps-rcmd]]
+                                ; PHOTOMECHANIC
+                                        ; Activate
+                                        [:m [:km "rcmd: PhotoMechanic"] [:p-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:m [:km "rcmd: PhotoMechanic" "m"] [:p-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Cm [:km "rcmd: PhotoMechanic" "dm"] [:p-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:m [:km "rcmd: PhotoMechanic" "x"] [:p-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:m [:km "rcmd: PhotoMechanic" "0"] [:p-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:m [:km "rcmd: PhotoMechanic" "xx"] [:p-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:m [:km "rcmd: PhotoMechanic" "1"] [:p-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:m [:km "rcmd: PhotoMechanic" "2"] [:p-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Rm [:km "rcmd: PhotoMechanic" "3"] [:p-rcmd :caps-rcmd]]
+                                ; PHOTOS
+                                        ; Activate
+                                        [:h [:km "rcmd: Photos"] [:p-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:h [:km "rcmd: Photos" "m"] [:p-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Ch [:km "rcmd: Photos" "dm"] [:p-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:h [:km "rcmd: Photos" "x"] [:p-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:h [:km "rcmd: Photos" "0"] [:p-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:h [:km "rcmd: Photos" "xx"] [:p-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:h [:km "rcmd: Photos" "1"] [:p-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:h [:km "rcmd: Photos" "2"] [:p-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Rh [:km "rcmd: Photos" "3"] [:p-rcmd :caps-rcmd]]
+                                ; PIXELMATOR PRO
+                                        ; Activate
+                                        [:p [:km "rcmd: Pixelmator Pro"] [:p-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:p [:km "rcmd: Pixelmator Pro" "m"] [:p-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Cp [:km "rcmd: Pixelmator Pro" "dm"] [:p-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:p [:km "rcmd: Pixelmator Pro" "x"] [:p-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:p [:km "rcmd: Pixelmator Pro" "0"] [:p-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:p [:km "rcmd: Pixelmator Pro" "xx"] [:p-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:p [:km "rcmd: Pixelmator Pro" "1"] [:p-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:p [:km "rcmd: Pixelmator Pro" "2"] [:p-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Rp [:km "rcmd: Pixelmator Pro" "3"] [:p-rcmd :caps-rcmd]]
+                        ; >> RCMD S >>
+                                ; SAFARI
+                                        ; Activate
+                                        [:a "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggle Safari" [:s-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; [:a [:km "rcmd: Safari"] [:s-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:a [:km "rcmd: Safari" "m"] [:s-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Ca [:km "rcmd: Safari" "dm"] [:s-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:a [:km "rcmd: Safari" "x"] [:s-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:a [:km "rcmd: Safari" "0"] [:s-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:a [:km "rcmd: Safari" "xx"] [:s-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:a [:km "rcmd: Safari" "1"] [:s-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:a [:km "rcmd: Safari" "2"] [:s-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Ra [:km "rcmd: Safari" "3"] [:s-rcmd :caps-rcmd]]
+                                ; SCREENSTUDIO
+                                        ; Activate
+                                        [:s [:km "rcmd: ScreenStudio"] [:s-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:s [:km "rcmd: ScreenStudio" "m"] [:s-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Cs [:km "rcmd: ScreenStudio" "dm"] [:s-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:s [:km "rcmd: ScreenStudio" "x"] [:s-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:s [:km "rcmd: ScreenStudio" "0"] [:s-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:s [:km "rcmd: ScreenStudio" "xx"] [:s-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:s [:km "rcmd: ScreenStudio" "1"] [:s-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:s [:km "rcmd: ScreenStudio" "2"] [:s-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Rs [:km "rcmd: ScreenStudio" "3"] [:s-rcmd :caps-rcmd]]
+                                ; SHORTCUTS
+                                        ; Activate
+                                        [:h [:km "rcmd: Shortcuts"] [:s-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:h [:km "rcmd: Shortcuts" "m"] [:s-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Ch [:km "rcmd: Shortcuts" "dm"] [:s-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:h [:km "rcmd: Shortcuts" "x"] [:s-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:h [:km "rcmd: Shortcuts" "0"] [:s-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:h [:km "rcmd: Shortcuts" "xx"] [:s-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:h [:km "rcmd: Shortcuts" "1"] [:s-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:h [:km "rcmd: Shortcuts" "2"] [:s-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Rh [:km "rcmd: Shortcuts" "3"] [:s-rcmd :caps-rcmd]]
+                                ; SPOTIFY
+                                        ; Activate
+                                        [:p "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggle Spotify" [:s-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; [:p [:km "rcmd: Spotify"] [:s-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:p [:km "rcmd: Spotify" "m"] [:s-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Cp [:km "rcmd: Spotify" "dm"] [:s-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:p [:km "rcmd: Spotify" "x"] [:s-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:p [:km "rcmd: Spotify" "0"] [:s-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:p [:km "rcmd: Spotify" "xx"] [:s-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:p [:km "rcmd: Spotify" "1"] [:s-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:p [:km "rcmd: Spotify" "2"] [:s-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Rp [:km "rcmd: Spotify" "3"] [:s-rcmd :caps-rcmd]]
+                                ; SUPERKEY
+                                        ; Activate
+                                        [:u [:km "rcmd: Superkey"] [:s-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:u [:notification "App has no windows." "Superkey"] [:s-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Cu [:notification "App has no windows." "Superkey"] [:s-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:u [:notification "App has no windows." "Superkey"] [:s-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:u [:notification "App has no windows." "Superkey"] [:s-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:u [:km "rcmd: Superkey" "xx"] [:s-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:u [:km "rcmd: Superkey" "1"] [:s-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:u [:km "rcmd: Superkey" "2"] [:s-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Ru [:km "rcmd: Superkey" "3"] [:s-rcmd :caps-rcmd]]
+                                ; SUPERWHISPER
+                                        ; Activate
+                                        [:w [:km "rcmd: SuperWhisper"] [:s-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:w [:km "rcmd: SuperWhisper" "m"] [:s-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Cw [:km "rcmd: SuperWhisper" "dm"] [:s-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:w [:km "rcmd: SuperWhisper" "x"] [:s-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:w [:km "rcmd: SuperWhisper" "0"] [:s-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:w [:km "rcmd: SuperWhisper" "xx"] [:s-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:w [:km "rcmd: SuperWhisper" "1"] [:s-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:w [:km "rcmd: SuperWhisper" "2"] [:s-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Rw [:km "rcmd: SuperWhisper" "3"] [:s-rcmd :caps-rcmd]]
+                        ; >> RCMD T >>
+                                ; TERMINAL
+                                        ; Activate
+                                        [:t [:km "rcmd: Terminal"] [:t-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:t [:km "rcmd: Terminal" "m"] [:t-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Ct [:km "rcmd: Terminal" "dm"] [:t-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:t [:km "rcmd: Terminal" "x"] [:t-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:t [:km "rcmd: Terminal" "0"] [:t-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:t [:km "rcmd: Terminal" "xx"] [:t-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:t [:km "rcmd: Terminal" "1"] [:t-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:t [:km "rcmd: Terminal" "2"] [:t-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Rt [:km "rcmd: Terminal" "3"] [:t-rcmd :caps-rcmd]]
+                                ; THINGS
+                                        ; Activate
+                                        [:h [:km "rcmd: Things"] [:t-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:h [:km "rcmd: Things" "m"] [:t-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Ch [:km "rcmd: Things" "dm"] [:t-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:h [:km "rcmd: Things" "x"] [:t-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:h [:km "rcmd: Things" "0"] [:t-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:h [:km "rcmd: Things" "xx"] [:t-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:h [:km "rcmd: Things" "1"] [:t-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:h [:km "rcmd: Things" "2"] [:t-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Rh [:km "rcmd: Things" "3"] [:t-rcmd :caps-rcmd]]
+                                ; TRANSMISSION
+                                        ; Activate
+                                        [:r "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggle Transmission" [:t-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; [:r [:km "rcmd: Transmission"] [:t-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:r [:km "rcmd: Transmission" "m"] [:t-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Cr [:km "rcmd: Transmission" "dm"] [:t-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:r [:km "rcmd: Transmission" "x"] [:t-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:r [:km "rcmd: Transmission" "0"] [:t-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:r [:km "rcmd: Transmission" "xx"] [:t-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:r [:km "rcmd: Transmission" "1"] [:t-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:r [:km "rcmd: Transmission" "2"] [:t-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Rr [:km "rcmd: Transmission" "3"] [:t-rcmd :caps-rcmd]]
+                                ; TRASHME
+                                        ; Activate
+                                        [:m [:km "rcmd: TrashMe"] [:t-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:m [:km "rcmd: TrashMe" "m"] [:t-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Cm [:km "rcmd: TrashMe" "dm"] [:t-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:m [:km "rcmd: TrashMe" "x"] [:t-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:m [:km "rcmd: TrashMe" "0"] [:t-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:m [:km "rcmd: TrashMe" "xx"] [:t-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:m [:km "rcmd: TrashMe" "1"] [:t-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:m [:km "rcmd: TrashMe" "2"] [:t-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Rm [:km "rcmd: TrashMe" "3"] [:t-rcmd :caps-rcmd]]
+                        ; >> RCMD V >>
+                                ; VISUALSTUDIOCODE
+                                        ; Activate
+                                        [:v [:km "rcmd: VisualStudioCode"] [:v-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:v [:km "rcmd: VisualStudioCode" "m"] [:v-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Cv [:km "rcmd: VisualStudioCode" "dm"] [:v-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:v [:km "rcmd: VisualStudioCode" "x"] [:v-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:v [:km "rcmd: VisualStudioCode" "0"] [:v-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:v [:km "rcmd: VisualStudioCode" "xx"] [:v-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:v [:km "rcmd: VisualStudioCode" "1"] [:v-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:v [:km "rcmd: VisualStudioCode" "2"] [:v-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Rv [:km "rcmd: VisualStudioCode" "3"] [:v-rcmd :caps-rcmd]]
+                        ; >> RCMD X >>
+                                ; FINALCUTPRO
+                                        ; Activate
+                                        [:x [:km "rcmd: FinalCutPro"] [:x-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:x [:km "rcmd: FinalCutPro" "m"] [:x-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Cx [:km "rcmd: FinalCutPro" "dm"] [:x-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:x [:km "rcmd: FinalCutPro" "x"] [:x-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:x [:km "rcmd: FinalCutPro" "0"] [:x-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:x [:km "rcmd: FinalCutPro" "xx"] [:x-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:x [:km "rcmd: FinalCutPro" "1"] [:x-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:x [:km "rcmd: FinalCutPro" "2"] [:x-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Rx [:km "rcmd: FinalCutPro" "3"] [:x-rcmd :caps-rcmd]]
+                        ; >> RCMD Z >>
+                                ; LMSTUDIO
+                                        ; Activate
+                                        [:z [:km "rcmd: LMStudio"] [:z-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:z [:km "rcmd: LMStudio" "m"] [:z-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Cz [:km "rcmd: LMStudio" "dm"] [:z-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:z [:km "rcmd: LMStudio" "x"] [:z-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:z [:km "rcmd: LMStudio" "0"] [:z-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:z [:km "rcmd: LMStudio" "xx"] [:z-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:z [:km "rcmd: LMStudio" "1"] [:z-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:z [:km "rcmd: LMStudio" "2"] [:z-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Rz [:km "rcmd: LMStudio" "3"] [:z-rcmd :caps-rcmd]]
         ]},
 
-;;-----------------------------------------------ROPT MODS---------------------------------------------------------------------------------------------------------
-        {:des "ropt"
-                :rules [:ropt
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>BEAR SPECIFIC>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                ;INBOX Note
-                        [:i [:open-g "bear://x-callback-url/open-note?title=INBOX"] :bear]
-                ;UPDATE Note
-                        [:u [:open-g "bear://x-callback-url/open-note?title=Update"] :bear]
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-        
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>VS CODE SPECIFIC>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                ;Karabiner JSON
-                        [:j [:km "ropt - VSCode: KarabinerJSON"] :vscode]
-                ;Karabiner EDN
-                        [:k [:km "ropt - VSCode: KarabinerEDN"] :vscode]
-                ;Menus JSON from Kando
-                        [:m [:km "ropt - VSCode: KandoMenus"] :vscode]
-                ;Notas TXT
-                        [:n [:km "ropt - VSCode: NotasTXT"] :vscode]
-                ;Yabairc
-                        [:y [:km "ropt - VSCode: Yabairc"] :vscode]
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>ARC SPECIFIC>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                ;Yahoo Mail
-                        [:m [:open "https://mail.yahoo.com"] :arc]
-                ;Discord
-                        [:d [:open "https://discord.com/channels/@me"] :arc]
-                ;Readwise Daily Review
-                        [:r [:open "https://readwise.io/dailyreview"] :arc]
-                ;Youtube
-                        [:y [:open "https://www.youtube.com"] :arc]
-        ;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-        ]}
+; -- ROPT MODS --
+                {:des "ropt" :rules [:ropt
+                        ; >> BEAR >>
+                                ;INBOX Note
+                                        [:i [:open-g "bear://x-callback-url/open-note?title=INBOX"] :bear]
+                                ;UPDATE Note
+                                        [:u [:open-g "bear://x-callback-url/open-note?title=Update"] :bear]
+                        ; >> VS CODE >>
+                                ;Karabiner JSON
+                                        [:j [:open "$HOME/.config/karabiner/karabiner.json"] :vscode]
+                                ;Karabiner EDN
+                                        [:k [:open "$HOME/Documents/GitHubRepos/dotfiles/Karabiner/karabiner.edn"] :vscode]
+                                ;Menus JSON from Kando
+                                        [:m [:open "$HOME/Dropbox/2-Areas/SystemAndApps/Kando/menus.json"] :vscode]
+                                ;Notas TXT
+                                        [:n [:open "$HOME/Library/Mobile Documents/com~apple~CloudDocs/My Files/notas.txt"] :vscode]
+                                ;Yabairc
+                                        [:y "open -a \"Visual Studio Code\" \"$HOME/Documents/GitHubRepos/dotfiles/Yabai/yabairc\"" :vscode]
+                        ; >> ARC >>
+                                ;Discord
+                                        [:d [:open "https://discord.com/channels/@me"] :arc]
+                                ;Readwise Daily Review
+                                        [:r [:open "https://readwise.io/dailyreview"] :arc]
+                                ;Yahoo Mail
+                                        [:m [:open "https://mail.yahoo.com"] :arc]
+                                ;Youtube
+                                        [:y [:open "https://www.youtube.com"] :arc]
+                ]}
         ]
 }
 
