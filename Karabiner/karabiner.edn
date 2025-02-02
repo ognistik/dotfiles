@@ -71,9 +71,9 @@
                 }
         }
 
-; -- CUSTOM MODES & LAYERS --
+; -- CUSTOM MODES & LAYERS SETUP --
         :main [
-                {:des "Custom Modes/Layers Creation" :rules [
+                {:des "Custom Modes Setup" :rules [
                         ; DEL MODE - I need it to work with modifiers and could not figure out how to do it as template. Works on F19 and caps lock. NOT on SD Mode.
                                 [{:key :semicolon :modi {:optional [:caps_lock]}} ["del-mode" 1]
                                         [:!ropt :!rcmd :!w-mode :!spacebarpress :!caps-mode :!t-mode :!a-mode :!sd-mode :!f-mode :!e-mode]
@@ -126,7 +126,7 @@
                                                 :afterup {:set ["f-mode" 0]}}]
                 ]},
 
-                {:des "Misc Sublayers Creation" :rules [
+                {:des "Misc Sublayers Setup" :rules [
                         ; wD-Press
                                 [:d [["wD-press" 1]] [["w-mode" 1]["wC-press" 0]["wV-press" 0]["wR-press" 0]["wG-press" 0]["wF-press" 0]] {:afterup {:set ["wD-press" 0]}}]
                         ; wF-Press
@@ -169,11 +169,9 @@
                                 [:!Cn [:km "New Bear Note - Same Window"] [:bear :!sd-mode ["capsD-press" 0]["capsS-press" 0]["capsE-press" 0]["capsC-press" 0]]]
                         ; Unused - Make New Safari Window
                                 ;[:!CSTe ["osascript -e 'tell application \"Safari\" to make new document at end'"]]
-                        ; MUTE - (Should be in Caps Lock Mode... but doesn't work there)
-                                ;[{:sim [:y :u] :simo {:interrupt true :dorder :insensitive :uorder :insensitive}} :mute [["caps-mode" 1]["capsD-press" 0]["capsS-press" 0]["capsE-press" 0]["capsC-press" 0]]]                        
-                        ; PLAY/PAUSE - (Should be in Caps Lock Mode... but doesn't work there)
-                                ;[{:sim [:y :u] :modi [:left_command] :simo {:interrupt true :dorder :insensitive :uorder :insensitive}} :play_or_pause [["caps-mode" 1]["capsD-press" 0]["capsS-press" 0]["capsE-press" 0]["capsC-press" 0]]]
-                ]},
+                        ; RETURN on Left CMD??
+                                [:##left_control nil [:!w-mode :!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!a-mode :!sd-mode :!f-mode :!e-mode :!bananotate] {:alone {:key :return_or_enter} :held {:key :left_control}}]
+               ]},
 
                 {:des "Kando Menus" :rules [
                         ;ITHILWEN
@@ -396,7 +394,7 @@
                         ; MOVE (Warp) East
                                 [:l [:yabai "window --warp east"]]
                         ; CREATE Space & Don't Go
-                                [:semicolon [:yabai "space --create && echo \"refresh\" | nc -U /tmp/yabai-indicator.socket"]]
+                                ;[:semicolon [:yabai "space --create && echo \"refresh\" | nc -U /tmp/yabai-indicator.socket"]]
                         ; CREATE Space & GO
                                 [:quote [:yabai "space --create && /opt/homebrew/bin/yabai -m space --focus last && sleep 0.1 && echo \"refresh\" | nc -U /tmp/yabai-indicator.socket"]]
                         ; TOGGLE Fullscreen Zoom
@@ -1096,8 +1094,8 @@
                                 [:#COPspacebar :left_shift]                     ;Shift
                                 [:##f :left_command :!terminal]                 ;Left Command | EXCLUDING TERMINAL
                                 [:##a :left_option :!terminal]                  ;Left OPT | EXCLUDING TERMINAL
-                                [:#Pleft_command :!CTleft_shift [:vscode]]      ;Expansion Shortcut for VSCode
-                                [:#Pleft_command :left_control [:!vscode]]      ;CTRL on left command no use so far... temporary solution. Not a lot of control option shortcuts.
+                                [:##left_command :!CTleft_shift [:vscode]]      ;Expansion Shortcut for VSCode
+                                [:##left_command :left_control [:!vscode]]      ;CTRL on left command no use so far... temporary solution. Not a lot of control option shortcuts.
                         ; DELETES
                                 [:#PSOCn :delete_or_backspace :!terminal]       ;Delete Backspace on N | EXCLUDING TERMINAL
                                 [:#SOPperiod :delete_forward :!terminal]        ;Delete Forward on Period | EXCLUDING TERMINAL
