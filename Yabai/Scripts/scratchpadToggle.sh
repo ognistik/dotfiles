@@ -82,6 +82,7 @@ toggleSpecial() {
     # This is for the case in which I plan to open a window that I want directly to have the Solo Scratchpad property.
     # First it finds the existing scratchpad
     scratchpadId=$(/opt/homebrew/bin/yabai -m query --windows | /opt/homebrew/bin/jq -r '.[] | select(.scratchpad == "scratchpad") | .id')
+
     # If it got to this point, it means that there is already an existing scratchpad... so let's do the switch.
     /opt/homebrew/bin/yabai -m window $scratchpadId --scratchpad ""
     /opt/homebrew/bin/yabai -m window $YABAI_WINDOW_ID --scratchpad "scratchpad" --grid 11:11:1:1:9:9
@@ -101,6 +102,7 @@ toggleSpecial() {
       # If we are focused on the Arc Scratchpad we want to toggle/remove it.
       if [ "$arcScratchpadId" = "$theWindow" ]; then
       /opt/homebrew/bin/yabai -m window $theWindow --scratchpad ""
+      /opt/homebrew/bin/yabai -m window $theWindow --toggle float
       else
       # If we are not on the Arc Scratchpad, this means we want it on our current window. Which means we have to remove it from whichever window has it and give it to the one in front of the user.
           /opt/homebrew/bin/yabai -m window $arcScratchpadId --scratchpad ""
@@ -129,7 +131,7 @@ toggleSpecial() {
 
 toggle_others() {
 /opt/homebrew/bin/yabai -m window $(
-    /opt/homebrew/bin/yabai -m query --windows | 
+      /opt/homebrew/bin/yabai -m query --windows |
       /opt/homebrew/bin/jq -r "[.[] | select(.scratchpad != \"\" and .scratchpad != \"$NAME\" and .\"is-visible\"==true) 
           | \"--toggle \" + .scratchpad ] | join(\" \")"
   ) 2>/dev/null

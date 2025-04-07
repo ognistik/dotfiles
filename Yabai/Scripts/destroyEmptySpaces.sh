@@ -5,10 +5,10 @@ yabai -m query --spaces --display | \
 jq -re 'all(."is-native-fullscreen" | not)' &> /dev/null || exit;
 
 # Get a list of hidden, minimized, or scratchpad windows
-hidden_minimized=$(yabai -m query --windows | jq 'map(select(."is-hidden" or ."is-minimized" or .scratchpad != "")) | map(."id")');
+# hidden_minimized=$(yabai -m query --windows | jq 'map(select(."is-hidden" or ."is-minimized" or .scratchpad != "")) | map(."id")');
 
-# To treat scratchpads as existent (exceptions to destroy spaces)
-# hidden_minimized=$(yabai -m query --windows | jq 'map(select(."is-hidden" or ."is-minimized")) | map(."id")');
+# To treat minimized as existent (exceptions to destroy spaces)
+hidden_minimized=$(yabai -m query --windows | jq 'map(select(."is-hidden" or .scratchpad != "")) | map(."id")');
 
 # Get a list of Kando window IDs
 kando_windows=$(yabai -m query --windows | jq -r 'map(select(.app == "Kando")) | map(."id")')
@@ -17,7 +17,7 @@ kando_windows=$(yabai -m query --windows | jq -r 'map(select(.app == "Kando")) |
 bettermouse_windows=$(yabai -m query --windows | jq -r 'map(select(.app == "BetterMouse")) | map(."id")')
 
 # Get a list of ScreenStudio window IDs
-screenstudio_windows=$(yabai -m query --windows | jq -r 'map(select(.app == "Screen Studio" and .title == "")) | map(."id")')
+screenstudio_windows=$(yabai -m query --windows | jq -r 'map(select(.app == "Screen Studio" and (.title | startswith("Project") | not))) | map(."id")')
 
 # Find and destroy empty, unfocused spaces
 yabai -m query --spaces | \
@@ -28,3 +28,4 @@ xargs -I % sh -c 'yabai -m space % --destroy'
 
 # sleep 0.1
 # echo \"refresh\" | nc -U /tmp/yabai-indicator.socket
+

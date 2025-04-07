@@ -45,6 +45,7 @@ yabai -m rule --add app="^Soundly$" scratchpad="scratchpad" grid="11:11:1:1:9:9"
 
 # Misc 
 yabai -m rule --add app="^CleanShot X$" sticky=on manage=off opacity=1.0
+yabai -m rule --add app="^Bananotate*" sticky=on manage=off opacity=1.0
 yabai -m rule --add app="^Loopback$" manage=off opacity=1.0 grid="11:11:1:1:9:9"
 yabai -m rule --add app="^Karabiner-.*" manage=off opacity=1.0 grid="11:11:1:1:9:9"
 yabai -m rule --add app="^Kando$" manage=off opacity=1.0
@@ -52,10 +53,12 @@ yabai -m rule --add app="^Screen Studio$|^Screen Studio Beta$" subrole="AXDialog
 yabai -m rule --add app="^Screen Studio$|^Screen Studio Beta$" subrole!="AXDialog" manage=off opacity=1.0
 yabai -m rule --add app="^Anybox$" title!=".* – .*" manage=off opacity=1.0
 yabai -m rule --add app="^Keyboard Maestro$" subrole!="AXDialog" manage=off
+yabai -m rule --add app="^BetterTouchTool$" manage=off grid="11:11:1:1:9:9"
 
 # SuperWhisper
-yabai -m rule --add app="superwhisper" subrole="AXDialog" grid="1:2:0:0:1:1" sticky=on manage=off opacity=1.0
-# yabai -m signal --add label="swWin" event=window_created app="superwhisper" action="osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"SW Window State\"'"
+# yabai -m rule --add app="superwhisper" subrole="AXSystemDialog" grid="1:2:0:0:1:1" sticky=on manage=off opacity=0.5
+# yabai -m rule --apply app="superwhisper" subrole="AXSystemDialog" grid="1:2:0:0:1:1" sticky=on manage=off opacity=0.5
+# yabai -m signal --add label=superwhisper_floating event=window_created app="^superwhisper$" action='echo "Window creation signal triggered" >> ~/Desktop/yabai_signal_log.txt'
 
 # Bear Scratchpads and Main Window
 yabai -m rule --add app="^Bear$" title!="^Bear$" manage=off grid="11:11:1:1:9:9"
@@ -66,14 +69,14 @@ yabai -m rule --add app="^Safari$" manage=off grid="11:11:1:1:9:9"
 yabai -m signal --add label=scratchpad_newSafari event=window_created app="^Safari$" title!="^(General|Extensions)$" action='~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggleSpecial Safari'
 
 # Apps to Keep Unmanaged
-yabai -m rule --add app="^(TestFlight|iZotope RX 11|MacWhisper|FxFactory Agent|TrashMe 3|CrossOver|Find Any File|Keka|Bartender 5|DaisyDisk|OpenIn|Sideloadly!|iStat Menus Status|iStat Menus|Problem Reporter|PastePal|App Store|IINA|System Information|Dropover|Homerow|System Settings|Alfred Preferences|X-Title Import|BetterTouchTool)$" manage=off opacity=1.0
+yabai -m rule --add app="^(TestFlight|iZotope RX 11|MacWhisper|FxFactory Agent|TrashMe 3|CrossOver|Find Any File|Keka|Bartender 5|DaisyDisk|OpenIn|Sideloadly!|iStat Menus Status|iStat Menus|Problem Reporter|PastePal|IINA|System Information|Dropover|Homerow|System Settings|Alfred Preferences|X-Title Import)$" manage=off opacity=1.0
 # Centered Unmanaged Apps - Without Resizing
-yabai -m signal --add label=unmanagedAndCenteredApps event=window_created app='^(TestFlight|iZotope RX 11|MacWhisper|TrashMe 3|CrossOver|Find Any File|Keka|Bartender 5|DaisyDisk|Sideloadly!|iStat Menus|Problem Reporter|App Store|IINA|System Information|Dropover|System Settings|Alfred Preferences|X-Title Import|BetterTouchTool)$' action='window="$(yabai -m query --windows --window)"; display="$(/opt/homebrew/bin/yabai -m query --displays --window)"; coords="$(/opt/homebrew/bin/jq --argjson window "$window" --argjson display "$display" -nr "((\$display.frame | .x + .w / 2) - (\$window.frame.w / 2) | tostring) + \":\" + ((\$display.frame | .y + .h / 2) - (\$window.frame.h / 2) | tostring)")"; /opt/homebrew/bin/yabai -m window --move "abs:$coords"'
+yabai -m signal --add label=unmanagedAndCenteredApps event=window_created app='^(TestFlight|iZotope RX 11|MacWhisper|TrashMe 3|CrossOver|Find Any File|Keka|Bartender 5|DaisyDisk|Sideloadly!|iStat Menus|Problem Reporter|IINA|System Information|Dropover|System Settings|Alfred Preferences|X-Title Import)$' action='window="$(yabai -m query --windows --window)"; display="$(/opt/homebrew/bin/yabai -m query --displays --window)"; coords="$(/opt/homebrew/bin/jq --argjson window "$window" --argjson display "$display" -nr "((\$display.frame | .x + .w / 2) - (\$window.frame.w / 2) | tostring) + \":\" + ((\$display.frame | .y + .h / 2) - (\$window.frame.h / 2) | tostring)")"; /opt/homebrew/bin/yabai -m window --move "abs:$coords"'
 
 # Window Titles to Keep Unmanaged
-yabai -m rule --add title="^(Audio Hijack Session List|.*Info|Copy|Robert|Trash|Open|Finder Settings)$" manage=off opacity=1.0
+yabai -m rule --add title="^(Settings|Audio Hijack Session List|.*Info|Copy|Robert|Trash|Open|Finder Settings)$" manage=off opacity=1.0
 # Unmanaged Window Titles to Keep Centered Without Resizing
-yabai -m signal --add label=unmanagedAndCenteredTitles event=window_created title='^(Audio Hijack Session List)$' action='window="$(yabai -m query --windows --window)"; display="$(/opt/homebrew/bin/yabai -m query --displays --window)"; coords="$(/opt/homebrew/bin/jq --argjson window "$window" --argjson display "$display" -nr "((\$display.frame | .x + .w / 2) - (\$window.frame.w / 2) | tostring) + \":\" + ((\$display.frame | .y + .h / 2) - (\$window.frame.h / 2) | tostring)")"; /opt/homebrew/bin/yabai -m window --move "abs:$coords"'
+yabai -m signal --add label=unmanagedAndCenteredTitles event=window_created title='^(Settings|Audio Hijack Session List)$' action='window="$(yabai -m query --windows --window)"; display="$(/opt/homebrew/bin/yabai -m query --displays --window)"; coords="$(/opt/homebrew/bin/jq --argjson window "$window" --argjson display "$display" -nr "((\$display.frame | .x + .w / 2) - (\$window.frame.w / 2) | tostring) + \":\" + ((\$display.frame | .y + .h / 2) - (\$window.frame.h / 2) | tostring)")"; /opt/homebrew/bin/yabai -m window --move "abs:$coords"'
 
 # ARC WINDOWS HANDLING
 # I am not including sub-layer in this rule, since I apply a sub-layer=normal to all apps anyway. I know I can target the first created window with this.

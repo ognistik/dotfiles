@@ -27,7 +27,15 @@ else
         non_scratchpad_window=$(echo "$app_windows" | /opt/homebrew/bin/jq -r '.[] | select(.scratchpad == "") | .id')
         
         if [ "$non_scratchpad_window" = "" ]; then
-            echo "onlyScratchpadWindows"
+        # Get scratchpad windows in current space
+            current_space=$(/opt/homebrew/bin/yabai -m query --spaces --space | jq '.index')
+            visible_scratchpad=$(echo "$app_windows" | /opt/homebrew/bin/jq -r ".[] | select(.scratchpad != \"\" and .space == $current_space and .\"is-visible\" == true) | .id")
+            
+            if [ ! -z "$visible_scratchpad" ]; then
+                echo "onlyScratchpadWindows $visible_scratchpad"
+            else
+                echo "onlyScratchpadWindows"
+            fi
         else 
             # Focus on the most recently used non-scratchpad App window (assuming first in list is most recent)
             # /opt/homebrew/bin/yabai -m window --focus $(echo $non_scratchpad_window | awk '{print $1}')
@@ -35,4 +43,4 @@ else
             echo $non_scratchpad_window | awk '{print $1}'
         fi 
     fi 
-fi 
+fi
