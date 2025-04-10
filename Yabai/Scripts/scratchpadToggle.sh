@@ -102,7 +102,7 @@ toggleSpecial() {
       # If we are focused on the Arc Scratchpad we want to toggle/remove it.
       if [ "$arcScratchpadId" = "$theWindow" ]; then
       /opt/homebrew/bin/yabai -m window $theWindow --scratchpad ""
-      /opt/homebrew/bin/yabai -m window $theWindow --toggle float
+      # -> aparently this was needed at some point /opt/homebrew/bin/yabai -m window $theWindow --toggle float
       else
       # If we are not on the Arc Scratchpad, this means we want it on our current window. Which means we have to remove it from whichever window has it and give it to the one in front of the user.
           /opt/homebrew/bin/yabai -m window $arcScratchpadId --scratchpad ""
