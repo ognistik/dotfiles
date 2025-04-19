@@ -1,0 +1,681 @@
+{
+	"CreationDate": 740181822.845748,
+	"UID": "C8AA9247-338F-43A3-89A0-9B555E5DBCD0",
+	"Name": "rcmd: Cork",
+	"Triggers": [],
+	"ModificationDate": 742572170.809916,
+	"Actions": [
+		{
+			"MacroActionType": "SetVariableToText",
+			"Variable": "localAction",
+			"Text": "%TriggerValue%",
+			"ActionUID": 15519584
+		},
+		{
+			"MacroActionType": "IfThenElse",
+			"ElseActions": [
+				{
+					"MacroActionType": "IfThenElse",
+					"ElseActions": [
+						{
+							"MacroActionType": "IfThenElse",
+							"ElseActions": [
+								{
+									"MacroActionType": "IfThenElse",
+									"ElseActions": [
+										{
+											"MacroActionType": "IfThenElse",
+											"ElseActions": [
+												{
+													"MacroActionType": "IfThenElse",
+													"ElseActions": [
+														{
+															"MacroActionType": "IfThenElse",
+															"ElseActions": [
+																{
+																	"MacroActionType": "IfThenElse",
+																	"ElseActions": [
+																		{
+																			"MacroActionType": "IfThenElse",
+																			"ElseActions": [
+																				{
+																					"MacroActionType": "IfThenElse",
+																					"ElseActions": [],
+																					"Conditions": {
+																						"ConditionListMatch": "All",
+																						"ConditionList": [
+																							{
+																								"ConditionType": "Variable",
+																								"VariableValue": "3",
+																								"Variable": "localAction",
+																								"VariableConditionType": "Is"
+																							}
+																						]
+																					},
+																					"ThenActions": [
+																						{
+																							"MacroActionType": "ActivateApplication",
+																							"ActionUID": 15519627,
+																							"ReopenWindows": false,
+																							"AllWindows": true,
+																							"TimeOutAbortsMacro": true,
+																							"AlreadyActivatedActionType": "BringAllWindows",
+																							"Application": {
+																								"BundleIdentifier": "com.davidbures.Cork",
+																								"Name": "Cork",
+																								"NewFile": "/Applications/Cork.app"
+																							}
+																						},
+																						{
+																							"MacroActionType": "Pause",
+																							"TimeOutAbortsMacro": true,
+																							"Time": ".3",
+																							"ActionUID": 15519628
+																						},
+																						{
+																							"MacroActionType": "HideOthers",
+																							"ActionUID": 15519629,
+																							"HonorExcluded": true
+																						}
+																					],
+																					"TimeOutAbortsMacro": true,
+																					"ActionUID": 15519626
+																				}
+																			],
+																			"Conditions": {
+																				"ConditionListMatch": "All",
+																				"ConditionList": [
+																					{
+																						"ConditionType": "Variable",
+																						"VariableValue": "2",
+																						"Variable": "localAction",
+																						"VariableConditionType": "Is"
+																					}
+																				]
+																			},
+																			"ThenActions": [
+																				{
+																					"MacroActionType": "ActivateApplication",
+																					"ActionUID": 15519625,
+																					"ReopenWindows": false,
+																					"AllWindows": true,
+																					"TimeOutAbortsMacro": true,
+																					"AlreadyActivatedActionType": "BringAllWindows",
+																					"Application": {
+																						"BundleIdentifier": "com.davidbures.Cork",
+																						"Name": "Cork",
+																						"NewFile": "/Applications/Cork.app"
+																					}
+																				}
+																			],
+																			"TimeOutAbortsMacro": true,
+																			"ActionUID": 15519624
+																		}
+																	],
+																	"Conditions": {
+																		"ConditionListMatch": "All",
+																		"ConditionList": [
+																			{
+																				"ConditionType": "Variable",
+																				"VariableValue": "1",
+																				"Variable": "localAction",
+																				"VariableConditionType": "Is"
+																			}
+																		]
+																	},
+																	"ThenActions": [
+																		{
+																			"MacroActionType": "ActivateApplication",
+																			"ActionUID": 15519621,
+																			"ReopenWindows": false,
+																			"AllWindows": true,
+																			"TimeOutAbortsMacro": true,
+																			"AlreadyActivatedActionType": "BringAllWindows",
+																			"Application": {
+																				"BundleIdentifier": "com.davidbures.Cork",
+																				"Name": "Cork",
+																				"NewFile": "/Applications/Cork.app"
+																			}
+																		},
+																		{
+																			"MacroActionType": "Pause",
+																			"TimeOutAbortsMacro": true,
+																			"Time": ".3",
+																			"ActionUID": 15519622
+																		},
+																		{
+																			"MacroActionType": "HideOthers",
+																			"ActionUID": 15519623,
+																			"HonorExcluded": true
+																		}
+																	],
+																	"TimeOutAbortsMacro": true,
+																	"ActionUID": 15519620
+																}
+															],
+															"Conditions": {
+																"ConditionListMatch": "All",
+																"ConditionList": [
+																	{
+																		"ConditionType": "Variable",
+																		"VariableValue": "xx",
+																		"Variable": "localAction",
+																		"VariableConditionType": "Is"
+																	}
+																]
+															},
+															"ThenActions": [
+																{
+																	"MacroActionType": "Notification",
+																	"Title": "%ExecutingMacro%",
+																	"SoundName": "",
+																	"Subtitle": "",
+																	"Text": "App is not running.",
+																	"ActionUID": 15519619
+																}
+															],
+															"TimeOutAbortsMacro": true,
+															"ActionUID": 15519618
+														}
+													],
+													"Conditions": {
+														"ConditionListMatch": "All",
+														"ConditionList": [
+															{
+																"ConditionType": "Variable",
+																"VariableValue": "0",
+																"Variable": "localAction",
+																"VariableConditionType": "Is"
+															}
+														]
+													},
+													"ThenActions": [
+														{
+															"MacroActionType": "Notification",
+															"Title": "%ExecutingMacro%",
+															"SoundName": "",
+															"Subtitle": "",
+															"Text": "App is not running.",
+															"ActionUID": 15519617
+														}
+													],
+													"TimeOutAbortsMacro": true,
+													"ActionUID": 15519616
+												}
+											],
+											"Conditions": {
+												"ConditionListMatch": "All",
+												"ConditionList": [
+													{
+														"ConditionType": "Variable",
+														"VariableValue": "x",
+														"Variable": "localAction",
+														"VariableConditionType": "Is"
+													}
+												]
+											},
+											"ThenActions": [
+												{
+													"MacroActionType": "Notification",
+													"Title": "%ExecutingMacro%",
+													"SoundName": "",
+													"Subtitle": "",
+													"Text": "App is not running.",
+													"ActionUID": 15519615
+												}
+											],
+											"TimeOutAbortsMacro": true,
+											"ActionUID": 15519614
+										}
+									],
+									"Conditions": {
+										"ConditionListMatch": "All",
+										"ConditionList": [
+											{
+												"ConditionType": "Variable",
+												"VariableValue": "dm",
+												"Variable": "localAction",
+												"VariableConditionType": "Is"
+											}
+										]
+									},
+									"ThenActions": [
+										{
+											"MacroActionType": "Notification",
+											"Title": "%ExecutingMacro%",
+											"SoundName": "",
+											"Subtitle": "",
+											"Text": "App is not running.",
+											"ActionUID": 15519613
+										}
+									],
+									"TimeOutAbortsMacro": true,
+									"ActionUID": 15519612
+								}
+							],
+							"Conditions": {
+								"ConditionListMatch": "All",
+								"ConditionList": [
+									{
+										"ConditionType": "Variable",
+										"VariableValue": "m",
+										"Variable": "localAction",
+										"VariableConditionType": "Is"
+									}
+								]
+							},
+							"ThenActions": [
+								{
+									"MacroActionType": "Notification",
+									"Title": "%ExecutingMacro%",
+									"SoundName": "",
+									"Subtitle": "",
+									"Text": "App is not running.",
+									"ActionUID": 15519611
+								}
+							],
+							"TimeOutAbortsMacro": true,
+							"ActionUID": 15519610
+						}
+					],
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"Application": {
+									"BundleIdentifier": "com.davidbures.Cork",
+									"Name": "Cork",
+									"NewFile": "/Applications/Cork.app"
+								},
+								"ApplicationConditionType": "Running",
+								"ConditionType": "Application"
+							}
+						]
+					},
+					"ThenActions": [
+						{
+							"MacroActionType": "IfThenElse",
+							"ElseActions": [
+								{
+									"MacroActionType": "IfThenElse",
+									"ElseActions": [
+										{
+											"MacroActionType": "IfThenElse",
+											"ElseActions": [
+												{
+													"MacroActionType": "IfThenElse",
+													"ElseActions": [
+														{
+															"MacroActionType": "IfThenElse",
+															"ElseActions": [
+																{
+																	"MacroActionType": "IfThenElse",
+																	"ElseActions": [
+																		{
+																			"MacroActionType": "IfThenElse",
+																			"ElseActions": [
+																				{
+																					"MacroActionType": "IfThenElse",
+																					"ElseActions": [],
+																					"Conditions": {
+																						"ConditionListMatch": "All",
+																						"ConditionList": [
+																							{
+																								"ConditionType": "Variable",
+																								"VariableValue": "3",
+																								"Variable": "localAction",
+																								"VariableConditionType": "Is"
+																							}
+																						]
+																					},
+																					"ThenActions": [
+																						{
+																							"MacroActionType": "ExecuteShellScript",
+																							"IncludedVariables": [
+																								"9999"
+																							],
+																							"TrimResults": true,
+																							"Source": "Nothing",
+																							"IncludeStdErr": false,
+																							"ActionUID": 15519607,
+																							"UseText": true,
+																							"TrimResultsNew": true,
+																							"TimeOutAbortsMacro": true,
+																							"Path": "",
+																							"DisplayKind": "None",
+																							"HonourFailureSettings": true,
+																							"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/moveAppToCurrentSpace.sh \"Cork\""
+																						},
+																						{
+																							"MacroActionType": "ActivateApplication",
+																							"ActionUID": 15519608,
+																							"ReopenWindows": true,
+																							"AllWindows": true,
+																							"TimeOutAbortsMacro": true,
+																							"AlreadyActivatedActionType": "BringAllWindows",
+																							"Application": {
+																								"BundleIdentifier": "com.davidbures.Cork",
+																								"Name": "Cork",
+																								"NewFile": "/Applications/Cork.app"
+																							}
+																						},
+																						{
+																							"MacroActionType": "HideOthers",
+																							"ActionUID": 15519609,
+																							"HonorExcluded": true
+																						}
+																					],
+																					"TimeOutAbortsMacro": true,
+																					"ActionUID": 15519606
+																				}
+																			],
+																			"Conditions": {
+																				"ConditionListMatch": "All",
+																				"ConditionList": [
+																					{
+																						"ConditionType": "Variable",
+																						"VariableValue": "2",
+																						"Variable": "localAction",
+																						"VariableConditionType": "Is"
+																					}
+																				]
+																			},
+																			"ThenActions": [
+																				{
+																					"MacroActionType": "ExecuteShellScript",
+																					"IncludedVariables": [
+																						"9999"
+																					],
+																					"TrimResults": true,
+																					"Source": "Nothing",
+																					"IncludeStdErr": false,
+																					"ActionUID": 15519604,
+																					"UseText": true,
+																					"TrimResultsNew": true,
+																					"TimeOutAbortsMacro": true,
+																					"Path": "",
+																					"DisplayKind": "None",
+																					"HonourFailureSettings": true,
+																					"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/moveAppToCurrentSpace.sh \"Cork\""
+																				},
+																				{
+																					"MacroActionType": "ActivateApplication",
+																					"ActionUID": 15519605,
+																					"ReopenWindows": true,
+																					"AllWindows": true,
+																					"TimeOutAbortsMacro": true,
+																					"AlreadyActivatedActionType": "BringAllWindows",
+																					"Application": {
+																						"BundleIdentifier": "com.davidbures.Cork",
+																						"Name": "Cork",
+																						"NewFile": "/Applications/Cork.app"
+																					}
+																				}
+																			],
+																			"TimeOutAbortsMacro": true,
+																			"ActionUID": 15519603
+																		}
+																	],
+																	"Conditions": {
+																		"ConditionListMatch": "All",
+																		"ConditionList": [
+																			{
+																				"ConditionType": "Variable",
+																				"VariableValue": "1",
+																				"Variable": "localAction",
+																				"VariableConditionType": "Is"
+																			}
+																		]
+																	},
+																	"ThenActions": [
+																		{
+																			"MacroActionType": "ActivateApplication",
+																			"ActionUID": 15519601,
+																			"ReopenWindows": true,
+																			"AllWindows": true,
+																			"TimeOutAbortsMacro": true,
+																			"AlreadyActivatedActionType": "BringAllWindows",
+																			"Application": {
+																				"BundleIdentifier": "com.davidbures.Cork",
+																				"Name": "Cork",
+																				"NewFile": "/Applications/Cork.app"
+																			}
+																		},
+																		{
+																			"MacroActionType": "HideOthers",
+																			"ActionUID": 15519602,
+																			"HonorExcluded": true
+																		}
+																	],
+																	"TimeOutAbortsMacro": true,
+																	"ActionUID": 15519600
+																}
+															],
+															"Conditions": {
+																"ConditionListMatch": "All",
+																"ConditionList": [
+																	{
+																		"ConditionType": "Variable",
+																		"VariableValue": "xx",
+																		"Variable": "localAction",
+																		"VariableConditionType": "Is"
+																	}
+																]
+															},
+															"ThenActions": [
+																{
+																	"MacroActionType": "QuitSpecificApp",
+																	"Application": {
+																		"BundleIdentifier": "com.davidbures.Cork",
+																		"Name": "Cork",
+																		"NewFile": "/Applications/Cork.app"
+																	},
+																	"TimeOutAbortsMacro": true,
+																	"Target": "Specific",
+																	"Action": "Quit",
+																	"ActionUID": 15519599
+																}
+															],
+															"TimeOutAbortsMacro": true,
+															"ActionUID": 15519598
+														}
+													],
+													"Conditions": {
+														"ConditionListMatch": "All",
+														"ConditionList": [
+															{
+																"ConditionType": "Variable",
+																"VariableValue": "0",
+																"Variable": "localAction",
+																"VariableConditionType": "Is"
+															}
+														]
+													},
+													"ThenActions": [
+														{
+															"MacroActionType": "HideSpecificApp",
+															"ActionUID": 15519597,
+															"Application": {
+																"BundleIdentifier": "com.davidbures.Cork",
+																"Name": "Cork",
+																"NewFile": "/Applications/Cork.app"
+															}
+														}
+													],
+													"TimeOutAbortsMacro": true,
+													"ActionUID": 15519596
+												}
+											],
+											"Conditions": {
+												"ConditionListMatch": "All",
+												"ConditionList": [
+													{
+														"ConditionType": "Variable",
+														"VariableValue": "x",
+														"Variable": "localAction",
+														"VariableConditionType": "Is"
+													}
+												]
+											},
+											"ThenActions": [
+												{
+													"MacroActionType": "ExecuteShellScript",
+													"IncludedVariables": [
+														"9999"
+													],
+													"TrimResults": true,
+													"Source": "Nothing",
+													"IncludeStdErr": false,
+													"ActionUID": 15519595,
+													"UseText": true,
+													"TrimResultsNew": true,
+													"TimeOutAbortsMacro": true,
+													"Path": "",
+													"DisplayKind": "Window",
+													"HonourFailureSettings": true,
+													"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/closeAppWindows.sh \"Cork\""
+												}
+											],
+											"TimeOutAbortsMacro": true,
+											"ActionUID": 15519594
+										}
+									],
+									"Conditions": {
+										"ConditionListMatch": "All",
+										"ConditionList": [
+											{
+												"ConditionType": "Variable",
+												"VariableValue": "dm",
+												"Variable": "localAction",
+												"VariableConditionType": "Is"
+											}
+										]
+									},
+									"ThenActions": [
+										{
+											"MacroActionType": "ExecuteShellScript",
+											"IncludedVariables": [
+												"9999"
+											],
+											"TrimResults": true,
+											"Source": "Nothing",
+											"IncludeStdErr": false,
+											"ActionUID": 15519593,
+											"UseText": true,
+											"TrimResultsNew": true,
+											"TimeOutAbortsMacro": true,
+											"Path": "",
+											"DisplayKind": "Window",
+											"HonourFailureSettings": true,
+											"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/deminimizeWindowsOfApp.sh \"Cork\""
+										}
+									],
+									"TimeOutAbortsMacro": true,
+									"ActionUID": 15519592
+								}
+							],
+							"Conditions": {
+								"ConditionListMatch": "All",
+								"ConditionList": [
+									{
+										"ConditionType": "Variable",
+										"VariableValue": "m",
+										"Variable": "localAction",
+										"VariableConditionType": "Is"
+									}
+								]
+							},
+							"ThenActions": [
+								{
+									"MacroActionType": "ExecuteShellScript",
+									"IncludedVariables": [
+										"9999"
+									],
+									"TrimResults": true,
+									"Source": "Nothing",
+									"IncludeStdErr": false,
+									"ActionUID": 15519591,
+									"UseText": true,
+									"TrimResultsNew": true,
+									"TimeOutAbortsMacro": true,
+									"Path": "",
+									"DisplayKind": "Window",
+									"HonourFailureSettings": true,
+									"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/minimizeAllWindowsOfApp.sh \"Cork\""
+								}
+							],
+							"TimeOutAbortsMacro": true,
+							"ActionUID": 15519590
+						}
+					],
+					"TimeOutAbortsMacro": true,
+					"ActionUID": 15519589
+				}
+			],
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"ConditionType": "Variable",
+						"VariableValue": "",
+						"Variable": "localAction",
+						"VariableConditionType": "Is"
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "IfThenElse",
+					"ElseActions": [
+						{
+							"MacroActionType": "ActivateApplication",
+							"ActionUID": 15519588,
+							"ReopenWindows": false,
+							"AllWindows": false,
+							"TimeOutAbortsMacro": true,
+							"AlreadyActivatedActionType": "Normal",
+							"Application": {
+								"BundleIdentifier": "com.davidbures.Cork",
+								"Name": "Cork",
+								"NewFile": "/Applications/Cork.app"
+							}
+						}
+					],
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"Application": {
+									"BundleIdentifier": "com.davidbures.Cork",
+									"Name": "Cork",
+									"NewFile": "/Applications/Cork.app"
+								},
+								"ApplicationConditionType": "Running",
+								"ConditionType": "Application"
+							}
+						]
+					},
+					"ThenActions": [
+						{
+							"MacroActionType": "ActivateApplication",
+							"ActionUID": 15519587,
+							"ReopenWindows": true,
+							"AllWindows": true,
+							"TimeOutAbortsMacro": true,
+							"AlreadyActivatedActionType": "Hide",
+							"Application": {
+								"BundleIdentifier": "com.davidbures.Cork",
+								"Name": "Cork",
+								"NewFile": "/Applications/Cork.app"
+							}
+						}
+					],
+					"TimeOutAbortsMacro": true,
+					"ActionUID": 15519586
+				}
+			],
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 15519585
+		}
+	]
+}

@@ -1,0 +1,100 @@
+{
+	"CreationDate": 743190362.553921,
+	"UID": "A815F3FA-8274-4DA2-ACB8-B4B9ED0A141A",
+	"Name": "Dropover Imgur Link",
+	"Triggers": [],
+	"ModificationDate": 743191148.434301,
+	"Actions": [
+		{
+			"MacroActionType": "SetVariableToText",
+			"Variable": "localMousePos",
+			"Text": "%Calculate%MOUSEX()%, %Calculate%MOUSEY()%",
+			"ActionUID": 15518265
+		},
+		{
+			"MacroActionType": "ExecuteMacro",
+			"UseParameter": false,
+			"MacroUID": "00F588A9-A5BB-48E8-8A8C-9F25658FB66A",
+			"TimeOutAbortsMacro": true,
+			"Asynchronously": false,
+			"ActionUID": 15518266
+		},
+		{
+			"MacroActionType": "MouseMoveAndClick",
+			"DragVerticalPosition": "0",
+			"ClickCount": 1,
+			"Modifiers": 0,
+			"Button": 1,
+			"Fuzz": 15,
+			"Action": "MoveAndClick",
+			"DisplayMatches": false,
+			"ActionUID": 15518661,
+			"DragHorizontalPosition": "0",
+			"RestoreMouseLocation": false,
+			"RelativeCorner": "TopLeft",
+			"VerticalPositionExpression": "0",
+			"HorizontalPositionExpression": "0",
+			"Relative": "Mouse",
+			"MouseDrag": "Hold"
+		},
+		{
+			"MacroActionType": "Pause",
+			"TimeOutAbortsMacro": true,
+			"Time": ".1",
+			"ActionUID": 15518662
+		},
+		{
+			"MacroActionType": "MouseMoveAndClick",
+			"DragVerticalPosition": "0",
+			"ClickCount": -1,
+			"Modifiers": 0,
+			"Button": 1,
+			"Fuzz": 15,
+			"Action": "MoveAndClick",
+			"DisplayMatches": false,
+			"ActionUID": 15518663,
+			"DragHorizontalPosition": "0",
+			"RestoreMouseLocation": false,
+			"RelativeCorner": "TopLeft",
+			"VerticalPositionExpression": "0",
+			"HorizontalPositionExpression": "0",
+			"Relative": "Window",
+			"MouseDrag": "None"
+		},
+		{
+			"MacroActionType": "Pause",
+			"TimeOutAbortsMacro": true,
+			"Time": ".1",
+			"ActionUID": 15518664
+		},
+		{
+			"MacroActionType": "InsertText",
+			"Text": "copy imgur link",
+			"TargetApplication": {},
+			"Action": "ByTyping",
+			"TargetingType": "Front",
+			"ActionUID": 15518665
+		},
+		{
+			"MacroActionType": "SimulateKeystroke",
+			"ActionUID": 15518666,
+			"ReleaseAll": false,
+			"TargetApplication": {},
+			"TargetingType": "Front",
+			"KeyCode": 36,
+			"Modifiers": 0
+		},
+		{
+			"MacroActionType": "Pause",
+			"TimeOutAbortsMacro": true,
+			"Time": ".1",
+			"ActionUID": 15518660
+		},
+		{
+			"MacroActionType": "UseVariable",
+			"Action": "SetMouse",
+			"Variable": "localMousePos",
+			"ActionUID": 15518269
+		}
+	]
+}

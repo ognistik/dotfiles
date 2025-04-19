@@ -1,0 +1,34 @@
+{
+	"CreationDate": 706630483.79704,
+	"UID": "AD5525D0-64FE-41DB-A81E-74C5F998B932",
+	"Name": "Open Current Page as Unpined",
+	"Triggers": [],
+	"ModificationDate": 763523678.344575,
+	"Actions": [
+		{
+			"MacroActionType": "SelectMenuItem",
+			"TargetingType": "Front",
+			"TargetApplication": {},
+			"Menu": [
+				"Edit",
+				"Copy URL"
+			],
+			"ActionUID": 15503814
+		},
+		{
+			"MacroActionType": "Pause",
+			"TimeOutAbortsMacro": true,
+			"Time": ".3",
+			"ActionUID": 15588088
+		},
+		{
+			"MacroActionType": "ExecuteMacro",
+			"MacroUID": "AD1624B9-ED00-420D-9B93-DFEB6B06415C",
+			"ActionUID": 15562957,
+			"TimeOutAbortsMacro": true,
+			"Parameter": "%SystemClipboard%",
+			"UseParameter": true,
+			"Asynchronously": false
+		}
+	]
+}

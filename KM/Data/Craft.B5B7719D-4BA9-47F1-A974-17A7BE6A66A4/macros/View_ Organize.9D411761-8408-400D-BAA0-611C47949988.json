@@ -1,0 +1,26 @@
+{
+	"CreationDate": 765382383.899729,
+	"UID": "9D411761-8408-400D-BAA0-611C47949988",
+	"Name": "View: Organize",
+	"Triggers": [
+		{
+			"KeyCode": 7,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 4096,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 765686367.980466,
+	"Actions": [
+		{
+			"MacroActionType": "SelectMenuItem",
+			"TargetingType": "Front",
+			"TargetApplication": {},
+			"Menu": [
+				"Navigation",
+				"Organize"
+			],
+			"ActionUID": 15606765
+		}
+	]
+}

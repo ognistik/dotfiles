@@ -1,0 +1,34 @@
+{
+	"CreationDate": 726430134.245286,
+	"UID": "5824E648-7B18-429A-AB7A-60167C6CD65B",
+	"Name": "Open Current Page as Unpined in BG",
+	"Triggers": [],
+	"ModificationDate": 763523672.850114,
+	"Actions": [
+		{
+			"MacroActionType": "SelectMenuItem",
+			"TargetingType": "Front",
+			"TargetApplication": {},
+			"Menu": [
+				"Edit",
+				"Copy URL"
+			],
+			"ActionUID": 15503815
+		},
+		{
+			"MacroActionType": "Pause",
+			"TimeOutAbortsMacro": true,
+			"Time": ".3",
+			"ActionUID": 15588087
+		},
+		{
+			"MacroActionType": "ExecuteMacro",
+			"MacroUID": "F4B0C95F-7E3C-4312-87AB-F81CCCB9C98D",
+			"ActionUID": 15562958,
+			"TimeOutAbortsMacro": true,
+			"Parameter": "%SystemClipboard%",
+			"UseParameter": true,
+			"Asynchronously": false
+		}
+	]
+}

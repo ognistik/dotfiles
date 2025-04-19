@@ -1,0 +1,104 @@
+{
+	"CreationDate": 726370836.75064,
+	"UID": "71671EF7-5DFF-4560-A1AB-34696D6604E8",
+	"Name": "Open Link Under Mouse in Openin",
+	"Triggers": [],
+	"ModificationDate": 754600966.595566,
+	"Actions": [
+		{
+			"MacroActionType": "Pause",
+			"TimeOutAbortsMacro": true,
+			"Time": ".2",
+			"ActionUID": 15474128
+		},
+		{
+			"MacroActionType": "MouseMoveAndClick",
+			"DragVerticalPosition": "0",
+			"ClickCount": 1,
+			"Modifiers": 0,
+			"Button": 1,
+			"Fuzz": 15,
+			"Action": "MoveAndClick",
+			"DisplayMatches": false,
+			"ActionUID": 510764,
+			"DragHorizontalPosition": "0",
+			"RestoreMouseLocation": false,
+			"RelativeCorner": "TopLeft",
+			"VerticalPositionExpression": "0",
+			"HorizontalPositionExpression": "0",
+			"Relative": "Mouse",
+			"MouseDrag": "Hold"
+		},
+		{
+			"MacroActionType": "Pause",
+			"TimeOutAbortsMacro": true,
+			"Time": ".2",
+			"ActionUID": 510765
+		},
+		{
+			"MacroActionType": "MouseMoveAndClick",
+			"DragVerticalPosition": "0",
+			"ClickCount": -1,
+			"Modifiers": 0,
+			"Button": 1,
+			"Fuzz": 15,
+			"Action": "MoveAndClick",
+			"DisplayMatches": false,
+			"ActionUID": 15473738,
+			"DragHorizontalPosition": "0",
+			"RestoreMouseLocation": false,
+			"RelativeCorner": "TopLeft",
+			"VerticalPositionExpression": "0",
+			"HorizontalPositionExpression": "0",
+			"Relative": "Window",
+			"MouseDrag": "None"
+		},
+		{
+			"MacroActionType": "Pause",
+			"TimeOutAbortsMacro": true,
+			"Time": ".2",
+			"ActionUID": 15474522
+		},
+		{
+			"MacroActionType": "InsertText",
+			"Text": "co",
+			"TargetApplication": {},
+			"Action": "ByTyping",
+			"TargetingType": "Front",
+			"ActionUID": 510766
+		},
+		{
+			"MacroActionType": "Pause",
+			"TimeOutAbortsMacro": true,
+			"Time": ".2",
+			"ActionUID": 510767
+		},
+		{
+			"MacroActionType": "SimulateKeystroke",
+			"ActionUID": 510768,
+			"ReleaseAll": false,
+			"TargetApplication": {},
+			"TargetingType": "Front",
+			"KeyCode": 36,
+			"Modifiers": 0
+		},
+		{
+			"MacroActionType": "Pause",
+			"TimeOutAbortsMacro": true,
+			"Time": ".4",
+			"ActionUID": 510769
+		},
+		{
+			"MacroActionType": "OpenURL",
+			"Application": {
+				"BundleIdentifier": "app.loshadki.OpenIn.v4",
+				"Name": "OpenIn",
+				"NewFile": "/Applications/OpenIn.app"
+			},
+			"TimeOutAbortsMacro": true,
+			"URL": "%SystemClipboard%-kmAll",
+			"IsDefaultApplication": false,
+			"ActionUID": 510770
+		}
+	]
+}

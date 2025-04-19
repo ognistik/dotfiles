@@ -1,0 +1,32 @@
+{
+	"CreationDate": 747793843.715161,
+	"UID": "C695C0A6-40FE-43BB-834D-18A39FEFFA86",
+	"Name": "BTT Close Notifications",
+	"Triggers": [
+		{
+			"KeyCode": 4,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 6656,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 756142757.327614,
+	"Actions": [
+		{
+			"MacroActionType": "ExecuteAppleScript",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"IncludeStdErr": false,
+			"ActionUID": 15532081,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "None",
+			"HonourFailureSettings": true,
+			"Text": "tell application \"BetterTouchTool\"\n\ttrigger_named \"CloseNotifications\"\nend tell"
+		}
+	]
+}

@@ -1,0 +1,54 @@
+{
+	"CreationDate": 742343472.433277,
+	"UID": "37B1C7BF-7BD1-41D6-865A-3A7D877BCA8F",
+	"Name": "Kando - HideFront",
+	"Triggers": [],
+	"ModificationDate": 742343631.39426,
+	"Actions": [
+		{
+			"MacroActionType": "IfThenElse",
+			"ElseActions": [
+				{
+					"MacroActionType": "HideCurrent",
+					"IsDisclosed": false,
+					"TimeOutAbortsMacro": true,
+					"HonorExcluded": true,
+					"ActionUID": 15513084
+				}
+			],
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"Application": {
+							"BundleIdentifier": "company.thebrowser.Browser",
+							"Name": "Arc",
+							"NewFile": "/Applications/Arc.app"
+						},
+						"ApplicationConditionType": "Active",
+						"ConditionType": "Application"
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "Pause",
+					"TimeOutAbortsMacro": true,
+					"Time": ".2",
+					"ActionUID": 15513476
+				},
+				{
+					"MacroActionType": "HideSpecificApp",
+					"ActionUID": 15513475,
+					"Application": {
+						"BundleIdentifier": "company.thebrowser.Browser",
+						"Name": "Arc",
+						"NewFile": "/Applications/Arc.app"
+					}
+				}
+			],
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 15513474
+		}
+	]
+}

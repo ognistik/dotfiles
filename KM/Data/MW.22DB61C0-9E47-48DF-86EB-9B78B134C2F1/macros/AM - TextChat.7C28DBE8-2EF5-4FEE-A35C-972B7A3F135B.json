@@ -1,0 +1,74 @@
+{
+	"UID": "7C28DBE8-2EF5-4FEE-A35C-972B7A3F135B",
+	"CreationDate": 763660648.194313,
+	"ModificationDate": 766545635.874874,
+	"Triggers": [],
+	"Actions": [
+		{
+			"MacroActionType": "Comment",
+			"Title": "About",
+			"IsDisclosed": false,
+			"StyledText": "\n\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\tcnRmZAAAAAADAAAAAgAA\n\t\t\t\t\t\t\tAAcAAABUWFQucnRmAQAA\n\t\t\t\t\t\t\tAC5HBAAAKwAAAAEAAAA/\n\t\t\t\t\t\t\tBAAAe1xydGYxXGFuc2lc\n\t\t\t\t\t\t\tYW5zaWNwZzEyNTJcY29j\n\t\t\t\t\t\t\tb2FydGYyODIyClxjb2Nv\n\t\t\t\t\t\t\tYXRleHRzY2FsaW5nMFxj\n\t\t\t\t\t\t\tb2NvYXBsYXRmb3JtMHtc\n\t\t\t\t\t\t\tZm9udHRibFxmMFxmc3dp\n\t\t\t\t\t\t\tc3NcZmNoYXJzZXQwIEhl\n\t\t\t\t\t\t\tbHZldGljYTt9CntcY29s\n\t\t\t\t\t\t\tb3J0Ymw7XHJlZDI1NVxn\n\t\t\t\t\t\t\tcmVlbjI1NVxibHVlMjU1\n\t\t\t\t\t\t\tO1xyZWQwXGdyZWVuMFxi\n\t\t\t\t\t\t\tbHVlMDt9CntcKlxleHBh\n\t\t\t\t\t\t\tbmRlZGNvbG9ydGJsOztc\n\t\t\t\t\t\t\tY3NzcmdiXGMwXGMwXGMw\n\t\t\t\t\t\t\tXGM4NDcwNlxjbmFtZSBj\n\t\t\t\t\t\t\tb250cm9sVGV4dENvbG9y\n\t\t\t\t\t\t\tO30KXHBhcmRcdHg1NjBc\n\t\t\t\t\t\t\tdHgxMTIwXHR4MTY4MFx0\n\t\t\t\t\t\t\teDIyNDBcdHgyODAwXHR4\n\t\t\t\t\t\t\tMzM2MFx0eDM5MjBcdHg0\n\t\t\t\t\t\t\tNDgwXHR4NTA0MFx0eDU2\n\t\t\t\t\t\t\tMDBcdHg2MTYwXHR4Njcy\n\t\t\t\t\t\t\tMFxwYXJkaXJuYXR1cmFs\n\t\t\t\t\t\t\tXHBhcnRpZ2h0ZW5mYWN0\n\t\t\t\t\t\t\tb3IwCgpcZjBcZnMyNiBc\n\t\t\t\t\t\t\tY2YyIFRoaXMgbWFjcm8g\n\t\t\t\t\t\t\taXMgbWVhbnQgdG8gYmUg\n\t\t\t\t\t\t\tdXNlZCBpbiB0aG9zZSBj\n\t\t\t\t\t\t\tYXNlcyB3aGVyZSB5b3Ug\n\t\t\t\t\t\t\td2FudCB0byB1c2UgdGV4\n\t\t\t\t\t\t\tdCBvbmx5IHRvIGNoYXQg\n\t\t\t\t\t\t\td2l0aCBBSSB2aWEgU3Vw\n\t\t\t\t\t\t\tZXJ3aGlzcGVyLiBJdCBk\n\t\t\t\t\t\t\tb2VzIHR3byB0aGluZ3Ms\n\t\t\t\t\t\t\tIGl0IHdpbGwgb3BlbiBh\n\t\t\t\t\t\t\tIHByZXZpb3VzbHkgcmVj\n\t\t\t\t\t\t\tb3JkZWQgYXVkaW8gZmls\n\t\t\t\t\t\t\tZSB3aXRoIFN1cGVyd2hp\n\t\t\t\t\t\t\tc3BlciBhbmQgaXQgd2ls\n\t\t\t\t\t\t\tbCBjaGFuZ2UgdGhlICJh\n\t\t\t\t\t\t\tY3Rpb24gbW9kZS4iIFRo\n\t\t\t\t\t\t\taXMgcmVxdWlyZXMgeW91\n\t\t\t\t\t\t\tIHRvIHJlY29yZCBhbiBh\n\t\t\t\t\t\t\tdWRpbyBmaWxlIHByZXZp\n\t\t\t\t\t\t\tb3VzbHkgYW5kIHNhdmUg\n\t\t\t\t\t\t\taXQgaW4geW91ciBoYXJk\n\t\t\t\t\t\t\tIGRyaXZlLiBJIGhhdmUg\n\t\t\t\t\t\t\tZm91bmQgdGhhdCB0aGUg\n\t\t\t\t\t\t\tZm9sbG93aW5nIHRleHQg\n\t\t\t\t\t\t\td29ya3MgZ3JlYXQgYW5k\n\t\t\t\t\t\t\tIGRvZXNuJ3QgY29uZmxp\n\t\t\t\t\t\t\tY3Qgd2l0aCBhbGwgbXkg\n\t\t\t\t\t\t\tU1cgbW9kZXMsIGJ1dCBm\n\t\t\t\t\t\t\tZWVsIGZyZWUgdG8gZXhw\n\t\t\t\t\t\t\tZXJpbWVudC5cClwKIklu\n\t\t\t\t\t\t\tIHRoaXMgc3BlY2lmaWMg\n\t\t\t\t\t\t\tY2FzZSwgdGhlIHVzZXIg\n\t\t\t\t\t\t\tbWVzc2FnZSBpcyBmb3Vu\n\t\t\t\t\t\t\tZCBpbnNpZGUgQXBwbGlj\n\t\t\t\t\t\t\tYXRpb24gQ29udGV4dC4g\n\t\t\t\t\t\t\tQW5zd2VyIGluIHRoZSBz\n\t\t\t\t\t\t\tYW1lIGxhbmd1YWdlIHlv\n\t\t\t\t\t\t\tdSBmaW5kIHRoZSB1c2Vy\n\t\t\t\t\t\t\tIGFza3MgeW91IGluIEFw\n\t\t\t\t\t\t\tcGxpY2F0aW9uIENvbnRl\n\t\t\t\t\t\t\teHQsIHVubGVzcyBvdGhl\n\t\t\t\t\t\t\tcndpc2Ugc3BlY2lmaWVk\n\t\t\t\t\t\t\tLiBEbyBub3QgcmVmZXIg\n\t\t\t\t\t\t\tdG8gdGhpcyB1c2VyIG1l\n\t\t\t\t\t\t\tc3NhZ2UuIEV2ZXJ5dGhp\n\t\t\t\t\t\t\tbmcgeW91IG5lZWQgaXMg\n\t\t\t\t\t\t\taW4gQXBwbGljYXRpb24g\n\t\t\t\t\t\t\tQ29udGV4dC4ifQEAAAAj\n\t\t\t\t\t\t\tAAAAAQAAAAcAAABUWFQu\n\t\t\t\t\t\t\tcnRmEAAAAOXC+me2AQAA\n\t\t\t\t\t\t\tAAAAAAAAAAA=\n\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\t",
+			"ActionUID": 15609687
+		},
+		{
+			"MacroActionType": "SetVariableToText",
+			"ActionName": "Path to your instruction audio file - under user's home directory",
+			"ActionUID": 15609686,
+			"IsDisclosed": false,
+			"Variable": "localRec",
+			"Text": "/Dropbox/2-Areas/SystemAndApps/superwhisper/swTextOnly.wav",
+			"ActionColor": "Orange"
+		},
+		{
+			"MacroActionType": "ExecuteShellScript",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"Source": "Nothing",
+			"IncludeStdErr": false,
+			"ActionUID": 15609667,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "Window",
+			"IsDisclosed": false,
+			"HonourFailureSettings": true,
+			"Text": "# Store the current focused app by bundle ID\ncurrent_app_bundle=$(osascript -e 'tell application \"System Events\" to get bundle identifier of first application process whose frontmost is true')\n\n# Open file in background\nopen -g -a \"superwhisper\" \"$HOME$KMVAR_localRec\"\n\n# Activate the original app using bundle identifier\nosascript -e \"tell application id \\\"$current_app_bundle\\\" to activate\""
+		},
+		{
+			"MacroActionType": "IfThenElse",
+			"ActionUID": 15609668,
+			"IsDisclosed": false,
+			"ElseActions": [],
+			"TimeOutAbortsMacro": true,
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"ConditionType": "Variable",
+						"VariableValue": "textChat",
+						"Variable": "sw_actionMode",
+						"VariableConditionType": "IsNot"
+					}
+				]
+			},
+			"ElseActionListDisclosed": false,
+			"ThenActions": [
+				{
+					"MacroActionType": "ExecuteMacro",
+					"MacroUID": "8EBAFA85-7DB2-427F-8CCC-9CC78E5CA6E9",
+					"ActionUID": 15609669,
+					"TimeOutAbortsMacro": true,
+					"Parameter": "textChat",
+					"UseParameter": true,
+					"Asynchronously": false
+				}
+			]
+		}
+	],
+	"Name": "AM - TextChat",
+	"CustomIconData": "KMEC=Rounded=KMCOLOR:0,0,255,0=💎=86=0=0=1=KMCOLOR:0,0,0,255"
+}

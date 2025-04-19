@@ -1,0 +1,34 @@
+{
+	"UID": "36E1306A-EAE4-42EB-8B9C-E39DE54A3DD4",
+	"CreationDate": 763914137.367174,
+	"ModificationDate": 763919041.200849,
+	"Triggers": [],
+	"IsActive": false,
+	"Actions": [
+		{
+			"MacroActionType": "SetVariableToText",
+			"Variable": "localkaraPath",
+			"Text": "/Library/Application Support/org.pqrs/tmp/karabiner_grabber_manipulator_environment.json",
+			"ActionUID": 15590848
+		},
+		{
+			"MacroActionType": "ExecuteShellScript",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"Source": "Nothing",
+			"IncludeStdErr": false,
+			"ActionUID": 15590849,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "Asynchronously",
+			"HonourFailureSettings": true,
+			"Text": "# Start fswatch in the background and write its PID to a temporary file - it's anynchronous script, doesn't work with local KM variables\n/opt/homebrew/bin/fswatch -0 \"$KMVAR_localkaraPath\" | while read -d \"\" event; do\n  osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"Noti\"'\ndone & echo $! > /tmp/kmfswatch.pid",
+			"TimeOutPeriod": 356400
+		}
+	],
+	"Name": "Watch Files with fswatch from brew"
+}

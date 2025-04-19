@@ -1,0 +1,14 @@
+{
+	"CreationDate": 740015413.462933,
+	"UID": "9600ABC3-0023-48D4-ABB4-8DB1D4967D3D",
+	"Name": "- rcmd quit: Others",
+	"Triggers": [],
+	"ModificationDate": 741146467.945952,
+	"Actions": [
+		{
+			"MacroActionType": "QuitOthers",
+			"ActionUID": 15482593,
+			"HonorExcluded": true
+		}
+	]
+}

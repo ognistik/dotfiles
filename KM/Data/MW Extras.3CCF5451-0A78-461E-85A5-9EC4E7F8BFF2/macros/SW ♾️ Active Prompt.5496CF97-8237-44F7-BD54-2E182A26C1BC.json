@@ -1,0 +1,173 @@
+{
+	"UID": "5496CF97-8237-44F7-BD54-2E182A26C1BC",
+	"CreationDate": 764526685.164217,
+	"ModificationDate": 765473966.556726,
+	"Triggers": [
+		{
+			"AutoRun": false,
+			"Display": "Active Prompt",
+			"MacroTriggerType": "GroupStatusMenu"
+		}
+	],
+	"Actions": [
+		{
+			"MacroActionType": "SetVariableToText",
+			"IsDisclosed": false,
+			"Variable": "localActiveMode",
+			"Text": "%sw_currentMode%",
+			"ActionUID": 15599637
+		},
+		{
+			"MacroActionType": "ExecuteShellScript",
+			"ActionName": "We read the LLM used on the current model",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"Source": "Nothing",
+			"Variable": "localCurrent",
+			"IncludeStdErr": false,
+			"ActionUID": 15599625,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "AppendVar",
+			"IsDisclosed": false,
+			"HonourFailureSettings": true,
+			"Text": "/usr/bin/python3 \"$HOME/Dropbox/2-Areas/SystemAndApps/superwhisper/queryPrompt.py\" \"$KMVAR_sw_currentMode\""
+		},
+		{
+			"MacroActionType": "ExecuteMacro",
+			"MacroUID": "C5C363E6-43A6-400C-A5F7-08C94745B2C9",
+			"ActionUID": 15599626,
+			"IsDisclosed": false,
+			"TimeOutAbortsMacro": true,
+			"UseParameter": false,
+			"Asynchronously": true
+		},
+		{
+			"MacroActionType": "IfThenElse",
+			"ElseActions": [
+				{
+					"MacroActionType": "ExecuteMacro",
+					"MacroUID": "C5C363E6-43A6-400C-A5F7-08C94745B2C9",
+					"ActionUID": 15599644,
+					"IsDisclosed": false,
+					"TimeOutAbortsMacro": true,
+					"UseParameter": false,
+					"Asynchronously": true
+				},
+				{
+					"MacroActionType": "PromptForSnippet",
+					"Title": "Change the Prompt for %localActiveMode%",
+					"ActionUID": 15599636,
+					"Variable": "localNewPrompt",
+					"TimeOutAbortsMacro": true,
+					"Text": "%Ask16%",
+					"DisplayKind": "Variable"
+				}
+			],
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"ConditionType": "Variable",
+						"VariableValue": "",
+						"Variable": "localCurrent",
+						"VariableConditionType": "IsNot"
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "ExecuteMacro",
+					"MacroUID": "C5C363E6-43A6-400C-A5F7-08C94745B2C9",
+					"ActionUID": 15599643,
+					"IsDisclosed": false,
+					"TimeOutAbortsMacro": true,
+					"UseParameter": false,
+					"Asynchronously": true
+				},
+				{
+					"MacroActionType": "PromptForSnippet",
+					"Title": "Change the Prompt for %localActiveMode%",
+					"ActionUID": 15599630,
+					"Variable": "localNewPrompt",
+					"TimeOutAbortsMacro": true,
+					"Text": "%Ask16=%localCurrent%%",
+					"DisplayKind": "Variable"
+				}
+			],
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 15599635
+		},
+		{
+			"MacroActionType": "ExecuteShellScript",
+			"ActionName": "We do the replacement",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"Source": "Nothing",
+			"IncludeStdErr": false,
+			"ActionUID": 15599631,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "None",
+			"HonourFailureSettings": true,
+			"Text": "/usr/bin/python3 \"$HOME/Dropbox/2-Areas/SystemAndApps/superwhisper/setPrompt.py\" \"$KMVAR_localActiveMode\" \"$KMVAR_localNewPrompt\""
+		},
+		{
+			"MacroActionType": "QuitSpecificApp",
+			"Target": "Specific",
+			"Action": "Quit",
+			"IsDisclosed": false,
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 15599632,
+			"Application": {
+				"BundleIdentifier": "com.superduper.superwhisper",
+				"Name": "superwhisper",
+				"NewFile": "/Applications/superwhisper.app"
+			}
+		},
+		{
+			"MacroActionType": "PauseUntil",
+			"IsDisclosed": false,
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"Application": {
+							"BundleIdentifier": "com.superduper.superwhisper",
+							"Name": "superwhisper",
+							"NewFile": "/Applications/superwhisper.app"
+						},
+						"ApplicationConditionType": "NotRunning",
+						"ConditionType": "Application"
+					}
+				]
+			},
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 15599633
+		},
+		{
+			"MacroActionType": "ActivateApplication",
+			"ActionUID": 15599634,
+			"ReopenWindows": false,
+			"IsDisclosed": false,
+			"AlreadyActivatedActionType": "Normal",
+			"AllWindows": false,
+			"TimeOutAbortsMacro": true,
+			"Application": {
+				"BundleIdentifier": "com.superduper.superwhisper",
+				"Name": "superwhisper",
+				"NewFile": "/Applications/superwhisper.app"
+			}
+		}
+	],
+	"Name": "SW ♾️ Active Prompt",
+	"CustomIconData": "KMEC=Rounded=KMCOLOR:0,0,255,0=👽=86=0=0=1=KMCOLOR:0,0,0,255"
+}

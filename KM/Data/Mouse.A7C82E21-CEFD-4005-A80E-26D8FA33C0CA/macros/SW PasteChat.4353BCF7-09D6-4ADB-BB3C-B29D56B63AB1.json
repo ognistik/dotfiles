@@ -1,0 +1,25 @@
+{
+	"CreationDate": 748299798.905587,
+	"UID": "4353BCF7-09D6-4ADB-BB3C-B29D56B63AB1",
+	"Name": "SW PasteChat",
+	"Triggers": [
+		{
+			"KeyCode": 32,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 6656,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 766177832.331515,
+	"Actions": [
+		{
+			"MacroActionType": "ExecuteMacro",
+			"MacroUID": "8EBAFA85-7DB2-427F-8CCC-9CC78E5CA6E9",
+			"ActionUID": 15539652,
+			"TimeOutAbortsMacro": true,
+			"Parameter": "pasteChat",
+			"UseParameter": true,
+			"Asynchronously": false
+		}
+	]
+}

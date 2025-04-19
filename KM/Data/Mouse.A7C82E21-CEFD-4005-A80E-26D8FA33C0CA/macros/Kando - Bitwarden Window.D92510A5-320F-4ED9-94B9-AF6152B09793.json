@@ -1,0 +1,36 @@
+{
+	"CreationDate": 745856850.959132,
+	"UID": "D92510A5-320F-4ED9-94B9-AF6152B09793",
+	"Name": "Kando - Bitwarden Window",
+	"Triggers": [],
+	"ModificationDate": 749956170.216174,
+	"Actions": [
+		{
+			"MacroActionType": "ExecuteShellScript",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"Source": "Nothing",
+			"IncludeStdErr": false,
+			"ActionUID": 15528146,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "Window",
+			"IsActive": false,
+			"HonourFailureSettings": true,
+			"Text": "/opt/homebrew/bin/yabai -m signal --add label=float_next_window_created event=window_created action='/opt/homebrew/bin/yabai -m signal --remove float_next_window_created; /opt/homebrew/bin/yabai -m window $YABAI_WINDOW_ID --toggle float'"
+		},
+		{
+			"MacroActionType": "SimulateKeystroke",
+			"ActionUID": 15528147,
+			"ReleaseAll": false,
+			"TargetApplication": {},
+			"TargetingType": "Front",
+			"KeyCode": 16,
+			"Modifiers": 768
+		}
+	]
+}

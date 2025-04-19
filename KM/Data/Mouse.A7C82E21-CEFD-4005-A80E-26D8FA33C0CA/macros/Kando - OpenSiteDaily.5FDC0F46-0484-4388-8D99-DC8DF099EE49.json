@@ -1,0 +1,329 @@
+{
+	"CreationDate": 742874193.739153,
+	"UID": "5FDC0F46-0484-4388-8D99-DC8DF099EE49",
+	"Name": "Kando - OpenSiteDaily",
+	"Triggers": [],
+	"ModificationDate": 753763534.778267,
+	"Actions": [
+		{
+			"MacroActionType": "IfThenElse",
+			"ActionUID": 15520976,
+			"ThenActionListDisclosed": false,
+			"TimeOutAbortsMacro": true,
+			"ElseActions": [
+				{
+					"MacroActionType": "IfThenElse",
+					"ElseActions": [
+						{
+							"MacroActionType": "ActivateApplication",
+							"ActionUID": 15520990,
+							"ReopenWindows": false,
+							"AllWindows": false,
+							"TimeOutAbortsMacro": true,
+							"AlreadyActivatedActionType": "Normal",
+							"Application": {
+								"BundleIdentifier": "company.thebrowser.Browser",
+								"Name": "Arc",
+								"NewFile": "/Applications/Arc.app"
+							}
+						},
+						{
+							"MacroActionType": "PauseUntil",
+							"Conditions": {
+								"ConditionListMatch": "All",
+								"ConditionList": [
+									{
+										"Application": {
+											"BundleIdentifier": "company.thebrowser.Browser",
+											"Name": "Arc",
+											"NewFile": "/Applications/Arc.app"
+										},
+										"ApplicationConditionType": "Active",
+										"ConditionType": "Application"
+									}
+								]
+							},
+							"TimeOutAbortsMacro": true,
+							"ActionUID": 15520991
+						},
+						{
+							"MacroActionType": "Pause",
+							"TimeOutAbortsMacro": true,
+							"Time": ".5",
+							"ActionUID": 15520992
+						},
+						{
+							"MacroActionType": "ExecuteShellScript",
+							"IncludedVariables": [
+								"9999"
+							],
+							"TrimResults": true,
+							"Source": "Nothing",
+							"IncludeStdErr": false,
+							"ActionUID": 15520993,
+							"UseText": true,
+							"TrimResultsNew": true,
+							"TimeOutAbortsMacro": true,
+							"Path": "",
+							"DisplayKind": "None",
+							"HonourFailureSettings": true,
+							"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/closeAppWindows.sh \"Arc\""
+						},
+						{
+							"MacroActionType": "ExecuteShellScript",
+							"IncludedVariables": [
+								"9999"
+							],
+							"TrimResults": true,
+							"Source": "Nothing",
+							"IncludeStdErr": false,
+							"ActionUID": 15520994,
+							"UseText": true,
+							"TrimResultsNew": true,
+							"TimeOutAbortsMacro": true,
+							"Path": "",
+							"DisplayKind": "None",
+							"HonourFailureSettings": true,
+							"Text": "/opt/homebrew/bin/yabai -m signal --remove arcrules"
+						},
+						{
+							"MacroActionType": "ExecuteShellScript",
+							"IncludedVariables": [
+								"9999"
+							],
+							"TrimResults": true,
+							"Source": "Nothing",
+							"IncludeStdErr": false,
+							"ActionUID": 15520995,
+							"UseText": true,
+							"TrimResultsNew": true,
+							"TimeOutAbortsMacro": true,
+							"Path": "",
+							"DisplayKind": "None",
+							"HonourFailureSettings": true,
+							"Text": "#!/bin/sh\n\n# Add signal for Arc New Window\n/opt/homebrew/bin/yabai -m signal --add label=arc_scratchpad app=\"^Arc$\" event=window_title_changed action='\n  /opt/homebrew/bin/yabai -m signal --remove arc_scratchpad;\n    ~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggleSpecial arcScratchpad delay'"
+						},
+						{
+							"MacroActionType": "Pause",
+							"TimeOutAbortsMacro": true,
+							"Time": ".2",
+							"IsActive": false,
+							"ActionUID": 15520996
+						},
+						{
+							"MacroActionType": "SimulateKeystroke",
+							"ActionUID": 15520997,
+							"ReleaseAll": false,
+							"TargetApplication": {},
+							"TargetingType": "Front",
+							"KeyCode": 45,
+							"Modifiers": 6400
+						},
+						{
+							"MacroActionType": "Pause",
+							"TimeOutAbortsMacro": true,
+							"Time": ".2",
+							"ActionUID": 15520998
+						},
+						{
+							"MacroActionType": "InsertText",
+							"Text": "daily",
+							"TargetApplication": {},
+							"Action": "ByTyping",
+							"TargetingType": "Front",
+							"ActionUID": 15520999
+						},
+						{
+							"MacroActionType": "Pause",
+							"TimeOutAbortsMacro": true,
+							"Time": ".2",
+							"ActionUID": 15521000
+						},
+						{
+							"MacroActionType": "SimulateKeystroke",
+							"ActionUID": 15521001,
+							"ReleaseAll": false,
+							"TargetApplication": {},
+							"TargetingType": "Front",
+							"KeyCode": 36,
+							"Modifiers": 0
+						},
+						{
+							"MacroActionType": "ExecuteShellScript",
+							"IncludedVariables": [
+								"9999"
+							],
+							"TrimResults": true,
+							"Source": "Nothing",
+							"IncludeStdErr": false,
+							"ActionUID": 15521002,
+							"UseText": true,
+							"TrimResultsNew": true,
+							"TimeOutAbortsMacro": true,
+							"Path": "",
+							"DisplayKind": "None",
+							"HonourFailureSettings": true,
+							"Text": "/opt/homebrew/bin/yabai -m signal --add label=\"arcrules\" app=\"^Arc$\" title!=\"^Space [0-9]+$|^$|^Robert$\" event=window_created action=\"yabai -m window $YABAI_WINDOW_ID --toggle float\""
+						}
+					],
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"Application": {
+									"BundleIdentifier": "company.thebrowser.Browser",
+									"Name": "Arc",
+									"NewFile": "/Applications/Arc.app"
+								},
+								"ApplicationConditionType": "Running",
+								"ConditionType": "Application"
+							}
+						]
+					},
+					"ThenActions": [
+						{
+							"MacroActionType": "ExecuteShellScript",
+							"IncludedVariables": [
+								"9999"
+							],
+							"TrimResults": true,
+							"Source": "Nothing",
+							"IncludeStdErr": false,
+							"ActionUID": 15520982,
+							"UseText": true,
+							"TrimResultsNew": true,
+							"TimeOutAbortsMacro": true,
+							"Path": "",
+							"DisplayKind": "Window",
+							"HonourFailureSettings": true,
+							"Text": "/opt/homebrew/bin/yabai -m signal --remove arcrules"
+						},
+						{
+							"MacroActionType": "ExecuteShellScript",
+							"IncludedVariables": [
+								"9999"
+							],
+							"TrimResults": true,
+							"Source": "Nothing",
+							"IncludeStdErr": false,
+							"ActionUID": 15520983,
+							"UseText": true,
+							"TrimResultsNew": true,
+							"TimeOutAbortsMacro": true,
+							"Path": "",
+							"DisplayKind": "Window",
+							"HonourFailureSettings": true,
+							"Text": "#!/bin/sh\n\n# Add signal for Arc New Window\n/opt/homebrew/bin/yabai -m signal --add label=arc_scratchpad app=\"^Arc$\" event=window_title_changed action='\n  /opt/homebrew/bin/yabai -m signal --remove arc_scratchpad;\n    ~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggleSpecial arcScratchpad delay'"
+						},
+						{
+							"MacroActionType": "Pause",
+							"TimeOutAbortsMacro": true,
+							"Time": ".2",
+							"IsActive": false,
+							"ActionUID": 15520984
+						},
+						{
+							"MacroActionType": "SimulateKeystroke",
+							"ActionUID": 15520985,
+							"ReleaseAll": false,
+							"TargetApplication": {},
+							"TargetingType": "Front",
+							"KeyCode": 45,
+							"Modifiers": 6400
+						},
+						{
+							"MacroActionType": "InsertText",
+							"Text": "daily",
+							"TargetApplication": {},
+							"Action": "ByTyping",
+							"TargetingType": "Front",
+							"ActionUID": 15520986
+						},
+						{
+							"MacroActionType": "Pause",
+							"TimeOutAbortsMacro": true,
+							"Time": ".2",
+							"ActionUID": 15520987
+						},
+						{
+							"MacroActionType": "SimulateKeystroke",
+							"ActionUID": 15520988,
+							"ReleaseAll": false,
+							"TargetApplication": {},
+							"TargetingType": "Front",
+							"KeyCode": 36,
+							"Modifiers": 0
+						},
+						{
+							"MacroActionType": "ExecuteShellScript",
+							"IncludedVariables": [
+								"9999"
+							],
+							"TrimResults": true,
+							"Source": "Nothing",
+							"IncludeStdErr": false,
+							"ActionUID": 15520989,
+							"UseText": true,
+							"TrimResultsNew": true,
+							"TimeOutAbortsMacro": true,
+							"Path": "",
+							"DisplayKind": "Window",
+							"HonourFailureSettings": true,
+							"Text": "/opt/homebrew/bin/yabai -m signal --add label=\"arcrules\" app=\"^Arc$\" title!=\"^Space [0-9]+$|^$|^Robert$\" event=window_created action=\"yabai -m window $YABAI_WINDOW_ID --toggle float\""
+						}
+					],
+					"TimeOutAbortsMacro": true,
+					"ActionUID": 15520981
+				}
+			],
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"Application": {
+							"BundleIdentifier": "company.thebrowser.Browser",
+							"Name": "Arc",
+							"NewFile": "/Applications/Arc.app"
+						},
+						"ApplicationConditionType": "Active",
+						"ConditionType": "Application"
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "SimulateKeystroke",
+					"ActionUID": 15520977,
+					"ReleaseAll": false,
+					"TargetApplication": {},
+					"TargetingType": "Front",
+					"KeyCode": 17,
+					"Modifiers": 256
+				},
+				{
+					"MacroActionType": "InsertText",
+					"Text": "daily",
+					"TargetApplication": {},
+					"Action": "ByTyping",
+					"TargetingType": "Front",
+					"ActionUID": 15520978
+				},
+				{
+					"MacroActionType": "Pause",
+					"TimeOutAbortsMacro": true,
+					"Time": ".2",
+					"ActionUID": 15520979
+				},
+				{
+					"MacroActionType": "SimulateKeystroke",
+					"ActionUID": 15520980,
+					"ReleaseAll": false,
+					"TargetApplication": {},
+					"TargetingType": "Front",
+					"KeyCode": 36,
+					"Modifiers": 0
+				}
+			]
+		}
+	]
+}

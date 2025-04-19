@@ -1,0 +1,682 @@
+{
+	"CreationDate": 740181822.845748,
+	"UID": "4C0AF04B-4A04-4EA9-BD92-A6397617919A",
+	"Name": "rcmd: Spotify",
+	"Triggers": [],
+	"ModificationDate": 753748930.35743,
+	"Actions": [
+		{
+			"MacroActionType": "SetVariableToText",
+			"Variable": "localAction",
+			"Text": "%TriggerValue%",
+			"ActionUID": 15520553
+		},
+		{
+			"MacroActionType": "IfThenElse",
+			"ElseActions": [
+				{
+					"MacroActionType": "IfThenElse",
+					"ElseActions": [
+						{
+							"MacroActionType": "IfThenElse",
+							"ElseActions": [
+								{
+									"MacroActionType": "IfThenElse",
+									"ElseActions": [
+										{
+											"MacroActionType": "IfThenElse",
+											"ElseActions": [
+												{
+													"MacroActionType": "IfThenElse",
+													"ElseActions": [
+														{
+															"MacroActionType": "IfThenElse",
+															"ElseActions": [
+																{
+																	"MacroActionType": "IfThenElse",
+																	"ElseActions": [
+																		{
+																			"MacroActionType": "IfThenElse",
+																			"ElseActions": [
+																				{
+																					"MacroActionType": "IfThenElse",
+																					"ElseActions": [],
+																					"Conditions": {
+																						"ConditionListMatch": "All",
+																						"ConditionList": [
+																							{
+																								"ConditionType": "Variable",
+																								"VariableValue": "3",
+																								"Variable": "localAction",
+																								"VariableConditionType": "Is"
+																							}
+																						]
+																					},
+																					"ThenActions": [
+																						{
+																							"MacroActionType": "ActivateApplication",
+																							"ActionUID": 15520596,
+																							"ReopenWindows": false,
+																							"AllWindows": true,
+																							"TimeOutAbortsMacro": true,
+																							"AlreadyActivatedActionType": "BringAllWindows",
+																							"Application": {
+																								"BundleIdentifier": "com.spotify.client",
+																								"Name": "Spotify",
+																								"NewFile": "/Applications/Spotify.app"
+																							}
+																						},
+																						{
+																							"MacroActionType": "Pause",
+																							"TimeOutAbortsMacro": true,
+																							"Time": ".3",
+																							"ActionUID": 15520597
+																						},
+																						{
+																							"MacroActionType": "HideOthers",
+																							"ActionUID": 15520598,
+																							"HonorExcluded": true
+																						}
+																					],
+																					"TimeOutAbortsMacro": true,
+																					"ActionUID": 15520595
+																				}
+																			],
+																			"Conditions": {
+																				"ConditionListMatch": "All",
+																				"ConditionList": [
+																					{
+																						"ConditionType": "Variable",
+																						"VariableValue": "2",
+																						"Variable": "localAction",
+																						"VariableConditionType": "Is"
+																					}
+																				]
+																			},
+																			"ThenActions": [
+																				{
+																					"MacroActionType": "ActivateApplication",
+																					"ActionUID": 15520594,
+																					"ReopenWindows": false,
+																					"AllWindows": true,
+																					"TimeOutAbortsMacro": true,
+																					"AlreadyActivatedActionType": "BringAllWindows",
+																					"Application": {
+																						"BundleIdentifier": "com.spotify.client",
+																						"Name": "Spotify",
+																						"NewFile": "/Applications/Spotify.app"
+																					}
+																				}
+																			],
+																			"TimeOutAbortsMacro": true,
+																			"ActionUID": 15520593
+																		}
+																	],
+																	"Conditions": {
+																		"ConditionListMatch": "All",
+																		"ConditionList": [
+																			{
+																				"ConditionType": "Variable",
+																				"VariableValue": "1",
+																				"Variable": "localAction",
+																				"VariableConditionType": "Is"
+																			}
+																		]
+																	},
+																	"ThenActions": [
+																		{
+																			"MacroActionType": "ActivateApplication",
+																			"ActionUID": 15520590,
+																			"ReopenWindows": false,
+																			"AllWindows": true,
+																			"TimeOutAbortsMacro": true,
+																			"AlreadyActivatedActionType": "BringAllWindows",
+																			"Application": {
+																				"BundleIdentifier": "com.spotify.client",
+																				"Name": "Spotify",
+																				"NewFile": "/Applications/Spotify.app"
+																			}
+																		},
+																		{
+																			"MacroActionType": "Pause",
+																			"TimeOutAbortsMacro": true,
+																			"Time": ".3",
+																			"ActionUID": 15520591
+																		},
+																		{
+																			"MacroActionType": "HideOthers",
+																			"ActionUID": 15520592,
+																			"HonorExcluded": true
+																		}
+																	],
+																	"TimeOutAbortsMacro": true,
+																	"ActionUID": 15520589
+																}
+															],
+															"Conditions": {
+																"ConditionListMatch": "All",
+																"ConditionList": [
+																	{
+																		"ConditionType": "Variable",
+																		"VariableValue": "xx",
+																		"Variable": "localAction",
+																		"VariableConditionType": "Is"
+																	}
+																]
+															},
+															"ThenActions": [
+																{
+																	"MacroActionType": "Notification",
+																	"Title": "%ExecutingMacro%",
+																	"SoundName": "",
+																	"Subtitle": "",
+																	"Text": "App is not running.",
+																	"ActionUID": 15520588
+																}
+															],
+															"TimeOutAbortsMacro": true,
+															"ActionUID": 15520587
+														}
+													],
+													"Conditions": {
+														"ConditionListMatch": "All",
+														"ConditionList": [
+															{
+																"ConditionType": "Variable",
+																"VariableValue": "0",
+																"Variable": "localAction",
+																"VariableConditionType": "Is"
+															}
+														]
+													},
+													"ThenActions": [
+														{
+															"MacroActionType": "Notification",
+															"Title": "%ExecutingMacro%",
+															"SoundName": "",
+															"Subtitle": "",
+															"Text": "App is not running.",
+															"ActionUID": 15520586
+														}
+													],
+													"TimeOutAbortsMacro": true,
+													"ActionUID": 15520585
+												}
+											],
+											"Conditions": {
+												"ConditionListMatch": "All",
+												"ConditionList": [
+													{
+														"ConditionType": "Variable",
+														"VariableValue": "x",
+														"Variable": "localAction",
+														"VariableConditionType": "Is"
+													}
+												]
+											},
+											"ThenActions": [
+												{
+													"MacroActionType": "Notification",
+													"Title": "%ExecutingMacro%",
+													"SoundName": "",
+													"Subtitle": "",
+													"Text": "App is not running.",
+													"ActionUID": 15520584
+												}
+											],
+											"TimeOutAbortsMacro": true,
+											"ActionUID": 15520583
+										}
+									],
+									"Conditions": {
+										"ConditionListMatch": "All",
+										"ConditionList": [
+											{
+												"ConditionType": "Variable",
+												"VariableValue": "dm",
+												"Variable": "localAction",
+												"VariableConditionType": "Is"
+											}
+										]
+									},
+									"ThenActions": [
+										{
+											"MacroActionType": "Notification",
+											"Title": "%ExecutingMacro%",
+											"SoundName": "",
+											"Subtitle": "",
+											"Text": "App is not running.",
+											"ActionUID": 15520582
+										}
+									],
+									"TimeOutAbortsMacro": true,
+									"ActionUID": 15520581
+								}
+							],
+							"Conditions": {
+								"ConditionListMatch": "All",
+								"ConditionList": [
+									{
+										"ConditionType": "Variable",
+										"VariableValue": "m",
+										"Variable": "localAction",
+										"VariableConditionType": "Is"
+									}
+								]
+							},
+							"ThenActions": [
+								{
+									"MacroActionType": "Notification",
+									"Title": "%ExecutingMacro%",
+									"SoundName": "",
+									"Subtitle": "",
+									"Text": "App is not running.",
+									"ActionUID": 15520580
+								}
+							],
+							"TimeOutAbortsMacro": true,
+							"ActionUID": 15520579
+						}
+					],
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"Application": {
+									"BundleIdentifier": "com.spotify.client",
+									"Name": "Spotify",
+									"NewFile": "/Applications/Spotify.app"
+								},
+								"ApplicationConditionType": "Running",
+								"ConditionType": "Application"
+							}
+						]
+					},
+					"ThenActions": [
+						{
+							"MacroActionType": "IfThenElse",
+							"ElseActions": [
+								{
+									"MacroActionType": "IfThenElse",
+									"ElseActions": [
+										{
+											"MacroActionType": "IfThenElse",
+											"ElseActions": [
+												{
+													"MacroActionType": "IfThenElse",
+													"ElseActions": [
+														{
+															"MacroActionType": "IfThenElse",
+															"ElseActions": [
+																{
+																	"MacroActionType": "IfThenElse",
+																	"ElseActions": [
+																		{
+																			"MacroActionType": "IfThenElse",
+																			"ElseActions": [
+																				{
+																					"MacroActionType": "IfThenElse",
+																					"ElseActions": [],
+																					"Conditions": {
+																						"ConditionListMatch": "All",
+																						"ConditionList": [
+																							{
+																								"ConditionType": "Variable",
+																								"VariableValue": "3",
+																								"Variable": "localAction",
+																								"VariableConditionType": "Is"
+																							}
+																						]
+																					},
+																					"ThenActions": [
+																						{
+																							"MacroActionType": "ExecuteShellScript",
+																							"IncludedVariables": [
+																								"9999"
+																							],
+																							"TrimResults": true,
+																							"Source": "Nothing",
+																							"IncludeStdErr": false,
+																							"ActionUID": 15520576,
+																							"UseText": true,
+																							"TrimResultsNew": true,
+																							"TimeOutAbortsMacro": true,
+																							"Path": "",
+																							"DisplayKind": "None",
+																							"HonourFailureSettings": true,
+																							"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/moveAppToCurrentSpace.sh \"Spotify\""
+																						},
+																						{
+																							"MacroActionType": "ActivateApplication",
+																							"ActionUID": 15520577,
+																							"ReopenWindows": true,
+																							"AllWindows": true,
+																							"TimeOutAbortsMacro": true,
+																							"AlreadyActivatedActionType": "BringAllWindows",
+																							"Application": {
+																								"BundleIdentifier": "com.spotify.client",
+																								"Name": "Spotify",
+																								"NewFile": "/Applications/Spotify.app"
+																							}
+																						},
+																						{
+																							"MacroActionType": "HideOthers",
+																							"ActionUID": 15520578,
+																							"HonorExcluded": true
+																						}
+																					],
+																					"TimeOutAbortsMacro": true,
+																					"ActionUID": 15520575
+																				}
+																			],
+																			"Conditions": {
+																				"ConditionListMatch": "All",
+																				"ConditionList": [
+																					{
+																						"ConditionType": "Variable",
+																						"VariableValue": "2",
+																						"Variable": "localAction",
+																						"VariableConditionType": "Is"
+																					}
+																				]
+																			},
+																			"ThenActions": [
+																				{
+																					"MacroActionType": "ExecuteShellScript",
+																					"IncludedVariables": [
+																						"9999"
+																					],
+																					"TrimResults": true,
+																					"Source": "Nothing",
+																					"IncludeStdErr": false,
+																					"ActionUID": 15520573,
+																					"UseText": true,
+																					"TrimResultsNew": true,
+																					"TimeOutAbortsMacro": true,
+																					"Path": "",
+																					"DisplayKind": "None",
+																					"HonourFailureSettings": true,
+																					"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/moveAppToCurrentSpace.sh \"Spotify\""
+																				},
+																				{
+																					"MacroActionType": "ActivateApplication",
+																					"ActionUID": 15520574,
+																					"ReopenWindows": true,
+																					"AllWindows": true,
+																					"TimeOutAbortsMacro": true,
+																					"AlreadyActivatedActionType": "BringAllWindows",
+																					"Application": {
+																						"BundleIdentifier": "com.spotify.client",
+																						"Name": "Spotify",
+																						"NewFile": "/Applications/Spotify.app"
+																					}
+																				}
+																			],
+																			"TimeOutAbortsMacro": true,
+																			"ActionUID": 15520572
+																		}
+																	],
+																	"Conditions": {
+																		"ConditionListMatch": "All",
+																		"ConditionList": [
+																			{
+																				"ConditionType": "Variable",
+																				"VariableValue": "1",
+																				"Variable": "localAction",
+																				"VariableConditionType": "Is"
+																			}
+																		]
+																	},
+																	"ThenActions": [
+																		{
+																			"MacroActionType": "ActivateApplication",
+																			"ActionUID": 15520570,
+																			"ReopenWindows": true,
+																			"AllWindows": true,
+																			"TimeOutAbortsMacro": true,
+																			"AlreadyActivatedActionType": "BringAllWindows",
+																			"Application": {
+																				"BundleIdentifier": "com.spotify.client",
+																				"Name": "Spotify",
+																				"NewFile": "/Applications/Spotify.app"
+																			}
+																		},
+																		{
+																			"MacroActionType": "HideOthers",
+																			"ActionUID": 15520571,
+																			"HonorExcluded": true
+																		}
+																	],
+																	"TimeOutAbortsMacro": true,
+																	"ActionUID": 15520569
+																}
+															],
+															"Conditions": {
+																"ConditionListMatch": "All",
+																"ConditionList": [
+																	{
+																		"ConditionType": "Variable",
+																		"VariableValue": "xx",
+																		"Variable": "localAction",
+																		"VariableConditionType": "Is"
+																	}
+																]
+															},
+															"ThenActions": [
+																{
+																	"MacroActionType": "QuitSpecificApp",
+																	"Application": {
+																		"BundleIdentifier": "com.spotify.client",
+																		"Name": "Spotify",
+																		"NewFile": "/Applications/Spotify.app"
+																	},
+																	"TimeOutAbortsMacro": true,
+																	"Target": "Specific",
+																	"Action": "Quit",
+																	"ActionUID": 15520568
+																}
+															],
+															"TimeOutAbortsMacro": true,
+															"ActionUID": 15520567
+														}
+													],
+													"Conditions": {
+														"ConditionListMatch": "All",
+														"ConditionList": [
+															{
+																"ConditionType": "Variable",
+																"VariableValue": "0",
+																"Variable": "localAction",
+																"VariableConditionType": "Is"
+															}
+														]
+													},
+													"ThenActions": [
+														{
+															"MacroActionType": "HideSpecificApp",
+															"ActionUID": 15520566,
+															"Application": {
+																"BundleIdentifier": "com.spotify.client",
+																"Name": "Spotify",
+																"NewFile": "/Applications/Spotify.app"
+															}
+														}
+													],
+													"TimeOutAbortsMacro": true,
+													"ActionUID": 15520565
+												}
+											],
+											"Conditions": {
+												"ConditionListMatch": "All",
+												"ConditionList": [
+													{
+														"ConditionType": "Variable",
+														"VariableValue": "x",
+														"Variable": "localAction",
+														"VariableConditionType": "Is"
+													}
+												]
+											},
+											"ThenActions": [
+												{
+													"MacroActionType": "ExecuteShellScript",
+													"IncludedVariables": [
+														"9999"
+													],
+													"TrimResults": true,
+													"Source": "Nothing",
+													"IncludeStdErr": false,
+													"ActionUID": 15520564,
+													"UseText": true,
+													"TrimResultsNew": true,
+													"TimeOutAbortsMacro": true,
+													"Path": "",
+													"DisplayKind": "Window",
+													"HonourFailureSettings": true,
+													"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/closeAppWindows.sh \"Spotify\""
+												}
+											],
+											"TimeOutAbortsMacro": true,
+											"ActionUID": 15520563
+										}
+									],
+									"Conditions": {
+										"ConditionListMatch": "All",
+										"ConditionList": [
+											{
+												"ConditionType": "Variable",
+												"VariableValue": "dm",
+												"Variable": "localAction",
+												"VariableConditionType": "Is"
+											}
+										]
+									},
+									"ThenActions": [
+										{
+											"MacroActionType": "ExecuteShellScript",
+											"IncludedVariables": [
+												"9999"
+											],
+											"TrimResults": true,
+											"Source": "Nothing",
+											"IncludeStdErr": false,
+											"ActionUID": 15520562,
+											"UseText": true,
+											"TrimResultsNew": true,
+											"TimeOutAbortsMacro": true,
+											"Path": "",
+											"DisplayKind": "Window",
+											"HonourFailureSettings": true,
+											"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/deminimizeWindowsOfApp.sh \"Spotify\""
+										}
+									],
+									"TimeOutAbortsMacro": true,
+									"ActionUID": 15520561
+								}
+							],
+							"Conditions": {
+								"ConditionListMatch": "All",
+								"ConditionList": [
+									{
+										"ConditionType": "Variable",
+										"VariableValue": "m",
+										"Variable": "localAction",
+										"VariableConditionType": "Is"
+									}
+								]
+							},
+							"ThenActions": [
+								{
+									"MacroActionType": "ExecuteShellScript",
+									"IncludedVariables": [
+										"9999"
+									],
+									"TrimResults": true,
+									"Source": "Nothing",
+									"IncludeStdErr": false,
+									"ActionUID": 15520560,
+									"UseText": true,
+									"TrimResultsNew": true,
+									"TimeOutAbortsMacro": true,
+									"Path": "",
+									"DisplayKind": "Window",
+									"HonourFailureSettings": true,
+									"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/minimizeAllWindowsOfApp.sh \"Spotify\""
+								}
+							],
+							"TimeOutAbortsMacro": true,
+							"ActionUID": 15520559
+						}
+					],
+					"TimeOutAbortsMacro": true,
+					"ActionUID": 15520558
+				}
+			],
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"ConditionType": "Variable",
+						"VariableValue": "",
+						"Variable": "localAction",
+						"VariableConditionType": "Is"
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "IfThenElse",
+					"ActionUID": 15520555,
+					"ThenActionListDisclosed": false,
+					"TimeOutAbortsMacro": true,
+					"ElseActions": [
+						{
+							"MacroActionType": "ActivateApplication",
+							"ActionUID": 15520557,
+							"ReopenWindows": false,
+							"AllWindows": false,
+							"TimeOutAbortsMacro": true,
+							"AlreadyActivatedActionType": "Normal",
+							"Application": {
+								"BundleIdentifier": "com.spotify.client",
+								"Name": "Spotify",
+								"NewFile": "/Applications/Spotify.app"
+							}
+						}
+					],
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"Application": {
+									"BundleIdentifier": "com.spotify.client",
+									"Name": "Spotify",
+									"NewFile": "/Applications/Spotify.app"
+								},
+								"ApplicationConditionType": "Running",
+								"ConditionType": "Application"
+							}
+						]
+					},
+					"ThenActions": [
+						{
+							"MacroActionType": "ActivateApplication",
+							"ActionUID": 15520556,
+							"ReopenWindows": true,
+							"AllWindows": true,
+							"TimeOutAbortsMacro": true,
+							"AlreadyActivatedActionType": "Hide",
+							"Application": {
+								"BundleIdentifier": "com.spotify.client",
+								"Name": "Spotify",
+								"NewFile": "/Applications/Spotify.app"
+							}
+						}
+					]
+				}
+			],
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 15520554
+		}
+	]
+}

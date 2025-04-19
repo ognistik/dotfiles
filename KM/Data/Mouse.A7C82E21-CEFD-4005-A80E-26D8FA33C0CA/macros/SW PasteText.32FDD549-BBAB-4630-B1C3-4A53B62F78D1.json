@@ -1,0 +1,25 @@
+{
+	"CreationDate": 748299621.532862,
+	"UID": "32FDD549-BBAB-4630-B1C3-4A53B62F78D1",
+	"Name": "SW PasteText",
+	"Triggers": [
+		{
+			"KeyCode": 46,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 6656,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 766177857.528709,
+	"Actions": [
+		{
+			"MacroActionType": "ExecuteMacro",
+			"MacroUID": "8EBAFA85-7DB2-427F-8CCC-9CC78E5CA6E9",
+			"ActionUID": 15582968,
+			"TimeOutAbortsMacro": true,
+			"Parameter": "pasteText",
+			"UseParameter": true,
+			"Asynchronously": false
+		}
+	]
+}

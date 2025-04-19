@@ -1,0 +1,32 @@
+{
+	"CreationDate": 729866811.181876,
+	"UID": "AD1624B9-ED00-420D-9B93-DFEB6B06415C",
+	"Name": "- OpenIn for Main Arc",
+	"Triggers": [],
+	"ModificationDate": 754597773.750859,
+	"Actions": [
+		{
+			"MacroActionType": "SetVariableToText",
+			"IsDisclosed": false,
+			"Variable": "localUrl",
+			"Text": "%TriggerValue%",
+			"ActionUID": 15470173
+		},
+		{
+			"MacroActionType": "ExecuteAppleScript",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"IncludeStdErr": false,
+			"ActionUID": 15469783,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "None",
+			"HonourFailureSettings": true,
+			"Text": "set kmInst to system attribute \"KMINSTANCE\"\rtell application \"Keyboard Maestro Engine\"\r\tset theUrl to getvariable \"localUrl\" instance kmInst\rend tell\r\rtell application \"System Events\"\r\tif not (exists process \"Arc\") then\r\t\t-- Arc is not running, so open the application\r\t\ttell application \"Arc\" to activate\r\t\tdelay 0.5 -- Wait for Arc to launch\r\tend if\rend tell\rtell application \"Arc\"\r\tset windowCount to count of windows\r\tif windowCount is 0 then\r\t\t-- No open windows, create a new window\r\t\tactivate\n\t\tdelay 0.5 -- Wait for Arc to Make Window and Tile it\r\t\ttell application \"System Events\"\r\t\t\tkeystroke \"n\" using command down -- Press CMD + N\r\t\tend tell\r\tend if\r\ttell front window\r\t\tmake new tab with properties {URL:theUrl}\r\tend tell\rend tell\ractivate application \"Arc\""
+		}
+	]
+}

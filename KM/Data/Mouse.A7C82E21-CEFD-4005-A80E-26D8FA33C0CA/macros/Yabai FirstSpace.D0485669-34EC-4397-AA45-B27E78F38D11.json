@@ -1,0 +1,33 @@
+{
+	"CreationDate": 742569761.547538,
+	"UID": "D0485669-34EC-4397-AA45-B27E78F38D11",
+	"Name": "Yabai FirstSpace",
+	"Triggers": [
+		{
+			"KeyCode": 31,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 6656,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 742856011.747746,
+	"Actions": [
+		{
+			"MacroActionType": "ExecuteShellScript",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"Source": "Nothing",
+			"IncludeStdErr": false,
+			"ActionUID": 15515048,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "None",
+			"HonourFailureSettings": true,
+			"Text": "/opt/homebrew/bin/yabai -m space --focus first 2>/dev/null || true"
+		}
+	]
+}

@@ -1,0 +1,35 @@
+{
+	"CreationDate": 741116854.392514,
+	"UID": "9F09BD21-DBAC-43A9-8D9B-E244352B520F",
+	"Name": "Setup - CenterAlerts",
+	"Triggers": [],
+	"ModificationDate": 766669538.795975,
+	"Actions": [
+		{
+			"MacroActionType": "Comment",
+			"Title": "About",
+			"IsDisclosed": false,
+			"StyledText": "\n\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\tcnRmZAAAAAADAAAAAgAA\n\t\t\t\t\t\t\tAAcAAABUWFQucnRmAQAA\n\t\t\t\t\t\t\tAC6xAQAAKwAAAAEAAACp\n\t\t\t\t\t\t\tAQAAe1xydGYxXGFuc2lc\n\t\t\t\t\t\t\tYW5zaWNwZzEyNTJcY29j\n\t\t\t\t\t\t\tb2FydGYyODIyClxjb2Nv\n\t\t\t\t\t\t\tYXRleHRzY2FsaW5nMFxj\n\t\t\t\t\t\t\tb2NvYXBsYXRmb3JtMHtc\n\t\t\t\t\t\t\tZm9udHRibFxmMFxmc3dp\n\t\t\t\t\t\t\tc3NcZmNoYXJzZXQwIEhl\n\t\t\t\t\t\t\tbHZldGljYTt9CntcY29s\n\t\t\t\t\t\t\tb3J0Ymw7XHJlZDI1NVxn\n\t\t\t\t\t\t\tcmVlbjI1NVxibHVlMjU1\n\t\t\t\t\t\t\tO1xyZWQwXGdyZWVuMFxi\n\t\t\t\t\t\t\tbHVlMDt9CntcKlxleHBh\n\t\t\t\t\t\t\tbmRlZGNvbG9ydGJsOztc\n\t\t\t\t\t\t\tY3NzcmdiXGMwXGMwXGMw\n\t\t\t\t\t\t\tXGM4NDcwNlxjbmFtZSBj\n\t\t\t\t\t\t\tb250cm9sVGV4dENvbG9y\n\t\t\t\t\t\t\tO30KXHBhcmRcdHg1NjBc\n\t\t\t\t\t\t\tdHgxMTIwXHR4MTY4MFx0\n\t\t\t\t\t\t\teDIyNDBcdHgyODAwXHR4\n\t\t\t\t\t\t\tMzM2MFx0eDM5MjBcdHg0\n\t\t\t\t\t\t\tNDgwXHR4NTA0MFx0eDU2\n\t\t\t\t\t\t\tMDBcdHg2MTYwXHR4Njcy\n\t\t\t\t\t\t\tMFxwYXJkaXJuYXR1cmFs\n\t\t\t\t\t\t\tXHBhcnRpZ2h0ZW5mYWN0\n\t\t\t\t\t\t\tb3IwCgpcZjBcZnMyNiBc\n\t\t\t\t\t\t\tY2YyIFRoaXMgbWFjcm8g\n\t\t\t\t\t\t\tY2VudGVycyBhbGVydHMg\n\t\t\t\t\t\t\tZnJvbSBrZXlib2FyZCBt\n\t\t\t\t\t\t\tYWVzdHJvLn0BAAAAIwAA\n\t\t\t\t\t\t\tAAEAAAAHAAAAVFhULnJ0\n\t\t\t\t\t\t\tZhAAAAC4afxntgEAAAAA\n\t\t\t\t\t\t\tAAAAAAAA\n\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\t",
+			"ActionUID": 15611261
+		},
+		{
+			"MacroActionType": "ManipulateWindow",
+			"TargetApplication": {
+				"BundleIdentifier": "com.stairways.keyboardmaestro.engine",
+				"Name": "Keyboard Maestro Engine",
+				"NewFile": "/Applications/Keyboard Maestro.app/Contents/MacOS/Keyboard Maestro Engine.app"
+			},
+			"WindowName": "",
+			"HorizontalExpression": "SCREENVISIBLE(Front,MidX)",
+			"TargetingType": "Specific",
+			"Action": "CenterWindowAt",
+			"ActionUID": 15611262,
+			"VerticalExpression": "SCREENVISIBLE(Front,MidY)-100",
+			"WidthExpression": "300",
+			"Targeting": "FrontWindow",
+			"IsDisclosed": false,
+			"HeightExpression": "300",
+			"WindowIndexExpression": "2"
+		}
+	]
+}

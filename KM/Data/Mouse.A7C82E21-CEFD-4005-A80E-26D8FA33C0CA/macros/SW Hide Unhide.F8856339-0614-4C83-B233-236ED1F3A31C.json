@@ -1,0 +1,133 @@
+{
+	"CreationDate": 760102913.350257,
+	"UID": "F8856339-0614-4C83-B233-236ED1F3A31C",
+	"Name": "SW Hide Unhide",
+	"Triggers": [
+		{
+			"KeyCode": 38,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 6656,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 766177820.348522,
+	"Actions": [
+		{
+			"MacroActionType": "ExecuteShellScript",
+			"ActionName": "Get SW window with Yabai",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"Source": "Nothing",
+			"Variable": "localSwWin",
+			"IncludeStdErr": false,
+			"ActionUID": 15575362,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "Variable",
+			"IsDisclosed": false,
+			"HonourFailureSettings": true,
+			"Text": "#!/bin/bash\n\n# Get all windows in current space\nwindow_list=$(/opt/homebrew/bin/yabai -m query --windows --space)\n\n# Find superwhisper window with AXDialog subrole\nwindow_id=$(echo \"$window_list\" | jq -r '.[] | select(.app==\"superwhisper\" and .subrole==\"AXSystemDialog\") | .id')\n\nif [ -n \"$window_id\" ]; then\n    echo \"$window_id\"\nelse\n    echo \"no\"\nfi",
+			"NotifyOnFailure": false
+		},
+		{
+			"MacroActionType": "IfThenElse",
+			"ActionUID": 15575368,
+			"IsDisclosed": false,
+			"ElseActions": [],
+			"TimeOutAbortsMacro": true,
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"ConditionType": "Variable",
+						"VariableValue": "no",
+						"Variable": "localSwWin",
+						"VariableConditionType": "IsNot"
+					}
+				]
+			},
+			"ElseActionListDisclosed": false,
+			"ThenActions": [
+				{
+					"MacroActionType": "ExecuteShellScript",
+					"ActionName": "Get SW window with Yabai",
+					"IncludedVariables": [
+						"9999"
+					],
+					"TrimResults": true,
+					"Source": "Nothing",
+					"Variable": "localOpacity",
+					"IncludeStdErr": false,
+					"ActionUID": 15575366,
+					"UseText": true,
+					"TrimResultsNew": true,
+					"TimeOutAbortsMacro": true,
+					"Path": "",
+					"DisplayKind": "Variable",
+					"HonourFailureSettings": true,
+					"Text": "#!/bin/bash\n\nwindow_id=\"$KMVAR_localSwWin\"\nopacity=$(/opt/homebrew/bin/yabai -m query --windows --window \"$window_id\" | jq '.opacity')\necho \"$opacity\"",
+					"NotifyOnFailure": false
+				},
+				{
+					"MacroActionType": "IfThenElse",
+					"ActionName": "Simply toggle visibility, not variable",
+					"ActionUID": 15575363,
+					"ElseActions": [
+						{
+							"MacroActionType": "ExecuteShellScript",
+							"IncludedVariables": [
+								"9999"
+							],
+							"TrimResults": true,
+							"Source": "Nothing",
+							"IncludeStdErr": false,
+							"ActionUID": 15575370,
+							"UseText": true,
+							"TrimResultsNew": true,
+							"TimeOutAbortsMacro": true,
+							"Path": "",
+							"DisplayKind": "Window",
+							"HonourFailureSettings": true,
+							"Text": "/opt/homebrew/bin/yabai -m window $KMVAR_localSwWin --opacity 0.0001"
+						}
+					],
+					"TimeOutAbortsMacro": true,
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"ConditionType": "Variable",
+								"VariableValue": "0.0001",
+								"Variable": "localOpacity",
+								"VariableConditionType": "Is"
+							}
+						]
+					},
+					"ThenActions": [
+						{
+							"MacroActionType": "ExecuteShellScript",
+							"IncludedVariables": [
+								"9999"
+							],
+							"TrimResults": true,
+							"Source": "Nothing",
+							"IncludeStdErr": false,
+							"ActionUID": 15575369,
+							"UseText": true,
+							"TrimResultsNew": true,
+							"TimeOutAbortsMacro": true,
+							"Path": "",
+							"DisplayKind": "Window",
+							"HonourFailureSettings": true,
+							"Text": "/opt/homebrew/bin/yabai -m window $KMVAR_localSwWin --opacity 1.0"
+						}
+					]
+				}
+			]
+		}
+	]
+}

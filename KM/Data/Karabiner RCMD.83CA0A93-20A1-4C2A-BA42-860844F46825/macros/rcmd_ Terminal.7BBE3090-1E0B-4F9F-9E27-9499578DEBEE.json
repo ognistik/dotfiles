@@ -1,0 +1,681 @@
+{
+	"CreationDate": 740181822.845748,
+	"UID": "7BBE3090-1E0B-4F9F-9E27-9499578DEBEE",
+	"Name": "rcmd: Terminal",
+	"Triggers": [],
+	"ModificationDate": 741111968.852024,
+	"Actions": [
+		{
+			"MacroActionType": "SetVariableToText",
+			"Variable": "localAction",
+			"Text": "%TriggerValue%",
+			"ActionUID": 15520629
+		},
+		{
+			"MacroActionType": "IfThenElse",
+			"ElseActions": [
+				{
+					"MacroActionType": "IfThenElse",
+					"ElseActions": [
+						{
+							"MacroActionType": "IfThenElse",
+							"ElseActions": [
+								{
+									"MacroActionType": "IfThenElse",
+									"ElseActions": [
+										{
+											"MacroActionType": "IfThenElse",
+											"ElseActions": [
+												{
+													"MacroActionType": "IfThenElse",
+													"ElseActions": [
+														{
+															"MacroActionType": "IfThenElse",
+															"ElseActions": [
+																{
+																	"MacroActionType": "IfThenElse",
+																	"ElseActions": [
+																		{
+																			"MacroActionType": "IfThenElse",
+																			"ElseActions": [
+																				{
+																					"MacroActionType": "IfThenElse",
+																					"ElseActions": [],
+																					"Conditions": {
+																						"ConditionListMatch": "All",
+																						"ConditionList": [
+																							{
+																								"ConditionType": "Variable",
+																								"VariableValue": "3",
+																								"Variable": "localAction",
+																								"VariableConditionType": "Is"
+																							}
+																						]
+																					},
+																					"ThenActions": [
+																						{
+																							"MacroActionType": "ActivateApplication",
+																							"ActionUID": 15520672,
+																							"ReopenWindows": false,
+																							"AllWindows": true,
+																							"TimeOutAbortsMacro": true,
+																							"AlreadyActivatedActionType": "BringAllWindows",
+																							"Application": {
+																								"BundleIdentifier": "com.apple.Terminal",
+																								"Name": "Terminal",
+																								"NewFile": "/System/Applications/Utilities/Terminal.app"
+																							}
+																						},
+																						{
+																							"MacroActionType": "Pause",
+																							"TimeOutAbortsMacro": true,
+																							"Time": ".3",
+																							"ActionUID": 15520673
+																						},
+																						{
+																							"MacroActionType": "HideOthers",
+																							"ActionUID": 15520674,
+																							"HonorExcluded": true
+																						}
+																					],
+																					"TimeOutAbortsMacro": true,
+																					"ActionUID": 15520671
+																				}
+																			],
+																			"Conditions": {
+																				"ConditionListMatch": "All",
+																				"ConditionList": [
+																					{
+																						"ConditionType": "Variable",
+																						"VariableValue": "2",
+																						"Variable": "localAction",
+																						"VariableConditionType": "Is"
+																					}
+																				]
+																			},
+																			"ThenActions": [
+																				{
+																					"MacroActionType": "ActivateApplication",
+																					"ActionUID": 15520670,
+																					"ReopenWindows": false,
+																					"AllWindows": true,
+																					"TimeOutAbortsMacro": true,
+																					"AlreadyActivatedActionType": "BringAllWindows",
+																					"Application": {
+																						"BundleIdentifier": "com.apple.Terminal",
+																						"Name": "Terminal",
+																						"NewFile": "/System/Applications/Utilities/Terminal.app"
+																					}
+																				}
+																			],
+																			"TimeOutAbortsMacro": true,
+																			"ActionUID": 15520669
+																		}
+																	],
+																	"Conditions": {
+																		"ConditionListMatch": "All",
+																		"ConditionList": [
+																			{
+																				"ConditionType": "Variable",
+																				"VariableValue": "1",
+																				"Variable": "localAction",
+																				"VariableConditionType": "Is"
+																			}
+																		]
+																	},
+																	"ThenActions": [
+																		{
+																			"MacroActionType": "ActivateApplication",
+																			"ActionUID": 15520666,
+																			"ReopenWindows": false,
+																			"AllWindows": true,
+																			"TimeOutAbortsMacro": true,
+																			"AlreadyActivatedActionType": "BringAllWindows",
+																			"Application": {
+																				"BundleIdentifier": "com.apple.Terminal",
+																				"Name": "Terminal",
+																				"NewFile": "/System/Applications/Utilities/Terminal.app"
+																			}
+																		},
+																		{
+																			"MacroActionType": "Pause",
+																			"TimeOutAbortsMacro": true,
+																			"Time": ".3",
+																			"ActionUID": 15520667
+																		},
+																		{
+																			"MacroActionType": "HideOthers",
+																			"ActionUID": 15520668,
+																			"HonorExcluded": true
+																		}
+																	],
+																	"TimeOutAbortsMacro": true,
+																	"ActionUID": 15520665
+																}
+															],
+															"Conditions": {
+																"ConditionListMatch": "All",
+																"ConditionList": [
+																	{
+																		"ConditionType": "Variable",
+																		"VariableValue": "xx",
+																		"Variable": "localAction",
+																		"VariableConditionType": "Is"
+																	}
+																]
+															},
+															"ThenActions": [
+																{
+																	"MacroActionType": "Notification",
+																	"Title": "%ExecutingMacro%",
+																	"SoundName": "",
+																	"Subtitle": "",
+																	"Text": "App is not running.",
+																	"ActionUID": 15520664
+																}
+															],
+															"TimeOutAbortsMacro": true,
+															"ActionUID": 15520663
+														}
+													],
+													"Conditions": {
+														"ConditionListMatch": "All",
+														"ConditionList": [
+															{
+																"ConditionType": "Variable",
+																"VariableValue": "0",
+																"Variable": "localAction",
+																"VariableConditionType": "Is"
+															}
+														]
+													},
+													"ThenActions": [
+														{
+															"MacroActionType": "Notification",
+															"Title": "%ExecutingMacro%",
+															"SoundName": "",
+															"Subtitle": "",
+															"Text": "App is not running.",
+															"ActionUID": 15520662
+														}
+													],
+													"TimeOutAbortsMacro": true,
+													"ActionUID": 15520661
+												}
+											],
+											"Conditions": {
+												"ConditionListMatch": "All",
+												"ConditionList": [
+													{
+														"ConditionType": "Variable",
+														"VariableValue": "x",
+														"Variable": "localAction",
+														"VariableConditionType": "Is"
+													}
+												]
+											},
+											"ThenActions": [
+												{
+													"MacroActionType": "Notification",
+													"Title": "%ExecutingMacro%",
+													"SoundName": "",
+													"Subtitle": "",
+													"Text": "App is not running.",
+													"ActionUID": 15520660
+												}
+											],
+											"TimeOutAbortsMacro": true,
+											"ActionUID": 15520659
+										}
+									],
+									"Conditions": {
+										"ConditionListMatch": "All",
+										"ConditionList": [
+											{
+												"ConditionType": "Variable",
+												"VariableValue": "dm",
+												"Variable": "localAction",
+												"VariableConditionType": "Is"
+											}
+										]
+									},
+									"ThenActions": [
+										{
+											"MacroActionType": "Notification",
+											"Title": "%ExecutingMacro%",
+											"SoundName": "",
+											"Subtitle": "",
+											"Text": "App is not running.",
+											"ActionUID": 15520658
+										}
+									],
+									"TimeOutAbortsMacro": true,
+									"ActionUID": 15520657
+								}
+							],
+							"Conditions": {
+								"ConditionListMatch": "All",
+								"ConditionList": [
+									{
+										"ConditionType": "Variable",
+										"VariableValue": "m",
+										"Variable": "localAction",
+										"VariableConditionType": "Is"
+									}
+								]
+							},
+							"ThenActions": [
+								{
+									"MacroActionType": "Notification",
+									"Title": "%ExecutingMacro%",
+									"SoundName": "",
+									"Subtitle": "",
+									"Text": "App is not running.",
+									"ActionUID": 15520656
+								}
+							],
+							"TimeOutAbortsMacro": true,
+							"ActionUID": 15520655
+						}
+					],
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"Application": {
+									"BundleIdentifier": "com.apple.Terminal",
+									"Name": "Terminal",
+									"NewFile": "/System/Applications/Utilities/Terminal.app"
+								},
+								"ApplicationConditionType": "Running",
+								"ConditionType": "Application"
+							}
+						]
+					},
+					"ThenActions": [
+						{
+							"MacroActionType": "IfThenElse",
+							"ElseActions": [
+								{
+									"MacroActionType": "IfThenElse",
+									"ElseActions": [
+										{
+											"MacroActionType": "IfThenElse",
+											"ElseActions": [
+												{
+													"MacroActionType": "IfThenElse",
+													"ElseActions": [
+														{
+															"MacroActionType": "IfThenElse",
+															"ElseActions": [
+																{
+																	"MacroActionType": "IfThenElse",
+																	"ElseActions": [
+																		{
+																			"MacroActionType": "IfThenElse",
+																			"ElseActions": [
+																				{
+																					"MacroActionType": "IfThenElse",
+																					"ElseActions": [],
+																					"Conditions": {
+																						"ConditionListMatch": "All",
+																						"ConditionList": [
+																							{
+																								"ConditionType": "Variable",
+																								"VariableValue": "3",
+																								"Variable": "localAction",
+																								"VariableConditionType": "Is"
+																							}
+																						]
+																					},
+																					"ThenActions": [
+																						{
+																							"MacroActionType": "ExecuteShellScript",
+																							"IncludedVariables": [
+																								"9999"
+																							],
+																							"TrimResults": true,
+																							"Source": "Nothing",
+																							"IncludeStdErr": false,
+																							"ActionUID": 15520652,
+																							"UseText": true,
+																							"TrimResultsNew": true,
+																							"TimeOutAbortsMacro": true,
+																							"Path": "",
+																							"DisplayKind": "None",
+																							"HonourFailureSettings": true,
+																							"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/moveAppToCurrentSpace.sh \"Terminal\""
+																						},
+																						{
+																							"MacroActionType": "ActivateApplication",
+																							"ActionUID": 15520653,
+																							"ReopenWindows": true,
+																							"AllWindows": true,
+																							"TimeOutAbortsMacro": true,
+																							"AlreadyActivatedActionType": "BringAllWindows",
+																							"Application": {
+																								"BundleIdentifier": "com.apple.Terminal",
+																								"Name": "Terminal",
+																								"NewFile": "/System/Applications/Utilities/Terminal.app"
+																							}
+																						},
+																						{
+																							"MacroActionType": "HideOthers",
+																							"ActionUID": 15520654,
+																							"HonorExcluded": true
+																						}
+																					],
+																					"TimeOutAbortsMacro": true,
+																					"ActionUID": 15520651
+																				}
+																			],
+																			"Conditions": {
+																				"ConditionListMatch": "All",
+																				"ConditionList": [
+																					{
+																						"ConditionType": "Variable",
+																						"VariableValue": "2",
+																						"Variable": "localAction",
+																						"VariableConditionType": "Is"
+																					}
+																				]
+																			},
+																			"ThenActions": [
+																				{
+																					"MacroActionType": "ExecuteShellScript",
+																					"IncludedVariables": [
+																						"9999"
+																					],
+																					"TrimResults": true,
+																					"Source": "Nothing",
+																					"IncludeStdErr": false,
+																					"ActionUID": 15520649,
+																					"UseText": true,
+																					"TrimResultsNew": true,
+																					"TimeOutAbortsMacro": true,
+																					"Path": "",
+																					"DisplayKind": "None",
+																					"HonourFailureSettings": true,
+																					"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/moveAppToCurrentSpace.sh \"Terminal\""
+																				},
+																				{
+																					"MacroActionType": "ActivateApplication",
+																					"ActionUID": 15520650,
+																					"ReopenWindows": true,
+																					"AllWindows": true,
+																					"TimeOutAbortsMacro": true,
+																					"AlreadyActivatedActionType": "BringAllWindows",
+																					"Application": {
+																						"BundleIdentifier": "com.apple.Terminal",
+																						"Name": "Terminal",
+																						"NewFile": "/System/Applications/Utilities/Terminal.app"
+																					}
+																				}
+																			],
+																			"TimeOutAbortsMacro": true,
+																			"ActionUID": 15520648
+																		}
+																	],
+																	"Conditions": {
+																		"ConditionListMatch": "All",
+																		"ConditionList": [
+																			{
+																				"ConditionType": "Variable",
+																				"VariableValue": "1",
+																				"Variable": "localAction",
+																				"VariableConditionType": "Is"
+																			}
+																		]
+																	},
+																	"ThenActions": [
+																		{
+																			"MacroActionType": "ActivateApplication",
+																			"ActionUID": 15520646,
+																			"ReopenWindows": true,
+																			"AllWindows": true,
+																			"TimeOutAbortsMacro": true,
+																			"AlreadyActivatedActionType": "BringAllWindows",
+																			"Application": {
+																				"BundleIdentifier": "com.apple.Terminal",
+																				"Name": "Terminal",
+																				"NewFile": "/System/Applications/Utilities/Terminal.app"
+																			}
+																		},
+																		{
+																			"MacroActionType": "HideOthers",
+																			"ActionUID": 15520647,
+																			"HonorExcluded": true
+																		}
+																	],
+																	"TimeOutAbortsMacro": true,
+																	"ActionUID": 15520645
+																}
+															],
+															"Conditions": {
+																"ConditionListMatch": "All",
+																"ConditionList": [
+																	{
+																		"ConditionType": "Variable",
+																		"VariableValue": "xx",
+																		"Variable": "localAction",
+																		"VariableConditionType": "Is"
+																	}
+																]
+															},
+															"ThenActions": [
+																{
+																	"MacroActionType": "QuitSpecificApp",
+																	"Application": {
+																		"BundleIdentifier": "com.apple.Terminal",
+																		"Name": "Terminal",
+																		"NewFile": "/System/Applications/Utilities/Terminal.app"
+																	},
+																	"TimeOutAbortsMacro": true,
+																	"Target": "Specific",
+																	"Action": "Quit",
+																	"ActionUID": 15520644
+																}
+															],
+															"TimeOutAbortsMacro": true,
+															"ActionUID": 15520643
+														}
+													],
+													"Conditions": {
+														"ConditionListMatch": "All",
+														"ConditionList": [
+															{
+																"ConditionType": "Variable",
+																"VariableValue": "0",
+																"Variable": "localAction",
+																"VariableConditionType": "Is"
+															}
+														]
+													},
+													"ThenActions": [
+														{
+															"MacroActionType": "HideSpecificApp",
+															"ActionUID": 15520642,
+															"Application": {
+																"BundleIdentifier": "com.apple.Terminal",
+																"Name": "Terminal",
+																"NewFile": "/System/Applications/Utilities/Terminal.app"
+															}
+														}
+													],
+													"TimeOutAbortsMacro": true,
+													"ActionUID": 15520641
+												}
+											],
+											"Conditions": {
+												"ConditionListMatch": "All",
+												"ConditionList": [
+													{
+														"ConditionType": "Variable",
+														"VariableValue": "x",
+														"Variable": "localAction",
+														"VariableConditionType": "Is"
+													}
+												]
+											},
+											"ThenActions": [
+												{
+													"MacroActionType": "ExecuteShellScript",
+													"IncludedVariables": [
+														"9999"
+													],
+													"TrimResults": true,
+													"Source": "Nothing",
+													"IncludeStdErr": false,
+													"ActionUID": 15520640,
+													"UseText": true,
+													"TrimResultsNew": true,
+													"TimeOutAbortsMacro": true,
+													"Path": "",
+													"DisplayKind": "Window",
+													"HonourFailureSettings": true,
+													"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/closeAppWindows.sh \"Terminal\""
+												}
+											],
+											"TimeOutAbortsMacro": true,
+											"ActionUID": 15520639
+										}
+									],
+									"Conditions": {
+										"ConditionListMatch": "All",
+										"ConditionList": [
+											{
+												"ConditionType": "Variable",
+												"VariableValue": "dm",
+												"Variable": "localAction",
+												"VariableConditionType": "Is"
+											}
+										]
+									},
+									"ThenActions": [
+										{
+											"MacroActionType": "ExecuteShellScript",
+											"IncludedVariables": [
+												"9999"
+											],
+											"TrimResults": true,
+											"Source": "Nothing",
+											"IncludeStdErr": false,
+											"ActionUID": 15520638,
+											"UseText": true,
+											"TrimResultsNew": true,
+											"TimeOutAbortsMacro": true,
+											"Path": "",
+											"DisplayKind": "Window",
+											"HonourFailureSettings": true,
+											"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/deminimizeWindowsOfApp.sh \"Terminal\""
+										}
+									],
+									"TimeOutAbortsMacro": true,
+									"ActionUID": 15520637
+								}
+							],
+							"Conditions": {
+								"ConditionListMatch": "All",
+								"ConditionList": [
+									{
+										"ConditionType": "Variable",
+										"VariableValue": "m",
+										"Variable": "localAction",
+										"VariableConditionType": "Is"
+									}
+								]
+							},
+							"ThenActions": [
+								{
+									"MacroActionType": "ExecuteShellScript",
+									"IncludedVariables": [
+										"9999"
+									],
+									"TrimResults": true,
+									"Source": "Nothing",
+									"IncludeStdErr": false,
+									"ActionUID": 15520636,
+									"UseText": true,
+									"TrimResultsNew": true,
+									"TimeOutAbortsMacro": true,
+									"Path": "",
+									"DisplayKind": "Window",
+									"HonourFailureSettings": true,
+									"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/minimizeAllWindowsOfApp.sh \"Terminal\""
+								}
+							],
+							"TimeOutAbortsMacro": true,
+							"ActionUID": 15520635
+						}
+					],
+					"TimeOutAbortsMacro": true,
+					"ActionUID": 15520634
+				}
+			],
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"ConditionType": "Variable",
+						"VariableValue": "",
+						"Variable": "localAction",
+						"VariableConditionType": "Is"
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "IfThenElse",
+					"ElseActions": [
+						{
+							"MacroActionType": "ActivateApplication",
+							"ActionUID": 15520633,
+							"ReopenWindows": false,
+							"AllWindows": false,
+							"TimeOutAbortsMacro": true,
+							"AlreadyActivatedActionType": "Normal",
+							"Application": {
+								"BundleIdentifier": "com.apple.Terminal",
+								"Name": "Terminal",
+								"NewFile": "/System/Applications/Utilities/Terminal.app"
+							}
+						}
+					],
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"Application": {
+									"BundleIdentifier": "com.apple.Terminal",
+									"Name": "Terminal",
+									"NewFile": "/System/Applications/Utilities/Terminal.app"
+								},
+								"ApplicationConditionType": "Running",
+								"ConditionType": "Application"
+							}
+						]
+					},
+					"ThenActions": [
+						{
+							"MacroActionType": "ActivateApplication",
+							"ActionUID": 15520632,
+							"ReopenWindows": true,
+							"AllWindows": true,
+							"TimeOutAbortsMacro": true,
+							"AlreadyActivatedActionType": "Hide",
+							"Application": {
+								"BundleIdentifier": "com.apple.Terminal",
+								"Name": "Terminal",
+								"NewFile": "/System/Applications/Utilities/Terminal.app"
+							}
+						}
+					],
+					"TimeOutAbortsMacro": true,
+					"ActionUID": 15520631
+				}
+			],
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 15520630
+		}
+	]
+}

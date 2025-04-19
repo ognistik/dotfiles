@@ -1,0 +1,681 @@
+{
+	"CreationDate": 740181822.845748,
+	"UID": "E416AF58-FE3F-4C86-9C44-35911A3D00C5",
+	"Name": "rcmd: Anybox",
+	"Triggers": [],
+	"ModificationDate": 743997284.952257,
+	"Actions": [
+		{
+			"MacroActionType": "SetVariableToText",
+			"Variable": "localAction",
+			"Text": "%TriggerValue%",
+			"ActionUID": 15489050
+		},
+		{
+			"MacroActionType": "IfThenElse",
+			"ElseActions": [
+				{
+					"MacroActionType": "IfThenElse",
+					"ElseActions": [
+						{
+							"MacroActionType": "IfThenElse",
+							"ElseActions": [
+								{
+									"MacroActionType": "IfThenElse",
+									"ElseActions": [
+										{
+											"MacroActionType": "IfThenElse",
+											"ElseActions": [
+												{
+													"MacroActionType": "IfThenElse",
+													"ElseActions": [
+														{
+															"MacroActionType": "IfThenElse",
+															"ElseActions": [
+																{
+																	"MacroActionType": "IfThenElse",
+																	"ElseActions": [
+																		{
+																			"MacroActionType": "IfThenElse",
+																			"ElseActions": [
+																				{
+																					"MacroActionType": "IfThenElse",
+																					"ElseActions": [],
+																					"Conditions": {
+																						"ConditionListMatch": "All",
+																						"ConditionList": [
+																							{
+																								"ConditionType": "Variable",
+																								"VariableValue": "3",
+																								"Variable": "localAction",
+																								"VariableConditionType": "Is"
+																							}
+																						]
+																					},
+																					"ThenActions": [
+																						{
+																							"MacroActionType": "ActivateApplication",
+																							"ActionUID": 15489092,
+																							"ReopenWindows": false,
+																							"AllWindows": true,
+																							"TimeOutAbortsMacro": true,
+																							"AlreadyActivatedActionType": "BringAllWindows",
+																							"Application": {
+																								"BundleIdentifier": "cc.anybox.Anybox",
+																								"Name": "Anybox",
+																								"NewFile": "/Applications/Anybox.app"
+																							}
+																						},
+																						{
+																							"MacroActionType": "Pause",
+																							"TimeOutAbortsMacro": true,
+																							"Time": ".3",
+																							"ActionUID": 15502902
+																						},
+																						{
+																							"MacroActionType": "HideOthers",
+																							"ActionUID": 15489093,
+																							"HonorExcluded": true
+																						}
+																					],
+																					"TimeOutAbortsMacro": true,
+																					"ActionUID": 15489091
+																				}
+																			],
+																			"Conditions": {
+																				"ConditionListMatch": "All",
+																				"ConditionList": [
+																					{
+																						"ConditionType": "Variable",
+																						"VariableValue": "2",
+																						"Variable": "localAction",
+																						"VariableConditionType": "Is"
+																					}
+																				]
+																			},
+																			"ThenActions": [
+																				{
+																					"MacroActionType": "ActivateApplication",
+																					"ActionUID": 15489090,
+																					"ReopenWindows": false,
+																					"AllWindows": true,
+																					"TimeOutAbortsMacro": true,
+																					"AlreadyActivatedActionType": "BringAllWindows",
+																					"Application": {
+																						"BundleIdentifier": "cc.anybox.Anybox",
+																						"Name": "Anybox",
+																						"NewFile": "/Applications/Anybox.app"
+																					}
+																				}
+																			],
+																			"TimeOutAbortsMacro": true,
+																			"ActionUID": 15489089
+																		}
+																	],
+																	"Conditions": {
+																		"ConditionListMatch": "All",
+																		"ConditionList": [
+																			{
+																				"ConditionType": "Variable",
+																				"VariableValue": "1",
+																				"Variable": "localAction",
+																				"VariableConditionType": "Is"
+																			}
+																		]
+																	},
+																	"ThenActions": [
+																		{
+																			"MacroActionType": "ActivateApplication",
+																			"ActionUID": 15489087,
+																			"ReopenWindows": false,
+																			"AllWindows": true,
+																			"TimeOutAbortsMacro": true,
+																			"AlreadyActivatedActionType": "BringAllWindows",
+																			"Application": {
+																				"BundleIdentifier": "cc.anybox.Anybox",
+																				"Name": "Anybox",
+																				"NewFile": "/Applications/Anybox.app"
+																			}
+																		},
+																		{
+																			"MacroActionType": "Pause",
+																			"TimeOutAbortsMacro": true,
+																			"Time": ".3",
+																			"ActionUID": 15502901
+																		},
+																		{
+																			"MacroActionType": "HideOthers",
+																			"ActionUID": 15489088,
+																			"HonorExcluded": true
+																		}
+																	],
+																	"TimeOutAbortsMacro": true,
+																	"ActionUID": 15489086
+																}
+															],
+															"Conditions": {
+																"ConditionListMatch": "All",
+																"ConditionList": [
+																	{
+																		"ConditionType": "Variable",
+																		"VariableValue": "xx",
+																		"Variable": "localAction",
+																		"VariableConditionType": "Is"
+																	}
+																]
+															},
+															"ThenActions": [
+																{
+																	"MacroActionType": "Notification",
+																	"Title": "%ExecutingMacro%",
+																	"SoundName": "",
+																	"Subtitle": "",
+																	"Text": "App is not running.",
+																	"ActionUID": 15489085
+																}
+															],
+															"TimeOutAbortsMacro": true,
+															"ActionUID": 15489084
+														}
+													],
+													"Conditions": {
+														"ConditionListMatch": "All",
+														"ConditionList": [
+															{
+																"ConditionType": "Variable",
+																"VariableValue": "0",
+																"Variable": "localAction",
+																"VariableConditionType": "Is"
+															}
+														]
+													},
+													"ThenActions": [
+														{
+															"MacroActionType": "Notification",
+															"Title": "%ExecutingMacro%",
+															"SoundName": "",
+															"Subtitle": "",
+															"Text": "App is not running.",
+															"ActionUID": 15489083
+														}
+													],
+													"TimeOutAbortsMacro": true,
+													"ActionUID": 15489082
+												}
+											],
+											"Conditions": {
+												"ConditionListMatch": "All",
+												"ConditionList": [
+													{
+														"ConditionType": "Variable",
+														"VariableValue": "x",
+														"Variable": "localAction",
+														"VariableConditionType": "Is"
+													}
+												]
+											},
+											"ThenActions": [
+												{
+													"MacroActionType": "Notification",
+													"Title": "%ExecutingMacro%",
+													"SoundName": "",
+													"Subtitle": "",
+													"Text": "App is not running.",
+													"ActionUID": 15489081
+												}
+											],
+											"TimeOutAbortsMacro": true,
+											"ActionUID": 15489080
+										}
+									],
+									"Conditions": {
+										"ConditionListMatch": "All",
+										"ConditionList": [
+											{
+												"ConditionType": "Variable",
+												"VariableValue": "dm",
+												"Variable": "localAction",
+												"VariableConditionType": "Is"
+											}
+										]
+									},
+									"ThenActions": [
+										{
+											"MacroActionType": "Notification",
+											"Title": "%ExecutingMacro%",
+											"SoundName": "",
+											"Subtitle": "",
+											"Text": "App is not running.",
+											"ActionUID": 15489079
+										}
+									],
+									"TimeOutAbortsMacro": true,
+									"ActionUID": 15489078
+								}
+							],
+							"Conditions": {
+								"ConditionListMatch": "All",
+								"ConditionList": [
+									{
+										"ConditionType": "Variable",
+										"VariableValue": "m",
+										"Variable": "localAction",
+										"VariableConditionType": "Is"
+									}
+								]
+							},
+							"ThenActions": [
+								{
+									"MacroActionType": "Notification",
+									"Title": "%ExecutingMacro%",
+									"SoundName": "",
+									"Subtitle": "",
+									"Text": "App is not running.",
+									"ActionUID": 15489077
+								}
+							],
+							"TimeOutAbortsMacro": true,
+							"ActionUID": 15489076
+						}
+					],
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"Application": {
+									"BundleIdentifier": "cc.anybox.Anybox",
+									"Name": "Anybox",
+									"NewFile": "/Applications/Anybox.app"
+								},
+								"ApplicationConditionType": "Running",
+								"ConditionType": "Application"
+							}
+						]
+					},
+					"ThenActions": [
+						{
+							"MacroActionType": "IfThenElse",
+							"ElseActions": [
+								{
+									"MacroActionType": "IfThenElse",
+									"ElseActions": [
+										{
+											"MacroActionType": "IfThenElse",
+											"ElseActions": [
+												{
+													"MacroActionType": "IfThenElse",
+													"ElseActions": [
+														{
+															"MacroActionType": "IfThenElse",
+															"ElseActions": [
+																{
+																	"MacroActionType": "IfThenElse",
+																	"ElseActions": [
+																		{
+																			"MacroActionType": "IfThenElse",
+																			"ElseActions": [
+																				{
+																					"MacroActionType": "IfThenElse",
+																					"ElseActions": [],
+																					"Conditions": {
+																						"ConditionListMatch": "All",
+																						"ConditionList": [
+																							{
+																								"ConditionType": "Variable",
+																								"VariableValue": "3",
+																								"Variable": "localAction",
+																								"VariableConditionType": "Is"
+																							}
+																						]
+																					},
+																					"ThenActions": [
+																						{
+																							"MacroActionType": "ExecuteShellScript",
+																							"IncludedVariables": [
+																								"9999"
+																							],
+																							"TrimResults": true,
+																							"Source": "Nothing",
+																							"IncludeStdErr": false,
+																							"ActionUID": 15489073,
+																							"UseText": true,
+																							"TrimResultsNew": true,
+																							"TimeOutAbortsMacro": true,
+																							"Path": "",
+																							"DisplayKind": "None",
+																							"HonourFailureSettings": true,
+																							"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/moveAppToCurrentSpace.sh \"Anybox\""
+																						},
+																						{
+																							"MacroActionType": "ActivateApplication",
+																							"ActionUID": 15489074,
+																							"ReopenWindows": true,
+																							"AllWindows": true,
+																							"TimeOutAbortsMacro": true,
+																							"AlreadyActivatedActionType": "BringAllWindows",
+																							"Application": {
+																								"BundleIdentifier": "cc.anybox.Anybox",
+																								"Name": "Anybox",
+																								"NewFile": "/Applications/Anybox.app"
+																							}
+																						},
+																						{
+																							"MacroActionType": "HideOthers",
+																							"ActionUID": 15489075,
+																							"HonorExcluded": true
+																						}
+																					],
+																					"TimeOutAbortsMacro": true,
+																					"ActionUID": 15489072
+																				}
+																			],
+																			"Conditions": {
+																				"ConditionListMatch": "All",
+																				"ConditionList": [
+																					{
+																						"ConditionType": "Variable",
+																						"VariableValue": "2",
+																						"Variable": "localAction",
+																						"VariableConditionType": "Is"
+																					}
+																				]
+																			},
+																			"ThenActions": [
+																				{
+																					"MacroActionType": "ExecuteShellScript",
+																					"IncludedVariables": [
+																						"9999"
+																					],
+																					"TrimResults": true,
+																					"Source": "Nothing",
+																					"IncludeStdErr": false,
+																					"ActionUID": 15489070,
+																					"UseText": true,
+																					"TrimResultsNew": true,
+																					"TimeOutAbortsMacro": true,
+																					"Path": "",
+																					"DisplayKind": "None",
+																					"HonourFailureSettings": true,
+																					"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/moveAppToCurrentSpace.sh \"Anybox\""
+																				},
+																				{
+																					"MacroActionType": "ActivateApplication",
+																					"ActionUID": 15489071,
+																					"ReopenWindows": true,
+																					"AllWindows": true,
+																					"TimeOutAbortsMacro": true,
+																					"AlreadyActivatedActionType": "BringAllWindows",
+																					"Application": {
+																						"BundleIdentifier": "cc.anybox.Anybox",
+																						"Name": "Anybox",
+																						"NewFile": "/Applications/Anybox.app"
+																					}
+																				}
+																			],
+																			"TimeOutAbortsMacro": true,
+																			"ActionUID": 15489069
+																		}
+																	],
+																	"Conditions": {
+																		"ConditionListMatch": "All",
+																		"ConditionList": [
+																			{
+																				"ConditionType": "Variable",
+																				"VariableValue": "1",
+																				"Variable": "localAction",
+																				"VariableConditionType": "Is"
+																			}
+																		]
+																	},
+																	"ThenActions": [
+																		{
+																			"MacroActionType": "ActivateApplication",
+																			"ActionUID": 15489067,
+																			"ReopenWindows": true,
+																			"AllWindows": true,
+																			"TimeOutAbortsMacro": true,
+																			"AlreadyActivatedActionType": "BringAllWindows",
+																			"Application": {
+																				"BundleIdentifier": "cc.anybox.Anybox",
+																				"Name": "Anybox",
+																				"NewFile": "/Applications/Anybox.app"
+																			}
+																		},
+																		{
+																			"MacroActionType": "HideOthers",
+																			"ActionUID": 15489068,
+																			"HonorExcluded": true
+																		}
+																	],
+																	"TimeOutAbortsMacro": true,
+																	"ActionUID": 15489066
+																}
+															],
+															"Conditions": {
+																"ConditionListMatch": "All",
+																"ConditionList": [
+																	{
+																		"ConditionType": "Variable",
+																		"VariableValue": "xx",
+																		"Variable": "localAction",
+																		"VariableConditionType": "Is"
+																	}
+																]
+															},
+															"ThenActions": [
+																{
+																	"MacroActionType": "QuitSpecificApp",
+																	"Application": {
+																		"BundleIdentifier": "cc.anybox.Anybox",
+																		"Name": "Anybox",
+																		"NewFile": "/Applications/Anybox.app"
+																	},
+																	"TimeOutAbortsMacro": true,
+																	"Target": "Specific",
+																	"Action": "Quit",
+																	"ActionUID": 15489065
+																}
+															],
+															"TimeOutAbortsMacro": true,
+															"ActionUID": 15489064
+														}
+													],
+													"Conditions": {
+														"ConditionListMatch": "All",
+														"ConditionList": [
+															{
+																"ConditionType": "Variable",
+																"VariableValue": "0",
+																"Variable": "localAction",
+																"VariableConditionType": "Is"
+															}
+														]
+													},
+													"ThenActions": [
+														{
+															"MacroActionType": "HideSpecificApp",
+															"ActionUID": 15489063,
+															"Application": {
+																"BundleIdentifier": "cc.anybox.Anybox",
+																"Name": "Anybox",
+																"NewFile": "/Applications/Anybox.app"
+															}
+														}
+													],
+													"TimeOutAbortsMacro": true,
+													"ActionUID": 15489062
+												}
+											],
+											"Conditions": {
+												"ConditionListMatch": "All",
+												"ConditionList": [
+													{
+														"ConditionType": "Variable",
+														"VariableValue": "x",
+														"Variable": "localAction",
+														"VariableConditionType": "Is"
+													}
+												]
+											},
+											"ThenActions": [
+												{
+													"MacroActionType": "ExecuteShellScript",
+													"IncludedVariables": [
+														"9999"
+													],
+													"TrimResults": true,
+													"Source": "Nothing",
+													"IncludeStdErr": false,
+													"ActionUID": 15489061,
+													"UseText": true,
+													"TrimResultsNew": true,
+													"TimeOutAbortsMacro": true,
+													"Path": "",
+													"DisplayKind": "Window",
+													"HonourFailureSettings": true,
+													"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/closeAppWindows.sh \"Anybox\""
+												}
+											],
+											"TimeOutAbortsMacro": true,
+											"ActionUID": 15489060
+										}
+									],
+									"Conditions": {
+										"ConditionListMatch": "All",
+										"ConditionList": [
+											{
+												"ConditionType": "Variable",
+												"VariableValue": "dm",
+												"Variable": "localAction",
+												"VariableConditionType": "Is"
+											}
+										]
+									},
+									"ThenActions": [
+										{
+											"MacroActionType": "ExecuteShellScript",
+											"IncludedVariables": [
+												"9999"
+											],
+											"TrimResults": true,
+											"Source": "Nothing",
+											"IncludeStdErr": false,
+											"ActionUID": 15489059,
+											"UseText": true,
+											"TrimResultsNew": true,
+											"TimeOutAbortsMacro": true,
+											"Path": "",
+											"DisplayKind": "Window",
+											"HonourFailureSettings": true,
+											"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/deminimizeWindowsOfApp.sh \"Anybox\""
+										}
+									],
+									"TimeOutAbortsMacro": true,
+									"ActionUID": 15489058
+								}
+							],
+							"Conditions": {
+								"ConditionListMatch": "All",
+								"ConditionList": [
+									{
+										"ConditionType": "Variable",
+										"VariableValue": "m",
+										"Variable": "localAction",
+										"VariableConditionType": "Is"
+									}
+								]
+							},
+							"ThenActions": [
+								{
+									"MacroActionType": "ExecuteShellScript",
+									"IncludedVariables": [
+										"9999"
+									],
+									"TrimResults": true,
+									"Source": "Nothing",
+									"IncludeStdErr": false,
+									"ActionUID": 15489057,
+									"UseText": true,
+									"TrimResultsNew": true,
+									"TimeOutAbortsMacro": true,
+									"Path": "",
+									"DisplayKind": "Window",
+									"HonourFailureSettings": true,
+									"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/minimizeAllWindowsOfApp.sh \"Anybox\""
+								}
+							],
+							"TimeOutAbortsMacro": true,
+							"ActionUID": 15489056
+						}
+					],
+					"TimeOutAbortsMacro": true,
+					"ActionUID": 15489055
+				}
+			],
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"ConditionType": "Variable",
+						"VariableValue": "",
+						"Variable": "localAction",
+						"VariableConditionType": "Is"
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "IfThenElse",
+					"ElseActions": [
+						{
+							"MacroActionType": "ActivateApplication",
+							"ActionUID": 15489054,
+							"ReopenWindows": false,
+							"AllWindows": false,
+							"TimeOutAbortsMacro": true,
+							"AlreadyActivatedActionType": "Normal",
+							"Application": {
+								"BundleIdentifier": "cc.anybox.Anybox",
+								"Name": "Anybox",
+								"NewFile": "/Applications/Anybox.app"
+							}
+						}
+					],
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"Application": {
+									"BundleIdentifier": "cc.anybox.Anybox",
+									"Name": "Anybox",
+									"NewFile": "/Applications/Anybox.app"
+								},
+								"ApplicationConditionType": "Running",
+								"ConditionType": "Application"
+							}
+						]
+					},
+					"ThenActions": [
+						{
+							"MacroActionType": "ActivateApplication",
+							"ActionUID": 15489053,
+							"ReopenWindows": true,
+							"AllWindows": true,
+							"TimeOutAbortsMacro": true,
+							"AlreadyActivatedActionType": "Hide",
+							"Application": {
+								"BundleIdentifier": "cc.anybox.Anybox",
+								"Name": "Anybox",
+								"NewFile": "/Applications/Anybox.app"
+							}
+						}
+					],
+					"TimeOutAbortsMacro": true,
+					"ActionUID": 15489052
+				}
+			],
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 15489051
+		}
+	]
+}

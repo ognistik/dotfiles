@@ -1,0 +1,681 @@
+{
+	"CreationDate": 740181822.845748,
+	"UID": "1676B941-F124-4785-A25E-BC716326FEEE",
+	"Name": "rcmd: Safari",
+	"Triggers": [],
+	"ModificationDate": 753809034.351299,
+	"Actions": [
+		{
+			"MacroActionType": "SetVariableToText",
+			"Variable": "localAction",
+			"Text": "%TriggerValue%",
+			"ActionUID": 15559314
+		},
+		{
+			"MacroActionType": "IfThenElse",
+			"ElseActions": [
+				{
+					"MacroActionType": "IfThenElse",
+					"ElseActions": [
+						{
+							"MacroActionType": "IfThenElse",
+							"ElseActions": [
+								{
+									"MacroActionType": "IfThenElse",
+									"ElseActions": [
+										{
+											"MacroActionType": "IfThenElse",
+											"ElseActions": [
+												{
+													"MacroActionType": "IfThenElse",
+													"ElseActions": [
+														{
+															"MacroActionType": "IfThenElse",
+															"ElseActions": [
+																{
+																	"MacroActionType": "IfThenElse",
+																	"ElseActions": [
+																		{
+																			"MacroActionType": "IfThenElse",
+																			"ElseActions": [
+																				{
+																					"MacroActionType": "IfThenElse",
+																					"ElseActions": [],
+																					"Conditions": {
+																						"ConditionListMatch": "All",
+																						"ConditionList": [
+																							{
+																								"ConditionType": "Variable",
+																								"VariableValue": "3",
+																								"Variable": "localAction",
+																								"VariableConditionType": "Is"
+																							}
+																						]
+																					},
+																					"ThenActions": [
+																						{
+																							"MacroActionType": "ActivateApplication",
+																							"ActionUID": 15559357,
+																							"ReopenWindows": false,
+																							"AllWindows": true,
+																							"TimeOutAbortsMacro": true,
+																							"AlreadyActivatedActionType": "BringAllWindows",
+																							"Application": {
+																								"BundleIdentifier": "com.apple.Safari",
+																								"Name": "Safari",
+																								"NewFile": "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
+																							}
+																						},
+																						{
+																							"MacroActionType": "Pause",
+																							"TimeOutAbortsMacro": true,
+																							"Time": ".3",
+																							"ActionUID": 15559358
+																						},
+																						{
+																							"MacroActionType": "HideOthers",
+																							"ActionUID": 15559359,
+																							"HonorExcluded": true
+																						}
+																					],
+																					"TimeOutAbortsMacro": true,
+																					"ActionUID": 15559356
+																				}
+																			],
+																			"Conditions": {
+																				"ConditionListMatch": "All",
+																				"ConditionList": [
+																					{
+																						"ConditionType": "Variable",
+																						"VariableValue": "2",
+																						"Variable": "localAction",
+																						"VariableConditionType": "Is"
+																					}
+																				]
+																			},
+																			"ThenActions": [
+																				{
+																					"MacroActionType": "ActivateApplication",
+																					"ActionUID": 15559355,
+																					"ReopenWindows": false,
+																					"AllWindows": true,
+																					"TimeOutAbortsMacro": true,
+																					"AlreadyActivatedActionType": "BringAllWindows",
+																					"Application": {
+																						"BundleIdentifier": "com.apple.Safari",
+																						"Name": "Safari",
+																						"NewFile": "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
+																					}
+																				}
+																			],
+																			"TimeOutAbortsMacro": true,
+																			"ActionUID": 15559354
+																		}
+																	],
+																	"Conditions": {
+																		"ConditionListMatch": "All",
+																		"ConditionList": [
+																			{
+																				"ConditionType": "Variable",
+																				"VariableValue": "1",
+																				"Variable": "localAction",
+																				"VariableConditionType": "Is"
+																			}
+																		]
+																	},
+																	"ThenActions": [
+																		{
+																			"MacroActionType": "ActivateApplication",
+																			"ActionUID": 15559351,
+																			"ReopenWindows": false,
+																			"AllWindows": true,
+																			"TimeOutAbortsMacro": true,
+																			"AlreadyActivatedActionType": "BringAllWindows",
+																			"Application": {
+																				"BundleIdentifier": "com.apple.Safari",
+																				"Name": "Safari",
+																				"NewFile": "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
+																			}
+																		},
+																		{
+																			"MacroActionType": "Pause",
+																			"TimeOutAbortsMacro": true,
+																			"Time": ".3",
+																			"ActionUID": 15559352
+																		},
+																		{
+																			"MacroActionType": "HideOthers",
+																			"ActionUID": 15559353,
+																			"HonorExcluded": true
+																		}
+																	],
+																	"TimeOutAbortsMacro": true,
+																	"ActionUID": 15559350
+																}
+															],
+															"Conditions": {
+																"ConditionListMatch": "All",
+																"ConditionList": [
+																	{
+																		"ConditionType": "Variable",
+																		"VariableValue": "xx",
+																		"Variable": "localAction",
+																		"VariableConditionType": "Is"
+																	}
+																]
+															},
+															"ThenActions": [
+																{
+																	"MacroActionType": "Notification",
+																	"Title": "%ExecutingMacro%",
+																	"SoundName": "",
+																	"Subtitle": "",
+																	"Text": "App is not running.",
+																	"ActionUID": 15559349
+																}
+															],
+															"TimeOutAbortsMacro": true,
+															"ActionUID": 15559348
+														}
+													],
+													"Conditions": {
+														"ConditionListMatch": "All",
+														"ConditionList": [
+															{
+																"ConditionType": "Variable",
+																"VariableValue": "0",
+																"Variable": "localAction",
+																"VariableConditionType": "Is"
+															}
+														]
+													},
+													"ThenActions": [
+														{
+															"MacroActionType": "Notification",
+															"Title": "%ExecutingMacro%",
+															"SoundName": "",
+															"Subtitle": "",
+															"Text": "App is not running.",
+															"ActionUID": 15559347
+														}
+													],
+													"TimeOutAbortsMacro": true,
+													"ActionUID": 15559346
+												}
+											],
+											"Conditions": {
+												"ConditionListMatch": "All",
+												"ConditionList": [
+													{
+														"ConditionType": "Variable",
+														"VariableValue": "x",
+														"Variable": "localAction",
+														"VariableConditionType": "Is"
+													}
+												]
+											},
+											"ThenActions": [
+												{
+													"MacroActionType": "Notification",
+													"Title": "%ExecutingMacro%",
+													"SoundName": "",
+													"Subtitle": "",
+													"Text": "App is not running.",
+													"ActionUID": 15559345
+												}
+											],
+											"TimeOutAbortsMacro": true,
+											"ActionUID": 15559344
+										}
+									],
+									"Conditions": {
+										"ConditionListMatch": "All",
+										"ConditionList": [
+											{
+												"ConditionType": "Variable",
+												"VariableValue": "dm",
+												"Variable": "localAction",
+												"VariableConditionType": "Is"
+											}
+										]
+									},
+									"ThenActions": [
+										{
+											"MacroActionType": "Notification",
+											"Title": "%ExecutingMacro%",
+											"SoundName": "",
+											"Subtitle": "",
+											"Text": "App is not running.",
+											"ActionUID": 15559343
+										}
+									],
+									"TimeOutAbortsMacro": true,
+									"ActionUID": 15559342
+								}
+							],
+							"Conditions": {
+								"ConditionListMatch": "All",
+								"ConditionList": [
+									{
+										"ConditionType": "Variable",
+										"VariableValue": "m",
+										"Variable": "localAction",
+										"VariableConditionType": "Is"
+									}
+								]
+							},
+							"ThenActions": [
+								{
+									"MacroActionType": "Notification",
+									"Title": "%ExecutingMacro%",
+									"SoundName": "",
+									"Subtitle": "",
+									"Text": "App is not running.",
+									"ActionUID": 15559341
+								}
+							],
+							"TimeOutAbortsMacro": true,
+							"ActionUID": 15559340
+						}
+					],
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"Application": {
+									"BundleIdentifier": "com.apple.Safari",
+									"Name": "Safari",
+									"NewFile": "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
+								},
+								"ApplicationConditionType": "Running",
+								"ConditionType": "Application"
+							}
+						]
+					},
+					"ThenActions": [
+						{
+							"MacroActionType": "IfThenElse",
+							"ElseActions": [
+								{
+									"MacroActionType": "IfThenElse",
+									"ElseActions": [
+										{
+											"MacroActionType": "IfThenElse",
+											"ElseActions": [
+												{
+													"MacroActionType": "IfThenElse",
+													"ElseActions": [
+														{
+															"MacroActionType": "IfThenElse",
+															"ElseActions": [
+																{
+																	"MacroActionType": "IfThenElse",
+																	"ElseActions": [
+																		{
+																			"MacroActionType": "IfThenElse",
+																			"ElseActions": [
+																				{
+																					"MacroActionType": "IfThenElse",
+																					"ElseActions": [],
+																					"Conditions": {
+																						"ConditionListMatch": "All",
+																						"ConditionList": [
+																							{
+																								"ConditionType": "Variable",
+																								"VariableValue": "3",
+																								"Variable": "localAction",
+																								"VariableConditionType": "Is"
+																							}
+																						]
+																					},
+																					"ThenActions": [
+																						{
+																							"MacroActionType": "ExecuteShellScript",
+																							"IncludedVariables": [
+																								"9999"
+																							],
+																							"TrimResults": true,
+																							"Source": "Nothing",
+																							"IncludeStdErr": false,
+																							"ActionUID": 15559337,
+																							"UseText": true,
+																							"TrimResultsNew": true,
+																							"TimeOutAbortsMacro": true,
+																							"Path": "",
+																							"DisplayKind": "None",
+																							"HonourFailureSettings": true,
+																							"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/moveAppToCurrentSpace.sh \"Safari\""
+																						},
+																						{
+																							"MacroActionType": "ActivateApplication",
+																							"ActionUID": 15559338,
+																							"ReopenWindows": true,
+																							"AllWindows": true,
+																							"TimeOutAbortsMacro": true,
+																							"AlreadyActivatedActionType": "BringAllWindows",
+																							"Application": {
+																								"BundleIdentifier": "com.apple.Safari",
+																								"Name": "Safari",
+																								"NewFile": "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
+																							}
+																						},
+																						{
+																							"MacroActionType": "HideOthers",
+																							"ActionUID": 15559339,
+																							"HonorExcluded": true
+																						}
+																					],
+																					"TimeOutAbortsMacro": true,
+																					"ActionUID": 15559336
+																				}
+																			],
+																			"Conditions": {
+																				"ConditionListMatch": "All",
+																				"ConditionList": [
+																					{
+																						"ConditionType": "Variable",
+																						"VariableValue": "2",
+																						"Variable": "localAction",
+																						"VariableConditionType": "Is"
+																					}
+																				]
+																			},
+																			"ThenActions": [
+																				{
+																					"MacroActionType": "ExecuteShellScript",
+																					"IncludedVariables": [
+																						"9999"
+																					],
+																					"TrimResults": true,
+																					"Source": "Nothing",
+																					"IncludeStdErr": false,
+																					"ActionUID": 15559334,
+																					"UseText": true,
+																					"TrimResultsNew": true,
+																					"TimeOutAbortsMacro": true,
+																					"Path": "",
+																					"DisplayKind": "None",
+																					"HonourFailureSettings": true,
+																					"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/moveAppToCurrentSpace.sh \"Safari\""
+																				},
+																				{
+																					"MacroActionType": "ActivateApplication",
+																					"ActionUID": 15559335,
+																					"ReopenWindows": true,
+																					"AllWindows": true,
+																					"TimeOutAbortsMacro": true,
+																					"AlreadyActivatedActionType": "BringAllWindows",
+																					"Application": {
+																						"BundleIdentifier": "com.apple.Safari",
+																						"Name": "Safari",
+																						"NewFile": "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
+																					}
+																				}
+																			],
+																			"TimeOutAbortsMacro": true,
+																			"ActionUID": 15559333
+																		}
+																	],
+																	"Conditions": {
+																		"ConditionListMatch": "All",
+																		"ConditionList": [
+																			{
+																				"ConditionType": "Variable",
+																				"VariableValue": "1",
+																				"Variable": "localAction",
+																				"VariableConditionType": "Is"
+																			}
+																		]
+																	},
+																	"ThenActions": [
+																		{
+																			"MacroActionType": "ActivateApplication",
+																			"ActionUID": 15559331,
+																			"ReopenWindows": true,
+																			"AllWindows": true,
+																			"TimeOutAbortsMacro": true,
+																			"AlreadyActivatedActionType": "BringAllWindows",
+																			"Application": {
+																				"BundleIdentifier": "com.apple.Safari",
+																				"Name": "Safari",
+																				"NewFile": "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
+																			}
+																		},
+																		{
+																			"MacroActionType": "HideOthers",
+																			"ActionUID": 15559332,
+																			"HonorExcluded": true
+																		}
+																	],
+																	"TimeOutAbortsMacro": true,
+																	"ActionUID": 15559330
+																}
+															],
+															"Conditions": {
+																"ConditionListMatch": "All",
+																"ConditionList": [
+																	{
+																		"ConditionType": "Variable",
+																		"VariableValue": "xx",
+																		"Variable": "localAction",
+																		"VariableConditionType": "Is"
+																	}
+																]
+															},
+															"ThenActions": [
+																{
+																	"MacroActionType": "QuitSpecificApp",
+																	"Application": {
+																		"BundleIdentifier": "com.apple.Safari",
+																		"Name": "Safari",
+																		"NewFile": "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
+																	},
+																	"TimeOutAbortsMacro": true,
+																	"Target": "Specific",
+																	"Action": "Quit",
+																	"ActionUID": 15559329
+																}
+															],
+															"TimeOutAbortsMacro": true,
+															"ActionUID": 15559328
+														}
+													],
+													"Conditions": {
+														"ConditionListMatch": "All",
+														"ConditionList": [
+															{
+																"ConditionType": "Variable",
+																"VariableValue": "0",
+																"Variable": "localAction",
+																"VariableConditionType": "Is"
+															}
+														]
+													},
+													"ThenActions": [
+														{
+															"MacroActionType": "HideSpecificApp",
+															"ActionUID": 15559327,
+															"Application": {
+																"BundleIdentifier": "com.apple.Safari",
+																"Name": "Safari",
+																"NewFile": "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
+															}
+														}
+													],
+													"TimeOutAbortsMacro": true,
+													"ActionUID": 15559326
+												}
+											],
+											"Conditions": {
+												"ConditionListMatch": "All",
+												"ConditionList": [
+													{
+														"ConditionType": "Variable",
+														"VariableValue": "x",
+														"Variable": "localAction",
+														"VariableConditionType": "Is"
+													}
+												]
+											},
+											"ThenActions": [
+												{
+													"MacroActionType": "ExecuteShellScript",
+													"IncludedVariables": [
+														"9999"
+													],
+													"TrimResults": true,
+													"Source": "Nothing",
+													"IncludeStdErr": false,
+													"ActionUID": 15559325,
+													"UseText": true,
+													"TrimResultsNew": true,
+													"TimeOutAbortsMacro": true,
+													"Path": "",
+													"DisplayKind": "Window",
+													"HonourFailureSettings": true,
+													"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/closeAppWindows.sh \"Safari\""
+												}
+											],
+											"TimeOutAbortsMacro": true,
+											"ActionUID": 15559324
+										}
+									],
+									"Conditions": {
+										"ConditionListMatch": "All",
+										"ConditionList": [
+											{
+												"ConditionType": "Variable",
+												"VariableValue": "dm",
+												"Variable": "localAction",
+												"VariableConditionType": "Is"
+											}
+										]
+									},
+									"ThenActions": [
+										{
+											"MacroActionType": "ExecuteShellScript",
+											"IncludedVariables": [
+												"9999"
+											],
+											"TrimResults": true,
+											"Source": "Nothing",
+											"IncludeStdErr": false,
+											"ActionUID": 15559323,
+											"UseText": true,
+											"TrimResultsNew": true,
+											"TimeOutAbortsMacro": true,
+											"Path": "",
+											"DisplayKind": "Window",
+											"HonourFailureSettings": true,
+											"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/deminimizeWindowsOfApp.sh \"Safari\""
+										}
+									],
+									"TimeOutAbortsMacro": true,
+									"ActionUID": 15559322
+								}
+							],
+							"Conditions": {
+								"ConditionListMatch": "All",
+								"ConditionList": [
+									{
+										"ConditionType": "Variable",
+										"VariableValue": "m",
+										"Variable": "localAction",
+										"VariableConditionType": "Is"
+									}
+								]
+							},
+							"ThenActions": [
+								{
+									"MacroActionType": "ExecuteShellScript",
+									"IncludedVariables": [
+										"9999"
+									],
+									"TrimResults": true,
+									"Source": "Nothing",
+									"IncludeStdErr": false,
+									"ActionUID": 15559321,
+									"UseText": true,
+									"TrimResultsNew": true,
+									"TimeOutAbortsMacro": true,
+									"Path": "",
+									"DisplayKind": "Window",
+									"HonourFailureSettings": true,
+									"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/minimizeAllWindowsOfApp.sh \"Safari\""
+								}
+							],
+							"TimeOutAbortsMacro": true,
+							"ActionUID": 15559320
+						}
+					],
+					"TimeOutAbortsMacro": true,
+					"ActionUID": 15559319
+				}
+			],
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"ConditionType": "Variable",
+						"VariableValue": "",
+						"Variable": "localAction",
+						"VariableConditionType": "Is"
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "IfThenElse",
+					"ElseActions": [
+						{
+							"MacroActionType": "ActivateApplication",
+							"ActionUID": 15559318,
+							"ReopenWindows": false,
+							"AllWindows": false,
+							"TimeOutAbortsMacro": true,
+							"AlreadyActivatedActionType": "Normal",
+							"Application": {
+								"BundleIdentifier": "com.apple.Safari",
+								"Name": "Safari",
+								"NewFile": "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
+							}
+						}
+					],
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"Application": {
+									"BundleIdentifier": "com.apple.Safari",
+									"Name": "Safari",
+									"NewFile": "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
+								},
+								"ApplicationConditionType": "Running",
+								"ConditionType": "Application"
+							}
+						]
+					},
+					"ThenActions": [
+						{
+							"MacroActionType": "ActivateApplication",
+							"ActionUID": 15559317,
+							"ReopenWindows": true,
+							"AllWindows": true,
+							"TimeOutAbortsMacro": true,
+							"AlreadyActivatedActionType": "Hide",
+							"Application": {
+								"BundleIdentifier": "com.apple.Safari",
+								"Name": "Safari",
+								"NewFile": "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
+							}
+						}
+					],
+					"TimeOutAbortsMacro": true,
+					"ActionUID": 15559316
+				}
+			],
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 15559315
+		}
+	]
+}

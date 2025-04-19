@@ -1,0 +1,459 @@
+{
+	"CreationDate": 739990312.282654,
+	"UID": "A2876A17-3522-46A5-9A63-762643C1E163",
+	"Name": "rcmd: BetterMouse",
+	"Triggers": [],
+	"ModificationDate": 766779743.948963,
+	"Actions": [
+		{
+			"MacroActionType": "SetVariableToText",
+			"Variable": "localAction",
+			"Text": "%TriggerValue%",
+			"ActionUID": 15614453
+		},
+		{
+			"MacroActionType": "IfThenElse",
+			"ElseActions": [
+				{
+					"MacroActionType": "IfThenElse",
+					"ElseActions": [
+						{
+							"MacroActionType": "IfThenElse",
+							"ElseActions": [
+								{
+									"MacroActionType": "IfThenElse",
+									"ElseActions": [
+										{
+											"MacroActionType": "IfThenElse",
+											"ElseActions": [
+												{
+													"MacroActionType": "IfThenElse",
+													"ElseActions": [],
+													"Conditions": {
+														"ConditionListMatch": "All",
+														"ConditionList": [
+															{
+																"ConditionType": "Variable",
+																"VariableValue": "xx",
+																"Variable": "localAction",
+																"VariableConditionType": "Is"
+															}
+														]
+													},
+													"ThenActions": [
+														{
+															"MacroActionType": "Notification",
+															"Title": "%ExecutingMacro%",
+															"SoundName": "",
+															"Subtitle": "",
+															"Text": "App is not running.",
+															"ActionUID": 15614482
+														}
+													],
+													"TimeOutAbortsMacro": true,
+													"ActionUID": 15614481
+												}
+											],
+											"Conditions": {
+												"ConditionListMatch": "All",
+												"ConditionList": [
+													{
+														"ConditionType": "Variable",
+														"VariableValue": "1",
+														"Variable": "localAction",
+														"VariableConditionType": "Is"
+													}
+												]
+											},
+											"ThenActions": [
+												{
+													"MacroActionType": "HideAll",
+													"ActionUID": 15614478,
+													"HonorExcluded": true
+												},
+												{
+													"MacroActionType": "ActivateApplication",
+													"ActionUID": 15614479,
+													"ReopenWindows": false,
+													"AllWindows": true,
+													"TimeOutAbortsMacro": true,
+													"AlreadyActivatedActionType": "BringAllWindows",
+													"Application": {
+														"BundleIdentifier": "com.naotanhaocan.BetterMouse",
+														"Name": "BetterMouse",
+														"NewFile": "/Applications/BetterMouse.app"
+													}
+												},
+												{
+													"MacroActionType": "ExecuteAppleScript",
+													"IncludedVariables": [
+														"9999"
+													],
+													"TrimResults": true,
+													"IncludeStdErr": false,
+													"ActionUID": 15614480,
+													"UseText": true,
+													"TrimResultsNew": true,
+													"TimeOutAbortsMacro": true,
+													"Path": "",
+													"DisplayKind": "Window",
+													"HonourFailureSettings": true,
+													"Text": "tell application \"Bartender 5\"\n\tactivate \"com.naotanhaocan.BetterMouse-Item-1\"\nend tell"
+												}
+											],
+											"TimeOutAbortsMacro": true,
+											"ActionUID": 15614477
+										}
+									],
+									"Conditions": {
+										"ConditionListMatch": "All",
+										"ConditionList": [
+											{
+												"ConditionType": "Variable",
+												"VariableValue": "2",
+												"Variable": "localAction",
+												"VariableConditionType": "Is"
+											}
+										]
+									},
+									"ThenActions": [
+										{
+											"MacroActionType": "ActivateApplication",
+											"ActionUID": 15614475,
+											"ReopenWindows": false,
+											"AllWindows": true,
+											"TimeOutAbortsMacro": true,
+											"AlreadyActivatedActionType": "BringAllWindows",
+											"Application": {
+												"BundleIdentifier": "com.naotanhaocan.BetterMouse",
+												"Name": "BetterMouse",
+												"NewFile": "/Applications/BetterMouse.app"
+											}
+										},
+										{
+											"MacroActionType": "ExecuteAppleScript",
+											"IncludedVariables": [
+												"9999"
+											],
+											"TrimResults": true,
+											"IncludeStdErr": false,
+											"ActionUID": 15614476,
+											"UseText": true,
+											"TrimResultsNew": true,
+											"TimeOutAbortsMacro": true,
+											"Path": "",
+											"DisplayKind": "Window",
+											"HonourFailureSettings": true,
+											"Text": "tell application \"Bartender 5\"\n\tactivate \"com.naotanhaocan.BetterMouse-Item-1\"\nend tell"
+										}
+									],
+									"TimeOutAbortsMacro": true,
+									"ActionUID": 15614474
+								}
+							],
+							"Conditions": {
+								"ConditionListMatch": "All",
+								"ConditionList": [
+									{
+										"ConditionType": "Variable",
+										"VariableValue": "3",
+										"Variable": "localAction",
+										"VariableConditionType": "Is"
+									}
+								]
+							},
+							"ThenActions": [
+								{
+									"MacroActionType": "HideAll",
+									"ActionUID": 15614471,
+									"HonorExcluded": true
+								},
+								{
+									"MacroActionType": "ActivateApplication",
+									"ActionUID": 15614472,
+									"ReopenWindows": false,
+									"AllWindows": true,
+									"TimeOutAbortsMacro": true,
+									"AlreadyActivatedActionType": "BringAllWindows",
+									"Application": {
+										"BundleIdentifier": "com.naotanhaocan.BetterMouse",
+										"Name": "BetterMouse",
+										"NewFile": "/Applications/BetterMouse.app"
+									}
+								},
+								{
+									"MacroActionType": "ExecuteAppleScript",
+									"IncludedVariables": [
+										"9999"
+									],
+									"TrimResults": true,
+									"IncludeStdErr": false,
+									"ActionUID": 15614473,
+									"UseText": true,
+									"TrimResultsNew": true,
+									"TimeOutAbortsMacro": true,
+									"Path": "",
+									"DisplayKind": "Window",
+									"HonourFailureSettings": true,
+									"Text": "tell application \"Bartender 5\"\n\tactivate \"com.naotanhaocan.BetterMouse-Item-1\"\nend tell"
+								}
+							],
+							"TimeOutAbortsMacro": true,
+							"ActionUID": 15614470
+						}
+					],
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"Application": {
+									"BundleIdentifier": "com.naotanhaocan.BetterMouse",
+									"Name": "BetterMouse",
+									"NewFile": "/Applications/BetterMouse.app"
+								},
+								"ApplicationConditionType": "Running",
+								"ConditionType": "Application"
+							}
+						]
+					},
+					"ThenActions": [
+						{
+							"MacroActionType": "IfThenElse",
+							"ElseActions": [
+								{
+									"MacroActionType": "IfThenElse",
+									"ElseActions": [
+										{
+											"MacroActionType": "IfThenElse",
+											"ElseActions": [
+												{
+													"MacroActionType": "IfThenElse",
+													"ElseActions": [],
+													"Conditions": {
+														"ConditionListMatch": "All",
+														"ConditionList": [
+															{
+																"ConditionType": "Variable",
+																"VariableValue": "xx",
+																"Variable": "localAction",
+																"VariableConditionType": "Is"
+															}
+														]
+													},
+													"ThenActions": [
+														{
+															"MacroActionType": "QuitSpecificApp",
+															"Application": {
+																"BundleIdentifier": "com.naotanhaocan.BetterMouse",
+																"Name": "BetterMouse",
+																"NewFile": "/Applications/BetterMouse.app"
+															},
+															"TimeOutAbortsMacro": true,
+															"Target": "Specific",
+															"Action": "Quit",
+															"ActionUID": 15614469
+														}
+													],
+													"TimeOutAbortsMacro": true,
+													"ActionUID": 15614468
+												}
+											],
+											"Conditions": {
+												"ConditionListMatch": "All",
+												"ConditionList": [
+													{
+														"ConditionType": "Variable",
+														"VariableValue": "1",
+														"Variable": "localAction",
+														"VariableConditionType": "Is"
+													}
+												]
+											},
+											"ThenActions": [
+												{
+													"MacroActionType": "ExecuteAppleScript",
+													"IncludedVariables": [
+														"9999"
+													],
+													"TrimResults": true,
+													"IncludeStdErr": false,
+													"ActionUID": 15614466,
+													"UseText": true,
+													"TrimResultsNew": true,
+													"TimeOutAbortsMacro": true,
+													"Path": "",
+													"DisplayKind": "Window",
+													"HonourFailureSettings": true,
+													"Text": "tell application \"Bartender 5\"\n\tactivate \"com.naotanhaocan.BetterMouse-Item-1\"\nend tell"
+												},
+												{
+													"MacroActionType": "HideAll",
+													"ActionUID": 15614467,
+													"HonorExcluded": true
+												}
+											],
+											"TimeOutAbortsMacro": true,
+											"ActionUID": 15614465
+										}
+									],
+									"Conditions": {
+										"ConditionListMatch": "All",
+										"ConditionList": [
+											{
+												"ConditionType": "Variable",
+												"VariableValue": "2",
+												"Variable": "localAction",
+												"VariableConditionType": "Is"
+											}
+										]
+									},
+									"ThenActions": [
+										{
+											"MacroActionType": "ExecuteAppleScript",
+											"IncludedVariables": [
+												"9999"
+											],
+											"TrimResults": true,
+											"IncludeStdErr": false,
+											"ActionUID": 15614464,
+											"UseText": true,
+											"TrimResultsNew": true,
+											"TimeOutAbortsMacro": true,
+											"Path": "",
+											"DisplayKind": "Window",
+											"HonourFailureSettings": true,
+											"Text": "tell application \"Bartender 5\"\n\tactivate \"com.naotanhaocan.BetterMouse-Item-1\"\nend tell"
+										}
+									],
+									"TimeOutAbortsMacro": true,
+									"ActionUID": 15614463
+								}
+							],
+							"Conditions": {
+								"ConditionListMatch": "All",
+								"ConditionList": [
+									{
+										"ConditionType": "Variable",
+										"VariableValue": "3",
+										"Variable": "localAction",
+										"VariableConditionType": "Is"
+									}
+								]
+							},
+							"ThenActions": [
+								{
+									"MacroActionType": "ExecuteAppleScript",
+									"IncludedVariables": [
+										"9999"
+									],
+									"TrimResults": true,
+									"IncludeStdErr": false,
+									"ActionUID": 15614461,
+									"UseText": true,
+									"TrimResultsNew": true,
+									"TimeOutAbortsMacro": true,
+									"Path": "",
+									"DisplayKind": "Window",
+									"HonourFailureSettings": true,
+									"Text": "tell application \"Bartender 5\"\n\tactivate \"com.naotanhaocan.BetterMouse-Item-1\"\nend tell"
+								},
+								{
+									"MacroActionType": "HideAll",
+									"ActionUID": 15614462,
+									"HonorExcluded": true
+								}
+							],
+							"TimeOutAbortsMacro": true,
+							"ActionUID": 15614460
+						}
+					],
+					"TimeOutAbortsMacro": true,
+					"ActionUID": 15614459
+				}
+			],
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"ConditionType": "Variable",
+						"VariableValue": "",
+						"Variable": "localAction",
+						"VariableConditionType": "Is"
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "IfThenElse",
+					"ElseActions": [
+						{
+							"MacroActionType": "ActivateApplication",
+							"ActionUID": 15614457,
+							"ReopenWindows": false,
+							"AllWindows": false,
+							"TimeOutAbortsMacro": true,
+							"AlreadyActivatedActionType": "Normal",
+							"Application": {
+								"BundleIdentifier": "com.naotanhaocan.BetterMouse",
+								"Name": "BetterMouse",
+								"NewFile": "/Applications/BetterMouse.app"
+							}
+						},
+						{
+							"MacroActionType": "ExecuteAppleScript",
+							"IncludedVariables": [
+								"9999"
+							],
+							"TrimResults": true,
+							"IncludeStdErr": false,
+							"ActionUID": 15614458,
+							"UseText": true,
+							"TrimResultsNew": true,
+							"TimeOutAbortsMacro": true,
+							"Path": "",
+							"DisplayKind": "Window",
+							"HonourFailureSettings": true,
+							"Text": "tell application \"Bartender 5\"\n\tactivate \"com.naotanhaocan.BetterMouse-Item-1\"\nend tell"
+						}
+					],
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"Application": {
+									"BundleIdentifier": "com.naotanhaocan.BetterMouse",
+									"Name": "BetterMouse",
+									"NewFile": "/Applications/BetterMouse.app"
+								},
+								"ApplicationConditionType": "Running",
+								"ConditionType": "Application"
+							}
+						]
+					},
+					"ThenActions": [
+						{
+							"MacroActionType": "ExecuteAppleScript",
+							"IncludedVariables": [
+								"9999"
+							],
+							"TrimResults": true,
+							"IncludeStdErr": false,
+							"ActionUID": 15614456,
+							"UseText": true,
+							"TrimResultsNew": true,
+							"TimeOutAbortsMacro": true,
+							"Path": "",
+							"DisplayKind": "Window",
+							"HonourFailureSettings": true,
+							"Text": "tell application \"Bartender 5\"\n\tactivate \"com.naotanhaocan.BetterMouse-Item-1\"\nend tell"
+						}
+					],
+					"TimeOutAbortsMacro": true,
+					"ActionUID": 15614455
+				}
+			],
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 15614454
+		}
+	]
+}

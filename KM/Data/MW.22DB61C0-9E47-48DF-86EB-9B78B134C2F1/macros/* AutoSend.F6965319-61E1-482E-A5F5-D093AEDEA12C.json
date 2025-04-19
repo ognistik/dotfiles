@@ -1,0 +1,21 @@
+{
+	"UID": "F6965319-61E1-482E-A5F5-D093AEDEA12C",
+	"CreationDate": 751740389.643209,
+	"ModificationDate": 766607845.734985,
+	"Triggers": [],
+	"Actions": [
+		{
+			"MacroActionType": "ExecuteMacro",
+			"ActionName": "Action Mode - Paste Chat",
+			"MacroUID": "12C54B71-124F-4F14-A70D-4E9D1A034CB2",
+			"ActionUID": 15610867,
+			"IsDisclosed": false,
+			"TimeOutAbortsMacro": true,
+			"Parameter": "on",
+			"UseParameter": true,
+			"Asynchronously": false
+		}
+	],
+	"Name": "* AutoSend",
+	"CustomIconData": "KMEC=Rounded=KMCOLOR:0,0,255,0=⚡=86=0=0=1=KMCOLOR:0,0,0,255"
+}

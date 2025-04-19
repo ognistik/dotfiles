@@ -1,0 +1,33 @@
+{
+	"CreationDate": 737918923.847829,
+	"UID": "0158978C-77D2-4C04-9C64-ABD887D12467",
+	"Name": "Yabai FocusNext",
+	"Triggers": [
+		{
+			"KeyCode": 123,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 6656,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 743539458.955661,
+	"Actions": [
+		{
+			"MacroActionType": "ExecuteShellScript",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"Source": "Nothing",
+			"IncludeStdErr": false,
+			"ActionUID": 15473315,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "Asynchronously",
+			"HonourFailureSettings": true,
+			"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/nextOrPrevSpace.sh next"
+		}
+	]
+}

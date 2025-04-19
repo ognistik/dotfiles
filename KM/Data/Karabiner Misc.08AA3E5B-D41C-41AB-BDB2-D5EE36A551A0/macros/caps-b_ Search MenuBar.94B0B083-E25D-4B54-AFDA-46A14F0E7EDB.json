@@ -1,0 +1,25 @@
+{
+	"CreationDate": 740704819.582844,
+	"UID": "94B0B083-E25D-4B54-AFDA-46A14F0E7EDB",
+	"Name": "caps-b: Search MenuBar",
+	"Triggers": [],
+	"ModificationDate": 740777648.399199,
+	"Actions": [
+		{
+			"MacroActionType": "ExecuteAppleScript",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"IncludeStdErr": false,
+			"ActionUID": 15497420,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "None",
+			"HonourFailureSettings": true,
+			"Text": "tell application \"Bartender 5\"\r\tquick search\rend tell"
+		}
+	]
+}

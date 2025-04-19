@@ -1,0 +1,146 @@
+{
+	"CreationDate": 742523345.806458,
+	"UID": "670D4BB7-EEA1-4B0A-AF1D-1DA5835190A3",
+	"Name": "Kando - FloatToggle",
+	"Triggers": [],
+	"ModificationDate": 754065212.602105,
+	"Actions": [
+		{
+			"MacroActionType": "IfThenElse",
+			"ElseActions": [
+				{
+					"MacroActionType": "IfThenElse",
+					"ElseActions": [
+						{
+							"MacroActionType": "IfThenElse",
+							"ElseActions": [
+								{
+									"MacroActionType": "ExecuteShellScript",
+									"IncludedVariables": [
+										"9999"
+									],
+									"TrimResults": true,
+									"Source": "Nothing",
+									"IncludeStdErr": false,
+									"ActionUID": 15560970,
+									"UseText": true,
+									"TrimResultsNew": true,
+									"TimeOutAbortsMacro": true,
+									"Path": "",
+									"DisplayKind": "None",
+									"HonourFailureSettings": true,
+									"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/ToggleFloatRememberSize.sh"
+								}
+							],
+							"Conditions": {
+								"ConditionListMatch": "All",
+								"ConditionList": [
+									{
+										"Application": {
+											"BundleIdentifier": "com.apple.Safari",
+											"Name": "Safari",
+											"NewFile": "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
+										},
+										"ApplicationConditionType": "Active",
+										"ConditionType": "Application"
+									}
+								]
+							},
+							"ThenActions": [
+								{
+									"MacroActionType": "ExecuteShellScript",
+									"IncludedVariables": [
+										"9999"
+									],
+									"TrimResults": true,
+									"Source": "Nothing",
+									"IncludeStdErr": false,
+									"ActionUID": 15560969,
+									"UseText": true,
+									"TrimResultsNew": true,
+									"TimeOutAbortsMacro": true,
+									"Path": "",
+									"DisplayKind": "None",
+									"HonourFailureSettings": true,
+									"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggleSpecial Safari"
+								}
+							],
+							"TimeOutAbortsMacro": true,
+							"ActionUID": 15560968
+						}
+					],
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"Application": {
+									"BundleIdentifier": "company.thebrowser.Browser",
+									"Name": "Arc",
+									"NewFile": "/Applications/Arc.app"
+								},
+								"ApplicationConditionType": "Active",
+								"ConditionType": "Application"
+							}
+						]
+					},
+					"ThenActions": [
+						{
+							"MacroActionType": "ExecuteShellScript",
+							"IncludedVariables": [
+								"9999"
+							],
+							"TrimResults": true,
+							"Source": "Nothing",
+							"IncludeStdErr": false,
+							"ActionUID": 15520974,
+							"UseText": true,
+							"TrimResultsNew": true,
+							"TimeOutAbortsMacro": true,
+							"Path": "",
+							"DisplayKind": "None",
+							"HonourFailureSettings": true,
+							"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggleSpecial arcScratchpad"
+						}
+					],
+					"TimeOutAbortsMacro": true,
+					"ActionUID": 15520973
+				}
+			],
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"Application": {
+							"BundleIdentifier": "net.shinyfrog.bear",
+							"Name": "Bear",
+							"NewFile": "/Applications/Bear.app"
+						},
+						"ApplicationConditionType": "Active",
+						"ConditionType": "Application"
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "ExecuteShellScript",
+					"IncludedVariables": [
+						"9999"
+					],
+					"TrimResults": true,
+					"Source": "Nothing",
+					"IncludeStdErr": false,
+					"ActionUID": 15520972,
+					"UseText": true,
+					"TrimResultsNew": true,
+					"TimeOutAbortsMacro": true,
+					"Path": "",
+					"DisplayKind": "None",
+					"HonourFailureSettings": true,
+					"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggleSpecial bearScratchpad"
+				}
+			],
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 15520971
+		}
+	]
+}

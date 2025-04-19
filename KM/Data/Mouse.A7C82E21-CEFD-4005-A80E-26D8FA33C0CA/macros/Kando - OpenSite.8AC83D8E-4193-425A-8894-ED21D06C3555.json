@@ -1,0 +1,182 @@
+{
+	"CreationDate": 742867894.883658,
+	"UID": "8AC83D8E-4193-425A-8894-ED21D06C3555",
+	"Name": "Kando - OpenSite",
+	"Triggers": [],
+	"ModificationDate": 762301274.616443,
+	"Actions": [
+		{
+			"MacroActionType": "Semaphore",
+			"ActionUID": 15526582,
+			"IsDisclosed": false,
+			"TimeOutAbortsMacro": true,
+			"TimeOutPeriod": 356400,
+			"SemaphoreName": "ArcDynamic",
+			"SemaphoreAction": "Lock"
+		},
+		{
+			"MacroActionType": "SetVariableToText",
+			"IsDisclosed": false,
+			"Variable": "localUrl",
+			"Text": "%TriggerValue%",
+			"ActionUID": 15517837
+		},
+		{
+			"MacroActionType": "IfThenElse",
+			"ActionUID": 15558393,
+			"IsDisclosed": false,
+			"ThenActionListDisclosed": false,
+			"ElseActions": [
+				{
+					"MacroActionType": "IfThenElse",
+					"ActionUID": 15526974,
+					"ThenActionListDisclosed": false,
+					"ElseActions": [
+						{
+							"MacroActionType": "IfThenElse",
+							"ElseActions": [
+								{
+									"MacroActionType": "ExecuteMacro",
+									"MacroUID": "BA05A2BF-D4B5-48C7-A57D-639C97EFBBD9",
+									"ActionUID": 15558401,
+									"TimeOutAbortsMacro": true,
+									"Parameter": "%localUrl%",
+									"UseParameter": true,
+									"Asynchronously": false
+								}
+							],
+							"Conditions": {
+								"ConditionListMatch": "All",
+								"ConditionList": [
+									{
+										"Application": {
+											"BundleIdentifier": "company.thebrowser.Browser",
+											"Name": "Arc",
+											"NewFile": "/Applications/Arc.app"
+										},
+										"ApplicationConditionType": "Active",
+										"ConditionType": "Application"
+									}
+								]
+							},
+							"ThenActions": [
+								{
+									"MacroActionType": "IfThenElse",
+									"ElseActions": [
+										{
+											"MacroActionType": "ExecuteMacro",
+											"MacroUID": "AD1624B9-ED00-420D-9B93-DFEB6B06415C",
+											"ActionUID": 15558400,
+											"TimeOutAbortsMacro": true,
+											"Parameter": "%localUrl%",
+											"UseParameter": true,
+											"Asynchronously": false
+										}
+									],
+									"Conditions": {
+										"ConditionListMatch": "All",
+										"ConditionList": [
+											{
+												"ModifiersUp": 0,
+												"ConditionType": "Modifiers",
+												"ModifiersDown": 2304
+											}
+										]
+									},
+									"ThenActions": [
+										{
+											"MacroActionType": "ExecuteMacro",
+											"MacroUID": "BA05A2BF-D4B5-48C7-A57D-639C97EFBBD9",
+											"ActionUID": 15564147,
+											"TimeOutAbortsMacro": true,
+											"Parameter": "%localUrl%",
+											"UseParameter": true,
+											"Asynchronously": false
+										}
+									],
+									"TimeOutAbortsMacro": true,
+									"ActionUID": 15564144
+								}
+							],
+							"TimeOutAbortsMacro": true,
+							"ActionUID": 15558399
+						}
+					],
+					"TimeOutAbortsMacro": true,
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"Application": {
+									"BundleIdentifier": "company.thebrowser.Browser",
+									"Name": "Arc",
+									"NewFile": "/Applications/Arc.app"
+								},
+								"ApplicationConditionType": "NotRunning",
+								"ConditionType": "Application"
+							}
+						]
+					},
+					"ElseActionListDisclosed": false,
+					"ThenActions": [
+						{
+							"MacroActionType": "OpenURL",
+							"Application": {
+								"BundleIdentifier": "com.apple.Safari",
+								"Name": "Safari",
+								"NewFile": "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
+							},
+							"TimeOutAbortsMacro": true,
+							"URL": "%localUrl%",
+							"IsDefaultApplication": false,
+							"ActionUID": 15558793
+						}
+					]
+				}
+			],
+			"TimeOutAbortsMacro": true,
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"Application": {
+							"BundleIdentifier": "com.apple.Safari",
+							"Name": "Safari",
+							"NewFile": "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
+						},
+						"ApplicationConditionType": "Active",
+						"ConditionType": "Application"
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "OpenURL",
+					"Application": {
+						"BundleIdentifier": "com.apple.Safari",
+						"Name": "Safari",
+						"NewFile": "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
+					},
+					"TimeOutAbortsMacro": true,
+					"URL": "%localUrl%",
+					"IsDefaultApplication": false,
+					"ActionUID": 15558394
+				}
+			]
+		},
+		{
+			"MacroActionType": "Pause",
+			"IsDisclosed": false,
+			"TimeOutAbortsMacro": true,
+			"Time": ".5",
+			"ActionUID": 15526584
+		},
+		{
+			"MacroActionType": "Semaphore",
+			"IsDisclosed": false,
+			"SemaphoreAction": "Unlock",
+			"SemaphoreName": "ArcDynamic",
+			"ActionUID": 15526583
+		}
+	]
+}

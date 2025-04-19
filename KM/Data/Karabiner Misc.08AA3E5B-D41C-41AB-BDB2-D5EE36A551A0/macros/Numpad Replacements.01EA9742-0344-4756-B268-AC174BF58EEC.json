@@ -1,0 +1,65 @@
+{
+	"CreationDate": 764905198.869777,
+	"UID": "01EA9742-0344-4756-B268-AC174BF58EEC",
+	"Name": "Numpad Replacements",
+	"Triggers": [],
+	"ModificationDate": 765130403.628928,
+	"Actions": [
+		{
+			"MacroActionType": "SetVariableToText",
+			"IsDisclosed": false,
+			"Variable": "localPrevClipboard",
+			"Text": "%SystemClipboard%",
+			"ActionUID": 15603971
+		},
+		{
+			"MacroActionType": "CutCopyPaste",
+			"IsDisclosed": false,
+			"TimeOutAbortsMacro": true,
+			"Action": "Copy",
+			"ActionUID": 15603972
+		},
+		{
+			"MacroActionType": "SetVariableToText",
+			"IsDisclosed": false,
+			"Variable": "localSource",
+			"Text": "%SystemClipboard%",
+			"ActionUID": 15603973
+		},
+		{
+			"MacroActionType": "SetClipboardToText",
+			"IsDisclosed": false,
+			"JustDisplay": false,
+			"Text": "%localPrevClipboard%",
+			"ActionUID": 15603974
+		},
+		{
+			"MacroActionType": "ExecuteAppleScript",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"IncludeStdErr": false,
+			"ActionUID": 15603975,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "None",
+			"HonourFailureSettings": true,
+			"Text": "set theInstance to system attribute \"KMINSTANCE\"\rtell application \"Keyboard Maestro Engine\"\r\tset theSource to getvariable \"localSource\" instance theInstance\r\tset theResult to \"\"\r\trepeat with i from 1 to length of theSource\r\t\tset currentChar to character i of theSource\r\t\t\r\t\tif currentChar is \"n\" then\r\t\t\tset theResult to theResult & \"0\"\r\t\telse if currentChar is \"e\" then\r\t\t\tset theResult to theResult & \"\"\r\t\telse if currentChar is \"m\" then\r\t\t\tset theResult to theResult & \"1\"\r\t\telse if currentChar is \",\" then\r\t\t\tset theResult to theResult & \"2\"\r\t\telse if currentChar is \".\" then\r\t\t\tset theResult to theResult & \"3\"\r\t\telse if currentChar is \"h\" then\r\t\t\tset theResult to theResult & \".\"\r\t\telse if currentChar is \"j\" then\r\t\t\tset theResult to theResult & \"4\"\r\t\telse if currentChar is \"k\" then\r\t\t\tset theResult to theResult & \"5\"\r\t\telse if currentChar is \"l\" then\r\t\t\tset theResult to theResult & \"6\"\r\t\telse if currentChar is \"u\" then\r\t\t\tset theResult to theResult & \"7\"\r\t\telse if currentChar is \"i\" then\r\t\t\tset theResult to theResult & \"8\"\r\t\telse if currentChar is \"o\" then\r\t\t\tset theResult to theResult & \"9\"\r\t\telse if currentChar is \";\" then\r\t\t\tset theResult to theResult & \"-\"\r\t\telse\r\t\t\tset theResult to theResult & currentChar\r\t\tend if\r\tend repeat\r\t\r\tset the clipboard to theResult\rend tell\r\r-- Simulate Cmd+V to paste the result\rtell application \"System Events\"\r\tkeystroke \"v\" using command down\rend tell"
+		},
+		{
+			"MacroActionType": "Pause",
+			"TimeOutAbortsMacro": true,
+			"Time": "0.3",
+			"ActionUID": 15603979
+		},
+		{
+			"MacroActionType": "DeletePastClipboard",
+			"IsDisclosed": false,
+			"PastExpression": "0",
+			"ActionUID": 15603976
+		}
+	]
+}

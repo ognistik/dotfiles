@@ -1,0 +1,48 @@
+{
+	"CreationDate": 726370836.75064,
+	"UID": "7F5B9AD9-22E4-4FC4-82E3-78BB0BCEC2EC",
+	"Name": "Open Link in Clipboard in OpenIn",
+	"Triggers": [],
+	"ModificationDate": 763522986.411966,
+	"Actions": [
+		{
+			"MacroActionType": "IfThenElse",
+			"ElseActions": [
+				{
+					"MacroActionType": "OpenURL",
+					"TimeOutAbortsMacro": true,
+					"URL": "%SystemClipboard%",
+					"IsDefaultApplication": true,
+					"ActionUID": 15587697
+				}
+			],
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"ConditionType": "Text",
+						"TextValue": "http",
+						"Text": "%SystemClipboard%",
+						"TextConditionType": "StartsWith"
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "OpenURL",
+					"Application": {
+						"BundleIdentifier": "app.loshadki.OpenIn.v4",
+						"Name": "OpenIn",
+						"NewFile": "/Applications/OpenIn.app"
+					},
+					"TimeOutAbortsMacro": true,
+					"URL": "%SystemClipboard%-kmAll",
+					"IsDefaultApplication": false,
+					"ActionUID": 510786
+				}
+			],
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 15587696
+		}
+	]
+}

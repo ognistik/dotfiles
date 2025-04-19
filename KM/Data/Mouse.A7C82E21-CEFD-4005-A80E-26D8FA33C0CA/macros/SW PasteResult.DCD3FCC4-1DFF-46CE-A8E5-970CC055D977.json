@@ -1,0 +1,25 @@
+{
+	"CreationDate": 748299621.532862,
+	"UID": "DCD3FCC4-1DFF-46CE-A8E5-970CC055D977",
+	"Name": "SW PasteResult",
+	"Triggers": [
+		{
+			"KeyCode": 34,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 6656,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 766177838.30952,
+	"Actions": [
+		{
+			"MacroActionType": "ExecuteMacro",
+			"MacroUID": "8EBAFA85-7DB2-427F-8CCC-9CC78E5CA6E9",
+			"ActionUID": 15540441,
+			"TimeOutAbortsMacro": true,
+			"Parameter": "pasteResult",
+			"UseParameter": true,
+			"Asynchronously": false
+		}
+	]
+}

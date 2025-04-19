@@ -1,0 +1,33 @@
+{
+	"CreationDate": 737919495.90834,
+	"UID": "A6A423E9-F850-4F1F-A5F5-36903F3EA56D",
+	"Name": "Yabai RecentSpace",
+	"Triggers": [
+		{
+			"KeyCode": 1,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 6656,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 742654901.081432,
+	"Actions": [
+		{
+			"MacroActionType": "ExecuteShellScript",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"Source": "Nothing",
+			"IncludeStdErr": false,
+			"ActionUID": 15516661,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "None",
+			"HonourFailureSettings": true,
+			"Text": "/opt/homebrew/bin/yabai -m space --focus recent"
+		}
+	]
+}

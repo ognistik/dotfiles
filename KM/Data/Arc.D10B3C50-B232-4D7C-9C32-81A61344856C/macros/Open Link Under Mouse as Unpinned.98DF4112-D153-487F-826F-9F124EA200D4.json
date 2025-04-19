@@ -1,0 +1,95 @@
+{
+	"CreationDate": 726370730.393069,
+	"UID": "98DF4112-D153-487F-826F-9F124EA200D4",
+	"Name": "Open Link Under Mouse as Unpinned",
+	"Triggers": [],
+	"ModificationDate": 754189996.421877,
+	"Actions": [
+		{
+			"MacroActionType": "Pause",
+			"TimeOutAbortsMacro": true,
+			"Time": ".2",
+			"ActionUID": 15476472
+		},
+		{
+			"MacroActionType": "MouseMoveAndClick",
+			"DragVerticalPosition": "0",
+			"ClickCount": 1,
+			"Modifiers": 0,
+			"Button": 1,
+			"Fuzz": 15,
+			"Action": "MoveAndClick",
+			"DisplayMatches": false,
+			"ActionUID": 15476473,
+			"DragHorizontalPosition": "0",
+			"RestoreMouseLocation": false,
+			"RelativeCorner": "TopLeft",
+			"VerticalPositionExpression": "0",
+			"HorizontalPositionExpression": "0",
+			"Relative": "Mouse",
+			"MouseDrag": "Hold"
+		},
+		{
+			"MacroActionType": "Pause",
+			"TimeOutAbortsMacro": true,
+			"Time": ".2",
+			"ActionUID": 15476474
+		},
+		{
+			"MacroActionType": "MouseMoveAndClick",
+			"DragVerticalPosition": "0",
+			"ClickCount": -1,
+			"Modifiers": 0,
+			"Button": 1,
+			"Fuzz": 15,
+			"Action": "MoveAndClick",
+			"DisplayMatches": false,
+			"ActionUID": 15476475,
+			"DragHorizontalPosition": "0",
+			"RestoreMouseLocation": false,
+			"RelativeCorner": "TopLeft",
+			"VerticalPositionExpression": "0",
+			"HorizontalPositionExpression": "0",
+			"Relative": "Window",
+			"MouseDrag": "None"
+		},
+		{
+			"MacroActionType": "Pause",
+			"TimeOutAbortsMacro": true,
+			"Time": ".2",
+			"ActionUID": 15476476
+		},
+		{
+			"MacroActionType": "InsertText",
+			"Text": "copy link",
+			"TargetApplication": {},
+			"Action": "ByTyping",
+			"TargetingType": "Front",
+			"ActionUID": 510758
+		},
+		{
+			"MacroActionType": "SimulateKeystroke",
+			"ActionUID": 510760,
+			"ReleaseAll": false,
+			"TargetApplication": {},
+			"TargetingType": "Front",
+			"KeyCode": 36,
+			"Modifiers": 0
+		},
+		{
+			"MacroActionType": "Pause",
+			"TimeOutAbortsMacro": true,
+			"Time": ".4",
+			"ActionUID": 510761
+		},
+		{
+			"MacroActionType": "ExecuteMacro",
+			"MacroUID": "AD1624B9-ED00-420D-9B93-DFEB6B06415C",
+			"ActionUID": 15563362,
+			"TimeOutAbortsMacro": true,
+			"Parameter": "%SystemClipboard%",
+			"UseParameter": true,
+			"Asynchronously": false
+		}
+	]
+}

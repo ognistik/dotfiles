@@ -1,0 +1,23 @@
+{
+	"AddToMacroPalette": false,
+	"Modifiers": 0,
+	"CreationDate": 727039185.778491,
+	"AddToStatusMenu": false,
+	"UID": "7409DB69-0BB9-4EF9-BFED-1467BAEA3FAB",
+	"Name": "Transmission",
+	"PaletteUnderMouse": false,
+	"Targeting": {
+		"Targeting": "Included",
+		"TargetingApps": [
+			{
+				"BundleIdentifier": "org.m0k.transmission",
+				"Name": "Transmission",
+				"NewFile": "/Applications/Transmission.app"
+			}
+		]
+	},
+	"Macros": [],
+	"ToggleMacroUID": "92BF4374-5119-40D1-9D0B-7D2F2FA5DC9D",
+	"Activate": "Normal",
+	"KeyCode": 32767
+}

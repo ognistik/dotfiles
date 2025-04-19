@@ -1,0 +1,26 @@
+{
+	"CreationDate": 689613628.450812,
+	"UID": "DCA871E7-9E14-4100-94EE-3B69AB07681D",
+	"Name": "DayOne: Paste Tags",
+	"Triggers": [],
+	"ModificationDate": 741027978.315033,
+	"Actions": [
+		{
+			"MacroActionType": "SimulateKeystroke",
+			"ActionUID": 13073,
+			"ReleaseAll": false,
+			"TargetApplication": {},
+			"TargetingType": "Front",
+			"KeyCode": 17,
+			"Modifiers": 256
+		},
+		{
+			"MacroActionType": "InsertText",
+			"Text": "%SystemClipboard%",
+			"TargetApplication": {},
+			"Action": "ByTyping",
+			"TargetingType": "Front",
+			"ActionUID": 13071
+		}
+	]
+}

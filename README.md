@@ -13,4 +13,5 @@ I must mention that these configuration files are not meant to simply be copied 
 
 ## KARABINER
 1. [Karabiner EDN File](Karabiner/karabiner.edn)
-2. [Additional Scripts](Karabiner/Scripts/)
+2. [Karabiner JSON File](Karabiner/karabiner.json)
+3. [Additional Scripts](Karabiner/Scripts/)

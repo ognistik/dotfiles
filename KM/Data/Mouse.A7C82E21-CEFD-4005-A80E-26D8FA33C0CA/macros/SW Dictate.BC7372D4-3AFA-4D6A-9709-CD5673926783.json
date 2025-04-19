@@ -1,0 +1,42 @@
+{
+	"CreationDate": 744471203.681495,
+	"UID": "BC7372D4-3AFA-4D6A-9709-CD5673926783",
+	"Name": "SW Dictate",
+	"Triggers": [
+		{
+			"KeyCode": 7,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 6656,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 766442193.848923,
+	"Actions": [
+		{
+			"MacroActionType": "ExecuteAppleScript",
+			"ActionName": "Starts the recording using the Alfred workflow",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"IncludeStdErr": false,
+			"ActionUID": 15531300,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "None",
+			"IsDisclosed": false,
+			"HonourFailureSettings": true,
+			"Text": "tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"sw\" in workflow \"com.superwhisper.aft\" with argument \"record\""
+		},
+		{
+			"MacroActionType": "ExecuteMacro",
+			"UseParameter": false,
+			"MacroUID": "8B525AD9-F5D4-47D2-96A4-5E570D8A32C8",
+			"TimeOutAbortsMacro": true,
+			"Asynchronously": false,
+			"ActionUID": 15596772
+		}
+	]
+}

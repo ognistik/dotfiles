@@ -1,0 +1,18 @@
+{
+	"AddToMacroPalette": false,
+	"AddToStatusMenu": false,
+	"CreationDate": 740691371.635676,
+	"Modifiers": 0,
+	"PaletteUnderMouse": false,
+	"Name": "Karabiner Misc",
+	"UID": "08AA3E5B-D41C-41AB-BDB2-D5EE36A551A0",
+	"Targeting": {
+		"Targeting": "All",
+		"TargetingApps": []
+	},
+	"Macros": [],
+	"ToggleMacroUID": "D2478CE0-C2C9-4BE0-A196-3E124CD940C4",
+	"Activate": "Normal",
+	"KeyCode": 32767,
+	"DisplayToggle": false
+}

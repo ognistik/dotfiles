@@ -1,0 +1,26 @@
+{
+	"CreationDate": 681130673.326866,
+	"UID": "E06AAA6D-672F-40CC-B11B-10405BE5C369",
+	"Name": "BetterTouchTool HUD Overlay",
+	"Triggers": [],
+	"ModificationDate": 763861404.015798,
+	"Actions": [
+		{
+			"MacroActionType": "ExecuteJavaScriptForAutomation",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"UseModernSyntax": false,
+			"IncludeStdErr": false,
+			"ActionUID": 10570085,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "None",
+			"HonourFailureSettings": true,
+			"Text": "const BetterTouchTool = Application('BetterTouchTool');\n\nconst actionConfiguration = {\n  BTTActionHUDTitle: 'S', // Title\n  BTTActionHUDDetail: 's\\nlayer', // Subtitles\n  BTTActionHUDDuration: '1.2', // Duration\n  BTTActionHUDBackground: '38, 38, 38, 213', // Background color\n  BTTActionHUDSlideDirection: 4, // Slide animation\n  BTTActionHUDWidth: 90,\n   BTTActionHUDHeight:90,\n   BTTActionHUDPosition:2\n} ;\n\n// Slide animation\n// なし\n// Slide Up\n// Slide Down\n// Slide Left\n// Slide Right\n\nconst actionDefinition = {\n  BTTPredefinedActionType: 254,\n  BTTHUDActionConfiguration: JSON.stringify(actionConfiguration)\n} ;\n\nBetterTouchTool.trigger_action(JSON.stringify(actionDefinition));"
+		}
+	]
+}

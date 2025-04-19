@@ -1,0 +1,25 @@
+{
+	"CreationDate": 740704610.94134,
+	"UID": "3D77AF72-BF60-4862-A651-5FB7AA67AD03",
+	"Name": "capsF-press Dropbox",
+	"Triggers": [],
+	"ModificationDate": 763586070.994263,
+	"Actions": [
+		{
+			"MacroActionType": "ExecuteAppleScript",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"IncludeStdErr": false,
+			"ActionUID": 15497419,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "None",
+			"HonourFailureSettings": true,
+			"Text": "set myTarget to (\"/Users/ognistik/Dropbox/\" as POSIX file)\n\ntell application \"Finder\"\n\tmake new Finder window to folder myTarget\n\tdo shell script \"open -a Finder\"\nend tell"
+		}
+	]
+}

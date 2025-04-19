@@ -1,0 +1,32 @@
+{
+	"CreationDate": 737919357.949795,
+	"UID": "465A22C2-5293-494D-B727-B47A2A12E643",
+	"Name": "BTT ArcPeek",
+	"Triggers": [
+		{
+			"KeyCode": 17,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 6656,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 737919367.918694,
+	"Actions": [
+		{
+			"MacroActionType": "ExecuteAppleScript",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"IncludeStdErr": false,
+			"ActionUID": 15473317,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "None",
+			"HonourFailureSettings": true,
+			"Text": "tell application \"BetterTouchTool\"\n    trigger_named \"ArcPeek\"\nend tell"
+		}
+	]
+}

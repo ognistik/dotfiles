@@ -1,0 +1,57 @@
+{
+	"UID": "8C25F285-8887-421B-A262-528EA10DEA6F",
+	"CreationDate": 763660648.194313,
+	"ModificationDate": 766176996.343381,
+	"Triggers": [],
+	"Actions": [
+		{
+			"MacroActionType": "ExecuteShellScript",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"Source": "Nothing",
+			"IncludeStdErr": false,
+			"ActionUID": 15589278,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "Window",
+			"HonourFailureSettings": true,
+			"Text": "# Store the current focused app by bundle ID\ncurrent_app_bundle=$(osascript -e 'tell application \"System Events\" to get bundle identifier of first application process whose frontmost is true')\n\n# Open file in background\nopen -g -a \"superwhisper\" \"$HOME/Dropbox/2-Areas/SystemAndApps/superwhisper/swTextOnly.wav\"\n\n# Activate the original app using bundle identifier\nosascript -e \"tell application id \\\"$current_app_bundle\\\" to activate\""
+		},
+		{
+			"MacroActionType": "IfThenElse",
+			"ActionUID": 15589669,
+			"IsDisclosed": false,
+			"ElseActions": [],
+			"TimeOutAbortsMacro": true,
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"ConditionType": "Variable",
+						"VariableValue": "pasteText",
+						"Variable": "sw_actionMode",
+						"VariableConditionType": "IsNot"
+					}
+				]
+			},
+			"ElseActionListDisclosed": false,
+			"ThenActions": [
+				{
+					"MacroActionType": "ExecuteMacro",
+					"MacroUID": "91CE68F9-E221-4C94-8FFB-D6968BA72F9B",
+					"ActionUID": 15589279,
+					"TimeOutAbortsMacro": true,
+					"Parameter": "pasteText",
+					"UseParameter": true,
+					"Asynchronously": false
+				}
+			]
+		}
+	],
+	"Name": "SW Text Chat",
+	"CustomIconData": "KMEC=Rounded=KMCOLOR:0,0,255,0=☕=86=0=0=1=KMCOLOR:0,0,0,255"
+}

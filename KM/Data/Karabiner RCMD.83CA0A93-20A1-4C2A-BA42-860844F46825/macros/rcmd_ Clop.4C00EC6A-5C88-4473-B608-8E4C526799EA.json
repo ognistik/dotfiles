@@ -1,0 +1,459 @@
+{
+	"CreationDate": 739990312.282654,
+	"UID": "4C00EC6A-5C88-4473-B608-8E4C526799EA",
+	"Name": "rcmd: Clop",
+	"Triggers": [],
+	"ModificationDate": 760876162.326282,
+	"Actions": [
+		{
+			"MacroActionType": "SetVariableToText",
+			"Variable": "localAction",
+			"Text": "%TriggerValue%",
+			"ActionUID": 15577345
+		},
+		{
+			"MacroActionType": "IfThenElse",
+			"ElseActions": [
+				{
+					"MacroActionType": "IfThenElse",
+					"ElseActions": [
+						{
+							"MacroActionType": "IfThenElse",
+							"ElseActions": [
+								{
+									"MacroActionType": "IfThenElse",
+									"ElseActions": [
+										{
+											"MacroActionType": "IfThenElse",
+											"ElseActions": [
+												{
+													"MacroActionType": "IfThenElse",
+													"ElseActions": [],
+													"Conditions": {
+														"ConditionListMatch": "All",
+														"ConditionList": [
+															{
+																"ConditionType": "Variable",
+																"VariableValue": "xx",
+																"Variable": "localAction",
+																"VariableConditionType": "Is"
+															}
+														]
+													},
+													"ThenActions": [
+														{
+															"MacroActionType": "Notification",
+															"Title": "%ExecutingMacro%",
+															"SoundName": "",
+															"Subtitle": "",
+															"Text": "App is not running.",
+															"ActionUID": 15577374
+														}
+													],
+													"TimeOutAbortsMacro": true,
+													"ActionUID": 15577373
+												}
+											],
+											"Conditions": {
+												"ConditionListMatch": "All",
+												"ConditionList": [
+													{
+														"ConditionType": "Variable",
+														"VariableValue": "1",
+														"Variable": "localAction",
+														"VariableConditionType": "Is"
+													}
+												]
+											},
+											"ThenActions": [
+												{
+													"MacroActionType": "HideAll",
+													"ActionUID": 15577370,
+													"HonorExcluded": true
+												},
+												{
+													"MacroActionType": "ActivateApplication",
+													"ActionUID": 15577371,
+													"ReopenWindows": false,
+													"AllWindows": true,
+													"TimeOutAbortsMacro": true,
+													"AlreadyActivatedActionType": "BringAllWindows",
+													"Application": {
+														"BundleIdentifier": "com.lowtechguys.Clop",
+														"Name": "Clop",
+														"NewFile": "/Applications/Clop.app"
+													}
+												},
+												{
+													"MacroActionType": "ExecuteAppleScript",
+													"IncludedVariables": [
+														"9999"
+													],
+													"TrimResults": true,
+													"IncludeStdErr": false,
+													"ActionUID": 15577372,
+													"UseText": true,
+													"TrimResultsNew": true,
+													"TimeOutAbortsMacro": true,
+													"Path": "",
+													"DisplayKind": "Window",
+													"HonourFailureSettings": true,
+													"Text": "tell application \"Bartender 5\"\n\tactivate \"com.lowtechguys.Clop-Item-0\"\nend tell"
+												}
+											],
+											"TimeOutAbortsMacro": true,
+											"ActionUID": 15577369
+										}
+									],
+									"Conditions": {
+										"ConditionListMatch": "All",
+										"ConditionList": [
+											{
+												"ConditionType": "Variable",
+												"VariableValue": "2",
+												"Variable": "localAction",
+												"VariableConditionType": "Is"
+											}
+										]
+									},
+									"ThenActions": [
+										{
+											"MacroActionType": "ActivateApplication",
+											"ActionUID": 15577367,
+											"ReopenWindows": false,
+											"AllWindows": true,
+											"TimeOutAbortsMacro": true,
+											"AlreadyActivatedActionType": "BringAllWindows",
+											"Application": {
+												"BundleIdentifier": "com.lowtechguys.Clop",
+												"Name": "Clop",
+												"NewFile": "/Applications/Clop.app"
+											}
+										},
+										{
+											"MacroActionType": "ExecuteAppleScript",
+											"IncludedVariables": [
+												"9999"
+											],
+											"TrimResults": true,
+											"IncludeStdErr": false,
+											"ActionUID": 15577368,
+											"UseText": true,
+											"TrimResultsNew": true,
+											"TimeOutAbortsMacro": true,
+											"Path": "",
+											"DisplayKind": "Window",
+											"HonourFailureSettings": true,
+											"Text": "tell application \"Bartender 5\"\n\tactivate \"com.lowtechguys.Clop-Item-0\"\nend tell"
+										}
+									],
+									"TimeOutAbortsMacro": true,
+									"ActionUID": 15577366
+								}
+							],
+							"Conditions": {
+								"ConditionListMatch": "All",
+								"ConditionList": [
+									{
+										"ConditionType": "Variable",
+										"VariableValue": "3",
+										"Variable": "localAction",
+										"VariableConditionType": "Is"
+									}
+								]
+							},
+							"ThenActions": [
+								{
+									"MacroActionType": "HideAll",
+									"ActionUID": 15577363,
+									"HonorExcluded": true
+								},
+								{
+									"MacroActionType": "ActivateApplication",
+									"ActionUID": 15577364,
+									"ReopenWindows": false,
+									"AllWindows": true,
+									"TimeOutAbortsMacro": true,
+									"AlreadyActivatedActionType": "BringAllWindows",
+									"Application": {
+										"BundleIdentifier": "com.lowtechguys.Clop",
+										"Name": "Clop",
+										"NewFile": "/Applications/Clop.app"
+									}
+								},
+								{
+									"MacroActionType": "ExecuteAppleScript",
+									"IncludedVariables": [
+										"9999"
+									],
+									"TrimResults": true,
+									"IncludeStdErr": false,
+									"ActionUID": 15577365,
+									"UseText": true,
+									"TrimResultsNew": true,
+									"TimeOutAbortsMacro": true,
+									"Path": "",
+									"DisplayKind": "Window",
+									"HonourFailureSettings": true,
+									"Text": "tell application \"Bartender 5\"\n\tactivate \"com.lowtechguys.Clop-Item-0\"\nend tell"
+								}
+							],
+							"TimeOutAbortsMacro": true,
+							"ActionUID": 15577362
+						}
+					],
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"Application": {
+									"BundleIdentifier": "com.lowtechguys.Clop",
+									"Name": "Clop",
+									"NewFile": "/Applications/Clop.app"
+								},
+								"ApplicationConditionType": "Running",
+								"ConditionType": "Application"
+							}
+						]
+					},
+					"ThenActions": [
+						{
+							"MacroActionType": "IfThenElse",
+							"ElseActions": [
+								{
+									"MacroActionType": "IfThenElse",
+									"ElseActions": [
+										{
+											"MacroActionType": "IfThenElse",
+											"ElseActions": [
+												{
+													"MacroActionType": "IfThenElse",
+													"ElseActions": [],
+													"Conditions": {
+														"ConditionListMatch": "All",
+														"ConditionList": [
+															{
+																"ConditionType": "Variable",
+																"VariableValue": "xx",
+																"Variable": "localAction",
+																"VariableConditionType": "Is"
+															}
+														]
+													},
+													"ThenActions": [
+														{
+															"MacroActionType": "QuitSpecificApp",
+															"Application": {
+																"BundleIdentifier": "com.lowtechguys.Clop",
+																"Name": "Clop",
+																"NewFile": "/Applications/Clop.app"
+															},
+															"TimeOutAbortsMacro": true,
+															"Target": "Specific",
+															"Action": "Quit",
+															"ActionUID": 15577361
+														}
+													],
+													"TimeOutAbortsMacro": true,
+													"ActionUID": 15577360
+												}
+											],
+											"Conditions": {
+												"ConditionListMatch": "All",
+												"ConditionList": [
+													{
+														"ConditionType": "Variable",
+														"VariableValue": "1",
+														"Variable": "localAction",
+														"VariableConditionType": "Is"
+													}
+												]
+											},
+											"ThenActions": [
+												{
+													"MacroActionType": "ExecuteAppleScript",
+													"IncludedVariables": [
+														"9999"
+													],
+													"TrimResults": true,
+													"IncludeStdErr": false,
+													"ActionUID": 15577358,
+													"UseText": true,
+													"TrimResultsNew": true,
+													"TimeOutAbortsMacro": true,
+													"Path": "",
+													"DisplayKind": "Window",
+													"HonourFailureSettings": true,
+													"Text": "tell application \"Bartender 5\"\n\tactivate \"com.lowtechguys.Clop-Item-0\"\nend tell"
+												},
+												{
+													"MacroActionType": "HideAll",
+													"ActionUID": 15577359,
+													"HonorExcluded": true
+												}
+											],
+											"TimeOutAbortsMacro": true,
+											"ActionUID": 15577357
+										}
+									],
+									"Conditions": {
+										"ConditionListMatch": "All",
+										"ConditionList": [
+											{
+												"ConditionType": "Variable",
+												"VariableValue": "2",
+												"Variable": "localAction",
+												"VariableConditionType": "Is"
+											}
+										]
+									},
+									"ThenActions": [
+										{
+											"MacroActionType": "ExecuteAppleScript",
+											"IncludedVariables": [
+												"9999"
+											],
+											"TrimResults": true,
+											"IncludeStdErr": false,
+											"ActionUID": 15577356,
+											"UseText": true,
+											"TrimResultsNew": true,
+											"TimeOutAbortsMacro": true,
+											"Path": "",
+											"DisplayKind": "Window",
+											"HonourFailureSettings": true,
+											"Text": "tell application \"Bartender 5\"\n\tactivate \"com.lowtechguys.Clop-Item-0\"\nend tell"
+										}
+									],
+									"TimeOutAbortsMacro": true,
+									"ActionUID": 15577355
+								}
+							],
+							"Conditions": {
+								"ConditionListMatch": "All",
+								"ConditionList": [
+									{
+										"ConditionType": "Variable",
+										"VariableValue": "3",
+										"Variable": "localAction",
+										"VariableConditionType": "Is"
+									}
+								]
+							},
+							"ThenActions": [
+								{
+									"MacroActionType": "ExecuteAppleScript",
+									"IncludedVariables": [
+										"9999"
+									],
+									"TrimResults": true,
+									"IncludeStdErr": false,
+									"ActionUID": 15577353,
+									"UseText": true,
+									"TrimResultsNew": true,
+									"TimeOutAbortsMacro": true,
+									"Path": "",
+									"DisplayKind": "Window",
+									"HonourFailureSettings": true,
+									"Text": "tell application \"Bartender 5\"\n\tactivate \"com.lowtechguys.Clop-Item-0\"\nend tell"
+								},
+								{
+									"MacroActionType": "HideAll",
+									"ActionUID": 15577354,
+									"HonorExcluded": true
+								}
+							],
+							"TimeOutAbortsMacro": true,
+							"ActionUID": 15577352
+						}
+					],
+					"TimeOutAbortsMacro": true,
+					"ActionUID": 15577351
+				}
+			],
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"ConditionType": "Variable",
+						"VariableValue": "",
+						"Variable": "localAction",
+						"VariableConditionType": "Is"
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "IfThenElse",
+					"ElseActions": [
+						{
+							"MacroActionType": "ActivateApplication",
+							"ActionUID": 15577349,
+							"ReopenWindows": false,
+							"AllWindows": false,
+							"TimeOutAbortsMacro": true,
+							"AlreadyActivatedActionType": "Normal",
+							"Application": {
+								"BundleIdentifier": "com.lowtechguys.Clop",
+								"Name": "Clop",
+								"NewFile": "/Applications/Clop.app"
+							}
+						},
+						{
+							"MacroActionType": "ExecuteAppleScript",
+							"IncludedVariables": [
+								"9999"
+							],
+							"TrimResults": true,
+							"IncludeStdErr": false,
+							"ActionUID": 15577350,
+							"UseText": true,
+							"TrimResultsNew": true,
+							"TimeOutAbortsMacro": true,
+							"Path": "",
+							"DisplayKind": "Window",
+							"HonourFailureSettings": true,
+							"Text": "tell application \"Bartender 5\"\n\tactivate \"com.lowtechguys.Clop-Item-0\"\nend tell"
+						}
+					],
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"Application": {
+									"BundleIdentifier": "com.lowtechguys.Clop",
+									"Name": "Clop",
+									"NewFile": "/Applications/Clop.app"
+								},
+								"ApplicationConditionType": "Running",
+								"ConditionType": "Application"
+							}
+						]
+					},
+					"ThenActions": [
+						{
+							"MacroActionType": "ExecuteAppleScript",
+							"IncludedVariables": [
+								"9999"
+							],
+							"TrimResults": true,
+							"IncludeStdErr": false,
+							"ActionUID": 15577348,
+							"UseText": true,
+							"TrimResultsNew": true,
+							"TimeOutAbortsMacro": true,
+							"Path": "",
+							"DisplayKind": "Window",
+							"HonourFailureSettings": true,
+							"Text": "tell application \"Bartender 5\"\n\tactivate \"com.lowtechguys.Clop-Item-0\"\nend tell"
+						}
+					],
+					"TimeOutAbortsMacro": true,
+					"ActionUID": 15577347
+				}
+			],
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 15577346
+		}
+	]
+}

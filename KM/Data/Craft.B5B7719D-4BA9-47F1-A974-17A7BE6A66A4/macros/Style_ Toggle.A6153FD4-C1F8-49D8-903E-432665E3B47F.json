@@ -1,0 +1,25 @@
+{
+	"CreationDate": 765820027.748427,
+	"UID": "A6153FD4-C1F8-49D8-903E-432665E3B47F",
+	"Name": "Style: Toggle",
+	"Triggers": [
+		{
+			"KeyCode": 9,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 2048,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 765820978.983399,
+	"Actions": [
+		{
+			"MacroActionType": "SimulateKeystroke",
+			"ActionUID": 15607951,
+			"ReleaseAll": false,
+			"TargetApplication": {},
+			"TargetingType": "Front",
+			"KeyCode": 26,
+			"Modifiers": 2304
+		}
+	]
+}

@@ -1,0 +1,1254 @@
+{
+	"CreationDate": 739990312.282654,
+	"UID": "8AF86082-233B-4ECA-A89A-1CD1B286EEBD",
+	"Name": "rcmd: Bear",
+	"Triggers": [],
+	"ModificationDate": 763129950.233664,
+	"Actions": [
+		{
+			"MacroActionType": "SetVariableToText",
+			"Variable": "localAction",
+			"Text": "%TriggerValue%",
+			"ActionUID": 15519347
+		},
+		{
+			"MacroActionType": "IfThenElse",
+			"ActionUID": 15519348,
+			"ThenActionListDisclosed": false,
+			"TimeOutAbortsMacro": true,
+			"ElseActions": [
+				{
+					"MacroActionType": "IfThenElse",
+					"ActionUID": 15519362,
+					"TimeOutAbortsMacro": true,
+					"ElseActions": [
+						{
+							"MacroActionType": "IfThenElse",
+							"ElseActions": [
+								{
+									"MacroActionType": "IfThenElse",
+									"ElseActions": [
+										{
+											"MacroActionType": "IfThenElse",
+											"ElseActions": [
+												{
+													"MacroActionType": "IfThenElse",
+													"ElseActions": [
+														{
+															"MacroActionType": "IfThenElse",
+															"ElseActions": [
+																{
+																	"MacroActionType": "IfThenElse",
+																	"ElseActions": [
+																		{
+																			"MacroActionType": "IfThenElse",
+																			"ElseActions": [
+																				{
+																					"MacroActionType": "IfThenElse",
+																					"ElseActions": [],
+																					"Conditions": {
+																						"ConditionListMatch": "All",
+																						"ConditionList": [
+																							{
+																								"ConditionType": "Variable",
+																								"VariableValue": "3",
+																								"Variable": "localAction",
+																								"VariableConditionType": "Is"
+																							}
+																						]
+																					},
+																					"ThenActions": [
+																						{
+																							"MacroActionType": "ActivateApplication",
+																							"ActionUID": 15519429,
+																							"ReopenWindows": false,
+																							"AllWindows": true,
+																							"TimeOutAbortsMacro": true,
+																							"AlreadyActivatedActionType": "BringAllWindows",
+																							"Application": {
+																								"BundleIdentifier": "net.shinyfrog.bear",
+																								"Name": "Bear",
+																								"NewFile": "/Applications/Bear.app"
+																							}
+																						},
+																						{
+																							"MacroActionType": "Pause",
+																							"TimeOutAbortsMacro": true,
+																							"Time": ".3",
+																							"ActionUID": 15519430
+																						},
+																						{
+																							"MacroActionType": "HideOthers",
+																							"ActionUID": 15519431,
+																							"HonorExcluded": true
+																						}
+																					],
+																					"TimeOutAbortsMacro": true,
+																					"ActionUID": 15519428
+																				}
+																			],
+																			"Conditions": {
+																				"ConditionListMatch": "All",
+																				"ConditionList": [
+																					{
+																						"ConditionType": "Variable",
+																						"VariableValue": "2",
+																						"Variable": "localAction",
+																						"VariableConditionType": "Is"
+																					}
+																				]
+																			},
+																			"ThenActions": [
+																				{
+																					"MacroActionType": "ActivateApplication",
+																					"ActionUID": 15519427,
+																					"ReopenWindows": false,
+																					"AllWindows": true,
+																					"TimeOutAbortsMacro": true,
+																					"AlreadyActivatedActionType": "BringAllWindows",
+																					"Application": {
+																						"BundleIdentifier": "net.shinyfrog.bear",
+																						"Name": "Bear",
+																						"NewFile": "/Applications/Bear.app"
+																					}
+																				}
+																			],
+																			"TimeOutAbortsMacro": true,
+																			"ActionUID": 15519426
+																		}
+																	],
+																	"Conditions": {
+																		"ConditionListMatch": "All",
+																		"ConditionList": [
+																			{
+																				"ConditionType": "Variable",
+																				"VariableValue": "1",
+																				"Variable": "localAction",
+																				"VariableConditionType": "Is"
+																			}
+																		]
+																	},
+																	"ThenActions": [
+																		{
+																			"MacroActionType": "ActivateApplication",
+																			"ActionUID": 15519423,
+																			"ReopenWindows": false,
+																			"AllWindows": true,
+																			"TimeOutAbortsMacro": true,
+																			"AlreadyActivatedActionType": "BringAllWindows",
+																			"Application": {
+																				"BundleIdentifier": "net.shinyfrog.bear",
+																				"Name": "Bear",
+																				"NewFile": "/Applications/Bear.app"
+																			}
+																		},
+																		{
+																			"MacroActionType": "Pause",
+																			"TimeOutAbortsMacro": true,
+																			"Time": ".3",
+																			"ActionUID": 15519424
+																		},
+																		{
+																			"MacroActionType": "HideOthers",
+																			"ActionUID": 15519425,
+																			"HonorExcluded": true
+																		}
+																	],
+																	"TimeOutAbortsMacro": true,
+																	"ActionUID": 15519422
+																}
+															],
+															"Conditions": {
+																"ConditionListMatch": "All",
+																"ConditionList": [
+																	{
+																		"ConditionType": "Variable",
+																		"VariableValue": "xx",
+																		"Variable": "localAction",
+																		"VariableConditionType": "Is"
+																	}
+																]
+															},
+															"ThenActions": [
+																{
+																	"MacroActionType": "Notification",
+																	"Title": "%ExecutingMacro%",
+																	"SoundName": "",
+																	"Subtitle": "",
+																	"Text": "App is not running.",
+																	"ActionUID": 15519421
+																}
+															],
+															"TimeOutAbortsMacro": true,
+															"ActionUID": 15519420
+														}
+													],
+													"Conditions": {
+														"ConditionListMatch": "All",
+														"ConditionList": [
+															{
+																"ConditionType": "Variable",
+																"VariableValue": "0",
+																"Variable": "localAction",
+																"VariableConditionType": "Is"
+															}
+														]
+													},
+													"ThenActions": [
+														{
+															"MacroActionType": "Notification",
+															"Title": "%ExecutingMacro%",
+															"SoundName": "",
+															"Subtitle": "",
+															"Text": "App is not running.",
+															"ActionUID": 15519419
+														}
+													],
+													"TimeOutAbortsMacro": true,
+													"ActionUID": 15519418
+												}
+											],
+											"Conditions": {
+												"ConditionListMatch": "All",
+												"ConditionList": [
+													{
+														"ConditionType": "Variable",
+														"VariableValue": "x",
+														"Variable": "localAction",
+														"VariableConditionType": "Is"
+													}
+												]
+											},
+											"ThenActions": [
+												{
+													"MacroActionType": "Notification",
+													"Title": "%ExecutingMacro%",
+													"SoundName": "",
+													"Subtitle": "",
+													"Text": "App is not running.",
+													"ActionUID": 15519417
+												}
+											],
+											"TimeOutAbortsMacro": true,
+											"ActionUID": 15519416
+										}
+									],
+									"Conditions": {
+										"ConditionListMatch": "All",
+										"ConditionList": [
+											{
+												"ConditionType": "Variable",
+												"VariableValue": "dm",
+												"Variable": "localAction",
+												"VariableConditionType": "Is"
+											}
+										]
+									},
+									"ThenActions": [
+										{
+											"MacroActionType": "Notification",
+											"Title": "%ExecutingMacro%",
+											"SoundName": "",
+											"Subtitle": "",
+											"Text": "App is not running.",
+											"ActionUID": 15519415
+										}
+									],
+									"TimeOutAbortsMacro": true,
+									"ActionUID": 15519414
+								}
+							],
+							"Conditions": {
+								"ConditionListMatch": "All",
+								"ConditionList": [
+									{
+										"ConditionType": "Variable",
+										"VariableValue": "m",
+										"Variable": "localAction",
+										"VariableConditionType": "Is"
+									}
+								]
+							},
+							"ThenActions": [
+								{
+									"MacroActionType": "Notification",
+									"Title": "%ExecutingMacro%",
+									"SoundName": "",
+									"Subtitle": "",
+									"Text": "App is not running.",
+									"ActionUID": 15519413
+								}
+							],
+							"TimeOutAbortsMacro": true,
+							"ActionUID": 15519412
+						}
+					],
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"Application": {
+									"BundleIdentifier": "net.shinyfrog.bear",
+									"Name": "Bear",
+									"NewFile": "/Applications/Bear.app"
+								},
+								"ApplicationConditionType": "Running",
+								"ConditionType": "Application"
+							}
+						]
+					},
+					"ElseActionListDisclosed": false,
+					"ThenActions": [
+						{
+							"MacroActionType": "IfThenElse",
+							"ElseActions": [
+								{
+									"MacroActionType": "IfThenElse",
+									"ElseActions": [
+										{
+											"MacroActionType": "IfThenElse",
+											"ElseActions": [
+												{
+													"MacroActionType": "IfThenElse",
+													"ElseActions": [
+														{
+															"MacroActionType": "IfThenElse",
+															"ElseActions": [
+																{
+																	"MacroActionType": "IfThenElse",
+																	"ElseActions": [
+																		{
+																			"MacroActionType": "IfThenElse",
+																			"ElseActions": [
+																				{
+																					"MacroActionType": "IfThenElse",
+																					"ElseActions": [],
+																					"Conditions": {
+																						"ConditionListMatch": "All",
+																						"ConditionList": [
+																							{
+																								"ConditionType": "Variable",
+																								"VariableValue": "3",
+																								"Variable": "localAction",
+																								"VariableConditionType": "Is"
+																							}
+																						]
+																					},
+																					"ThenActions": [
+																						{
+																							"MacroActionType": "ExecuteShellScript",
+																							"IncludedVariables": [
+																								"9999"
+																							],
+																							"TrimResults": true,
+																							"Source": "Nothing",
+																							"Variable": "localAppWindows",
+																							"IncludeStdErr": false,
+																							"ActionUID": 15519399,
+																							"UseText": true,
+																							"TrimResultsNew": true,
+																							"TimeOutAbortsMacro": true,
+																							"Path": "",
+																							"DisplayKind": "Variable",
+																							"HonourFailureSettings": true,
+																							"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/moveAppToCurrentSpace_NoScratchpad.sh \"Bear\""
+																						},
+																						{
+																							"MacroActionType": "IfThenElse",
+																							"ElseActions": [
+																								{
+																									"MacroActionType": "IfThenElse",
+																									"ElseActions": [
+																										{
+																											"MacroActionType": "IfThenElse",
+																											"ElseActions": [
+																												{
+																													"MacroActionType": "IfThenElse",
+																													"ElseActions": [],
+																													"Conditions": {
+																														"ConditionListMatch": "All",
+																														"ConditionList": [
+																															{
+																																"ConditionType": "Variable",
+																																"VariableValue": "hasScratchpad",
+																																"Variable": "localAppWindows",
+																																"VariableConditionType": "Is"
+																															}
+																														]
+																													},
+																													"ThenActions": [
+																														{
+																															"MacroActionType": "ExecuteAppleScript",
+																															"IncludedVariables": [
+																																"9999"
+																															],
+																															"TrimResults": true,
+																															"IncludeStdErr": false,
+																															"ActionUID": 15519410,
+																															"UseText": true,
+																															"TrimResultsNew": true,
+																															"TimeOutAbortsMacro": true,
+																															"Path": "",
+																															"DisplayKind": "Window",
+																															"HonourFailureSettings": true,
+																															"Text": "tell application \"Bartender 5\"\n\tshow \"com.hegenberg.BetterTouchTool-275E1579-EA47-4838-B80C-62E7CE5EEE46\"\nend tell"
+																														},
+																														{
+																															"MacroActionType": "HideOthers",
+																															"ActionUID": 15519411,
+																															"HonorExcluded": true
+																														}
+																													],
+																													"TimeOutAbortsMacro": true,
+																													"ActionUID": 15519409
+																												}
+																											],
+																											"Conditions": {
+																												"ConditionListMatch": "All",
+																												"ConditionList": [
+																													{
+																														"ConditionType": "Variable",
+																														"VariableValue": "noWindows",
+																														"Variable": "localAppWindows",
+																														"VariableConditionType": "Is"
+																													}
+																												]
+																											},
+																											"ThenActions": [
+																												{
+																													"MacroActionType": "SimulateKeystroke",
+																													"ActionUID": 15519407,
+																													"ReleaseAll": false,
+																													"TargetApplication": {},
+																													"TargetingType": "Front",
+																													"KeyCode": 49,
+																													"Modifiers": 2304
+																												},
+																												{
+																													"MacroActionType": "HideOthers",
+																													"ActionUID": 15519408,
+																													"HonorExcluded": true
+																												}
+																											],
+																											"TimeOutAbortsMacro": true,
+																											"ActionUID": 15519406
+																										}
+																									],
+																									"Conditions": {
+																										"ConditionListMatch": "All",
+																										"ConditionList": [
+																											{
+																												"ConditionType": "Variable",
+																												"VariableValue": "onlyScratchpadNoFocus",
+																												"Variable": "localAppWindows",
+																												"VariableConditionType": "Is"
+																											}
+																										]
+																									},
+																									"ThenActions": [
+																										{
+																											"MacroActionType": "SimulateKeystroke",
+																											"ActionUID": 15519403,
+																											"ReleaseAll": false,
+																											"TargetApplication": {},
+																											"TargetingType": "Front",
+																											"KeyCode": 49,
+																											"Modifiers": 2304
+																										},
+																										{
+																											"MacroActionType": "HideOthers",
+																											"ActionUID": 15519404,
+																											"HonorExcluded": true
+																										},
+																										{
+																											"MacroActionType": "ExecuteAppleScript",
+																											"IncludedVariables": [
+																												"9999"
+																											],
+																											"TrimResults": true,
+																											"IncludeStdErr": false,
+																											"ActionUID": 15519405,
+																											"UseText": true,
+																											"TrimResultsNew": true,
+																											"TimeOutAbortsMacro": true,
+																											"Path": "",
+																											"DisplayKind": "Window",
+																											"HonourFailureSettings": true,
+																											"Text": "tell application \"Bartender 5\"\n\tshow \"com.hegenberg.BetterTouchTool-275E1579-EA47-4838-B80C-62E7CE5EEE46\"\nend tell"
+																										}
+																									],
+																									"TimeOutAbortsMacro": true,
+																									"ActionUID": 15519402
+																								}
+																							],
+																							"Conditions": {
+																								"ConditionListMatch": "All",
+																								"ConditionList": [
+																									{
+																										"ConditionType": "Variable",
+																										"VariableValue": "onlyScratchpadHasFocus",
+																										"Variable": "localAppWindows",
+																										"VariableConditionType": "Is"
+																									}
+																								]
+																							},
+																							"ThenActions": [
+																								{
+																									"MacroActionType": "HideOthers",
+																									"ActionUID": 15519401,
+																									"HonorExcluded": true
+																								}
+																							],
+																							"TimeOutAbortsMacro": true,
+																							"ActionUID": 15519400
+																						}
+																					],
+																					"TimeOutAbortsMacro": true,
+																					"ActionUID": 15519398
+																				}
+																			],
+																			"Conditions": {
+																				"ConditionListMatch": "All",
+																				"ConditionList": [
+																					{
+																						"ConditionType": "Variable",
+																						"VariableValue": "2",
+																						"Variable": "localAction",
+																						"VariableConditionType": "Is"
+																					}
+																				]
+																			},
+																			"ThenActions": [
+																				{
+																					"MacroActionType": "ExecuteShellScript",
+																					"IncludedVariables": [
+																						"9999"
+																					],
+																					"TrimResults": true,
+																					"Source": "Nothing",
+																					"Variable": "localAppWindows",
+																					"IncludeStdErr": false,
+																					"ActionUID": 15519389,
+																					"UseText": true,
+																					"TrimResultsNew": true,
+																					"TimeOutAbortsMacro": true,
+																					"Path": "",
+																					"DisplayKind": "Variable",
+																					"HonourFailureSettings": true,
+																					"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/moveAppToCurrentSpace_NoScratchpad.sh \"Bear\""
+																				},
+																				{
+																					"MacroActionType": "IfThenElse",
+																					"ElseActions": [
+																						{
+																							"MacroActionType": "IfThenElse",
+																							"ElseActions": [
+																								{
+																									"MacroActionType": "IfThenElse",
+																									"ElseActions": [
+																										{
+																											"MacroActionType": "IfThenElse",
+																											"ElseActions": [],
+																											"Conditions": {
+																												"ConditionListMatch": "All",
+																												"ConditionList": [
+																													{
+																														"ConditionType": "Variable",
+																														"VariableValue": "hasScratchpad",
+																														"Variable": "localAppWindows",
+																														"VariableConditionType": "Is"
+																													}
+																												]
+																											},
+																											"ThenActions": [
+																												{
+																													"MacroActionType": "ExecuteAppleScript",
+																													"IncludedVariables": [
+																														"9999"
+																													],
+																													"TrimResults": true,
+																													"IncludeStdErr": false,
+																													"ActionUID": 15519397,
+																													"UseText": true,
+																													"TrimResultsNew": true,
+																													"TimeOutAbortsMacro": true,
+																													"Path": "",
+																													"DisplayKind": "Window",
+																													"HonourFailureSettings": true,
+																													"Text": "tell application \"Bartender 5\"\n\tshow \"com.hegenberg.BetterTouchTool-275E1579-EA47-4838-B80C-62E7CE5EEE46\"\nend tell"
+																												}
+																											],
+																											"TimeOutAbortsMacro": true,
+																											"ActionUID": 15519396
+																										}
+																									],
+																									"Conditions": {
+																										"ConditionListMatch": "All",
+																										"ConditionList": [
+																											{
+																												"ConditionType": "Variable",
+																												"VariableValue": "noWindows",
+																												"Variable": "localAppWindows",
+																												"VariableConditionType": "Is"
+																											}
+																										]
+																									},
+																									"ThenActions": [
+																										{
+																											"MacroActionType": "SimulateKeystroke",
+																											"ActionUID": 15519395,
+																											"ReleaseAll": false,
+																											"TargetApplication": {},
+																											"TargetingType": "Front",
+																											"KeyCode": 49,
+																											"Modifiers": 2304
+																										}
+																									],
+																									"TimeOutAbortsMacro": true,
+																									"ActionUID": 15519394
+																								}
+																							],
+																							"Conditions": {
+																								"ConditionListMatch": "All",
+																								"ConditionList": [
+																									{
+																										"ConditionType": "Variable",
+																										"VariableValue": "onlyScratchpadNoFocus",
+																										"Variable": "localAppWindows",
+																										"VariableConditionType": "Is"
+																									}
+																								]
+																							},
+																							"ThenActions": [
+																								{
+																									"MacroActionType": "SimulateKeystroke",
+																									"ActionUID": 15519392,
+																									"ReleaseAll": false,
+																									"TargetApplication": {},
+																									"TargetingType": "Front",
+																									"KeyCode": 49,
+																									"Modifiers": 2304
+																								},
+																								{
+																									"MacroActionType": "ExecuteAppleScript",
+																									"IncludedVariables": [
+																										"9999"
+																									],
+																									"TrimResults": true,
+																									"IncludeStdErr": false,
+																									"ActionUID": 15519393,
+																									"UseText": true,
+																									"TrimResultsNew": true,
+																									"TimeOutAbortsMacro": true,
+																									"Path": "",
+																									"DisplayKind": "Window",
+																									"HonourFailureSettings": true,
+																									"Text": "tell application \"Bartender 5\"\n\tshow \"com.hegenberg.BetterTouchTool-275E1579-EA47-4838-B80C-62E7CE5EEE46\"\nend tell"
+																								}
+																							],
+																							"TimeOutAbortsMacro": true,
+																							"ActionUID": 15519391
+																						}
+																					],
+																					"Conditions": {
+																						"ConditionListMatch": "All",
+																						"ConditionList": [
+																							{
+																								"ConditionType": "Variable",
+																								"VariableValue": "onlyScratchpadHasFocus",
+																								"Variable": "localAppWindows",
+																								"VariableConditionType": "Is"
+																							}
+																						]
+																					},
+																					"ThenActions": [],
+																					"TimeOutAbortsMacro": true,
+																					"ActionUID": 15519390
+																				}
+																			],
+																			"TimeOutAbortsMacro": true,
+																			"ActionUID": 15519388
+																		}
+																	],
+																	"Conditions": {
+																		"ConditionListMatch": "All",
+																		"ConditionList": [
+																			{
+																				"ConditionType": "Variable",
+																				"VariableValue": "1",
+																				"Variable": "localAction",
+																				"VariableConditionType": "Is"
+																			}
+																		]
+																	},
+																	"ThenActions": [
+																		{
+																			"MacroActionType": "ExecuteShellScript",
+																			"IncludedVariables": [
+																				"9999"
+																			],
+																			"TrimResults": true,
+																			"Source": "Nothing",
+																			"Variable": "localAppWindows",
+																			"IncludeStdErr": false,
+																			"ActionUID": 15519374,
+																			"UseText": true,
+																			"TrimResultsNew": true,
+																			"TimeOutAbortsMacro": true,
+																			"Path": "",
+																			"DisplayKind": "Variable",
+																			"HonourFailureSettings": true,
+																			"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/activateNonScratchpad.sh \"Bear\""
+																		},
+																		{
+																			"MacroActionType": "IfThenElse",
+																			"ElseActions": [
+																				{
+																					"MacroActionType": "IfThenElse",
+																					"ActionUID": 15519379,
+																					"ThenActionListDisclosed": false,
+																					"TimeOutAbortsMacro": true,
+																					"ElseActions": [
+																						{
+																							"MacroActionType": "IfThenElse",
+																							"ElseActions": [
+																								{
+																									"MacroActionType": "IfThenElse",
+																									"ElseActions": [
+																										{
+																											"MacroActionType": "ExecuteShellScript",
+																											"IncludedVariables": [
+																												"9999"
+																											],
+																											"TrimResults": true,
+																											"Source": "Nothing",
+																											"IncludeStdErr": false,
+																											"ActionUID": 15519386,
+																											"UseText": true,
+																											"TrimResultsNew": true,
+																											"TimeOutAbortsMacro": true,
+																											"Path": "",
+																											"DisplayKind": "None",
+																											"HonourFailureSettings": true,
+																											"Text": "/opt/homebrew/bin/yabai -m window --focus $KMVAR_localAppWindows || open -a \"Bear\""
+																										},
+																										{
+																											"MacroActionType": "HideOthers",
+																											"ActionUID": 15519387,
+																											"HonorExcluded": true
+																										}
+																									],
+																									"Conditions": {
+																										"ConditionListMatch": "All",
+																										"ConditionList": [
+																											{
+																												"ConditionType": "Variable",
+																												"VariableValue": "onWindowNoScratchpad",
+																												"Variable": "localAppWindows",
+																												"VariableConditionType": "Is"
+																											}
+																										]
+																									},
+																									"ThenActions": [
+																										{
+																											"MacroActionType": "HideOthers",
+																											"ActionUID": 15519385,
+																											"HonorExcluded": true
+																										}
+																									],
+																									"TimeOutAbortsMacro": true,
+																									"ActionUID": 15519384
+																								}
+																							],
+																							"Conditions": {
+																								"ConditionListMatch": "All",
+																								"ConditionList": [
+																									{
+																										"ConditionType": "Variable",
+																										"VariableValue": "onWindowWithScratchpad",
+																										"Variable": "localAppWindows",
+																										"VariableConditionType": "Is"
+																									}
+																								]
+																							},
+																							"ThenActions": [
+																								{
+																									"MacroActionType": "HideOthers",
+																									"ActionUID": 15519383,
+																									"HonorExcluded": true
+																								}
+																							],
+																							"TimeOutAbortsMacro": true,
+																							"ActionUID": 15519382
+																						}
+																					],
+																					"Conditions": {
+																						"ConditionListMatch": "All",
+																						"ConditionList": [
+																							{
+																								"ConditionType": "Variable",
+																								"VariableValue": "noWindows",
+																								"Variable": "localAppWindows",
+																								"VariableConditionType": "Is"
+																							}
+																						]
+																					},
+																					"ThenActions": [
+																						{
+																							"MacroActionType": "SimulateKeystroke",
+																							"ActionUID": 15519380,
+																							"ReleaseAll": false,
+																							"TargetApplication": {},
+																							"TargetingType": "Front",
+																							"KeyCode": 49,
+																							"Modifiers": 2304
+																						},
+																						{
+																							"MacroActionType": "HideOthers",
+																							"ActionUID": 15519381,
+																							"HonorExcluded": true
+																						}
+																					]
+																				}
+																			],
+																			"Conditions": {
+																				"ConditionListMatch": "All",
+																				"ConditionList": [
+																					{
+																						"ConditionType": "Variable",
+																						"VariableValue": "onlyScratchpadWindows",
+																						"Variable": "localAppWindows",
+																						"VariableConditionType": "Is"
+																					}
+																				]
+																			},
+																			"ThenActions": [
+																				{
+																					"MacroActionType": "SimulateKeystroke",
+																					"ActionUID": 15519376,
+																					"ReleaseAll": false,
+																					"TargetApplication": {},
+																					"TargetingType": "Front",
+																					"KeyCode": 49,
+																					"Modifiers": 2304
+																				},
+																				{
+																					"MacroActionType": "HideOthers",
+																					"ActionUID": 15519377,
+																					"HonorExcluded": true
+																				},
+																				{
+																					"MacroActionType": "ExecuteAppleScript",
+																					"IncludedVariables": [
+																						"9999"
+																					],
+																					"TrimResults": true,
+																					"IncludeStdErr": false,
+																					"ActionUID": 15519378,
+																					"UseText": true,
+																					"TrimResultsNew": true,
+																					"TimeOutAbortsMacro": true,
+																					"Path": "",
+																					"DisplayKind": "Window",
+																					"HonourFailureSettings": true,
+																					"Text": "tell application \"Bartender 5\"\n\tshow \"com.hegenberg.BetterTouchTool-275E1579-EA47-4838-B80C-62E7CE5EEE46\"\nend tell"
+																				}
+																			],
+																			"TimeOutAbortsMacro": true,
+																			"ActionUID": 15519375
+																		}
+																	],
+																	"TimeOutAbortsMacro": true,
+																	"ActionUID": 15519373
+																}
+															],
+															"Conditions": {
+																"ConditionListMatch": "All",
+																"ConditionList": [
+																	{
+																		"ConditionType": "Variable",
+																		"VariableValue": "xx",
+																		"Variable": "localAction",
+																		"VariableConditionType": "Is"
+																	}
+																]
+															},
+															"ThenActions": [
+																{
+																	"MacroActionType": "QuitSpecificApp",
+																	"Application": {
+																		"BundleIdentifier": "net.shinyfrog.bear",
+																		"Name": "Bear",
+																		"NewFile": "/Applications/Bear.app"
+																	},
+																	"TimeOutAbortsMacro": true,
+																	"Target": "Specific",
+																	"Action": "Quit",
+																	"ActionUID": 15519372
+																}
+															],
+															"TimeOutAbortsMacro": true,
+															"ActionUID": 15519371
+														}
+													],
+													"Conditions": {
+														"ConditionListMatch": "All",
+														"ConditionList": [
+															{
+																"ConditionType": "Variable",
+																"VariableValue": "0",
+																"Variable": "localAction",
+																"VariableConditionType": "Is"
+															}
+														]
+													},
+													"ThenActions": [
+														{
+															"MacroActionType": "HideSpecificApp",
+															"ActionUID": 15519370,
+															"Application": {
+																"BundleIdentifier": "net.shinyfrog.bear",
+																"Name": "Bear",
+																"NewFile": "/Applications/Bear.app"
+															}
+														}
+													],
+													"TimeOutAbortsMacro": true,
+													"ActionUID": 15519369
+												}
+											],
+											"Conditions": {
+												"ConditionListMatch": "All",
+												"ConditionList": [
+													{
+														"ConditionType": "Variable",
+														"VariableValue": "x",
+														"Variable": "localAction",
+														"VariableConditionType": "Is"
+													}
+												]
+											},
+											"ThenActions": [
+												{
+													"MacroActionType": "ExecuteShellScript",
+													"IncludedVariables": [
+														"9999"
+													],
+													"TrimResults": true,
+													"Source": "Nothing",
+													"IncludeStdErr": false,
+													"ActionUID": 15519368,
+													"UseText": true,
+													"TrimResultsNew": true,
+													"TimeOutAbortsMacro": true,
+													"Path": "",
+													"DisplayKind": "Window",
+													"HonourFailureSettings": true,
+													"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/closeAppWindows.sh \"Bear\""
+												}
+											],
+											"TimeOutAbortsMacro": true,
+											"ActionUID": 15519367
+										}
+									],
+									"Conditions": {
+										"ConditionListMatch": "All",
+										"ConditionList": [
+											{
+												"ConditionType": "Variable",
+												"VariableValue": "dm",
+												"Variable": "localAction",
+												"VariableConditionType": "Is"
+											}
+										]
+									},
+									"ThenActions": [
+										{
+											"MacroActionType": "ExecuteShellScript",
+											"IncludedVariables": [
+												"9999"
+											],
+											"TrimResults": true,
+											"Source": "Nothing",
+											"IncludeStdErr": false,
+											"ActionUID": 15519366,
+											"UseText": true,
+											"TrimResultsNew": true,
+											"TimeOutAbortsMacro": true,
+											"Path": "",
+											"DisplayKind": "Window",
+											"HonourFailureSettings": true,
+											"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/deminimizeWindowsOfApp.sh \"Bear\""
+										}
+									],
+									"TimeOutAbortsMacro": true,
+									"ActionUID": 15519365
+								}
+							],
+							"Conditions": {
+								"ConditionListMatch": "All",
+								"ConditionList": [
+									{
+										"ConditionType": "Variable",
+										"VariableValue": "m",
+										"Variable": "localAction",
+										"VariableConditionType": "Is"
+									}
+								]
+							},
+							"ThenActions": [
+								{
+									"MacroActionType": "ExecuteShellScript",
+									"IncludedVariables": [
+										"9999"
+									],
+									"TrimResults": true,
+									"Source": "Nothing",
+									"IncludeStdErr": false,
+									"ActionUID": 15519364,
+									"UseText": true,
+									"TrimResultsNew": true,
+									"TimeOutAbortsMacro": true,
+									"Path": "",
+									"DisplayKind": "Window",
+									"HonourFailureSettings": true,
+									"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/minimizeAllWindowsOfApp.sh \"Bear\""
+								}
+							],
+							"TimeOutAbortsMacro": true,
+							"ActionUID": 15519363
+						}
+					]
+				}
+			],
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"ConditionType": "Variable",
+						"VariableValue": "",
+						"Variable": "localAction",
+						"VariableConditionType": "Is"
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "IfThenElse",
+					"ElseActions": [
+						{
+							"MacroActionType": "ActivateApplication",
+							"ActionUID": 15519361,
+							"ReopenWindows": false,
+							"AllWindows": false,
+							"TimeOutAbortsMacro": true,
+							"AlreadyActivatedActionType": "Normal",
+							"Application": {
+								"BundleIdentifier": "net.shinyfrog.bear",
+								"Name": "Bear",
+								"NewFile": "/Applications/Bear.app"
+							}
+						}
+					],
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"Application": {
+									"BundleIdentifier": "net.shinyfrog.bear",
+									"Name": "Bear",
+									"NewFile": "/Applications/Bear.app"
+								},
+								"ApplicationConditionType": "Running",
+								"ConditionType": "Application"
+							}
+						]
+					},
+					"ThenActions": [
+						{
+							"MacroActionType": "ExecuteShellScript",
+							"IncludedVariables": [
+								"9999"
+							],
+							"TrimResults": true,
+							"Source": "Nothing",
+							"Variable": "localAppWindows",
+							"IncludeStdErr": false,
+							"ActionUID": 15519350,
+							"UseText": true,
+							"TrimResultsNew": true,
+							"TimeOutAbortsMacro": true,
+							"Path": "",
+							"DisplayKind": "Variable",
+							"HonourFailureSettings": true,
+							"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/activateNonScratchpad.sh \"Bear\""
+						},
+						{
+							"MacroActionType": "IfThenElse",
+							"ElseActions": [
+								{
+									"MacroActionType": "IfThenElse",
+									"ElseActions": [
+										{
+											"MacroActionType": "IfThenElse",
+											"ElseActions": [
+												{
+													"MacroActionType": "IfThenElse",
+													"ElseActions": [
+														{
+															"MacroActionType": "ExecuteShellScript",
+															"IncludedVariables": [
+																"9999"
+															],
+															"TrimResults": true,
+															"Source": "Nothing",
+															"IncludeStdErr": false,
+															"ActionUID": 15519360,
+															"UseText": true,
+															"TrimResultsNew": true,
+															"TimeOutAbortsMacro": true,
+															"Path": "",
+															"DisplayKind": "None",
+															"HonourFailureSettings": true,
+															"Text": "/opt/homebrew/bin/yabai -m window --focus $KMVAR_localAppWindows || open -a \"Bear\""
+														}
+													],
+													"Conditions": {
+														"ConditionListMatch": "All",
+														"ConditionList": [
+															{
+																"ConditionType": "Variable",
+																"VariableValue": "onWindowNoScratchpad",
+																"Variable": "localAppWindows",
+																"VariableConditionType": "Is"
+															}
+														]
+													},
+													"ThenActions": [
+														{
+															"MacroActionType": "ActivateApplication",
+															"ActionUID": 15519359,
+															"ReopenWindows": false,
+															"AllWindows": false,
+															"TimeOutAbortsMacro": true,
+															"AlreadyActivatedActionType": "Hide",
+															"Application": {
+																"BundleIdentifier": "net.shinyfrog.bear",
+																"Name": "Bear",
+																"NewFile": "/Applications/Bear.app"
+															}
+														}
+													],
+													"TimeOutAbortsMacro": true,
+													"ActionUID": 15519358
+												}
+											],
+											"Conditions": {
+												"ConditionListMatch": "All",
+												"ConditionList": [
+													{
+														"ConditionType": "Variable",
+														"VariableValue": "onWindowWithScratchpad",
+														"Variable": "localAppWindows",
+														"VariableConditionType": "Is"
+													}
+												]
+											},
+											"ThenActions": [
+												{
+													"MacroActionType": "ExecuteShellScript",
+													"IncludedVariables": [
+														"9999"
+													],
+													"TrimResults": true,
+													"Source": "Nothing",
+													"IncludeStdErr": false,
+													"ActionUID": 15519357,
+													"UseText": true,
+													"TrimResultsNew": true,
+													"TimeOutAbortsMacro": true,
+													"Path": "",
+													"DisplayKind": "None",
+													"HonourFailureSettings": true,
+													"Text": "/opt/homebrew/bin/yabai -m window --toggle bearScratchpad"
+												}
+											],
+											"TimeOutAbortsMacro": true,
+											"ActionUID": 15519356
+										}
+									],
+									"Conditions": {
+										"ConditionListMatch": "All",
+										"ConditionList": [
+											{
+												"ConditionType": "Variable",
+												"VariableValue": "noWindows",
+												"Variable": "localAppWindows",
+												"VariableConditionType": "Is"
+											}
+										]
+									},
+									"ThenActions": [
+										{
+											"MacroActionType": "SimulateKeystroke",
+											"ActionUID": 15519355,
+											"ReleaseAll": false,
+											"TargetApplication": {},
+											"TargetingType": "Front",
+											"KeyCode": 49,
+											"Modifiers": 2304
+										}
+									],
+									"TimeOutAbortsMacro": true,
+									"ActionUID": 15519354
+								}
+							],
+							"Conditions": {
+								"ConditionListMatch": "All",
+								"ConditionList": [
+									{
+										"ConditionType": "Variable",
+										"VariableValue": "onlyScratchpadWindows",
+										"Variable": "localAppWindows",
+										"VariableConditionType": "Is"
+									}
+								]
+							},
+							"ThenActions": [
+								{
+									"MacroActionType": "SimulateKeystroke",
+									"ActionUID": 15519352,
+									"ReleaseAll": false,
+									"TargetApplication": {},
+									"TargetingType": "Front",
+									"KeyCode": 49,
+									"Modifiers": 2304
+								},
+								{
+									"MacroActionType": "ExecuteAppleScript",
+									"IncludedVariables": [
+										"9999"
+									],
+									"TrimResults": true,
+									"IncludeStdErr": false,
+									"ActionUID": 15519353,
+									"UseText": true,
+									"TrimResultsNew": true,
+									"TimeOutAbortsMacro": true,
+									"Path": "",
+									"DisplayKind": "Window",
+									"HonourFailureSettings": true,
+									"Text": "tell application \"Bartender 5\"\n\tshow \"com.hegenberg.BetterTouchTool-275E1579-EA47-4838-B80C-62E7CE5EEE46\"\nend tell"
+								}
+							],
+							"TimeOutAbortsMacro": true,
+							"ActionUID": 15519351
+						}
+					],
+					"TimeOutAbortsMacro": true,
+					"ActionUID": 15519349
+				}
+			]
+		}
+	]
+}

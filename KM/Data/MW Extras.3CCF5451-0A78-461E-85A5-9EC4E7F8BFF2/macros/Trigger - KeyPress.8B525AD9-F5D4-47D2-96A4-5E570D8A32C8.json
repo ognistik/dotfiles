@@ -1,0 +1,74 @@
+{
+	"UID": "8B525AD9-F5D4-47D2-96A4-5E570D8A32C8",
+	"CreationDate": 754884253.718242,
+	"ModificationDate": 766587570.237659,
+	"Triggers": [],
+	"Actions": [
+		{
+			"MacroActionType": "Comment",
+			"Title": "About",
+			"IsDisclosed": false,
+			"StyledText": "\n\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\tcnRmZAAAAAADAAAAAgAA\n\t\t\t\t\t\t\tAAcAAABUWFQucnRmAQAA\n\t\t\t\t\t\t\tAC43AwAAKwAAAAEAAAAv\n\t\t\t\t\t\t\tAwAAe1xydGYxXGFuc2lc\n\t\t\t\t\t\t\tYW5zaWNwZzEyNTJcY29j\n\t\t\t\t\t\t\tb2FydGYyODIyClxjb2Nv\n\t\t\t\t\t\t\tYXRleHRzY2FsaW5nMFxj\n\t\t\t\t\t\t\tb2NvYXBsYXRmb3JtMHtc\n\t\t\t\t\t\t\tZm9udHRibFxmMFxmc3dp\n\t\t\t\t\t\t\tc3NcZmNoYXJzZXQwIEhl\n\t\t\t\t\t\t\tbHZldGljYTt9CntcY29s\n\t\t\t\t\t\t\tb3J0Ymw7XHJlZDI1NVxn\n\t\t\t\t\t\t\tcmVlbjI1NVxibHVlMjU1\n\t\t\t\t\t\t\tO1xyZWQwXGdyZWVuMFxi\n\t\t\t\t\t\t\tbHVlMDt9CntcKlxleHBh\n\t\t\t\t\t\t\tbmRlZGNvbG9ydGJsOztc\n\t\t\t\t\t\t\tY3NzcmdiXGMwXGMwXGMw\n\t\t\t\t\t\t\tXGM4NDcwNlxjbmFtZSBj\n\t\t\t\t\t\t\tb250cm9sVGV4dENvbG9y\n\t\t\t\t\t\t\tO30KXHBhcmRcdHg1NjBc\n\t\t\t\t\t\t\tdHgxMTIwXHR4MTY4MFx0\n\t\t\t\t\t\t\teDIyNDBcdHgyODAwXHR4\n\t\t\t\t\t\t\tMzM2MFx0eDM5MjBcdHg0\n\t\t\t\t\t\t\tNDgwXHR4NTA0MFx0eDU2\n\t\t\t\t\t\t\tMDBcdHg2MTYwXHR4Njcy\n\t\t\t\t\t\t\tMFxwYXJkaXJuYXR1cmFs\n\t\t\t\t\t\t\tXHBhcnRpZ2h0ZW5mYWN0\n\t\t\t\t\t\t\tb3IwCgpcZjBcZnMyNiBc\n\t\t\t\t\t\t\tY2YyIEZvciBhZHZhbmNl\n\t\t\t\t\t\t\tZCB1c2VycyBvbmx5LiBU\n\t\t\t\t\t\t\taGlzIG1hY3JvIGlzIHRv\n\t\t\t\t\t\t\tIGJlIHVzZWQgd2l0aCBL\n\t\t\t\t\t\t\tYXJhYmluZXIgRWxlbWVu\n\t\t\t\t\t\t\tdHMgb3Igc2ltaWxhciBr\n\t\t\t\t\t\t\tZXlib2FyZCByZW1hcHBp\n\t\t\t\t\t\t\tbmcgdG9vbHMuIElmIGl0\n\t\t\t\t\t\t\tJ3MgdHJpZ2dlcmVkIHRv\n\t\t\t\t\t\t\tZ2V0aGVyIHdpdGggYSBr\n\t\t\t\t\t\t\tZXktZG93biBvciBrZXkt\n\t\t\t\t\t\t\tdXAgZXZlbnQsIGl0IGFs\n\t\t\t\t\t\t\tbG93cyBmb3IgdGhlIEFs\n\t\t\t\t\t\t\tZnJlZCB3b3JrZmxvdydz\n\t\t\t\t\t\t\tIENvcHlTZWxlY3QgdXRp\n\t\t\t\t\t\t\tbGl0eSB0byB3b3JrIHBy\n\t\t\t\t\t\t\tb3Blcmx5LCBpdCBhbGxv\n\t\t\t\t\t\t\td3MgWWFiYWkgdG8gaGlk\n\t\t\t\t\t\t\tZS91bmhpZGUgdGhlIHJl\n\t\t\t\t\t\t\tY29yZGluZyB3aW5kb3cg\n\t\t\t\t\t\t\taW4gdGhlIGNvcnJlY3Qg\n\t\t\t\t\t\t\tdGltaW5nLCBhbmQgaXQg\n\t\t\t\t\t\t\tYWxzbyBsb2NrcyB0aGUg\n\t\t\t\t\t\t\tU1cgUHJlc3NSZXR1cm4g\n\t\t\t\t\t\t\tbWFjcm8gZm9yIGEgZmV3\n\t\t\t\t\t\t\tIHNlY29uZHMgYWxsb3dp\n\t\t\t\t\t\t\tbmcgaXQgdG8gYmVoYXZl\n\t\t\t\t\t\t\tIGp1c3QgYXMgdGhlIGF1\n\t\t\t\t\t\t\tdG8tc2VuZCBmZWF0dXJl\n\t\t\t\t\t\t\tIG9mIFNXLn0BAAAAIwAA\n\t\t\t\t\t\t\tAAEAAAAHAAAAVFhULnJ0\n\t\t\t\t\t\t\tZhAAAADcmf5ntgEAAAAA\n\t\t\t\t\t\t\tAAAAAAAA\n\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\t",
+			"ActionUID": 15612080
+		},
+		{
+			"MacroActionType": "ExecuteMacro",
+			"MacroUID": "12C54B71-124F-4F14-A70D-4E9D1A034CB2",
+			"ActionUID": 15609603,
+			"IsDisclosed": false,
+			"TimeOutAbortsMacro": true,
+			"TimeOutPeriod": 356400,
+			"Parameter": "lock",
+			"UseParameter": true,
+			"Asynchronously": true
+		},
+		{
+			"MacroActionType": "Semaphore",
+			"IsDisclosed": false,
+			"SemaphoreAction": "Lock",
+			"SemaphoreName": "Trigger - KeyPress",
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 15609604
+		},
+		{
+			"MacroActionType": "ExecuteAppleScript",
+			"ActionName": "ALFRED - We run the CopySelect utility",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"IncludeStdErr": false,
+			"ActionUID": 15609606,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"ActionColor": "Purple",
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "None",
+			"IsDisclosed": false,
+			"HonourFailureSettings": true,
+			"Text": "tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"copySelect\" in workflow \"com.superwhisper.aft\""
+		},
+		{
+			"MacroActionType": "ExecuteMacro",
+			"ActionName": "YABAI - Always make window visible when starting or ending rec",
+			"MacroUID": "F4D9F63D-A8B5-43D5-9AAA-2565583EE088",
+			"ActionUID": 15609611,
+			"IsDisclosed": false,
+			"ActionColor": "Teal",
+			"TimeOutAbortsMacro": true,
+			"Parameter": "unhide",
+			"UseParameter": true,
+			"Asynchronously": false
+		},
+		{
+			"MacroActionType": "Semaphore",
+			"IsDisclosed": false,
+			"SemaphoreAction": "Unlock",
+			"SemaphoreName": "Trigger - KeyPress",
+			"ActionUID": 15610472
+		}
+	],
+	"Name": "Trigger - KeyPress",
+	"CustomIconData": "KMEP-FavoriteItems"
+}

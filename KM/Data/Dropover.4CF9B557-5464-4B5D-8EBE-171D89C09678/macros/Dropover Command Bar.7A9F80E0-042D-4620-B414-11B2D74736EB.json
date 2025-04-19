@@ -1,0 +1,44 @@
+{
+	"CreationDate": 727013596.484359,
+	"UID": "7A9F80E0-042D-4620-B414-11B2D74736EB",
+	"Name": "Dropover Command Bar",
+	"Triggers": [],
+	"ModificationDate": 763865488.843832,
+	"Actions": [
+		{
+			"MacroActionType": "SetVariableToText",
+			"Variable": "localMousePos",
+			"Text": "%Calculate%MOUSEX()%, %Calculate%MOUSEY()%",
+			"ActionUID": 513158
+		},
+		{
+			"MacroActionType": "ExecuteMacro",
+			"UseParameter": false,
+			"MacroUID": "00F588A9-A5BB-48E8-8A8C-9F25658FB66A",
+			"TimeOutAbortsMacro": true,
+			"Asynchronously": false,
+			"ActionUID": 15512259
+		},
+		{
+			"MacroActionType": "SimulateKeystroke",
+			"ActionUID": 513566,
+			"ReleaseAll": false,
+			"TargetApplication": {},
+			"TargetingType": "Front",
+			"KeyCode": 40,
+			"Modifiers": 256
+		},
+		{
+			"MacroActionType": "Pause",
+			"TimeOutAbortsMacro": true,
+			"Time": ".01",
+			"ActionUID": 513168
+		},
+		{
+			"MacroActionType": "UseVariable",
+			"Action": "SetMouse",
+			"Variable": "localMousePos",
+			"ActionUID": 513157
+		}
+	]
+}

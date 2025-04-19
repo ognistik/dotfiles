@@ -1,0 +1,17 @@
+{
+	"AddToMacroPalette": false,
+	"Modifiers": 0,
+	"CreationDate": 706572451.318059,
+	"AddToStatusMenu": false,
+	"UID": "D10B3C50-B232-4D7C-9C32-81A61344856C",
+	"Name": "Arc",
+	"PaletteUnderMouse": false,
+	"Targeting": {
+		"Targeting": "All",
+		"TargetingApps": []
+	},
+	"Macros": [],
+	"ToggleMacroUID": "EEB08243-5CDA-4EFE-8EC1-6AEF987A39F8",
+	"Activate": "Normal",
+	"KeyCode": 32767
+}

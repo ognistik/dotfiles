@@ -1,0 +1,459 @@
+{
+	"CreationDate": 739990312.282654,
+	"UID": "51FEA6BB-D201-49DF-8B33-E2B473E79AFD",
+	"Name": "rcmd: Mouseless",
+	"Triggers": [],
+	"ModificationDate": 757870780.797845,
+	"Actions": [
+		{
+			"MacroActionType": "SetVariableToText",
+			"Variable": "localAction",
+			"Text": "%TriggerValue%",
+			"ActionUID": 15487701
+		},
+		{
+			"MacroActionType": "IfThenElse",
+			"ElseActions": [
+				{
+					"MacroActionType": "IfThenElse",
+					"ElseActions": [
+						{
+							"MacroActionType": "IfThenElse",
+							"ElseActions": [
+								{
+									"MacroActionType": "IfThenElse",
+									"ElseActions": [
+										{
+											"MacroActionType": "IfThenElse",
+											"ElseActions": [
+												{
+													"MacroActionType": "IfThenElse",
+													"ElseActions": [],
+													"Conditions": {
+														"ConditionListMatch": "All",
+														"ConditionList": [
+															{
+																"ConditionType": "Variable",
+																"VariableValue": "xx",
+																"Variable": "localAction",
+																"VariableConditionType": "Is"
+															}
+														]
+													},
+													"ThenActions": [
+														{
+															"MacroActionType": "Notification",
+															"Title": "%ExecutingMacro%",
+															"SoundName": "",
+															"Subtitle": "",
+															"Text": "App is not running.",
+															"ActionUID": 15489049
+														}
+													],
+													"TimeOutAbortsMacro": true,
+													"ActionUID": 15487735
+												}
+											],
+											"Conditions": {
+												"ConditionListMatch": "All",
+												"ConditionList": [
+													{
+														"ConditionType": "Variable",
+														"VariableValue": "1",
+														"Variable": "localAction",
+														"VariableConditionType": "Is"
+													}
+												]
+											},
+											"ThenActions": [
+												{
+													"MacroActionType": "HideAll",
+													"ActionUID": 15487729,
+													"HonorExcluded": true
+												},
+												{
+													"MacroActionType": "ActivateApplication",
+													"ActionUID": 15487751,
+													"ReopenWindows": false,
+													"AllWindows": true,
+													"TimeOutAbortsMacro": true,
+													"AlreadyActivatedActionType": "BringAllWindows",
+													"Application": {
+														"BundleIdentifier": "net.sonuscape.mouseless",
+														"Name": "Mouseless",
+														"NewFile": "/Applications/Mouseless.app"
+													}
+												},
+												{
+													"MacroActionType": "ExecuteAppleScript",
+													"IncludedVariables": [
+														"9999"
+													],
+													"TrimResults": true,
+													"IncludeStdErr": false,
+													"ActionUID": 15487747,
+													"UseText": true,
+													"TrimResultsNew": true,
+													"TimeOutAbortsMacro": true,
+													"Path": "",
+													"DisplayKind": "Window",
+													"HonourFailureSettings": true,
+													"Text": "tell application \"Bartender 5\"\n\tactivate \"net.sonuscape.mouseless-Item-0\"\nend tell"
+												}
+											],
+											"TimeOutAbortsMacro": true,
+											"ActionUID": 15487728
+										}
+									],
+									"Conditions": {
+										"ConditionListMatch": "All",
+										"ConditionList": [
+											{
+												"ConditionType": "Variable",
+												"VariableValue": "2",
+												"Variable": "localAction",
+												"VariableConditionType": "Is"
+											}
+										]
+									},
+									"ThenActions": [
+										{
+											"MacroActionType": "ActivateApplication",
+											"ActionUID": 15487750,
+											"ReopenWindows": false,
+											"AllWindows": true,
+											"TimeOutAbortsMacro": true,
+											"AlreadyActivatedActionType": "BringAllWindows",
+											"Application": {
+												"BundleIdentifier": "net.sonuscape.mouseless",
+												"Name": "Mouseless",
+												"NewFile": "/Applications/Mouseless.app"
+											}
+										},
+										{
+											"MacroActionType": "ExecuteAppleScript",
+											"IncludedVariables": [
+												"9999"
+											],
+											"TrimResults": true,
+											"IncludeStdErr": false,
+											"ActionUID": 15487746,
+											"UseText": true,
+											"TrimResultsNew": true,
+											"TimeOutAbortsMacro": true,
+											"Path": "",
+											"DisplayKind": "Window",
+											"HonourFailureSettings": true,
+											"Text": "tell application \"Bartender 5\"\n\tactivate \"net.sonuscape.mouseless-Item-0\"\nend tell"
+										}
+									],
+									"TimeOutAbortsMacro": true,
+									"ActionUID": 15487726
+								}
+							],
+							"Conditions": {
+								"ConditionListMatch": "All",
+								"ConditionList": [
+									{
+										"ConditionType": "Variable",
+										"VariableValue": "3",
+										"Variable": "localAction",
+										"VariableConditionType": "Is"
+									}
+								]
+							},
+							"ThenActions": [
+								{
+									"MacroActionType": "HideAll",
+									"ActionUID": 15487724,
+									"HonorExcluded": true
+								},
+								{
+									"MacroActionType": "ActivateApplication",
+									"ActionUID": 15487749,
+									"ReopenWindows": false,
+									"AllWindows": true,
+									"TimeOutAbortsMacro": true,
+									"AlreadyActivatedActionType": "BringAllWindows",
+									"Application": {
+										"BundleIdentifier": "net.sonuscape.mouseless",
+										"Name": "Mouseless",
+										"NewFile": "/Applications/Mouseless.app"
+									}
+								},
+								{
+									"MacroActionType": "ExecuteAppleScript",
+									"IncludedVariables": [
+										"9999"
+									],
+									"TrimResults": true,
+									"IncludeStdErr": false,
+									"ActionUID": 15487745,
+									"UseText": true,
+									"TrimResultsNew": true,
+									"TimeOutAbortsMacro": true,
+									"Path": "",
+									"DisplayKind": "Window",
+									"HonourFailureSettings": true,
+									"Text": "tell application \"Bartender 5\"\n\tactivate \"net.sonuscape.mouseless-Item-0\"\nend tell"
+								}
+							],
+							"TimeOutAbortsMacro": true,
+							"ActionUID": 15487723
+						}
+					],
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"Application": {
+									"BundleIdentifier": "net.sonuscape.mouseless",
+									"Name": "Mouseless",
+									"NewFile": "/Applications/Mouseless.app"
+								},
+								"ApplicationConditionType": "Running",
+								"ConditionType": "Application"
+							}
+						]
+					},
+					"ThenActions": [
+						{
+							"MacroActionType": "IfThenElse",
+							"ElseActions": [
+								{
+									"MacroActionType": "IfThenElse",
+									"ElseActions": [
+										{
+											"MacroActionType": "IfThenElse",
+											"ElseActions": [
+												{
+													"MacroActionType": "IfThenElse",
+													"ElseActions": [],
+													"Conditions": {
+														"ConditionListMatch": "All",
+														"ConditionList": [
+															{
+																"ConditionType": "Variable",
+																"VariableValue": "xx",
+																"Variable": "localAction",
+																"VariableConditionType": "Is"
+															}
+														]
+													},
+													"ThenActions": [
+														{
+															"MacroActionType": "QuitSpecificApp",
+															"Application": {
+																"BundleIdentifier": "net.sonuscape.mouseless",
+																"Name": "Mouseless",
+																"NewFile": "/Applications/Mouseless.app"
+															},
+															"TimeOutAbortsMacro": true,
+															"Target": "Specific",
+															"Action": "Quit",
+															"ActionUID": 15489044
+														}
+													],
+													"TimeOutAbortsMacro": true,
+													"ActionUID": 15489042
+												}
+											],
+											"Conditions": {
+												"ConditionListMatch": "All",
+												"ConditionList": [
+													{
+														"ConditionType": "Variable",
+														"VariableValue": "1",
+														"Variable": "localAction",
+														"VariableConditionType": "Is"
+													}
+												]
+											},
+											"ThenActions": [
+												{
+													"MacroActionType": "ExecuteAppleScript",
+													"IncludedVariables": [
+														"9999"
+													],
+													"TrimResults": true,
+													"IncludeStdErr": false,
+													"ActionUID": 15487741,
+													"UseText": true,
+													"TrimResultsNew": true,
+													"TimeOutAbortsMacro": true,
+													"Path": "",
+													"DisplayKind": "Window",
+													"HonourFailureSettings": true,
+													"Text": "tell application \"Bartender 5\"\n\tactivate \"net.sonuscape.mouseless-Item-0\"\nend tell"
+												},
+												{
+													"MacroActionType": "HideAll",
+													"ActionUID": 15488371,
+													"HonorExcluded": true
+												}
+											],
+											"TimeOutAbortsMacro": true,
+											"ActionUID": 15487714
+										}
+									],
+									"Conditions": {
+										"ConditionListMatch": "All",
+										"ConditionList": [
+											{
+												"ConditionType": "Variable",
+												"VariableValue": "2",
+												"Variable": "localAction",
+												"VariableConditionType": "Is"
+											}
+										]
+									},
+									"ThenActions": [
+										{
+											"MacroActionType": "ExecuteAppleScript",
+											"IncludedVariables": [
+												"9999"
+											],
+											"TrimResults": true,
+											"IncludeStdErr": false,
+											"ActionUID": 15487740,
+											"UseText": true,
+											"TrimResultsNew": true,
+											"TimeOutAbortsMacro": true,
+											"Path": "",
+											"DisplayKind": "Window",
+											"HonourFailureSettings": true,
+											"Text": "tell application \"Bartender 5\"\n\tactivate \"net.sonuscape.mouseless-Item-0\"\nend tell"
+										}
+									],
+									"TimeOutAbortsMacro": true,
+									"ActionUID": 15487711
+								}
+							],
+							"Conditions": {
+								"ConditionListMatch": "All",
+								"ConditionList": [
+									{
+										"ConditionType": "Variable",
+										"VariableValue": "3",
+										"Variable": "localAction",
+										"VariableConditionType": "Is"
+									}
+								]
+							},
+							"ThenActions": [
+								{
+									"MacroActionType": "ExecuteAppleScript",
+									"IncludedVariables": [
+										"9999"
+									],
+									"TrimResults": true,
+									"IncludeStdErr": false,
+									"ActionUID": 15487739,
+									"UseText": true,
+									"TrimResultsNew": true,
+									"TimeOutAbortsMacro": true,
+									"Path": "",
+									"DisplayKind": "Window",
+									"HonourFailureSettings": true,
+									"Text": "tell application \"Bartender 5\"\n\tactivate \"net.sonuscape.mouseless-Item-0\"\nend tell"
+								},
+								{
+									"MacroActionType": "HideAll",
+									"ActionUID": 15488372,
+									"HonorExcluded": true
+								}
+							],
+							"TimeOutAbortsMacro": true,
+							"ActionUID": 15487707
+						}
+					],
+					"TimeOutAbortsMacro": true,
+					"ActionUID": 15487706
+				}
+			],
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"ConditionType": "Variable",
+						"VariableValue": "",
+						"Variable": "localAction",
+						"VariableConditionType": "Is"
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "IfThenElse",
+					"ElseActions": [
+						{
+							"MacroActionType": "ActivateApplication",
+							"ActionUID": 15487705,
+							"ReopenWindows": false,
+							"AllWindows": false,
+							"TimeOutAbortsMacro": true,
+							"AlreadyActivatedActionType": "Normal",
+							"Application": {
+								"BundleIdentifier": "net.sonuscape.mouseless",
+								"Name": "Mouseless",
+								"NewFile": "/Applications/Mouseless.app"
+							}
+						},
+						{
+							"MacroActionType": "ExecuteAppleScript",
+							"IncludedVariables": [
+								"9999"
+							],
+							"TrimResults": true,
+							"IncludeStdErr": false,
+							"ActionUID": 15487738,
+							"UseText": true,
+							"TrimResultsNew": true,
+							"TimeOutAbortsMacro": true,
+							"Path": "",
+							"DisplayKind": "Window",
+							"HonourFailureSettings": true,
+							"Text": "tell application \"Bartender 5\"\n\tactivate \"net.sonuscape.mouseless-Item-0\"\nend tell"
+						}
+					],
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"Application": {
+									"BundleIdentifier": "net.sonuscape.mouseless",
+									"Name": "Mouseless",
+									"NewFile": "/Applications/Mouseless.app"
+								},
+								"ApplicationConditionType": "Running",
+								"ConditionType": "Application"
+							}
+						]
+					},
+					"ThenActions": [
+						{
+							"MacroActionType": "ExecuteAppleScript",
+							"IncludedVariables": [
+								"9999"
+							],
+							"TrimResults": true,
+							"IncludeStdErr": false,
+							"ActionUID": 15487737,
+							"UseText": true,
+							"TrimResultsNew": true,
+							"TimeOutAbortsMacro": true,
+							"Path": "",
+							"DisplayKind": "Window",
+							"HonourFailureSettings": true,
+							"Text": "tell application \"Bartender 5\"\n\tactivate \"net.sonuscape.mouseless-Item-0\"\nend tell"
+						}
+					],
+					"TimeOutAbortsMacro": true,
+					"ActionUID": 15487703
+				}
+			],
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 15487702
+		}
+	]
+}

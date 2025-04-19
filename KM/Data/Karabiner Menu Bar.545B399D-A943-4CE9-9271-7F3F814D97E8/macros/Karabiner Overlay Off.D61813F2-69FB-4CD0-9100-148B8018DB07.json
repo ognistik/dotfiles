@@ -1,0 +1,171 @@
+{
+	"CreationDate": 764378620.951348,
+	"UID": "D61813F2-69FB-4CD0-9100-148B8018DB07",
+	"Name": "Karabiner Overlay Off",
+	"Triggers": [],
+	"ModificationDate": 766102941.308635,
+	"Actions": [
+		{
+			"MacroActionType": "Semaphore",
+			"IsDisclosed": false,
+			"SemaphoreAction": "Lock",
+			"SemaphoreName": "Karabiner Overlay Off",
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 15597967
+		},
+		{
+			"MacroActionType": "IfThenElse",
+			"ActionUID": 15598418,
+			"IsDisclosed": false,
+			"ElseActions": [],
+			"TimeOutAbortsMacro": true,
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"ConditionType": "Variable",
+						"VariableValue": "•",
+						"Variable": "kara_menu",
+						"VariableConditionType": "Is"
+					}
+				]
+			},
+			"ElseActionListDisclosed": false,
+			"ThenActions": [
+				{
+					"MacroActionType": "Cancel",
+					"IsDisclosed": false,
+					"Action": "CancelThisMacro",
+					"ActionUID": 15598419
+				}
+			]
+		},
+		{
+			"MacroActionType": "IfThenElse",
+			"ActionUID": 15598809,
+			"IsDisclosed": false,
+			"ElseActions": [],
+			"TimeOutAbortsMacro": true,
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"ConditionType": "Text",
+						"TextValue": "overlayOnly",
+						"Text": "%TriggerValue%",
+						"TextConditionType": "Is"
+					}
+				]
+			},
+			"ElseActionListDisclosed": false,
+			"ThenActions": [
+				{
+					"MacroActionType": "ExecuteAppleScript",
+					"ActionName": "Cannot by async... have to wait to turn off before trying to turn on again",
+					"IncludedVariables": [
+						"9999"
+					],
+					"TrimResults": true,
+					"IncludeStdErr": false,
+					"ActionUID": 15598811,
+					"UseText": true,
+					"TrimResultsNew": true,
+					"TimeOutAbortsMacro": true,
+					"Path": "",
+					"DisplayKind": "None",
+					"HonourFailureSettings": true,
+					"Text": "tell application \"BetterTouchTool\"\n\tset_string_variable \"kara_letter\" to \"\"\n\tset_string_variable \"kara_mods\" to \"\"\r\ttrigger_named \"kara_off\"\rend tell"
+				},
+				{
+					"MacroActionType": "Cancel",
+					"IsDisclosed": false,
+					"Action": "CancelThisMacro",
+					"ActionUID": 15598810
+				}
+			]
+		},
+		{
+			"MacroActionType": "ExecuteAppleScript",
+			"ActionName": "Cannot by async... have to wait to turn off before trying to turn on again",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"IncludeStdErr": false,
+			"ActionUID": 15597976,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "None",
+			"IsDisclosed": false,
+			"HonourFailureSettings": true,
+			"Text": "tell application \"BetterTouchTool\"\n\tset_string_variable \"kara_letter\" to \"\"\n\tset_string_variable \"kara_mods\" to \"\"\r\ttrigger_named \"kara_off\"\rend tell"
+		},
+		{
+			"MacroActionType": "SetVariableToText",
+			"IsDisclosed": false,
+			"Variable": "kara_menu",
+			"Text": "•",
+			"ActionUID": 15597977
+		},
+		{
+			"MacroActionType": "SetVariableToText",
+			"IsDisclosed": false,
+			"Variable": "kara_letter",
+			"Text": "",
+			"ActionUID": 15597979
+		},
+		{
+			"MacroActionType": "SetVariableToText",
+			"IsDisclosed": false,
+			"Variable": "kara_mods",
+			"Text": "",
+			"ActionUID": 15597980
+		},
+		{
+			"MacroActionType": "IfThenElse",
+			"ActionUID": 15598411,
+			"IsDisclosed": false,
+			"ElseActions": [],
+			"TimeOutAbortsMacro": true,
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"ConditionType": "Variable",
+						"VariableValue": "",
+						"Variable": "kara_layer_2",
+						"VariableConditionType": "Is"
+					},
+					{
+						"ConditionType": "Variable",
+						"VariableValue": "",
+						"Variable": "kara_layer_1",
+						"VariableConditionType": "Is"
+					}
+				]
+			},
+			"ElseActionListDisclosed": false,
+			"ThenActions": [
+				{
+					"MacroActionType": "ExecuteShellScript",
+					"IncludedVariables": [
+						"9999"
+					],
+					"TrimResults": true,
+					"Source": "Nothing",
+					"IncludeStdErr": false,
+					"ActionUID": 15597958,
+					"UseText": true,
+					"TrimResultsNew": true,
+					"TimeOutAbortsMacro": true,
+					"Path": "",
+					"DisplayKind": "None",
+					"HonourFailureSettings": true,
+					"Text": "# Kill the fswatch process if it's running\nif [ -f /tmp/fswatch_karaWatcher.pid ]; then\n  kill $(cat /tmp/fswatch_karaWatcher.pid)\n  rm /tmp/fswatch_karaWatcher.pid\nfi"
+				}
+			]
+		}
+	]
+}

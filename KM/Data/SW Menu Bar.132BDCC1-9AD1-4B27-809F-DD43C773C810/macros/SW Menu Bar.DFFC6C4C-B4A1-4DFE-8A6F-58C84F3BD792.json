@@ -1,0 +1,190 @@
+{
+	"UID": "DFFC6C4C-B4A1-4DFE-8A6F-58C84F3BD792",
+	"CreationDate": 747929428.678266,
+	"ModificationDate": 766238868.808182,
+	"Triggers": [],
+	"Actions": [
+		{
+			"MacroActionType": "Comment",
+			"Title": "On Menu Bar Display",
+			"IsDisclosed": false,
+			"StyledText": "\n\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\tcnRmZAAAAAADAAAAAgAA\n\t\t\t\t\t\t\tAAcAAABUWFQucnRmAQAA\n\t\t\t\t\t\t\tAC7ICAAAKwAAAAEAAADA\n\t\t\t\t\t\t\tCAAAe1xydGYxXGFuc2lc\n\t\t\t\t\t\t\tYW5zaWNwZzEyNTJcY29j\n\t\t\t\t\t\t\tb2FydGYyODE4Clxjb2Nv\n\t\t\t\t\t\t\tYXRleHRzY2FsaW5nMFxj\n\t\t\t\t\t\t\tb2NvYXBsYXRmb3JtMHtc\n\t\t\t\t\t\t\tZm9udHRibFxmMFxmbmls\n\t\t\t\t\t\t\tXGZjaGFyc2V0MCBIZWx2\n\t\t\t\t\t\t\tZXRpY2FOZXVlO30Ke1xj\n\t\t\t\t\t\t\tb2xvcnRibDtccmVkMjU1\n\t\t\t\t\t\t\tXGdyZWVuMjU1XGJsdWUy\n\t\t\t\t\t\t\tNTU7fQp7XCpcZXhwYW5k\n\t\t\t\t\t\t\tZWRjb2xvcnRibDs7fQp7\n\t\t\t\t\t\t\tXCpcbGlzdHRhYmxle1xs\n\t\t\t\t\t\t\taXN0XGxpc3R0ZW1wbGF0\n\t\t\t\t\t\t\tZWlkMVxsaXN0aHlicmlk\n\t\t\t\t\t\t\te1xsaXN0bGV2ZWxcbGV2\n\t\t\t\t\t\t\tZWxuZmMyM1xsZXZlbG5m\n\t\t\t\t\t\t\tY24yM1xsZXZlbGpjMFxs\n\t\t\t\t\t\t\tZXZlbGpjbjBcbGV2ZWxm\n\t\t\t\t\t\t\tb2xsb3cwXGxldmVsc3Rh\n\t\t\t\t\t\t\tcnRhdDFcbGV2ZWxzcGFj\n\t\t\t\t\t\t\tZTM2MFxsZXZlbGluZGVu\n\t\t\t\t\t\t\tdDB7XCpcbGV2ZWxtYXJr\n\t\t\t\t\t\t\tZXIgXHtkaXNjXH19e1xs\n\t\t\t\t\t\t\tZXZlbHRleHRcbGV2ZWx0\n\t\t\t\t\t\t\tZW1wbGF0ZWlkMVwnMDFc\n\t\t\t\t\t\t\tdWMwXHU4MjI2IDt9e1xs\n\t\t\t\t\t\t\tZXZlbG51bWJlcnM7fVxm\n\t\t\t\t\t\t\taS0zNjBcbGk3MjBcbGlu\n\t\t\t\t\t\t\tNzIwIH17XGxpc3RuYW1l\n\t\t\t\t\t\t\tIDt9XGxpc3RpZDF9Cntc\n\t\t\t\t\t\t\tbGlzdFxsaXN0dGVtcGxh\n\t\t\t\t\t\t\tdGVpZDJcbGlzdGh5YnJp\n\t\t\t\t\t\t\tZHtcbGlzdGxldmVsXGxl\n\t\t\t\t\t\t\tdmVsbmZjMFxsZXZlbG5m\n\t\t\t\t\t\t\tY24wXGxldmVsamMwXGxl\n\t\t\t\t\t\t\tdmVsamNuMFxsZXZlbGZv\n\t\t\t\t\t\t\tbGxvdzBcbGV2ZWxzdGFy\n\t\t\t\t\t\t\tdGF0MVxsZXZlbHNwYWNl\n\t\t\t\t\t\t\tMzYwXGxldmVsaW5kZW50\n\t\t\t\t\t\t\tMHtcKlxsZXZlbG1hcmtl\n\t\t\t\t\t\t\tciBce2RlY2ltYWxcfX17\n\t\t\t\t\t\t\tXGxldmVsdGV4dFxsZXZl\n\t\t\t\t\t\t\tbHRlbXBsYXRlaWQxMDFc\n\t\t\t\t\t\t\tJzAxXCcwMDt9e1xsZXZl\n\t\t\t\t\t\t\tbG51bWJlcnNcJzAxO31c\n\t\t\t\t\t\t\tZmktMzYwXGxpNzIwXGxp\n\t\t\t\t\t\t\tbjcyMCB9e1xsaXN0bmFt\n\t\t\t\t\t\t\tZSA7fVxsaXN0aWQyfX0K\n\t\t\t\t\t\t\te1wqXGxpc3RvdmVycmlk\n\t\t\t\t\t\t\tZXRhYmxle1xsaXN0b3Zl\n\t\t\t\t\t\t\tcnJpZGVcbGlzdGlkMVxs\n\t\t\t\t\t\t\taXN0b3ZlcnJpZGVjb3Vu\n\t\t\t\t\t\t\tdDBcbHMxfXtcbGlzdG92\n\t\t\t\t\t\t\tZXJyaWRlXGxpc3RpZDJc\n\t\t\t\t\t\t\tbGlzdG92ZXJyaWRlY291\n\t\t\t\t\t\t\tbnQwXGxzMn19ClxkZWZ0\n\t\t\t\t\t\t\tYWI3MjAKXHBhcmRccGFy\n\t\t\t\t\t\t\tZGVmdGFiNzIwXHNhMTQw\n\t\t\t\t\t\t\tXHBhcnRpZ2h0ZW5mYWN0\n\t\t\t\t\t\t\tb3IwCgpcZjBcZnMyOCBc\n\t\t\t\t\t\t\tY2YwIFxleHBuZDBcZXhw\n\t\t\t\t\t\t\tbmR0dzBca2VybmluZzAK\n\t\t\t\t\t\t\tVGhlIG1lbnUgYmFyIGRp\n\t\t\t\t\t\t\tc3BsYXkgdXBkYXRlcyB3\n\t\t\t\t\t\t\taGVuOlwKXHBhcmRcdHgy\n\t\t\t\t\t\t\tMjBcdHg3MjBccGFyZGVm\n\t\t\t\t\t\t\tdGFiNzIwXGxpNzIwXGZp\n\t\t\t\t\t\t\tLTcyMFxwYXJ0aWdodGVu\n\t\t\t\t\t\t\tZmFjdG9yMApcbHMxXGls\n\t\t\t\t\t\t\tdmwwXGNmMCBca2Vybmlu\n\t\t\t\t\t\t\tZzFcZXhwbmQwXGV4cG5k\n\t\t\t\t\t\t\tdHcwIHtcbGlzdHRleHQJ\n\t\t\t\t\t\t\tXHVjMFx1ODIyNiAJfVxl\n\t\t\t\t\t\t\teHBuZDBcZXhwbmR0dzBc\n\t\t\t\t\t\t\ta2VybmluZzAKQW4gQWN0\n\t\t\t\t\t\t\taW9uIE1vZGUgY2hhbmdl\n\t\t\t\t\t\t\tc1wKXGxzMVxpbHZsMFxr\n\t\t\t\t\t\t\tZXJuaW5nMVxleHBuZDBc\n\t\t\t\t\t\t\tZXhwbmR0dzAge1xsaXN0\n\t\t\t\t\t\t\tdGV4dAlcdWMwXHU4MjI2\n\t\t\t\t\t\t\tIAl9XGV4cG5kMFxleHBu\n\t\t\t\t\t\t\tZHR3MFxrZXJuaW5nMApB\n\t\t\t\t\t\t\tIG5ldyByZWNvcmRpbmcg\n\t\t\t\t\t\t\tc3RhcnRzXApcbHMxXGls\n\t\t\t\t\t\t\tdmwwXGtlcm5pbmcxXGV4\n\t\t\t\t\t\t\tcG5kMFxleHBuZHR3MCB7\n\t\t\t\t\t\t\tXGxpc3R0ZXh0CVx1YzBc\n\t\t\t\t\t\t\tdTgyMjYgCX1cZXhwbmQw\n\t\t\t\t\t\t\tXGV4cG5kdHcwXGtlcm5p\n\t\t\t\t\t\t\tbmcwClRoZSB1c2VyIGNo\n\t\t\t\t\t\t\tYW5nZXMgU1cgTW9kZSB1\n\t\t\t\t\t\t\tc2luZyB0aGUgQWxmcmVk\n\t\t\t\t\t\t\tIFdvcmtmbG93XApccGFy\n\t\t\t\t\t\t\tZFxwYXJkZWZ0YWI3MjBc\n\t\t\t\t\t\t\tcGFydGlnaHRlbmZhY3Rv\n\t\t\t\t\t\t\tcjAKXGNmMCBcClxwYXJk\n\t\t\t\t\t\t\tXHBhcmRlZnRhYjcyMFxz\n\t\t\t\t\t\t\tYTE0MFxwYXJ0aWdodGVu\n\t\t\t\t\t\t\tZmFjdG9yMApcY2YwIFRo\n\t\t\t\t\t\t\tZSBBbGZyZWQgV29ya2Zs\n\t\t\t\t\t\t\tb3cgYWxzbyBoYXMgYSBo\n\t\t\t\t\t\t\tZWxwZXIgdG9vbCBjYWxs\n\t\t\t\t\t\t\tZWQgY29weVNlbGVjdC4g\n\t\t\t\t\t\t\tVGhpcyB0b29sIHVwZGF0\n\t\t\t\t\t\t\tZXMgdGhlIG1lbnUgYmFy\n\t\t\t\t\t\t\tIGlmIHRoZXJlJ3Mgc2Vs\n\t\t\t\t\t\t\tZWN0ZWQgdGV4dCB3aGVu\n\t\t\t\t\t\t\tIHJlY29yZGluZyBzdGFy\n\t\t\t\t\t\t\tdHMuIFRoaXMgc2hvd3Mg\n\t\t\t\t\t\t\tdGhhdCBTVyBjYW4gdXNl\n\t\t\t\t\t\t\tIHRoZSBjb3BpZWQgdGV4\n\t\t\t\t\t\t\tdC5cCklmIHlvdSBkb24n\n\t\t\t\t\t\t\tdCBoYXZlIHRoZSBBbGZy\n\t\t\t\t\t\t\tZWQgV29ya2Zsb3cgYnV0\n\t\t\t\t\t\t\tIHN0aWxsIHdhbnQgdG8g\n\t\t\t\t\t\t\ta2VlcCB0aGUgbWVudSBi\n\t\t\t\t\t\t\tYXIgdXBkYXRlZCB3aXRo\n\t\t\t\t\t\t\tIHRoZSBjdXJyZW50IFNX\n\t\t\t\t\t\t\tIE1vZGUgKHdpdGhvdXQg\n\t\t\t\t\t\t\td2FpdGluZyB0byBzdGFy\n\t\t\t\t\t\t\tdCByZWNvcmRpbmcsIGFz\n\t\t\t\t\t\t\tIGl0IGRvZXMgYnkgZGVm\n\t\t\t\t\t\t\tYXVsdCksIHlvdSBoYXZl\n\t\t\t\t\t\t\tIGEgZmV3IG9wdGlvbnM6\n\t\t\t\t\t\t\tXApccGFyZFx0eDIyMFx0\n\t\t\t\t\t\t\teDcyMFxwYXJkZWZ0YWI3\n\t\t\t\t\t\t\tMjBcbGk3MjBcZmktNzIw\n\t\t\t\t\t\t\tXHBhcnRpZ2h0ZW5mYWN0\n\t\t\t\t\t\t\tb3IwClxsczJcaWx2bDBc\n\t\t\t\t\t\t\tY2YwIFxrZXJuaW5nMVxl\n\t\t\t\t\t\t\teHBuZDBcZXhwbmR0dzAg\n\t\t\t\t\t\t\te1xsaXN0dGV4dAkxCX1c\n\t\t\t\t\t\t\tZXhwbmQwXGV4cG5kdHcw\n\t\t\t\t\t\t\tXGtlcm5pbmcwClJ1biB0\n\t\t\t\t\t\t\taGlzIG1hY3JvIGF0IHNl\n\t\t\t\t\t\t\tdCB0aW1lc1wKXGxzMlxp\n\t\t\t\t\t\t\tbHZsMFxrZXJuaW5nMVxl\n\t\t\t\t\t\t\teHBuZDBcZXhwbmR0dzAg\n\t\t\t\t\t\t\te1xsaXN0dGV4dAkyCX1c\n\t\t\t\t\t\t\tZXhwbmQwXGV4cG5kdHcw\n\t\t\t\t\t\t\tXGtlcm5pbmcwClRyaWdn\n\t\t\t\t\t\t\tZXIgdGhlIG1hY3JvIHJp\n\t\t\t\t\t\t\tZ2h0IGFmdGVyIGEgbW9k\n\t\t\t\t\t\t\tZSBjaGFuZ2UgKHlvdSBj\n\t\t\t\t\t\t\tYW4gYXV0b21hdGUgdGhp\n\t\t\t\t\t\t\tcyBieSB1c2luZyBhIFN1\n\t\t\t\t\t\t\tcGVyV2hpc3BlciBkZWVw\n\t\t\t\t\t\t\tIGxpbmsgdG8gc3dpdGNo\n\t\t\t\t\t\t\tIG1vZGVzKX0BAAAAIwAA\n\t\t\t\t\t\t\tAAEAAAAHAAAAVFhULnJ0\n\t\t\t\t\t\t\tZhAAAACyXSJntgEAAAAA\n\t\t\t\t\t\t\tAAAAAAAA\n\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\t",
+			"ActionUID": 15554825
+		},
+		{
+			"MacroActionType": "Semaphore",
+			"ActionName": "Run only one instance of this macro at the time",
+			"ActionUID": 15549955,
+			"IsDisclosed": false,
+			"TimeOutAbortsMacro": true,
+			"SemaphoreName": "swMode",
+			"SemaphoreAction": "Lock"
+		},
+		{
+			"MacroActionType": "IfThenElse",
+			"ActionName": "Display copySelect IF recording has started (Action Trigger) or wipe copySelect directly from Alfred (after delay)",
+			"ActionUID": 15549985,
+			"IsDisclosed": false,
+			"ElseActions": [],
+			"TimeOutAbortsMacro": true,
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"ConditionType": "Text",
+						"TextValue": "getCopySelect",
+						"Text": "%TriggerValue%",
+						"TextConditionType": "Is"
+					}
+				]
+			},
+			"ElseActionListDisclosed": false,
+			"ThenActions": [
+				{
+					"MacroActionType": "SetVariableToText",
+					"Variable": "localCopySelect",
+					"Text": "%Variable%sw_copySelect%",
+					"ActionUID": 15549986
+				}
+			]
+		},
+		{
+			"MacroActionType": "IfThenElse",
+			"ActionName": "Display Action Mode if one is active, or clear if not",
+			"ActionUID": 15540444,
+			"IsDisclosed": false,
+			"ElseActions": [
+				{
+					"MacroActionType": "SetVariableToText",
+					"IsDisclosed": false,
+					"Variable": "localAMode",
+					"Text": "",
+					"ActionUID": 15549979
+				}
+			],
+			"TimeOutAbortsMacro": true,
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"ConditionType": "Variable",
+						"VariableValue": "",
+						"Variable": "sw_actionMode",
+						"VariableConditionType": "IsNot"
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "IfThenElse",
+					"ActionUID": 15549974,
+					"ThenActionListDisclosed": false,
+					"TimeOutAbortsMacro": true,
+					"ElseActions": [
+						{
+							"MacroActionType": "IfThenElse",
+							"ElseActions": [
+								{
+									"MacroActionType": "SetVariableToText",
+									"Variable": "localAMode",
+									"Text": "𓇬 ",
+									"ActionUID": 15582966
+								}
+							],
+							"Conditions": {
+								"ConditionListMatch": "All",
+								"ConditionList": [
+									{
+										"ConditionType": "Variable",
+										"VariableValue": "pasteChat",
+										"Variable": "sw_actionMode",
+										"VariableConditionType": "Is"
+									}
+								]
+							},
+							"ThenActions": [
+								{
+									"MacroActionType": "SetVariableToText",
+									"Variable": "localAMode",
+									"Text": "⇄ ",
+									"ActionUID": 15582967
+								}
+							],
+							"TimeOutAbortsMacro": true,
+							"ActionUID": 15582965
+						}
+					],
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"ConditionType": "Variable",
+								"VariableValue": "pasteResult",
+								"Variable": "sw_actionMode",
+								"VariableConditionType": "Is"
+							}
+						]
+					},
+					"ThenActions": [
+						{
+							"MacroActionType": "SetVariableToText",
+							"Variable": "localAMode",
+							"Text": "⏎ ",
+							"ActionUID": 15549976
+						}
+					]
+				}
+			]
+		},
+		{
+			"MacroActionType": "ExecuteAppleScript",
+			"ActionName": "Grab Active Mode from SW Menu",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"Variable": "localPreMenuBar",
+			"IncludeStdErr": false,
+			"ActionUID": 15532861,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "Variable",
+			"IsDisclosed": false,
+			"HonourFailureSettings": true,
+			"Text": "tell application \"System Events\"\r\ttell process \"superwhisper\"\r\t\tset menuItemName to name of menu item 7 of menu \"superwhisper\" of menu bar item 1 of menu bar 2\r\tend tell\n\treturn menuItemName\rend tell"
+		},
+		{
+			"MacroActionType": "SearchReplace",
+			"ActionName": "Clean up parentheses from active mode from SW Menu",
+			"Source": "Variable",
+			"Variable": "localPreMenuBar",
+			"Action": "IgnoreCaseRegEx",
+			"Replace": "",
+			"ActionUID": 15538466,
+			"DestinationVariable": "sw_currentMode",
+			"Search": "\\s*\\([^()]*\\)(?=[^()]*$)",
+			"IsDisclosed": false,
+			"Destination": "Variable",
+			"Which": "All"
+		},
+		{
+			"MacroActionType": "SetVariableToText",
+			"ActionName": "Prepare content that will be displayed on menu bar",
+			"IsDisclosed": false,
+			"Variable": "sw_menubar",
+			"Text": "%Variable%localCopySelect%%Variable%localAMode%%Variable%sw_currentMode%",
+			"ActionUID": 15572583
+		},
+		{
+			"MacroActionType": "Semaphore",
+			"IsDisclosed": false,
+			"SemaphoreAction": "Unlock",
+			"SemaphoreName": "swMode",
+			"ActionUID": 15549956
+		}
+	],
+	"Name": "SW Menu Bar",
+	"CustomIconData": "KMEC=Rounded=KMCOLOR:0,0,255,0=📎=86=0=0=1=KMCOLOR:0,0,0,255"
+}

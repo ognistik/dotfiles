@@ -1,0 +1,32 @@
+{
+	"CreationDate": 737919384.993058,
+	"UID": "0094B127-17A2-4CD8-A38B-FD6D322D082C",
+	"Name": "BTT ArcNTabGo",
+	"Triggers": [
+		{
+			"KeyCode": 0,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 6656,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 737919398.802058,
+	"Actions": [
+		{
+			"MacroActionType": "ExecuteAppleScript",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"IncludeStdErr": false,
+			"ActionUID": 15473318,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "None",
+			"HonourFailureSettings": true,
+			"Text": "tell application \"BetterTouchTool\"\n    trigger_named \"ArcNTabGo\"\nend tell"
+		}
+	]
+}

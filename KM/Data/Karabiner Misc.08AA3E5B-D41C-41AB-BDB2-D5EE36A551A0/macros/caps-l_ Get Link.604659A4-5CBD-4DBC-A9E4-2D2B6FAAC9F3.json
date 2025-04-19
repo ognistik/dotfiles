@@ -1,0 +1,223 @@
+{
+	"CreationDate": 740699187.909016,
+	"UID": "604659A4-5CBD-4DBC-A9E4-2D2B6FAAC9F3",
+	"Name": "caps-l: Get Link",
+	"Triggers": [
+		{
+			"KeyCode": 6,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 6656,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 765379504.010786,
+	"Actions": [
+		{
+			"MacroActionType": "IfThenElse",
+			"ElseActions": [
+				{
+					"MacroActionType": "IfThenElse",
+					"ElseActions": [
+						{
+							"MacroActionType": "IfThenElse",
+							"ElseActions": [
+								{
+									"MacroActionType": "IfThenElse",
+									"ElseActions": [
+										{
+											"MacroActionType": "IfThenElse",
+											"ElseActions": [
+												{
+													"MacroActionType": "IfThenElse",
+													"ElseActions": [],
+													"Conditions": {
+														"ConditionListMatch": "All",
+														"ConditionList": [
+															{
+																"Application": {
+																	"BundleIdentifier": "com.lukilabs.lukiapp",
+																	"Name": "Craft",
+																	"NewFile": "/Applications/Craft.app"
+																},
+																"ApplicationConditionType": "Active",
+																"ConditionType": "Application"
+															}
+														]
+													},
+													"ThenActions": [
+														{
+															"MacroActionType": "SelectMenuItem",
+															"TargetingType": "Front",
+															"TargetApplication": {},
+															"Menu": [
+																"File",
+																"Copy Deeplink"
+															],
+															"ActionUID": 15606375
+														}
+													],
+													"TimeOutAbortsMacro": true,
+													"ActionUID": 15606373
+												}
+											],
+											"Conditions": {
+												"ConditionListMatch": "All",
+												"ConditionList": [
+													{
+														"Application": {
+															"BundleIdentifier": "com.bloombuilt.dayone-mac",
+															"Name": "Day One",
+															"NewFile": "/Applications/Day One.app"
+														},
+														"ApplicationConditionType": "Active",
+														"ConditionType": "Application"
+													}
+												]
+											},
+											"ThenActions": [
+												{
+													"MacroActionType": "ExecuteMacro",
+													"UseParameter": false,
+													"MacroUID": "04D8AC08-52C3-4E11-8694-D346942624C6",
+													"TimeOutAbortsMacro": true,
+													"Asynchronously": false,
+													"ActionUID": 15497025
+												}
+											],
+											"TimeOutAbortsMacro": true,
+											"ActionUID": 15497023
+										}
+									],
+									"Conditions": {
+										"ConditionListMatch": "All",
+										"ConditionList": [
+											{
+												"Application": {
+													"BundleIdentifier": "company.thebrowser.Browser",
+													"Name": "Arc",
+													"NewFile": "/Applications/Arc.app"
+												},
+												"ApplicationConditionType": "Active",
+												"ConditionType": "Application"
+											}
+										]
+									},
+									"ThenActions": [
+										{
+											"MacroActionType": "SelectMenuItem",
+											"TargetingType": "Front",
+											"TargetApplication": {},
+											"Menu": [
+												"Edit",
+												"Copy URL"
+											],
+											"ActionUID": 15497022
+										}
+									],
+									"TimeOutAbortsMacro": true,
+									"ActionUID": 15497020
+								}
+							],
+							"Conditions": {
+								"ConditionListMatch": "All",
+								"ConditionList": [
+									{
+										"Application": {
+											"BundleIdentifier": "com.apple.Safari",
+											"Name": "Safari",
+											"NewFile": "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
+										},
+										"ApplicationConditionType": "Active",
+										"ConditionType": "Application"
+									}
+								]
+							},
+							"ThenActions": [
+								{
+									"MacroActionType": "ExecuteAppleScript",
+									"IncludedVariables": [
+										"9999"
+									],
+									"TrimResults": true,
+									"IncludeStdErr": false,
+									"ActionUID": 15497019,
+									"UseText": true,
+									"TrimResultsNew": true,
+									"TimeOutAbortsMacro": true,
+									"Path": "",
+									"DisplayKind": "None",
+									"HonourFailureSettings": true,
+									"Text": "tell application \"Safari\"\n\tset theURL to URL of current tab of window 1\nend tell\nset the clipboard to theURL"
+								}
+							],
+							"TimeOutAbortsMacro": true,
+							"ActionUID": 15497017
+						}
+					],
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"Application": {
+									"BundleIdentifier": "net.shinyfrog.bear",
+									"Name": "Bear",
+									"NewFile": "/Applications/Bear.app"
+								},
+								"ApplicationConditionType": "Active",
+								"ConditionType": "Application"
+							}
+						]
+					},
+					"ThenActions": [
+						{
+							"MacroActionType": "SelectMenuItem",
+							"TargetingType": "Front",
+							"TargetApplication": {},
+							"Menu": [
+								"Note",
+								"Copy Link"
+							],
+							"ActionUID": 15497016
+						}
+					],
+					"TimeOutAbortsMacro": true,
+					"ActionUID": 15497015
+				}
+			],
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"Application": {
+							"BundleIdentifier": "com.apple.mail",
+							"Name": "Mail",
+							"NewFile": "/System/Applications/Mail.app"
+						},
+						"ApplicationConditionType": "Active",
+						"ConditionType": "Application"
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "ExecuteAppleScript",
+					"IncludedVariables": [
+						"9999"
+					],
+					"TrimResults": true,
+					"IncludeStdErr": false,
+					"ActionUID": 15497014,
+					"UseText": true,
+					"TrimResultsNew": true,
+					"TimeOutAbortsMacro": true,
+					"Path": "",
+					"DisplayKind": "None",
+					"HonourFailureSettings": true,
+					"Text": "tell application \"Mail\"\n    set selectedMessages to selection\n    set theMessage to item 1 of selectedMessages\n    set messageid to message id of theMessage\n    -- Make URL (must use URL-encoded values for \"<\" and \">\")\n    set theURL to \"message://\" & \"%3c\" & messageid & \"%3e\"\nend tell\nset the clipboard to theURL"
+				}
+			],
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 15497013
+		}
+	]
+}

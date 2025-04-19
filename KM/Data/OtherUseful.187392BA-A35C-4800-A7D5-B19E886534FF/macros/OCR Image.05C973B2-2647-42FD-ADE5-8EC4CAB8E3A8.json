@@ -1,0 +1,22 @@
+{
+	"UID": "05C973B2-2647-42FD-ADE5-8EC4CAB8E3A8",
+	"CreationDate": 572773886.764029,
+	"ModificationDate": 572777192.364392,
+	"Triggers": [
+		{
+			"MacroTriggerType": "ClipboardFilter"
+		}
+	],
+	"IsActive": false,
+	"Actions": [
+		{
+			"MacroActionType": "OCRImage",
+			"DisplayKind": "Clipboard",
+			"TimeOutAbortsMacro": true,
+			"ImageSource": "TriggerClipboard",
+			"Language": "Languages/eng",
+			"ActionUID": 7
+		}
+	],
+	"Name": "OCR Image"
+}

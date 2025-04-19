@@ -1,0 +1,35 @@
+{
+	"CreationDate": 706628617.589802,
+	"UID": "0C7154AC-DF11-4A50-BA9E-349F7F1492A6",
+	"Name": "Google Selection as Unpinned in BG",
+	"Triggers": [],
+	"ModificationDate": 754188874.979095,
+	"Actions": [
+		{
+			"MacroActionType": "SimulateKeystroke",
+			"ActionUID": 504538,
+			"ReleaseAll": false,
+			"TargetApplication": {},
+			"TargetingType": "Front",
+			"KeyCode": 8,
+			"Modifiers": 256
+		},
+		{
+			"MacroActionType": "Filter",
+			"DestinationVariable": "localEncoded",
+			"Source": "Clipboard",
+			"Action": "PercentEncodeForURL",
+			"Destination": "Variable",
+			"ActionUID": 504540
+		},
+		{
+			"MacroActionType": "ExecuteMacro",
+			"MacroUID": "F4B0C95F-7E3C-4312-87AB-F81CCCB9C98D",
+			"ActionUID": 15562953,
+			"TimeOutAbortsMacro": true,
+			"Parameter": "https://www.google.com/search?q=%localEncoded%",
+			"UseParameter": true,
+			"Asynchronously": false
+		}
+	]
+}

@@ -1,0 +1,34 @@
+{
+	"CreationDate": 741116854.392514,
+	"UID": "C5C363E6-43A6-400C-A5F7-08C94745B2C9",
+	"Name": "CenterAlerts",
+	"Triggers": [],
+	"ModificationDate": 763317084.441341,
+	"Actions": [
+		{
+			"MacroActionType": "Comment",
+			"Title": "What?",
+			"IsDisclosed": false,
+			"StyledText": "\n\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\tcnRmZAAAAAADAAAAAgAA\n\t\t\t\t\t\t\tAAcAAABUWFQucnRmAQAA\n\t\t\t\t\t\t\tAC74AQAAKwAAAAEAAADw\n\t\t\t\t\t\t\tAQAAe1xydGYxXGFuc2lc\n\t\t\t\t\t\t\tYW5zaWNwZzEyNTJcY29j\n\t\t\t\t\t\t\tb2FydGYyODIxClxjb2Nv\n\t\t\t\t\t\t\tYXRleHRzY2FsaW5nMFxj\n\t\t\t\t\t\t\tb2NvYXBsYXRmb3JtMHtc\n\t\t\t\t\t\t\tZm9udHRibFxmMFxmc3dp\n\t\t\t\t\t\t\tc3NcZmNoYXJzZXQwIEhl\n\t\t\t\t\t\t\tbHZldGljYTt9CntcY29s\n\t\t\t\t\t\t\tb3J0Ymw7XHJlZDI1NVxn\n\t\t\t\t\t\t\tcmVlbjI1NVxibHVlMjU1\n\t\t\t\t\t\t\tO1xyZWQwXGdyZWVuMFxi\n\t\t\t\t\t\t\tbHVlMDt9CntcKlxleHBh\n\t\t\t\t\t\t\tbmRlZGNvbG9ydGJsOztc\n\t\t\t\t\t\t\tY3NzcmdiXGMwXGMwXGMw\n\t\t\t\t\t\t\tXGM4NDcwNlxjbmFtZSBj\n\t\t\t\t\t\t\tb250cm9sVGV4dENvbG9y\n\t\t\t\t\t\t\tO30KXHBhcmRcdHg1NjBc\n\t\t\t\t\t\t\tdHgxMTIwXHR4MTY4MFx0\n\t\t\t\t\t\t\teDIyNDBcdHgyODAwXHR4\n\t\t\t\t\t\t\tMzM2MFx0eDM5MjBcdHg0\n\t\t\t\t\t\t\tNDgwXHR4NTA0MFx0eDU2\n\t\t\t\t\t\t\tMDBcdHg2MTYwXHR4Njcy\n\t\t\t\t\t\t\tMFxwYXJkaXJuYXR1cmFs\n\t\t\t\t\t\t\tXHBhcnRpZ2h0ZW5mYWN0\n\t\t\t\t\t\t\tb3IwCgpcZjBcZnMyNiBc\n\t\t\t\t\t\t\tY2YyIFRoaXMgbWFjcm8g\n\t\t\t\t\t\t\tY2VudGVycyBhbGVydHMg\n\t\t\t\t\t\t\tZnJvbSBrZXlib2FyZCBt\n\t\t\t\t\t\t\tYWVzdHJvLiBJdCBoYXMg\n\t\t\t\t\t\t\tdG8gYmUgdHJpZ2dlcmVk\n\t\t\t\t\t\t\tIGp1c3QgYmVmb3JlIGFu\n\t\t\t\t\t\t\tIGFsZXJ0IGFjdGlvbiBh\n\t\t\t\t\t\t\tbmQgYXN5bmNocm9ub3Vz\n\t\t\t\t\t\t\tbHkufQEAAAAjAAAAAQAA\n\t\t\t\t\t\t\tAAcAAABUWFQucnRmEAAA\n\t\t\t\t\t\t\tANgTz2e2AQAAAAAAAAAA\n\t\t\t\t\t\t\tAAA=\n\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\t",
+			"ActionUID": 15587302
+		},
+		{
+			"MacroActionType": "ManipulateWindow",
+			"TargetApplication": {
+				"BundleIdentifier": "com.stairways.keyboardmaestro.engine",
+				"Name": "Keyboard Maestro Engine",
+				"NewFile": "/Applications/Keyboard Maestro.app/Contents/MacOS/Keyboard Maestro Engine.app"
+			},
+			"WindowName": "",
+			"HorizontalExpression": "SCREENVISIBLE(Front,MidX)",
+			"TargetingType": "Specific",
+			"Action": "CenterWindowAt",
+			"ActionUID": 15508116,
+			"VerticalExpression": "SCREENVISIBLE(Front,MidY)-100",
+			"WidthExpression": "300",
+			"Targeting": "FrontWindow",
+			"HeightExpression": "300",
+			"WindowIndexExpression": "2"
+		}
+	]
+}

@@ -1,0 +1,77 @@
+{
+	"CreationDate": 741059501.184532,
+	"UID": "6B5DA5AE-54A1-46AE-96FF-487857836654",
+	"Name": "Quit App",
+	"Triggers": [
+		{
+			"KeyCode": 9,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 6656,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 741113214.572298,
+	"Actions": [
+		{
+			"MacroActionType": "Semaphore",
+			"ActionUID": 15507725,
+			"TimeOutAbortsMacro": true,
+			"TimeOutPeriod": 0.01,
+			"SemaphoreName": "BMRepeat",
+			"NotifyOnTimeOut": false,
+			"SemaphoreAction": "Lock"
+		},
+		{
+			"MacroActionType": "IfThenElse",
+			"ElseActions": [
+				{
+					"MacroActionType": "QuitSpecificApp",
+					"Application": {},
+					"TimeOutAbortsMacro": true,
+					"Target": "Front",
+					"Action": "Quit",
+					"ActionUID": 15507724
+				}
+			],
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"Application": {
+							"BundleIdentifier": "com.apple.finder",
+							"Name": "Finder",
+							"NewFile": "/System/Library/CoreServices/Finder.app"
+						},
+						"ApplicationConditionType": "Active",
+						"ConditionType": "Application"
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "SimulateKeystroke",
+					"ActionUID": 15507723,
+					"ReleaseAll": false,
+					"TargetApplication": {},
+					"TargetingType": "Front",
+					"KeyCode": 51,
+					"Modifiers": 256
+				}
+			],
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 15505356
+		},
+		{
+			"MacroActionType": "Pause",
+			"TimeOutAbortsMacro": true,
+			"Time": "1.5",
+			"ActionUID": 15505353
+		},
+		{
+			"MacroActionType": "Semaphore",
+			"SemaphoreAction": "Unlock",
+			"SemaphoreName": "BMRepeat",
+			"ActionUID": 15507726
+		}
+	]
+}

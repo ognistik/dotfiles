@@ -1,0 +1,16 @@
+{
+	"CreationDate": 765820989.779685,
+	"UID": "AA4ADA4D-B996-4865-8F6E-A4916578FB34",
+	"Name": "Open: Voice Memos Folder",
+	"Triggers": [],
+	"ModificationDate": 765821208.401779,
+	"Actions": [
+		{
+			"MacroActionType": "OpenURL",
+			"TimeOutAbortsMacro": true,
+			"URL": "file:///Users/ognistik/Library/Group%20Containers/group.com.apple.VoiceMemos.shared/Recordings",
+			"IsDefaultApplication": true,
+			"ActionUID": 15608349
+		}
+	]
+}

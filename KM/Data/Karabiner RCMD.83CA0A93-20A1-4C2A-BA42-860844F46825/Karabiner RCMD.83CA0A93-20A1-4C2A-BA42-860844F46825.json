@@ -1,0 +1,18 @@
+{
+	"AddToMacroPalette": false,
+	"AddToStatusMenu": false,
+	"CreationDate": 739990299.282503,
+	"Modifiers": 0,
+	"PaletteUnderMouse": false,
+	"Name": "Karabiner RCMD",
+	"UID": "83CA0A93-20A1-4C2A-BA42-860844F46825",
+	"Targeting": {
+		"Targeting": "All",
+		"TargetingApps": []
+	},
+	"Macros": [],
+	"ToggleMacroUID": "28954EB2-BC6A-46F3-BFEB-4AEE14E675C7",
+	"Activate": "Normal",
+	"KeyCode": 32767,
+	"DisplayToggle": false
+}

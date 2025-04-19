@@ -1,0 +1,14 @@
+{
+	"CreationDate": 740015413.462933,
+	"UID": "34D0FEA1-080E-4182-859B-FAD281D93F71",
+	"Name": "- rcmd quit: All",
+	"Triggers": [],
+	"ModificationDate": 741224200.24746,
+	"Actions": [
+		{
+			"MacroActionType": "QuitAll",
+			"ActionUID": 15481751,
+			"HonorExcluded": true
+		}
+	]
+}

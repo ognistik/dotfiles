@@ -1,0 +1,25 @@
+{
+	"CreationDate": 766779209.889741,
+	"UID": "43BBC9F4-AE6B-4033-8342-6EC658B221AD",
+	"Name": "Style: Focus",
+	"Triggers": [
+		{
+			"KeyCode": 3,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 2048,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 766779223.905608,
+	"Actions": [
+		{
+			"MacroActionType": "SimulateKeystroke",
+			"ActionUID": 15614063,
+			"ReleaseAll": false,
+			"TargetApplication": {},
+			"TargetingType": "Front",
+			"KeyCode": 42,
+			"Modifiers": 768
+		}
+	]
+}

@@ -1,0 +1,48 @@
+{
+	"CreationDate": 739589728.599157,
+	"UID": "99F8F0C7-4D64-4666-9E9B-7866C5621F1A",
+	"Name": "Dropover",
+	"Triggers": [
+		{
+			"Application": {
+				"BundleIdentifier": "me.damir.dropover-mac",
+				"Name": "Dropover",
+				"NewFile": "/Applications/Dropover.app"
+			},
+			"FireType2": "Quit",
+			"RepeatTime": 60,
+			"Target": "Specific",
+			"MacroTriggerType": "Application"
+		}
+	],
+	"ModificationDate": 739674525.29034,
+	"Actions": [
+		{
+			"MacroActionType": "Notification",
+			"Title": "Dropover Closed",
+			"SoundName": "",
+			"Subtitle": "",
+			"Text": "Dropover Quit. It will open in 5 seconds unless you cancel all Macros with ALT + ESC",
+			"ActionUID": 15478862
+		},
+		{
+			"MacroActionType": "Pause",
+			"TimeOutAbortsMacro": true,
+			"Time": "5",
+			"ActionUID": 15478863
+		},
+		{
+			"MacroActionType": "ActivateApplication",
+			"ActionUID": 15478864,
+			"ReopenWindows": false,
+			"AllWindows": false,
+			"TimeOutAbortsMacro": true,
+			"AlreadyActivatedActionType": "Normal",
+			"Application": {
+				"BundleIdentifier": "me.damir.dropover-mac",
+				"Name": "Dropover",
+				"NewFile": "/Applications/Dropover.app"
+			}
+		}
+	]
+}

@@ -1,0 +1,53 @@
+{
+	"CreationDate": 737918737.938612,
+	"UID": "DE523ED1-BCEC-4A40-80C6-33CFBC6781E1",
+	"Name": "BTT Play Pause",
+	"Triggers": [
+		{
+			"KeyCode": 15,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 6656,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 741113165.364125,
+	"Actions": [
+		{
+			"MacroActionType": "Semaphore",
+			"ActionUID": 15507721,
+			"TimeOutAbortsMacro": true,
+			"TimeOutPeriod": 0.01,
+			"SemaphoreName": "BMRepeat",
+			"NotifyOnTimeOut": false,
+			"SemaphoreAction": "Lock"
+		},
+		{
+			"MacroActionType": "ExecuteAppleScript",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"IncludeStdErr": false,
+			"ActionUID": 15473313,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "None",
+			"HonourFailureSettings": true,
+			"Text": "tell application \"BetterTouchTool\"\n    trigger_named \"PlayPause\"\nend tell"
+		},
+		{
+			"MacroActionType": "Pause",
+			"TimeOutAbortsMacro": true,
+			"Time": "1.5",
+			"ActionUID": 15505752
+		},
+		{
+			"MacroActionType": "Semaphore",
+			"SemaphoreAction": "Unlock",
+			"SemaphoreName": "BMRepeat",
+			"ActionUID": 15507722
+		}
+	]
+}

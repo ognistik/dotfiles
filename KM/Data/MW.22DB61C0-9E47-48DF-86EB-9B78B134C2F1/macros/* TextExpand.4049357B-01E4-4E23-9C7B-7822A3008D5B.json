@@ -1,0 +1,179 @@
+{
+	"UID": "4049357B-01E4-4E23-9C7B-7822A3008D5B",
+	"CreationDate": 751740389.643209,
+	"ModificationDate": 766548482.444176,
+	"Triggers": [],
+	"Actions": [
+		{
+			"MacroActionType": "Comment",
+			"Title": "About",
+			"IsDisclosed": false,
+			"StyledText": "\n\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\tcnRmZAAAAAADAAAAAgAA\n\t\t\t\t\t\t\tAAcAAABUWFQucnRmAQAA\n\t\t\t\t\t\t\tAC4fAgAAKwAAAAEAAAAX\n\t\t\t\t\t\t\tAgAAe1xydGYxXGFuc2lc\n\t\t\t\t\t\t\tYW5zaWNwZzEyNTJcY29j\n\t\t\t\t\t\t\tb2FydGYyODIyClxjb2Nv\n\t\t\t\t\t\t\tYXRleHRzY2FsaW5nMFxj\n\t\t\t\t\t\t\tb2NvYXBsYXRmb3JtMHtc\n\t\t\t\t\t\t\tZm9udHRibFxmMFxmc3dp\n\t\t\t\t\t\t\tc3NcZmNoYXJzZXQwIEhl\n\t\t\t\t\t\t\tbHZldGljYTt9CntcY29s\n\t\t\t\t\t\t\tb3J0Ymw7XHJlZDI1NVxn\n\t\t\t\t\t\t\tcmVlbjI1NVxibHVlMjU1\n\t\t\t\t\t\t\tO1xyZWQwXGdyZWVuMFxi\n\t\t\t\t\t\t\tbHVlMDt9CntcKlxleHBh\n\t\t\t\t\t\t\tbmRlZGNvbG9ydGJsOztc\n\t\t\t\t\t\t\tY3NzcmdiXGMwXGMwXGMw\n\t\t\t\t\t\t\tXGM4NDcwNlxjbmFtZSBj\n\t\t\t\t\t\t\tb250cm9sVGV4dENvbG9y\n\t\t\t\t\t\t\tO30KXHBhcmRcdHg1NjBc\n\t\t\t\t\t\t\tdHgxMTIwXHR4MTY4MFx0\n\t\t\t\t\t\t\teDIyNDBcdHgyODAwXHR4\n\t\t\t\t\t\t\tMzM2MFx0eDM5MjBcdHg0\n\t\t\t\t\t\t\tNDgwXHR4NTA0MFx0eDU2\n\t\t\t\t\t\t\tMDBcdHg2MTYwXHR4Njcy\n\t\t\t\t\t\t\tMFxwYXJkaXJuYXR1cmFs\n\t\t\t\t\t\t\tXHBhcnRpZ2h0ZW5mYWN0\n\t\t\t\t\t\t\tb3IwCgpcZjBcZnMyNiBc\n\t\t\t\t\t\t\tY2YyIFRoaXMgaXMgYW4g\n\t\t\t\t\t\t\tZXhhbXBsZSBvZiBob3cg\n\t\t\t\t\t\t\tdG8gY3JlYXRlIG1pY3Jv\n\t\t\t\t\t\t\tcyBieSB0ZXh0IGV4cGFu\n\t\t\t\t\t\t\tc2lvbiB0aGF0IGFsbG93\n\t\t\t\t\t\t\tIHRoZSB1c2VyIHRvIHBh\n\t\t\t\t\t\t\tc3RlIGRpZmZlcmVudCBy\n\t\t\t\t\t\t\tZXN1bHRzIGZyb20gdGhl\n\t\t\t\t\t\t\tIG1vc3QgcmVjZW50IGV4\n\t\t\t\t\t\t\taXN0aW5nIGludGVyYWN0\n\t\t\t\t\t\t\taW9uIHdpdGggU1cufQEA\n\t\t\t\t\t\t\tAAAjAAAAAQAAAAcAAABU\n\t\t\t\t\t\t\tWFQucnRmEAAAAJpq/We2\n\t\t\t\t\t\t\tAQAAAAAAAAAAAAA=\n\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\t",
+			"ActionUID": 15612082
+		},
+		{
+			"MacroActionType": "SetVariableToText",
+			"ActionName": "Path to Superwhisper folder - under user's home directory",
+			"ActionUID": 15612083,
+			"IsDisclosed": false,
+			"Variable": "localDir",
+			"Text": "/Documents/superwhisper",
+			"ActionColor": "Orange"
+		},
+		{
+			"MacroActionType": "ExecuteShellScript",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"Source": "Nothing",
+			"Variable": "localDir",
+			"IncludeStdErr": false,
+			"ActionUID": 15612084,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "Variable",
+			"IsDisclosed": false,
+			"HonourFailureSettings": true,
+			"Text": "#!/bin/bash\n\n# Directory path from KMVAR_localDir\ndir=\"$HOME$KMVAR_localDir/recordings\"\n\n# Check if directory exists\nif [ ! -d \"$dir\" ]; then\n    echo \"Directory does not exist\"\n    exit 1\nfi\n\n# Find the 15 most recently modified subdirectories (excluding . and ..)\nrecent_dirs=$(find \"$dir\" -mindepth 1 -maxdepth 1 -type d -print0 | xargs -0 ls -td | head -n 15)\n\n# Flag to track if valid meta.json is found\nfound=0\n\n# Iterate through recent directories\nwhile IFS= read -r folder\ndo\n    meta_path=\"$folder/meta.json\"\n    # If meta.json exists\n    if [ -f \"$meta_path\" ]; then\n        # Use grep to check if 'result' key exists and has a non-empty value\n        if grep -Eq '\"result\"[[:space:]]*:[[:space:]]*\"[^\\\"]+\"' \"$meta_path\"; then\n            echo \"$meta_path\"\n            found=1\n            break\n        fi\n    fi\ndone <<< \"$recent_dirs\"\n\n# If no valid meta.json was found\nif [ $found -eq 0 ]; then\n    echo \"No meta.json with a non-empty 'result' key found in the 15 most recent directories\"\n    exit 1\nfi"
+		},
+		{
+			"MacroActionType": "Group",
+			"ActionName": "Read JSON and assign variables",
+			"Actions": [
+				{
+					"MacroActionType": "ReadFile",
+					"IsDisclosed": false,
+					"Source": "%localDir%",
+					"Variable": "localMeta",
+					"Destination": "Variable",
+					"ActionUID": 15612086
+				},
+				{
+					"MacroActionType": "SetVariableToText",
+					"IsDisclosed": false,
+					"Variable": "localRaw",
+					"Text": "%JSONValue%localMeta.rawResult%",
+					"ActionUID": 15612087
+				},
+				{
+					"MacroActionType": "SetVariableToText",
+					"IsDisclosed": false,
+					"Variable": "localVoice",
+					"Text": "%JSONValue%localMeta.result%",
+					"ActionUID": 15612088
+				},
+				{
+					"MacroActionType": "IfThenElse",
+					"ActionName": "Set localResult - Whether there's LLM or not",
+					"ActionUID": 15612091,
+					"IsDisclosed": false,
+					"ElseActions": [
+						{
+							"MacroActionType": "SearchReplace",
+							"ActionName": "Temp solution for double temp space bug on Voice-only modes",
+							"Source": "Text",
+							"DestinationVariable": "localResult",
+							"Action": "IgnoreCaseString",
+							"Replace": ". ",
+							"ActionUID": 15612096,
+							"ActionColor": "Red",
+							"Search": ".  ",
+							"IsDisclosed": false,
+							"Destination": "Variable",
+							"Text": "%JSONValue%localMeta.result%",
+							"Which": "All"
+						},
+						{
+							"MacroActionType": "SetVariableToText",
+							"IsDisclosed": false,
+							"Variable": "localResult",
+							"Text": "%JSONValue%localMeta.result%",
+							"IsActive": false,
+							"ActionUID": 15612097
+						}
+					],
+					"ThenActionListDisclosed": false,
+					"TimeOutAbortsMacro": true,
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"ConditionType": "Text",
+								"TextValue": "",
+								"Text": "%JSONValue%localMeta.llmResult%",
+								"TextConditionType": "IsNot"
+							}
+						]
+					},
+					"ThenActions": [
+						{
+							"MacroActionType": "SetVariableToText",
+							"Variable": "localResult",
+							"Text": "%JSONValue%localMeta.llmResult%",
+							"ActionUID": 15612095
+						}
+					]
+				},
+				{
+					"MacroActionType": "IfThenElse",
+					"ActionName": "Set localPrompt",
+					"ActionUID": 15612883,
+					"IsDisclosed": false,
+					"ElseActions": [
+						{
+							"MacroActionType": "SetVariableToText",
+							"Variable": "localPrompt",
+							"Text": "%JSONValue%localMeta.prompt%",
+							"ActionUID": 15612882
+						}
+					],
+					"TimeOutAbortsMacro": true,
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"ConditionType": "Text",
+								"TextValue": "",
+								"Text": "%JSONValue%localMeta.prompt%",
+								"TextConditionType": "Is"
+							}
+						]
+					},
+					"ThenActions": [
+						{
+							"MacroActionType": "SetVariableToText",
+							"Variable": "localPrompt",
+							"Text": "[No AI Processing Found]",
+							"ActionUID": 15612884
+						}
+					]
+				}
+			],
+			"IsDisclosed": false,
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 15612085
+		},
+		{
+			"MacroActionType": "Comment",
+			"Title": "CUSTOMIZE",
+			"ActionName": "👇️ How to CUSTOMIZE 👇️",
+			"IsDisclosed": false,
+			"StyledText": "\n\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\tcnRmZAAAAAADAAAAAgAA\n\t\t\t\t\t\t\tAAcAAABUWFQucnRmAQAA\n\t\t\t\t\t\t\tAC75AgAAKwAAAAEAAADx\n\t\t\t\t\t\t\tAgAAe1xydGYxXGFuc2lc\n\t\t\t\t\t\t\tYW5zaWNwZzEyNTJcY29j\n\t\t\t\t\t\t\tb2FydGYyODIyClxjb2Nv\n\t\t\t\t\t\t\tYXRleHRzY2FsaW5nMFxj\n\t\t\t\t\t\t\tb2NvYXBsYXRmb3JtMHtc\n\t\t\t\t\t\t\tZm9udHRibFxmMFxmc3dp\n\t\t\t\t\t\t\tc3NcZmNoYXJzZXQwIEhl\n\t\t\t\t\t\t\tbHZldGljYTt9CntcY29s\n\t\t\t\t\t\t\tb3J0Ymw7XHJlZDI1NVxn\n\t\t\t\t\t\t\tcmVlbjI1NVxibHVlMjU1\n\t\t\t\t\t\t\tO1xyZWQwXGdyZWVuMFxi\n\t\t\t\t\t\t\tbHVlMDt9CntcKlxleHBh\n\t\t\t\t\t\t\tbmRlZGNvbG9ydGJsOztc\n\t\t\t\t\t\t\tY3NzcmdiXGMwXGMwXGMw\n\t\t\t\t\t\t\tXGM4NDcwNlxjbmFtZSBj\n\t\t\t\t\t\t\tb250cm9sVGV4dENvbG9y\n\t\t\t\t\t\t\tO30KXHBhcmRcdHg1NjBc\n\t\t\t\t\t\t\tdHgxMTIwXHR4MTY4MFx0\n\t\t\t\t\t\t\teDIyNDBcdHgyODAwXHR4\n\t\t\t\t\t\t\tMzM2MFx0eDM5MjBcdHg0\n\t\t\t\t\t\t\tNDgwXHR4NTA0MFx0eDU2\n\t\t\t\t\t\t\tMDBcdHg2MTYwXHR4Njcy\n\t\t\t\t\t\t\tMFxwYXJkaXJuYXR1cmFs\n\t\t\t\t\t\t\tXHBhcnRpZ2h0ZW5mYWN0\n\t\t\t\t\t\t\tb3IwCgpcZjBcZnMyNiBc\n\t\t\t\t\t\t\tY2YyIE5vdyB5b3UgaGF2\n\t\t\t\t\t\t\tZSBmb3VyIHZhcmlhYmxl\n\t\t\t\t\t\t\tcyB0aGF0IHlvdSBjYW4g\n\t\t\t\t\t\t\tdXNlIGluIGFueSB3YXkg\n\t\t\t\t\t\t\teW91IHdhbnQ6IFwKXApc\n\t\t\t\t\t\t\tcGFyZFx0eDU2MFx0eDEx\n\t\t\t\t\t\t\tMjBcdHgxNjgwXHR4MjI0\n\t\t\t\t\t\t\tMFx0eDI4MDBcdHgzMzYw\n\t\t\t\t\t\t\tXHR4MzkyMFx0eDQ0ODBc\n\t\t\t\t\t\t\tdHg1MDQwXHR4NTYwMFx0\n\t\t\t\t\t\t\teDYxNjBcdHg2NzIwXHBh\n\t\t\t\t\t\t\tcmRpcm5hdHVyYWxccGFy\n\t\t\t\t\t\t\tdGlnaHRlbmZhY3RvcjAK\n\t\t\t\t\t\t\tXGNmMiAlbG9jYWxQcm9t\n\t\t\t\t\t\t\tcHQlXApccGFyZFx0eDU2\n\t\t\t\t\t\t\tMFx0eDExMjBcdHgxNjgw\n\t\t\t\t\t\t\tXHR4MjI0MFx0eDI4MDBc\n\t\t\t\t\t\t\tdHgzMzYwXHR4MzkyMFx0\n\t\t\t\t\t\t\teDQ0ODBcdHg1MDQwXHR4\n\t\t\t\t\t\t\tNTYwMFx0eDYxNjBcdHg2\n\t\t\t\t\t\t\tNzIwXHBhcmRpcm5hdHVy\n\t\t\t\t\t\t\tYWxccGFydGlnaHRlbmZh\n\t\t\t\t\t\t\tY3RvcjAKXGNmMiAlbG9j\n\t\t\t\t\t\t\tYWxSYXclXAolbG9jYWxW\n\t\t\t\t\t\t\tb2ljZSVcCiVsb2NhbFJl\n\t\t\t\t\t\t\tc3VsdCV9AQAAACMAAAAB\n\t\t\t\t\t\t\tAAAABwAAAFRYVC5ydGYQ\n\t\t\t\t\t\t\tAAAAE3X+Z7YBAAAAAAAA\n\t\t\t\t\t\t\tAAAAAA==\n\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\t",
+			"ActionUID": 15612098
+		},
+		{
+			"MacroActionType": "InsertText",
+			"ActionName": "Insert your variable to expand",
+			"Action": "ByPasting",
+			"ActionUID": 15612099,
+			"IsDisclosed": false,
+			"ActionColor": "Green",
+			"Text": "%localResult%"
+		}
+	],
+	"Name": "* TextExpand",
+	"CustomIconData": "KMEC=Rounded=KMCOLOR:0,0,255,0=⚡=86=0=0=1=KMCOLOR:0,0,0,255"
+}

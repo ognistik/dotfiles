@@ -1,0 +1,27 @@
+{
+	"AddToMacroPalette": false,
+	"AddToStatusMenu": false,
+	"CreationDate": 766159660.830514,
+	"Modifiers": 0,
+	"Name": "MW",
+	"PaletteUnderMouse": false,
+	"CustomIconData": "KMEP-GenericApplication-/Applications/superwhisper.app",
+	"UID": "22DB61C0-9E47-48DF-86EB-9B78B134C2F1",
+	"Targeting": {
+		"Targeting": "All",
+		"TargetingApps": []
+	},
+	"Macros": [],
+	"DisplayInMenuBar": {
+		"IconType": "No",
+		"IncludeAllMacros": false,
+		"IncludeMacroIcons": true,
+		"TitleType": "Variable",
+		"Display": true,
+		"TitleVariable": "sw_menubar"
+	},
+	"ToggleMacroUID": "8BE8168C-8722-4B74-A85E-61F8CF9AF140",
+	"Activate": "Normal",
+	"KeyCode": 32767,
+	"DisplayToggle": false
+}

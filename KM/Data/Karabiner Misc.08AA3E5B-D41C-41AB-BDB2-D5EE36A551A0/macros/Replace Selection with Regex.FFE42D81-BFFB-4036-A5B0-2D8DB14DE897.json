@@ -1,0 +1,104 @@
+{
+	"CreationDate": 594432916.709967,
+	"UID": "FFE42D81-BFFB-4036-A5B0-2D8DB14DE897",
+	"Name": "Replace Selection with Regex",
+	"Triggers": [],
+	"ModificationDate": 764906067.395112,
+	"Actions": [
+		{
+			"MacroActionType": "SetVariableToText",
+			"IsDisclosed": false,
+			"Variable": "localPrevClipboard",
+			"Text": "%SystemClipboard%",
+			"ActionUID": 15574553
+		},
+		{
+			"MacroActionType": "CutCopyPaste",
+			"IsDisclosed": false,
+			"TimeOutAbortsMacro": true,
+			"Action": "Copy",
+			"ActionUID": 15574554
+		},
+		{
+			"MacroActionType": "SetVariableToText",
+			"IsDisclosed": false,
+			"Variable": "localSource",
+			"Text": "%SystemClipboard%",
+			"ActionUID": 15574555
+		},
+		{
+			"MacroActionType": "SetClipboardToText",
+			"IsDisclosed": false,
+			"JustDisplay": false,
+			"Text": "%localPrevClipboard%",
+			"ActionUID": 15574556
+		},
+		{
+			"MacroActionType": "ExecuteMacro",
+			"MacroUID": "C5C363E6-43A6-400C-A5F7-08C94745B2C9",
+			"ActionUID": 15574557,
+			"IsDisclosed": false,
+			"TimeOutAbortsMacro": true,
+			"UseParameter": false,
+			"Asynchronously": true
+		},
+		{
+			"MacroActionType": "PromptForUserInput",
+			"Title": "Replace with Regex",
+			"Prompt": "Please enter the details for these variables.",
+			"ActionUID": 15574558,
+			"IsDisclosed": false,
+			"TimeOutAbortsMacro": true,
+			"Buttons": [
+				{
+					"Button": "OK"
+				},
+				{
+					"Button": "Cancel",
+					"Cancel": true
+				}
+			],
+			"Variables": [
+				{
+					"Default": "",
+					"Type": "Text",
+					"Variable": "localSearchFor"
+				},
+				{
+					"Default": "",
+					"Type": "Text",
+					"Variable": "localReplaceWith"
+				}
+			]
+		},
+		{
+			"MacroActionType": "ExecuteAppleScript",
+			"ActionName": "Only replace that works with $1 capture groups in replace with",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"IncludeStdErr": false,
+			"ActionUID": 15574956,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "None",
+			"HonourFailureSettings": true,
+			"Text": "set theInstance to system attribute \"KMINSTANCE\"\ntell application \"Keyboard Maestro Engine\"\n\tset theSource to getvariable \"localSource\" instance theInstance\n\tset theFind to getvariable \"localSearchFor\" instance theInstance\n\tset theReplace to getvariable \"localReplaceWith\" instance theInstance\n\tset theResult to search theSource for theFind replace theReplace with regex and process tokens\n\tset the clipboard to theResult\nend tell\n\ntell application \"System Events\" to keystroke \"v\" using command down"
+		},
+		{
+			"MacroActionType": "Pause",
+			"TimeOutAbortsMacro": true,
+			"Time": "0.3",
+			"ActionUID": 15603978
+		},
+		{
+			"MacroActionType": "DeletePastClipboard",
+			"IsDisclosed": false,
+			"PastExpression": "0",
+			"ActionUID": 15574967
+		}
+	]
+}

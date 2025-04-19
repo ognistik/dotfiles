@@ -1,0 +1,134 @@
+{
+	"UID": "52897D2B-942A-4535-86DA-8FD9894DCE09",
+	"CreationDate": 763179542.894914,
+	"ModificationDate": 766173182.328995,
+	"Triggers": [],
+	"Actions": [
+		{
+			"MacroActionType": "SetVariableToText",
+			"IsDisclosed": false,
+			"Variable": "localMousePos",
+			"Text": "%Calculate%MOUSEX()%, %Calculate%MOUSEY()%",
+			"ActionUID": 15586908
+		},
+		{
+			"MacroActionType": "IfThenElse",
+			"ActionUID": 15601621,
+			"IsDisclosed": false,
+			"ElseActions": [],
+			"TimeOutAbortsMacro": true,
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"ConditionType": "Variable",
+						"VariableValue": "hide",
+						"Variable": "sw_winState",
+						"VariableConditionType": "Is"
+					}
+				]
+			},
+			"ElseActionListDisclosed": false,
+			"ThenActions": [
+				{
+					"MacroActionType": "ExecuteMacro",
+					"MacroUID": "E7675C26-A6F1-490A-AE05-A36C0B88F4EA",
+					"ActionUID": 15601620,
+					"IsDisclosed": false,
+					"TimeOutAbortsMacro": true,
+					"Parameter": "unhide",
+					"UseParameter": true,
+					"Asynchronously": false
+				},
+				{
+					"MacroActionType": "Pause",
+					"TimeOutAbortsMacro": true,
+					"Time": ".4",
+					"ActionUID": 15601622
+				}
+			]
+		},
+		{
+			"MacroActionType": "ActivateApplication",
+			"ActionUID": 15586910,
+			"ReopenWindows": false,
+			"IsDisclosed": false,
+			"AlreadyActivatedActionType": "Normal",
+			"AllWindows": false,
+			"TimeOutAbortsMacro": true,
+			"Application": {
+				"BundleIdentifier": "com.superduper.superwhisper",
+				"Name": "superwhisper",
+				"NewFile": "/Applications/superwhisper.app"
+			}
+		},
+		{
+			"MacroActionType": "ExecuteAppleScript",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"Variable": "localTog",
+			"IncludeStdErr": false,
+			"ActionUID": 15586515,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "Variable",
+			"IsDisclosed": false,
+			"HonourFailureSettings": true,
+			"Text": "tell application \"System Events\"\n    -- Get the first window of the frontmost application\n    set frontApp to first application process whose frontmost is true\n    set appWindow to first window of frontApp\n    \n    -- Get the window position and size\n    set {x, y} to position of appWindow\n    set {width, height} to size of appWindow\n    \n    -- Calculate corner coordinates (top-right corner in this example)\n    set cornerX to x + width - 20  -- 5 pixels from edge\n    set cornerY to y + 20          -- 5 pixels from top\n    \n    -- Move mouse and click\n    tell application \"System Events\"\n        set mousePosition to {cornerX, cornerY}\n    end tell\nend tell\n\nreturn mousePosition",
+			"NotifyOnFailure": false
+		},
+		{
+			"MacroActionType": "UseVariable",
+			"IsDisclosed": false,
+			"Action": "SetMouse",
+			"Variable": "localTog",
+			"ActionUID": 15586909
+		},
+		{
+			"MacroActionType": "MouseMoveAndClick",
+			"DragVerticalPosition": "0",
+			"ClickCount": 1,
+			"Modifiers": 0,
+			"Button": 0,
+			"Fuzz": 15,
+			"Action": "MoveAndClick",
+			"DisplayMatches": false,
+			"ActionUID": 15595194,
+			"DragHorizontalPosition": "0",
+			"RestoreMouseLocation": false,
+			"RelativeCorner": "TopLeft",
+			"VerticalPositionExpression": "0",
+			"HorizontalPositionExpression": "0",
+			"Relative": "Mouse",
+			"IsDisclosed": false,
+			"MouseDrag": "None"
+		},
+		{
+			"MacroActionType": "Pause",
+			"IsDisclosed": false,
+			"TimeOutAbortsMacro": true,
+			"Time": "10",
+			"Unit": "Hundredths",
+			"ActionUID": 15601619
+		},
+		{
+			"MacroActionType": "UseVariable",
+			"IsDisclosed": false,
+			"Action": "SetMouse",
+			"Variable": "localMousePos",
+			"ActionUID": 15586517
+		},
+		{
+			"MacroActionType": "SwitchToLastApplication",
+			"IsDisclosed": false,
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 15600831
+		}
+	],
+	"Name": "SW Toggle Rec Win",
+	"CustomIconData": "KMEC=Rounded=KMCOLOR:0,0,255,0=🎈=86=0=0=1=KMCOLOR:0,0,0,255"
+}

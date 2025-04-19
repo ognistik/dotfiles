@@ -1,0 +1,48 @@
+{
+	"CreationDate": 744049617.946075,
+	"UID": "3D84B157-DF5E-4E40-A47B-728B0D658B44",
+	"Name": "Anybox",
+	"Triggers": [
+		{
+			"Application": {
+				"BundleIdentifier": "cc.anybox.Anybox",
+				"Name": "Anybox",
+				"NewFile": "/Applications/Anybox.app"
+			},
+			"FireType2": "Quit",
+			"RepeatTime": 60,
+			"Target": "Specific",
+			"MacroTriggerType": "Application"
+		}
+	],
+	"ModificationDate": 744049632.190746,
+	"Actions": [
+		{
+			"MacroActionType": "Notification",
+			"Title": "Anybox Closed",
+			"SoundName": "",
+			"Subtitle": "",
+			"Text": "Anybox Quit. It will open in 5 seconds unless you cancel all Macros with ALT + ESC",
+			"ActionUID": 15521007
+		},
+		{
+			"MacroActionType": "Pause",
+			"TimeOutAbortsMacro": true,
+			"Time": "5",
+			"ActionUID": 15521008
+		},
+		{
+			"MacroActionType": "ActivateApplication",
+			"ActionUID": 15521009,
+			"ReopenWindows": false,
+			"AllWindows": false,
+			"TimeOutAbortsMacro": true,
+			"AlreadyActivatedActionType": "Normal",
+			"Application": {
+				"BundleIdentifier": "cc.anybox.Anybox",
+				"Name": "Anybox",
+				"NewFile": "/Applications/Anybox.app"
+			}
+		}
+	]
+}

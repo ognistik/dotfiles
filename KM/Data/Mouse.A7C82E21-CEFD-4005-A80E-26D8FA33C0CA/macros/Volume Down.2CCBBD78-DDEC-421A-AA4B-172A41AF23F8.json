@@ -1,0 +1,22 @@
+{
+	"CreationDate": 737748077.668628,
+	"UID": "2CCBBD78-DDEC-421A-AA4B-172A41AF23F8",
+	"Name": "Volume Down",
+	"Triggers": [
+		{
+			"KeyCode": 2,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 6656,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 737749416.319501,
+	"Actions": [
+		{
+			"MacroActionType": "SystemAction",
+			"IsDisclosed": false,
+			"SystemAction": "DecreaseVolume",
+			"ActionUID": 15472528
+		}
+	]
+}

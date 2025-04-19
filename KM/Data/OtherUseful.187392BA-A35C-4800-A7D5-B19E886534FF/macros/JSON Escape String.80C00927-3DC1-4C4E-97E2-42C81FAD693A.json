@@ -1,0 +1,147 @@
+{
+	"CreationDate": 664289565.976104,
+	"UID": "80C00927-3DC1-4C4E-97E2-42C81FAD693A",
+	"Name": "JSON Escape String",
+	"Triggers": [],
+	"ModificationDate": 766788816.693243,
+	"Actions": [
+		{
+			"MacroActionType": "Comment",
+			"Title": "JSON Escape String v1.0",
+			"IsDisclosed": false,
+			"StyledText": "\n\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\tcnRmZAAAAAADAAAAAgAA\n\t\t\t\t\t\t\tAAcAAABUWFQucnRmAQAA\n\t\t\t\t\t\t\tAC5wAwAAKwAAAAEAAABo\n\t\t\t\t\t\t\tAwAAe1xydGYxXGFuc2lc\n\t\t\t\t\t\t\tYW5zaWNwZzEyNTJcY29j\n\t\t\t\t\t\t\tb2FydGYyNTEzClxjb2Nv\n\t\t\t\t\t\t\tYXRleHRzY2FsaW5nMFxj\n\t\t\t\t\t\t\tb2NvYXBsYXRmb3JtMHtc\n\t\t\t\t\t\t\tZm9udHRibFxmMFxmc3dp\n\t\t\t\t\t\t\tc3NcZmNoYXJzZXQwIEhl\n\t\t\t\t\t\t\tbHZldGljYS1Cb2xkO1xm\n\t\t\t\t\t\t\tMVxmc3dpc3NcZmNoYXJz\n\t\t\t\t\t\t\tZXQwIEhlbHZldGljYTt9\n\t\t\t\t\t\t\tCntcY29sb3J0Ymw7XHJl\n\t\t\t\t\t\t\tZDI1NVxncmVlbjI1NVxi\n\t\t\t\t\t\t\tbHVlMjU1O30Ke1wqXGV4\n\t\t\t\t\t\t\tcGFuZGVkY29sb3J0Ymw7\n\t\t\t\t\t\t\tO30KXHBhcmRcdHg1NjBc\n\t\t\t\t\t\t\tdHgxMTIwXHR4MTY4MFx0\n\t\t\t\t\t\t\teDIyNDBcdHgyODAwXHR4\n\t\t\t\t\t\t\tMzM2MFx0eDM5MjBcdHg0\n\t\t\t\t\t\t\tNDgwXHR4NTA0MFx0eDU2\n\t\t\t\t\t\t\tMDBcdHg2MTYwXHR4Njcy\n\t\t\t\t\t\t\tMFxwYXJkaXJuYXR1cmFs\n\t\t\t\t\t\t\tXHBhcnRpZ2h0ZW5mYWN0\n\t\t\t\t\t\t\tb3IwCgpcZjBcYlxmczI4\n\t\t\t\t\t\t\tIFxjZjAgTmFtZToKXGYx\n\t\t\t\t\t\t\tXGIwICBKU09OIEVzY2Fw\n\t\t\t\t\t\t\tZSBTdHJpbmdcCgpcZjBc\n\t\t\t\t\t\t\tYiBWZXJzaW9uOgpcZjFc\n\t\t\t\t\t\t\tYjAgIDEuMFwKClxmMFxi\n\t\t\t\t\t\t\tIFVwZGF0ZWQ6ClxmMVxi\n\t\t\t\t\t\t\tMCAgMjAyMi8wMS8xOSAw\n\t\t\t\t\t\t\tNTowMyBQVFwKClxmMFxi\n\t\t\t\t\t\t\tIEJ5OgpcZjFcYjAgIERh\n\t\t\t\t\t\t\tbiBUaG9tYXNcClwKClxm\n\t\t\t\t\t\t\tMFxiIFBVUlBPU0U6XAoK\n\t\t\t\t\t\t\tXGYxXGIwIFwKClxmMFxi\n\t\t\t\t\t\t\tIFVTQUdFOlwKClxmMVxi\n\t\t\t\t\t\t\tMCBcCklmIHlvdSBleGVj\n\t\t\t\t\t\t\tdXRlIHRoaXMgbWFjcm8g\n\t\t\t\t\t\t\td2l0aG91dCBhIHBhcmFt\n\t\t\t\t\t\t\tZXRlciwgaXQgZXNjYXBl\n\t\t\t\t\t\t\tcyB0aGUgc3RyaW5nIG9u\n\t\t\t\t\t\t\tIHRoZSBjbGlwYm9hcmQs\n\t\t\t\t\t\t\tIGFuZCBwdXRzIHRoZSBy\n\t\t\t\t\t\t\tZXN1bHQgb24gdGhlIGNs\n\t\t\t\t\t\t\taXBib2FyZC5cClwKSWYg\n\t\t\t\t\t\t\teW91IGV4ZWN1dGUgdGhp\n\t\t\t\t\t\t\tcyBtYWNybyAiV2l0aCBQ\n\t\t\t\t\t\t\tYXJhbWV0ZXIiLCBpdCBl\n\t\t\t\t\t\t\tc2NhcGVzIHRoZSBzdHJp\n\t\t\t\t\t\t\tbmcgeW91IHBhc3NlZCBp\n\t\t\t\t\t\t\tbiwgYW5kIHJldHVybnMg\n\t\t\t\t\t\t\taXQgaW4gdGhlIHZhcmlh\n\t\t\t\t\t\t\tYmxlIApcZjBcYiBJbnN0\n\t\t\t\t\t\t\tYW5jZV9SZXN1bHQKXGYx\n\t\t\t\t\t\t\tXGIwIC5cClwKClxmMFxi\n\t\t\t\t\t\t\tIFZFUlNJT04gSElTVE9S\n\t\t\t\t\t\t\tWTpcCgpcZjFcYjAgMS4w\n\t\t\t\t\t\t\tIC0gSW5pdGlhbCB2ZXJz\n\t\t\t\t\t\t\taW9uLn0BAAAAIwAAAAEA\n\t\t\t\t\t\t\tAAAHAAAAVFhULnJ0ZhAA\n\t\t\t\t\t\t\tAAC9DehhtgEAAAAAAAAA\n\t\t\t\t\t\t\tAAAA\n\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\t",
+			"ActionColor": "Yellow",
+			"ActionUID": 248403
+		},
+		{
+			"MacroActionType": "IfThenElse",
+			"ActionName": "Set 'Local_String' to TriggerValue, or the Clipboard",
+			"ActionUID": 248402,
+			"ActionColor": "Green",
+			"ElseActions": [
+				{
+					"MacroActionType": "SetVariableToText",
+					"IsDisclosed": false,
+					"Variable": "Local_String",
+					"Text": "%CurrentClipboard%",
+					"ActionUID": 248404
+				}
+			],
+			"TimeOutAbortsMacro": true,
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"ConditionType": "Text",
+						"TextValue": "",
+						"Text": "%TriggerValue%",
+						"TextConditionType": "IsNotEmpty"
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "SetVariableToText",
+					"IsDisclosed": false,
+					"Variable": "Local_String",
+					"Text": "%TriggerValue%",
+					"ActionUID": 248238
+				}
+			]
+		},
+		{
+			"MacroActionType": "ExecuteJavaScriptForAutomation",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"StopOnFailure": false,
+			"Variable": "Local_Result",
+			"IncludeStdErr": false,
+			"UseModernSyntax": false,
+			"ActionUID": 248261,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "Variable",
+			"HonourFailureSettings": true,
+			"Text": "(function(inDesignMode, designModeParams) {\n\t'use strict';\n    const _kme = Application(\"Keyboard Maestro Engine\");\n    const _currentApp = Application.currentApplication();\n    _currentApp.includeStandardAdditions = true;\n\n\tfunction getKMVariable(name, required) {\n\t\tvar result = undefined;\n\t\tif (inDesignMode && designModeParams)\n\t\t\tresult = designModeParams[name];\n\t\tif (result === undefined) {\n            if (name.match(/^Instance|^Local/)) {\n                var inst = _currentApp.systemAttribute(\"KMINSTANCE\");\n                result = _kme.getvariable(name, {instance: inst});\n            } else {\n                result = _kme.getvariable(name);\n            }\n        }\n        if (required && !result)\n\t\t\tthrow new Error(\"Variable '\" + name + \"' is empty\");\n\t\treturn result;\n\t}\n\t// #endregion\n\n\tfunction execute() {\n\t\tvar str = getKMVariable(\"Local_String\", true);\n\t\tvar obj = {}\n\t\tobj.str = str;\n\t\tvar s = JSON.stringify(obj);\n\t\treturn /:\"(.*)\"}$/.exec(s)[1];\n\t}\n\n\ttry {\n\t\treturn execute();\n\t} catch (e) {\n\t\treturn \"Error on line: \" + e.line + \": \" + e.message;\n\t}\n\n})(false);",
+			"NotifyOnFailure": false
+		},
+		{
+			"MacroActionType": "IfThenElse",
+			"ActionName": "Abort if 'Local_Result' is '^Error:'",
+			"ActionUID": 248306,
+			"IsDisclosed": false,
+			"ActionColor": "Yellow",
+			"ElseActions": [],
+			"TimeOutAbortsMacro": true,
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"ConditionType": "Variable",
+						"VariableValue": "^Error:",
+						"Variable": "Local_Result",
+						"VariableConditionType": "Matches"
+					}
+				]
+			},
+			"ElseActionListDisclosed": false,
+			"ThenActions": [
+				{
+					"MacroActionType": "PromptForUserInput",
+					"Title": "%ExecutingMacro%",
+					"ActionName": "Prompt error with cancel: 'An error has occurred'",
+					"Prompt": "Macro \"%ExecutingThisMacro%\" has encountered an error: %Variable%Local_Result%",
+					"ActionUID": 248307,
+					"TimeOutAbortsMacro": true,
+					"Buttons": [
+						{
+							"Button": "OK",
+							"Cancel": true
+						}
+					],
+					"Variables": []
+				}
+			]
+		},
+		{
+			"MacroActionType": "IfThenElse",
+			"ActionName": "Put the result in 'Instance_Result', or on the clipboard",
+			"ActionUID": 248405,
+			"ActionColor": "Green",
+			"ElseActions": [
+				{
+					"MacroActionType": "SetClipboardToText",
+					"IsDisclosed": false,
+					"JustDisplay": false,
+					"Text": "%Variable%Local_Result%",
+					"ActionUID": 248330
+				}
+			],
+			"TimeOutAbortsMacro": true,
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"ConditionType": "Text",
+						"TextValue": "",
+						"Text": "%TriggerValue%",
+						"TextConditionType": "IsNotEmpty"
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "SetVariableToText",
+					"IsDisclosed": false,
+					"Variable": "Instance_Result",
+					"Text": "%Variable%Local_Result%",
+					"ActionUID": 248406
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,25 @@
+{
+	"CreationDate": 765820027.748427,
+	"UID": "44C25E1B-1D27-40C1-8CC4-8F1C5DF9747C",
+	"Name": "Style: Completed Task",
+	"Triggers": [
+		{
+			"KeyCode": 7,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 2304,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 765820285.228403,
+	"Actions": [
+		{
+			"MacroActionType": "SimulateKeystroke",
+			"ActionUID": 15607953,
+			"ReleaseAll": false,
+			"TargetApplication": {},
+			"TargetingType": "Front",
+			"KeyCode": 17,
+			"Modifiers": 2304
+		}
+	]
+}

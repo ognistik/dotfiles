@@ -1,0 +1,32 @@
+{
+	"CreationDate": 737927225.696568,
+	"UID": "B7950646-53B8-410E-8D6E-3282AA37737C",
+	"Name": "BTT ArcSlower",
+	"Triggers": [
+		{
+			"KeyCode": 5,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 6656,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 737927272.625254,
+	"Actions": [
+		{
+			"MacroActionType": "ExecuteAppleScript",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"IncludeStdErr": false,
+			"ActionUID": 15473326,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "None",
+			"HonourFailureSettings": true,
+			"Text": "tell application \"BetterTouchTool\"\r\ttrigger_named \"ArcSlower\"\rend tell"
+		}
+	]
+}

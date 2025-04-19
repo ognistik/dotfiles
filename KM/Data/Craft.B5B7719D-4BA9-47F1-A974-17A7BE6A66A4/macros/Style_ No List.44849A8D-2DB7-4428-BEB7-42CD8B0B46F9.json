@@ -1,0 +1,25 @@
+{
+	"CreationDate": 765820316.345558,
+	"UID": "44849A8D-2DB7-4428-BEB7-42CD8B0B46F9",
+	"Name": "Style: No List",
+	"Triggers": [
+		{
+			"KeyCode": 8,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 2048,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 765820565.350354,
+	"Actions": [
+		{
+			"MacroActionType": "SimulateKeystroke",
+			"ActionUID": 15607955,
+			"ReleaseAll": false,
+			"TargetApplication": {},
+			"TargetingType": "Front",
+			"KeyCode": 29,
+			"Modifiers": 2304
+		}
+	]
+}

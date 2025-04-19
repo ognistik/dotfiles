@@ -1,0 +1,125 @@
+{
+	"CreationDate": 762512193.279913,
+	"UID": "0C396A6F-4325-49ED-8F54-8D8301FB7B97",
+	"Name": "SW Auto Return",
+	"Triggers": [],
+	"ModificationDate": 766171112.6437,
+	"Actions": [
+		{
+			"MacroActionType": "Comment",
+			"Title": "What?",
+			"IsDisclosed": false,
+			"StyledText": "\n\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\tcnRmZAAAAAADAAAAAgAA\n\t\t\t\t\t\t\tAAcAAABUWFQucnRmAQAA\n\t\t\t\t\t\t\tAC5YAgAAKwAAAAEAAABQ\n\t\t\t\t\t\t\tAgAAe1xydGYxXGFuc2lc\n\t\t\t\t\t\t\tYW5zaWNwZzEyNTJcY29j\n\t\t\t\t\t\t\tb2FydGYyODIxClxjb2Nv\n\t\t\t\t\t\t\tYXRleHRzY2FsaW5nMFxj\n\t\t\t\t\t\t\tb2NvYXBsYXRmb3JtMHtc\n\t\t\t\t\t\t\tZm9udHRibFxmMFxmc3dp\n\t\t\t\t\t\t\tc3NcZmNoYXJzZXQwIEhl\n\t\t\t\t\t\t\tbHZldGljYTt9CntcY29s\n\t\t\t\t\t\t\tb3J0Ymw7XHJlZDI1NVxn\n\t\t\t\t\t\t\tcmVlbjI1NVxibHVlMjU1\n\t\t\t\t\t\t\tO1xyZWQwXGdyZWVuMFxi\n\t\t\t\t\t\t\tbHVlMDt9CntcKlxleHBh\n\t\t\t\t\t\t\tbmRlZGNvbG9ydGJsOztc\n\t\t\t\t\t\t\tY3NzcmdiXGMwXGMwXGMw\n\t\t\t\t\t\t\tXGM4NDcwNlxjbmFtZSBj\n\t\t\t\t\t\t\tb250cm9sVGV4dENvbG9y\n\t\t\t\t\t\t\tO30KXHBhcmRcdHg1NjBc\n\t\t\t\t\t\t\tdHgxMTIwXHR4MTY4MFx0\n\t\t\t\t\t\t\teDIyNDBcdHgyODAwXHR4\n\t\t\t\t\t\t\tMzM2MFx0eDM5MjBcdHg0\n\t\t\t\t\t\t\tNDgwXHR4NTA0MFx0eDU2\n\t\t\t\t\t\t\tMDBcdHg2MTYwXHR4Njcy\n\t\t\t\t\t\t\tMFxwYXJkaXJuYXR1cmFs\n\t\t\t\t\t\t\tXHBhcnRpZ2h0ZW5mYWN0\n\t\t\t\t\t\t\tb3IwCgpcZjBcZnMyNiBc\n\t\t\t\t\t\t\tY2YyIFRoaXMgbWFjcm8g\n\t\t\t\t\t\t\tc2ltdWxhdGVzIHRoZSBw\n\t\t\t\t\t\t\tcmVzcyByZXR1cm4gdGhh\n\t\t\t\t\t\t\tdCBpcyBpbnRlZ3JhdGVk\n\t\t\t\t\t\t\tIHdpdGhpbiBTdXBlcndo\n\t\t\t\t\t\t\taXNwZXIgaXRzZWxmLiBU\n\t\t\t\t\t\t\taGVyZSdzIHRoZSBzaWRl\n\t\t\t\t\t\t\tIGFkdmFudGFnZSB0aGF0\n\t\t\t\t\t\t\tIHRoaXMgb25lIGlzIHRy\n\t\t\t\t\t\t\taWdnZXJlZCBleGFjdGx5\n\t\t\t\t\t\t\tIHdoZW4gdGhlIGRpY3Rh\n\t\t\t\t\t\t\tdGlvbiBmaW5pc2hlcywg\n\t\t\t\t\t\t\taWYgdGhlIG1hY3JvIGlz\n\t\t\t\t\t\t\tIHRyaWdnZXJlZCBhdCB0\n\t\t\t\t\t\t\taGF0IHRpbWUufQEAAAAj\n\t\t\t\t\t\t\tAAAAAQAAAAcAAABUWFQu\n\t\t\t\t\t\t\tcnRmEAAAAD0Xz2e2AQAA\n\t\t\t\t\t\t\tAAAAAAAAAAA=\n\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\t",
+			"ActionUID": 15587306
+		},
+		{
+			"MacroActionType": "Semaphore",
+			"ActionUID": 15583768,
+			"IsDisclosed": false,
+			"TimeOutAbortsMacro": true,
+			"TimeOutPeriod": 0.01,
+			"SemaphoreName": "SW Auto Return",
+			"NotifyOnTimeOut": false,
+			"SemaphoreAction": "Lock"
+		},
+		{
+			"MacroActionType": "IfThenElse",
+			"ActionUID": 15583766,
+			"IsDisclosed": false,
+			"TimeOutAbortsMacro": true,
+			"ElseActions": [],
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"ConditionType": "Text",
+						"TextValue": "lock",
+						"Text": "%TriggerValue%",
+						"TextConditionType": "Is"
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "IfThenElse",
+					"ActionUID": 15583767,
+					"TimeOutAbortsMacro": true,
+					"ElseActions": [],
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"ConditionType": "Variable",
+								"VariableValue": "on",
+								"Variable": "sw_autoReturn",
+								"VariableConditionType": "Is"
+							}
+						]
+					},
+					"ElseActionListDisclosed": false,
+					"ThenActions": [
+						{
+							"MacroActionType": "Pause",
+							"TimeOutAbortsMacro": true,
+							"Time": "3",
+							"ActionUID": 15583770
+						}
+					]
+				}
+			]
+		},
+		{
+			"MacroActionType": "IfThenElse",
+			"ActionUID": 15583362,
+			"IsDisclosed": false,
+			"TimeOutAbortsMacro": true,
+			"ElseActions": [
+				{
+					"MacroActionType": "IfThenElse",
+					"ElseActions": [],
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"ConditionType": "Text",
+								"TextValue": "off",
+								"Text": "%TriggerValue%",
+								"TextConditionType": "Is"
+							}
+						]
+					},
+					"ThenActions": [
+						{
+							"MacroActionType": "SetVariableToText",
+							"Variable": "sw_autoReturn",
+							"Text": "off",
+							"ActionUID": 15583760
+						}
+					],
+					"TimeOutAbortsMacro": true,
+					"ActionUID": 15583759
+				}
+			],
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"ConditionType": "Text",
+						"TextValue": "on",
+						"Text": "%TriggerValue%",
+						"TextConditionType": "Is"
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "SetVariableToText",
+					"IsDisclosed": false,
+					"Variable": "sw_autoReturn",
+					"Text": "on",
+					"ActionUID": 15583363
+				}
+			]
+		}
+	]
+}

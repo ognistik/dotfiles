@@ -1,0 +1,48 @@
+{
+	"CreationDate": 739589728.599157,
+	"UID": "676DF632-5981-4EDC-AFA3-0830CE2BE395",
+	"Name": "BetterMouse",
+	"Triggers": [
+		{
+			"Application": {
+				"BundleIdentifier": "com.naotanhaocan.BetterMouse",
+				"Name": "BetterMouse",
+				"NewFile": "/Applications/BetterMouse.app"
+			},
+			"FireType2": "Quit",
+			"RepeatTime": 60,
+			"Target": "Specific",
+			"MacroTriggerType": "Application"
+		}
+	],
+	"ModificationDate": 739591493.153575,
+	"Actions": [
+		{
+			"MacroActionType": "Notification",
+			"Title": "BM Closed",
+			"SoundName": "",
+			"Subtitle": "",
+			"Text": "BetterMouse Quit. It will open in 5 seconds unless you cancel all Macros with ALT + ESC",
+			"ActionUID": 15477679
+		},
+		{
+			"MacroActionType": "Pause",
+			"TimeOutAbortsMacro": true,
+			"Time": "5",
+			"ActionUID": 15477682
+		},
+		{
+			"MacroActionType": "ActivateApplication",
+			"ActionUID": 15477680,
+			"ReopenWindows": false,
+			"AllWindows": false,
+			"TimeOutAbortsMacro": true,
+			"AlreadyActivatedActionType": "Normal",
+			"Application": {
+				"BundleIdentifier": "com.naotanhaocan.BetterMouse",
+				"Name": "BetterMouse",
+				"NewFile": "/Applications/BetterMouse.app"
+			}
+		}
+	]
+}

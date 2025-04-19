@@ -1,0 +1,50 @@
+{
+	"CreationDate": 739589728.599157,
+	"UID": "C2914F24-BA84-4E83-B1D2-D6AB690E4606",
+	"Name": "BetterTouchTool",
+	"Triggers": [
+		{
+			"Application": {
+				"BundleIdentifier": "com.hegenberg.BetterTouchTool",
+				"Name": "BetterTouchTool",
+				"NewFile": "/Applications/BetterTouchTool.app"
+			},
+			"FireType2": "Quit",
+			"RepeatTime": 60,
+			"Target": "Specific",
+			"MacroTriggerType": "Application"
+		}
+	],
+	"ModificationDate": 764689333.805217,
+	"Actions": [
+		{
+			"MacroActionType": "Notification",
+			"Title": "BTT Closed",
+			"ActionUID": 15478470,
+			"IsDisclosed": false,
+			"Text": "BetterTouchTool Quit. It will open in 3 seconds unless you cancel all Macros with ALT + ESC",
+			"IsActive": false,
+			"Subtitle": "",
+			"SoundName": ""
+		},
+		{
+			"MacroActionType": "Pause",
+			"TimeOutAbortsMacro": true,
+			"Time": "3",
+			"ActionUID": 15478471
+		},
+		{
+			"MacroActionType": "ActivateApplication",
+			"ActionUID": 15478472,
+			"ReopenWindows": false,
+			"AllWindows": false,
+			"TimeOutAbortsMacro": true,
+			"AlreadyActivatedActionType": "Normal",
+			"Application": {
+				"BundleIdentifier": "com.hegenberg.BetterTouchTool",
+				"Name": "BetterTouchTool",
+				"NewFile": "/Applications/BetterTouchTool.app"
+			}
+		}
+	]
+}

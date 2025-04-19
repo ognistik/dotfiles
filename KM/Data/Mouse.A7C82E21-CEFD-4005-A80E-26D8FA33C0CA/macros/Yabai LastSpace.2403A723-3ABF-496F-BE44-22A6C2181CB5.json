@@ -1,0 +1,33 @@
+{
+	"CreationDate": 737918668.87243,
+	"UID": "2403A723-3ABF-496F-BE44-22A6C2181CB5",
+	"Name": "Yabai LastSpace",
+	"Triggers": [
+		{
+			"KeyCode": 14,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 6656,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 742569938.867402,
+	"Actions": [
+		{
+			"MacroActionType": "ExecuteShellScript",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"Source": "Nothing",
+			"IncludeStdErr": false,
+			"ActionUID": 15515047,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "None",
+			"HonourFailureSettings": true,
+			"Text": "/opt/homebrew/bin/yabai -m space --focus last 2>/dev/null || true"
+		}
+	]
+}

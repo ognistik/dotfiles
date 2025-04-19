@@ -1639,7 +1639,7 @@
           "type" : "basic"
         }, {
           "to_after_key_up" : [ {
-            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"SW Goku Trigger\" with parameter \"\"'"
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"Trigger - KeyPress\" with parameter \"\"'"
           }, {
             "set_variable" : {
               "name" : "sw-mode",
@@ -1660,7 +1660,7 @@
             }
           },
           "to" : [ {
-            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"SW Goku Trigger\" with parameter \"\"'"
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"Trigger - KeyPress\" with parameter \"\"'"
           }, {
             "set_variable" : {
               "name" : "sw-mode",
@@ -12465,7 +12465,7 @@
             "key_code" : "z"
           },
           "to" : [ {
-            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"SW Action_Set\" with parameter \"pasteResult\"'"
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"MW SetAction\" with parameter \"pasteResult\"'"
           }, {
             "set_variable" : {
               "name" : "caps-mode",
@@ -12488,7 +12488,7 @@
             "key_code" : "x"
           },
           "to" : [ {
-            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"SW Action_Set\" with parameter \"pasteChat\"'"
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"MW SetAction\" with parameter \"pasteChat\"'"
           }, {
             "set_variable" : {
               "name" : "caps-mode",
@@ -12511,7 +12511,7 @@
             "key_code" : "c"
           },
           "to" : [ {
-            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"SW Action_Set\" with parameter \"\"'"
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"MW SetAction\" with parameter \"\"'"
           }, {
             "set_variable" : {
               "name" : "caps-mode",
@@ -15526,7 +15526,7 @@
             "key_code" : "d"
           },
           "to" : [ {
-            "shell_command" : "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"sw\" in workflow \"com.superwhisper.aft\" with argument \"openMode,superwhisper://mode?key=message-SQKC\"'"
+            "shell_command" : "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"sw\" in workflow \"com.superwhisper.aft\" with argument \"openMode,superwhisper://mode?key=message-LGCA\"'"
           }, {
             "set_variable" : {
               "name" : "hideOverlay",
@@ -15642,7 +15642,7 @@
           "to" : [ {
             "key_code" : "return_or_enter"
           }, {
-            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"SW Text Chat\" with parameter \"\"'"
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"AM - TextChat\" with parameter \"\"'"
           }, {
             "set_variable" : {
               "name" : "hideOverlay",
@@ -16717,7 +16717,7 @@
             "key_code" : "s"
           },
           "to" : [ {
-            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"SW Action_Set\" with parameter \"pasteResult\"'"
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"MW SetAction\" with parameter \"pasteResult\"'"
           } ],
           "conditions" : [ {
             "name" : "sw-mode",
@@ -16730,7 +16730,7 @@
             "key_code" : "a"
           },
           "to" : [ {
-            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"SW Action_Set\" with parameter \"pasteChat\"'"
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"MW SetAction\" with parameter \"pasteChat\"'"
           } ],
           "conditions" : [ {
             "name" : "sw-mode",
@@ -16740,13 +16740,13 @@
           "type" : "basic"
         }, {
           "to_after_key_up" : [ {
-            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"SW Auto Return\" with parameter \"off\"'"
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"MW PressReturn\" with parameter \"off\"'"
           } ],
           "from" : {
             "key_code" : "spacebar"
           },
           "to" : [ {
-            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"SW Auto Return\" with parameter \"on\"'"
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"MW PressReturn\" with parameter \"on\"'"
           } ],
           "conditions" : [ {
             "name" : "sw-mode",

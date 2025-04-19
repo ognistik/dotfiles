@@ -1,0 +1,53 @@
+{
+	"CreationDate": 742613951.641553,
+	"UID": "CE52DEAC-B71C-4D76-9163-A76DA03E65F2",
+	"Name": "BTT FullScreen",
+	"Triggers": [
+		{
+			"KeyCode": 33,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 6656,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 742614051.854213,
+	"Actions": [
+		{
+			"MacroActionType": "Semaphore",
+			"ActionUID": 15516265,
+			"TimeOutAbortsMacro": true,
+			"TimeOutPeriod": 0.01,
+			"SemaphoreName": "BMRepeat",
+			"NotifyOnTimeOut": false,
+			"SemaphoreAction": "Lock"
+		},
+		{
+			"MacroActionType": "ExecuteAppleScript",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"IncludeStdErr": false,
+			"ActionUID": 15515875,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "None",
+			"HonourFailureSettings": true,
+			"Text": "tell application \"BetterTouchTool\"\r\ttrigger_named \"RealFull\"\rend tell"
+		},
+		{
+			"MacroActionType": "Pause",
+			"TimeOutAbortsMacro": true,
+			"Time": "1.5",
+			"ActionUID": 15516266
+		},
+		{
+			"MacroActionType": "Semaphore",
+			"SemaphoreAction": "Unlock",
+			"SemaphoreName": "BMRepeat",
+			"ActionUID": 15516267
+		}
+	]
+}

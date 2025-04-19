@@ -1,0 +1,78 @@
+{
+	"CreationDate": 765473802.714218,
+	"UID": "EDBA7A69-101B-4A0B-9FCC-4810571CE056",
+	"Name": "SW Clean History",
+	"Triggers": [],
+	"ModificationDate": 765476619.420054,
+	"Actions": [
+		{
+			"MacroActionType": "ExecuteShellScript",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"Source": "Nothing",
+			"Variable": "localNumber",
+			"IncludeStdErr": false,
+			"ActionUID": 15607158,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "AppendVar",
+			"IsDisclosed": false,
+			"HonourFailureSettings": true,
+			"Text": "#!/bin/bash\n\n# Set the directory path\nDIRECTORY=\"$HOME/Documents/superwhisper/recordings\"\n\n# Count the number of folders (directories) in the specified path\nFOLDER_COUNT=$(find \"$DIRECTORY\" -type d | wc -l)\n\n# Subtract 1 from the count to exclude the root directory itself\nFOLDER_COUNT=$((FOLDER_COUNT - 1))\n\n# Echo the total number of folders\necho \"$FOLDER_COUNT\""
+		},
+		{
+			"MacroActionType": "ExecuteMacro",
+			"MacroUID": "C5C363E6-43A6-400C-A5F7-08C94745B2C9",
+			"ActionUID": 15607159,
+			"IsDisclosed": false,
+			"TimeOutAbortsMacro": true,
+			"UseParameter": false,
+			"Asynchronously": true
+		},
+		{
+			"MacroActionType": "PromptForUserInput",
+			"Title": "Clean History",
+			"Prompt": "Superwhisper history has \"%localNumber%\" items.",
+			"ActionUID": 15607161,
+			"IsDisclosed": false,
+			"TimeOutAbortsMacro": true,
+			"Buttons": [
+				{
+					"Button": "OK"
+				},
+				{
+					"Button": "Cancel",
+					"Cancel": true
+				}
+			],
+			"Variables": [
+				{
+					"Default": "30",
+					"Type": "Automatic",
+					"Variable": "localKeep"
+				}
+			]
+		},
+		{
+			"MacroActionType": "ExecuteShellScript",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"Source": "Nothing",
+			"IncludeStdErr": false,
+			"ActionUID": 15607163,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "None",
+			"HonourFailureSettings": true,
+			"Text": "#!/bin/bash\n\n# Set the base directory (use full path)\nBASE_DIR=\"$HOME/Documents/superwhisper/recordings\"\n\n# Safely convert KMVAR_localKeep to an integer and subtract 1\nKEEP_COUNT=$(echo \"$KMVAR_localKeep\" | grep -E '^[0-9]+$' || echo 5)\nKEEP_COUNT=$((KEEP_COUNT + 1))\n\n# Ensure KEEP_COUNT is a positive number\nKEEP_COUNT=$((KEEP_COUNT > 0 ? KEEP_COUNT : 5))\n\n# Validate base directory exists\nif [[ ! -d \"$BASE_DIR\" ]]; then\n    echo \"Error: Base directory does not exist\"\n    exit 1\nfi\n\n# List subdirectories, sorting from oldest to newest\nFOLDERS=$(find \"$BASE_DIR\" -maxdepth 1 -type d \\\n    ! -name '.' \\\n    ! -name '..*' \\\n    -print0 | xargs -0 stat -f \"%m %N\" | sort -n | cut -d' ' -f2- | sed \"s|^$BASE_DIR/||\")\n\n# Convert FOLDERS to an array\nIFS=$'\\n' read -d '' -r -a FOLDER_ARRAY <<< \"$FOLDERS\"\n\n# Calculate the number of folders to delete\nTOTAL_FOLDERS=${#FOLDER_ARRAY[@]}\nFOLDERS_TO_DELETE=$((TOTAL_FOLDERS > KEEP_COUNT ? TOTAL_FOLDERS - KEEP_COUNT : 0))\n\n# Prepare an array to hold full paths of folders to delete\nPATHS_TO_DELETE=()\n\n# Collect paths of folders to delete (now from oldest first)\nfor ((i=0; i<FOLDERS_TO_DELETE; i++)); do\n    folder=\"${FOLDER_ARRAY[i]}\"\n    full_path=\"$BASE_DIR/$folder\"\n    \n    # Extremely careful checks\n    if [[ -d \"$full_path\" ]] && \n       [[ \"$full_path\" != \"$BASE_DIR\" ]] && \n       [[ \"$folder\" != \"\" ]] && \n       [[ \"$folder\" != \".\" ]] && \n       [[ \"$folder\" != \"..\" ]]; then\n        PATHS_TO_DELETE+=(\"$full_path\")\n    fi\ndone\n\n# Delete folders if there are any to remove\nif [[ ${#PATHS_TO_DELETE[@]} -gt 0 ]]; then\n    # Use rm to directly delete the folders\n    rm -rf \"${PATHS_TO_DELETE[@]}\"\n    \n    # Print the number of folders deleted\n    echo \"Deleted ${#PATHS_TO_DELETE[@]} folders\"\nfi"
+		}
+	]
+}

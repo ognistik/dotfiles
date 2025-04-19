@@ -1,0 +1,1564 @@
+{
+	"CreationDate": 740685536.014982,
+	"UID": "1D6A5117-E2B4-48CA-B97F-1903FD9746E6",
+	"Name": "rcmd: Arc",
+	"Triggers": [],
+	"ModificationDate": 763129835.235189,
+	"Actions": [
+		{
+			"MacroActionType": "SetVariableToText",
+			"Variable": "localAction",
+			"Text": "%TriggerValue%",
+			"ActionUID": 15519195
+		},
+		{
+			"MacroActionType": "IfThenElse",
+			"ActionUID": 15519196,
+			"ThenActionListDisclosed": false,
+			"TimeOutAbortsMacro": true,
+			"ElseActions": [
+				{
+					"MacroActionType": "IfThenElse",
+					"ElseActions": [
+						{
+							"MacroActionType": "IfThenElse",
+							"ElseActions": [
+								{
+									"MacroActionType": "IfThenElse",
+									"ElseActions": [
+										{
+											"MacroActionType": "IfThenElse",
+											"ElseActions": [
+												{
+													"MacroActionType": "IfThenElse",
+													"ElseActions": [
+														{
+															"MacroActionType": "IfThenElse",
+															"ElseActions": [
+																{
+																	"MacroActionType": "IfThenElse",
+																	"ElseActions": [
+																		{
+																			"MacroActionType": "IfThenElse",
+																			"ElseActions": [
+																				{
+																					"MacroActionType": "IfThenElse",
+																					"ElseActions": [],
+																					"Conditions": {
+																						"ConditionListMatch": "All",
+																						"ConditionList": [
+																							{
+																								"ConditionType": "Variable",
+																								"VariableValue": "3",
+																								"Variable": "localAction",
+																								"VariableConditionType": "Is"
+																							}
+																						]
+																					},
+																					"ThenActions": [
+																						{
+																							"MacroActionType": "ActivateApplication",
+																							"ActionUID": 15519298,
+																							"ReopenWindows": false,
+																							"AllWindows": true,
+																							"TimeOutAbortsMacro": true,
+																							"AlreadyActivatedActionType": "BringAllWindows",
+																							"Application": {
+																								"BundleIdentifier": "company.thebrowser.Browser",
+																								"Name": "Arc",
+																								"NewFile": "/Applications/Arc.app"
+																							}
+																						},
+																						{
+																							"MacroActionType": "Pause",
+																							"TimeOutAbortsMacro": true,
+																							"Time": ".3",
+																							"ActionUID": 15519299
+																						},
+																						{
+																							"MacroActionType": "HideOthers",
+																							"ActionUID": 15519300,
+																							"HonorExcluded": true
+																						}
+																					],
+																					"TimeOutAbortsMacro": true,
+																					"ActionUID": 15519297
+																				}
+																			],
+																			"Conditions": {
+																				"ConditionListMatch": "All",
+																				"ConditionList": [
+																					{
+																						"ConditionType": "Variable",
+																						"VariableValue": "2",
+																						"Variable": "localAction",
+																						"VariableConditionType": "Is"
+																					}
+																				]
+																			},
+																			"ThenActions": [
+																				{
+																					"MacroActionType": "ActivateApplication",
+																					"ActionUID": 15519296,
+																					"ReopenWindows": false,
+																					"AllWindows": true,
+																					"TimeOutAbortsMacro": true,
+																					"AlreadyActivatedActionType": "BringAllWindows",
+																					"Application": {
+																						"BundleIdentifier": "company.thebrowser.Browser",
+																						"Name": "Arc",
+																						"NewFile": "/Applications/Arc.app"
+																					}
+																				}
+																			],
+																			"TimeOutAbortsMacro": true,
+																			"ActionUID": 15519295
+																		}
+																	],
+																	"Conditions": {
+																		"ConditionListMatch": "All",
+																		"ConditionList": [
+																			{
+																				"ConditionType": "Variable",
+																				"VariableValue": "1",
+																				"Variable": "localAction",
+																				"VariableConditionType": "Is"
+																			}
+																		]
+																	},
+																	"ThenActions": [
+																		{
+																			"MacroActionType": "ActivateApplication",
+																			"ActionUID": 15519292,
+																			"ReopenWindows": false,
+																			"AllWindows": true,
+																			"TimeOutAbortsMacro": true,
+																			"AlreadyActivatedActionType": "BringAllWindows",
+																			"Application": {
+																				"BundleIdentifier": "company.thebrowser.Browser",
+																				"Name": "Arc",
+																				"NewFile": "/Applications/Arc.app"
+																			}
+																		},
+																		{
+																			"MacroActionType": "Pause",
+																			"TimeOutAbortsMacro": true,
+																			"Time": ".3",
+																			"ActionUID": 15519293
+																		},
+																		{
+																			"MacroActionType": "HideOthers",
+																			"ActionUID": 15519294,
+																			"HonorExcluded": true
+																		}
+																	],
+																	"TimeOutAbortsMacro": true,
+																	"ActionUID": 15519291
+																}
+															],
+															"Conditions": {
+																"ConditionListMatch": "All",
+																"ConditionList": [
+																	{
+																		"ConditionType": "Variable",
+																		"VariableValue": "xx",
+																		"Variable": "localAction",
+																		"VariableConditionType": "Is"
+																	}
+																]
+															},
+															"ThenActions": [
+																{
+																	"MacroActionType": "Notification",
+																	"Title": "%ExecutingMacro%",
+																	"SoundName": "",
+																	"Subtitle": "",
+																	"Text": "App is not running.",
+																	"ActionUID": 15519290
+																}
+															],
+															"TimeOutAbortsMacro": true,
+															"ActionUID": 15519289
+														}
+													],
+													"Conditions": {
+														"ConditionListMatch": "All",
+														"ConditionList": [
+															{
+																"ConditionType": "Variable",
+																"VariableValue": "0",
+																"Variable": "localAction",
+																"VariableConditionType": "Is"
+															}
+														]
+													},
+													"ThenActions": [
+														{
+															"MacroActionType": "Notification",
+															"Title": "%ExecutingMacro%",
+															"SoundName": "",
+															"Subtitle": "",
+															"Text": "App is not running.",
+															"ActionUID": 15519288
+														}
+													],
+													"TimeOutAbortsMacro": true,
+													"ActionUID": 15519287
+												}
+											],
+											"Conditions": {
+												"ConditionListMatch": "All",
+												"ConditionList": [
+													{
+														"ConditionType": "Variable",
+														"VariableValue": "x",
+														"Variable": "localAction",
+														"VariableConditionType": "Is"
+													}
+												]
+											},
+											"ThenActions": [
+												{
+													"MacroActionType": "Notification",
+													"Title": "%ExecutingMacro%",
+													"SoundName": "",
+													"Subtitle": "",
+													"Text": "App is not running.",
+													"ActionUID": 15519286
+												}
+											],
+											"TimeOutAbortsMacro": true,
+											"ActionUID": 15519285
+										}
+									],
+									"Conditions": {
+										"ConditionListMatch": "All",
+										"ConditionList": [
+											{
+												"ConditionType": "Variable",
+												"VariableValue": "dm",
+												"Variable": "localAction",
+												"VariableConditionType": "Is"
+											}
+										]
+									},
+									"ThenActions": [
+										{
+											"MacroActionType": "Notification",
+											"Title": "%ExecutingMacro%",
+											"SoundName": "",
+											"Subtitle": "",
+											"Text": "App is not running.",
+											"ActionUID": 15519284
+										}
+									],
+									"TimeOutAbortsMacro": true,
+									"ActionUID": 15519283
+								}
+							],
+							"Conditions": {
+								"ConditionListMatch": "All",
+								"ConditionList": [
+									{
+										"ConditionType": "Variable",
+										"VariableValue": "m",
+										"Variable": "localAction",
+										"VariableConditionType": "Is"
+									}
+								]
+							},
+							"ThenActions": [
+								{
+									"MacroActionType": "Notification",
+									"Title": "%ExecutingMacro%",
+									"SoundName": "",
+									"Subtitle": "",
+									"Text": "App is not running.",
+									"ActionUID": 15519282
+								}
+							],
+							"TimeOutAbortsMacro": true,
+							"ActionUID": 15519281
+						}
+					],
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"Application": {
+									"BundleIdentifier": "company.thebrowser.Browser",
+									"Name": "Arc",
+									"NewFile": "/Applications/Arc.app"
+								},
+								"ApplicationConditionType": "Running",
+								"ConditionType": "Application"
+							}
+						]
+					},
+					"ThenActions": [
+						{
+							"MacroActionType": "IfThenElse",
+							"ElseActions": [
+								{
+									"MacroActionType": "IfThenElse",
+									"ElseActions": [
+										{
+											"MacroActionType": "IfThenElse",
+											"ElseActions": [
+												{
+													"MacroActionType": "IfThenElse",
+													"ElseActions": [
+														{
+															"MacroActionType": "IfThenElse",
+															"ElseActions": [
+																{
+																	"MacroActionType": "IfThenElse",
+																	"ElseActions": [
+																		{
+																			"MacroActionType": "IfThenElse",
+																			"ElseActions": [
+																				{
+																					"MacroActionType": "IfThenElse",
+																					"ElseActions": [],
+																					"Conditions": {
+																						"ConditionListMatch": "All",
+																						"ConditionList": [
+																							{
+																								"ConditionType": "Variable",
+																								"VariableValue": "3",
+																								"Variable": "localAction",
+																								"VariableConditionType": "Is"
+																							}
+																						]
+																					},
+																					"ThenActions": [
+																						{
+																							"MacroActionType": "ExecuteShellScript",
+																							"IncludedVariables": [
+																								"9999"
+																							],
+																							"TrimResults": true,
+																							"Source": "Nothing",
+																							"Variable": "localAppWindows",
+																							"IncludeStdErr": false,
+																							"ActionUID": 15519262,
+																							"UseText": true,
+																							"TrimResultsNew": true,
+																							"TimeOutAbortsMacro": true,
+																							"Path": "",
+																							"DisplayKind": "Variable",
+																							"HonourFailureSettings": true,
+																							"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/moveAppToCurrentSpace_NoScratchpad.sh \"Arc\""
+																						},
+																						{
+																							"MacroActionType": "IfThenElse",
+																							"ElseActions": [
+																								{
+																									"MacroActionType": "IfThenElse",
+																									"ElseActions": [
+																										{
+																											"MacroActionType": "IfThenElse",
+																											"ElseActions": [
+																												{
+																													"MacroActionType": "IfThenElse",
+																													"ElseActions": [],
+																													"Conditions": {
+																														"ConditionListMatch": "All",
+																														"ConditionList": [
+																															{
+																																"ConditionType": "Variable",
+																																"VariableValue": "hasScratchpad",
+																																"Variable": "localAppWindows",
+																																"VariableConditionType": "Is"
+																															}
+																														]
+																													},
+																													"ThenActions": [
+																														{
+																															"MacroActionType": "ExecuteAppleScript",
+																															"IncludedVariables": [
+																																"9999"
+																															],
+																															"TrimResults": true,
+																															"IncludeStdErr": false,
+																															"ActionUID": 15519279,
+																															"UseText": true,
+																															"TrimResultsNew": true,
+																															"TimeOutAbortsMacro": true,
+																															"Path": "",
+																															"DisplayKind": "Window",
+																															"HonourFailureSettings": true,
+																															"Text": "tell application \"Bartender 5\"\n\tshow \"com.hegenberg.BetterTouchTool-275E1579-EA47-4838-B80C-62E7CE5EEE46\"\nend tell"
+																														},
+																														{
+																															"MacroActionType": "HideOthers",
+																															"ActionUID": 15519280,
+																															"HonorExcluded": true
+																														}
+																													],
+																													"TimeOutAbortsMacro": true,
+																													"ActionUID": 15519278
+																												}
+																											],
+																											"Conditions": {
+																												"ConditionListMatch": "All",
+																												"ConditionList": [
+																													{
+																														"ConditionType": "Variable",
+																														"VariableValue": "noWindows",
+																														"Variable": "localAppWindows",
+																														"VariableConditionType": "Is"
+																													}
+																												]
+																											},
+																											"ThenActions": [
+																												{
+																													"MacroActionType": "ExecuteShellScript",
+																													"IncludedVariables": [
+																														"9999"
+																													],
+																													"TrimResults": true,
+																													"Source": "Nothing",
+																													"IncludeStdErr": false,
+																													"ActionUID": 15519273,
+																													"UseText": true,
+																													"TrimResultsNew": true,
+																													"TimeOutAbortsMacro": true,
+																													"Path": "",
+																													"DisplayKind": "None",
+																													"HonourFailureSettings": true,
+																													"Text": "/opt/homebrew/bin/yabai -m signal --remove arcrules; /opt/homebrew/bin/yabai -m signal --add label=float_next_window_created event=window_created action='/opt/homebrew/bin/yabai -m signal --remove float_next_window_created; /opt/homebrew/bin/yabai -m window $YABAI_WINDOW_ID --toggle float'"
+																												},
+																												{
+																													"MacroActionType": "SimulateKeystroke",
+																													"ActionUID": 15519274,
+																													"ReleaseAll": false,
+																													"TargetApplication": {
+																														"BundleIdentifier": "company.thebrowser.Browser",
+																														"Name": "Arc",
+																														"NewFile": "/Applications/Arc.app"
+																													},
+																													"TargetingType": "Specific",
+																													"KeyCode": 45,
+																													"Modifiers": 256
+																												},
+																												{
+																													"MacroActionType": "Pause",
+																													"TimeOutAbortsMacro": true,
+																													"Time": ".2",
+																													"ActionUID": 15519275
+																												},
+																												{
+																													"MacroActionType": "ExecuteShellScript",
+																													"IncludedVariables": [
+																														"9999"
+																													],
+																													"TrimResults": true,
+																													"Source": "Nothing",
+																													"IncludeStdErr": false,
+																													"ActionUID": 15519276,
+																													"UseText": true,
+																													"TrimResultsNew": true,
+																													"TimeOutAbortsMacro": true,
+																													"Path": "",
+																													"DisplayKind": "None",
+																													"HonourFailureSettings": true,
+																													"Text": "/opt/homebrew/bin/yabai -m signal --add label=\"arcrules\" app=\"^Arc$\" title!=\"^Space [0-9]+$|^$|^Robert$\" event=window_created action=\"yabai -m window $YABAI_WINDOW_ID --toggle float\"; /opt/homebrew/bin/yabai -m window --focus $(~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/activateNonScratchpad.sh \"Arc\")"
+																												},
+																												{
+																													"MacroActionType": "HideOthers",
+																													"ActionUID": 15519277,
+																													"HonorExcluded": true
+																												}
+																											],
+																											"TimeOutAbortsMacro": true,
+																											"ActionUID": 15519272
+																										}
+																									],
+																									"Conditions": {
+																										"ConditionListMatch": "All",
+																										"ConditionList": [
+																											{
+																												"ConditionType": "Variable",
+																												"VariableValue": "onlyScratchpadNoFocus",
+																												"Variable": "localAppWindows",
+																												"VariableConditionType": "Is"
+																											}
+																										]
+																									},
+																									"ThenActions": [
+																										{
+																											"MacroActionType": "ExecuteShellScript",
+																											"IncludedVariables": [
+																												"9999"
+																											],
+																											"TrimResults": true,
+																											"Source": "Nothing",
+																											"IncludeStdErr": false,
+																											"ActionUID": 15519266,
+																											"UseText": true,
+																											"TrimResultsNew": true,
+																											"TimeOutAbortsMacro": true,
+																											"Path": "",
+																											"DisplayKind": "None",
+																											"HonourFailureSettings": true,
+																											"Text": "/opt/homebrew/bin/yabai -m signal --remove arcrules; /opt/homebrew/bin/yabai -m signal --add label=float_next_window_created event=window_created action='/opt/homebrew/bin/yabai -m signal --remove float_next_window_created; /opt/homebrew/bin/yabai -m window $YABAI_WINDOW_ID --toggle float'"
+																										},
+																										{
+																											"MacroActionType": "SimulateKeystroke",
+																											"ActionUID": 15519267,
+																											"ReleaseAll": false,
+																											"TargetApplication": {
+																												"BundleIdentifier": "company.thebrowser.Browser",
+																												"Name": "Arc",
+																												"NewFile": "/Applications/Arc.app"
+																											},
+																											"TargetingType": "Specific",
+																											"KeyCode": 45,
+																											"Modifiers": 256
+																										},
+																										{
+																											"MacroActionType": "Pause",
+																											"TimeOutAbortsMacro": true,
+																											"Time": ".2",
+																											"ActionUID": 15519268
+																										},
+																										{
+																											"MacroActionType": "ExecuteShellScript",
+																											"IncludedVariables": [
+																												"9999"
+																											],
+																											"TrimResults": true,
+																											"Source": "Nothing",
+																											"IncludeStdErr": false,
+																											"ActionUID": 15519269,
+																											"UseText": true,
+																											"TrimResultsNew": true,
+																											"TimeOutAbortsMacro": true,
+																											"Path": "",
+																											"DisplayKind": "None",
+																											"HonourFailureSettings": true,
+																											"Text": "/opt/homebrew/bin/yabai -m signal --add label=\"arcrules\" app=\"^Arc$\" title!=\"^Space [0-9]+$|^$|^Robert$\" event=window_created action=\"yabai -m window $YABAI_WINDOW_ID --toggle float\"; /opt/homebrew/bin/yabai -m window --focus $(~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/activateNonScratchpad.sh \"Arc\")"
+																										},
+																										{
+																											"MacroActionType": "HideOthers",
+																											"ActionUID": 15519270,
+																											"HonorExcluded": true
+																										},
+																										{
+																											"MacroActionType": "ExecuteAppleScript",
+																											"IncludedVariables": [
+																												"9999"
+																											],
+																											"TrimResults": true,
+																											"IncludeStdErr": false,
+																											"ActionUID": 15519271,
+																											"UseText": true,
+																											"TrimResultsNew": true,
+																											"TimeOutAbortsMacro": true,
+																											"Path": "",
+																											"DisplayKind": "Window",
+																											"HonourFailureSettings": true,
+																											"Text": "tell application \"Bartender 5\"\n\tshow \"com.hegenberg.BetterTouchTool-275E1579-EA47-4838-B80C-62E7CE5EEE46\"\nend tell"
+																										}
+																									],
+																									"TimeOutAbortsMacro": true,
+																									"ActionUID": 15519265
+																								}
+																							],
+																							"Conditions": {
+																								"ConditionListMatch": "All",
+																								"ConditionList": [
+																									{
+																										"ConditionType": "Variable",
+																										"VariableValue": "onlyScratchpadHasFocus",
+																										"Variable": "localAppWindows",
+																										"VariableConditionType": "Is"
+																									}
+																								]
+																							},
+																							"ThenActions": [
+																								{
+																									"MacroActionType": "HideOthers",
+																									"ActionUID": 15519264,
+																									"HonorExcluded": true
+																								}
+																							],
+																							"TimeOutAbortsMacro": true,
+																							"ActionUID": 15519263
+																						}
+																					],
+																					"TimeOutAbortsMacro": true,
+																					"ActionUID": 15519261
+																				}
+																			],
+																			"Conditions": {
+																				"ConditionListMatch": "All",
+																				"ConditionList": [
+																					{
+																						"ConditionType": "Variable",
+																						"VariableValue": "2",
+																						"Variable": "localAction",
+																						"VariableConditionType": "Is"
+																					}
+																				]
+																			},
+																			"ThenActions": [
+																				{
+																					"MacroActionType": "ExecuteShellScript",
+																					"IncludedVariables": [
+																						"9999"
+																					],
+																					"TrimResults": true,
+																					"Source": "Nothing",
+																					"Variable": "localAppWindows",
+																					"IncludeStdErr": false,
+																					"ActionUID": 15519246,
+																					"UseText": true,
+																					"TrimResultsNew": true,
+																					"TimeOutAbortsMacro": true,
+																					"Path": "",
+																					"DisplayKind": "Variable",
+																					"HonourFailureSettings": true,
+																					"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/moveAppToCurrentSpace_NoScratchpad.sh \"Arc\""
+																				},
+																				{
+																					"MacroActionType": "IfThenElse",
+																					"ElseActions": [
+																						{
+																							"MacroActionType": "IfThenElse",
+																							"ElseActions": [
+																								{
+																									"MacroActionType": "IfThenElse",
+																									"ElseActions": [
+																										{
+																											"MacroActionType": "IfThenElse",
+																											"ElseActions": [],
+																											"Conditions": {
+																												"ConditionListMatch": "All",
+																												"ConditionList": [
+																													{
+																														"ConditionType": "Variable",
+																														"VariableValue": "hasScratchpad",
+																														"Variable": "localAppWindows",
+																														"VariableConditionType": "Is"
+																													}
+																												]
+																											},
+																											"ThenActions": [
+																												{
+																													"MacroActionType": "ExecuteAppleScript",
+																													"IncludedVariables": [
+																														"9999"
+																													],
+																													"TrimResults": true,
+																													"IncludeStdErr": false,
+																													"ActionUID": 15519260,
+																													"UseText": true,
+																													"TrimResultsNew": true,
+																													"TimeOutAbortsMacro": true,
+																													"Path": "",
+																													"DisplayKind": "Window",
+																													"HonourFailureSettings": true,
+																													"Text": "tell application \"Bartender 5\"\n\tshow \"com.hegenberg.BetterTouchTool-275E1579-EA47-4838-B80C-62E7CE5EEE46\"\nend tell"
+																												}
+																											],
+																											"TimeOutAbortsMacro": true,
+																											"ActionUID": 15519259
+																										}
+																									],
+																									"Conditions": {
+																										"ConditionListMatch": "All",
+																										"ConditionList": [
+																											{
+																												"ConditionType": "Variable",
+																												"VariableValue": "noWindows",
+																												"Variable": "localAppWindows",
+																												"VariableConditionType": "Is"
+																											}
+																										]
+																									},
+																									"ThenActions": [
+																										{
+																											"MacroActionType": "ExecuteShellScript",
+																											"IncludedVariables": [
+																												"9999"
+																											],
+																											"TrimResults": true,
+																											"Source": "Nothing",
+																											"IncludeStdErr": false,
+																											"ActionUID": 15519255,
+																											"UseText": true,
+																											"TrimResultsNew": true,
+																											"TimeOutAbortsMacro": true,
+																											"Path": "",
+																											"DisplayKind": "None",
+																											"HonourFailureSettings": true,
+																											"Text": "/opt/homebrew/bin/yabai -m signal --remove arcrules; /opt/homebrew/bin/yabai -m signal --add label=float_next_window_created event=window_created action='/opt/homebrew/bin/yabai -m signal --remove float_next_window_created; /opt/homebrew/bin/yabai -m window $YABAI_WINDOW_ID --toggle float'"
+																										},
+																										{
+																											"MacroActionType": "SimulateKeystroke",
+																											"ActionUID": 15519256,
+																											"ReleaseAll": false,
+																											"TargetApplication": {
+																												"BundleIdentifier": "company.thebrowser.Browser",
+																												"Name": "Arc",
+																												"NewFile": "/Applications/Arc.app"
+																											},
+																											"TargetingType": "Specific",
+																											"KeyCode": 45,
+																											"Modifiers": 256
+																										},
+																										{
+																											"MacroActionType": "Pause",
+																											"TimeOutAbortsMacro": true,
+																											"Time": ".2",
+																											"ActionUID": 15519257
+																										},
+																										{
+																											"MacroActionType": "ExecuteShellScript",
+																											"IncludedVariables": [
+																												"9999"
+																											],
+																											"TrimResults": true,
+																											"Source": "Nothing",
+																											"IncludeStdErr": false,
+																											"ActionUID": 15519258,
+																											"UseText": true,
+																											"TrimResultsNew": true,
+																											"TimeOutAbortsMacro": true,
+																											"Path": "",
+																											"DisplayKind": "None",
+																											"HonourFailureSettings": true,
+																											"Text": "/opt/homebrew/bin/yabai -m signal --add label=\"arcrules\" app=\"^Arc$\" title!=\"^Space [0-9]+$|^$|^Robert$\" event=window_created action=\"yabai -m window $YABAI_WINDOW_ID --toggle float\"; /opt/homebrew/bin/yabai -m window --focus $(~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/activateNonScratchpad.sh \"Arc\")"
+																										}
+																									],
+																									"TimeOutAbortsMacro": true,
+																									"ActionUID": 15519254
+																								}
+																							],
+																							"Conditions": {
+																								"ConditionListMatch": "All",
+																								"ConditionList": [
+																									{
+																										"ConditionType": "Variable",
+																										"VariableValue": "onlyScratchpadNoFocus",
+																										"Variable": "localAppWindows",
+																										"VariableConditionType": "Is"
+																									}
+																								]
+																							},
+																							"ThenActions": [
+																								{
+																									"MacroActionType": "ExecuteShellScript",
+																									"IncludedVariables": [
+																										"9999"
+																									],
+																									"TrimResults": true,
+																									"Source": "Nothing",
+																									"IncludeStdErr": false,
+																									"ActionUID": 15519249,
+																									"UseText": true,
+																									"TrimResultsNew": true,
+																									"TimeOutAbortsMacro": true,
+																									"Path": "",
+																									"DisplayKind": "None",
+																									"HonourFailureSettings": true,
+																									"Text": "/opt/homebrew/bin/yabai -m signal --remove arcrules; /opt/homebrew/bin/yabai -m signal --add label=float_next_window_created event=window_created action='/opt/homebrew/bin/yabai -m signal --remove float_next_window_created; /opt/homebrew/bin/yabai -m window $YABAI_WINDOW_ID --toggle float'"
+																								},
+																								{
+																									"MacroActionType": "SimulateKeystroke",
+																									"ActionUID": 15519250,
+																									"ReleaseAll": false,
+																									"TargetApplication": {
+																										"BundleIdentifier": "company.thebrowser.Browser",
+																										"Name": "Arc",
+																										"NewFile": "/Applications/Arc.app"
+																									},
+																									"TargetingType": "Specific",
+																									"KeyCode": 45,
+																									"Modifiers": 256
+																								},
+																								{
+																									"MacroActionType": "Pause",
+																									"TimeOutAbortsMacro": true,
+																									"Time": ".2",
+																									"ActionUID": 15519251
+																								},
+																								{
+																									"MacroActionType": "ExecuteShellScript",
+																									"IncludedVariables": [
+																										"9999"
+																									],
+																									"TrimResults": true,
+																									"Source": "Nothing",
+																									"IncludeStdErr": false,
+																									"ActionUID": 15519252,
+																									"UseText": true,
+																									"TrimResultsNew": true,
+																									"TimeOutAbortsMacro": true,
+																									"Path": "",
+																									"DisplayKind": "None",
+																									"HonourFailureSettings": true,
+																									"Text": "/opt/homebrew/bin/yabai -m signal --add label=\"arcrules\" app=\"^Arc$\" title!=\"^Space [0-9]+$|^$|^Robert$\" event=window_created action=\"yabai -m window $YABAI_WINDOW_ID --toggle float\"; /opt/homebrew/bin/yabai -m window --focus $(~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/activateNonScratchpad.sh \"Arc\")"
+																								},
+																								{
+																									"MacroActionType": "ExecuteAppleScript",
+																									"IncludedVariables": [
+																										"9999"
+																									],
+																									"TrimResults": true,
+																									"IncludeStdErr": false,
+																									"ActionUID": 15519253,
+																									"UseText": true,
+																									"TrimResultsNew": true,
+																									"TimeOutAbortsMacro": true,
+																									"Path": "",
+																									"DisplayKind": "Window",
+																									"HonourFailureSettings": true,
+																									"Text": "tell application \"Bartender 5\"\n\tshow \"com.hegenberg.BetterTouchTool-275E1579-EA47-4838-B80C-62E7CE5EEE46\"\nend tell"
+																								}
+																							],
+																							"TimeOutAbortsMacro": true,
+																							"ActionUID": 15519248
+																						}
+																					],
+																					"Conditions": {
+																						"ConditionListMatch": "All",
+																						"ConditionList": [
+																							{
+																								"ConditionType": "Variable",
+																								"VariableValue": "onlyScratchpadHasFocus",
+																								"Variable": "localAppWindows",
+																								"VariableConditionType": "Is"
+																							}
+																						]
+																					},
+																					"ThenActions": [],
+																					"TimeOutAbortsMacro": true,
+																					"ActionUID": 15519247
+																				}
+																			],
+																			"TimeOutAbortsMacro": true,
+																			"ActionUID": 15519245
+																		}
+																	],
+																	"Conditions": {
+																		"ConditionListMatch": "All",
+																		"ConditionList": [
+																			{
+																				"ConditionType": "Variable",
+																				"VariableValue": "1",
+																				"Variable": "localAction",
+																				"VariableConditionType": "Is"
+																			}
+																		]
+																	},
+																	"ThenActions": [
+																		{
+																			"MacroActionType": "ExecuteShellScript",
+																			"IncludedVariables": [
+																				"9999"
+																			],
+																			"TrimResults": true,
+																			"Source": "Nothing",
+																			"Variable": "localAppWindows",
+																			"IncludeStdErr": false,
+																			"ActionUID": 15519225,
+																			"UseText": true,
+																			"TrimResultsNew": true,
+																			"TimeOutAbortsMacro": true,
+																			"Path": "",
+																			"DisplayKind": "Variable",
+																			"HonourFailureSettings": true,
+																			"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/activateNonScratchpad.sh \"Arc\""
+																		},
+																		{
+																			"MacroActionType": "IfThenElse",
+																			"ElseActions": [
+																				{
+																					"MacroActionType": "IfThenElse",
+																					"ElseActions": [
+																						{
+																							"MacroActionType": "IfThenElse",
+																							"ElseActions": [
+																								{
+																									"MacroActionType": "IfThenElse",
+																									"ElseActions": [
+																										{
+																											"MacroActionType": "ExecuteShellScript",
+																											"IncludedVariables": [
+																												"9999"
+																											],
+																											"TrimResults": true,
+																											"Source": "Nothing",
+																											"IncludeStdErr": false,
+																											"ActionUID": 15519243,
+																											"UseText": true,
+																											"TrimResultsNew": true,
+																											"TimeOutAbortsMacro": true,
+																											"Path": "",
+																											"DisplayKind": "None",
+																											"HonourFailureSettings": true,
+																											"Text": "/opt/homebrew/bin/yabai -m window --focus $KMVAR_localAppWindows || open -a \"Arc\""
+																										},
+																										{
+																											"MacroActionType": "HideOthers",
+																											"ActionUID": 15519244,
+																											"HonorExcluded": true
+																										}
+																									],
+																									"Conditions": {
+																										"ConditionListMatch": "All",
+																										"ConditionList": [
+																											{
+																												"ConditionType": "Variable",
+																												"VariableValue": "onWindowNoScratchpad",
+																												"Variable": "localAppWindows",
+																												"VariableConditionType": "Is"
+																											}
+																										]
+																									},
+																									"ThenActions": [
+																										{
+																											"MacroActionType": "HideOthers",
+																											"ActionUID": 15519242,
+																											"HonorExcluded": true
+																										}
+																									],
+																									"TimeOutAbortsMacro": true,
+																									"ActionUID": 15519241
+																								}
+																							],
+																							"Conditions": {
+																								"ConditionListMatch": "All",
+																								"ConditionList": [
+																									{
+																										"ConditionType": "Variable",
+																										"VariableValue": "onWindowWithScratchpad",
+																										"Variable": "localAppWindows",
+																										"VariableConditionType": "Is"
+																									}
+																								]
+																							},
+																							"ThenActions": [
+																								{
+																									"MacroActionType": "HideOthers",
+																									"ActionUID": 15519240,
+																									"HonorExcluded": true
+																								}
+																							],
+																							"TimeOutAbortsMacro": true,
+																							"ActionUID": 15519239
+																						}
+																					],
+																					"Conditions": {
+																						"ConditionListMatch": "All",
+																						"ConditionList": [
+																							{
+																								"ConditionType": "Variable",
+																								"VariableValue": "noWindows",
+																								"Variable": "localAppWindows",
+																								"VariableConditionType": "Is"
+																							}
+																						]
+																					},
+																					"ThenActions": [
+																						{
+																							"MacroActionType": "ExecuteShellScript",
+																							"IncludedVariables": [
+																								"9999"
+																							],
+																							"TrimResults": true,
+																							"Source": "Nothing",
+																							"IncludeStdErr": false,
+																							"ActionUID": 15519234,
+																							"UseText": true,
+																							"TrimResultsNew": true,
+																							"TimeOutAbortsMacro": true,
+																							"Path": "",
+																							"DisplayKind": "None",
+																							"HonourFailureSettings": true,
+																							"Text": "/opt/homebrew/bin/yabai -m signal --remove arcrules; /opt/homebrew/bin/yabai -m signal --add label=float_next_window_created event=window_created action='/opt/homebrew/bin/yabai -m signal --remove float_next_window_created; /opt/homebrew/bin/yabai -m window $YABAI_WINDOW_ID --toggle float'"
+																						},
+																						{
+																							"MacroActionType": "SimulateKeystroke",
+																							"ActionUID": 15519235,
+																							"ReleaseAll": false,
+																							"TargetApplication": {
+																								"BundleIdentifier": "company.thebrowser.Browser",
+																								"Name": "Arc",
+																								"NewFile": "/Applications/Arc.app"
+																							},
+																							"TargetingType": "Specific",
+																							"KeyCode": 45,
+																							"Modifiers": 256
+																						},
+																						{
+																							"MacroActionType": "Pause",
+																							"TimeOutAbortsMacro": true,
+																							"Time": ".2",
+																							"ActionUID": 15519236
+																						},
+																						{
+																							"MacroActionType": "ExecuteShellScript",
+																							"IncludedVariables": [
+																								"9999"
+																							],
+																							"TrimResults": true,
+																							"Source": "Nothing",
+																							"IncludeStdErr": false,
+																							"ActionUID": 15519237,
+																							"UseText": true,
+																							"TrimResultsNew": true,
+																							"TimeOutAbortsMacro": true,
+																							"Path": "",
+																							"DisplayKind": "None",
+																							"HonourFailureSettings": true,
+																							"Text": "/opt/homebrew/bin/yabai -m signal --add label=\"arcrules\" app=\"^Arc$\" title!=\"^Space [0-9]+$|^$|^Robert$\" event=window_created action=\"yabai -m window $YABAI_WINDOW_ID --toggle float\"; /opt/homebrew/bin/yabai -m window --focus $(~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/activateNonScratchpad.sh \"Arc\")"
+																						},
+																						{
+																							"MacroActionType": "HideOthers",
+																							"ActionUID": 15519238,
+																							"HonorExcluded": true
+																						}
+																					],
+																					"TimeOutAbortsMacro": true,
+																					"ActionUID": 15519233
+																				}
+																			],
+																			"Conditions": {
+																				"ConditionListMatch": "All",
+																				"ConditionList": [
+																					{
+																						"ConditionType": "Variable",
+																						"VariableValue": "onlyScratchpadWindows",
+																						"Variable": "localAppWindows",
+																						"VariableConditionType": "Is"
+																					}
+																				]
+																			},
+																			"ThenActions": [
+																				{
+																					"MacroActionType": "ExecuteShellScript",
+																					"IncludedVariables": [
+																						"9999"
+																					],
+																					"TrimResults": true,
+																					"Source": "Nothing",
+																					"IncludeStdErr": false,
+																					"ActionUID": 15519227,
+																					"UseText": true,
+																					"TrimResultsNew": true,
+																					"TimeOutAbortsMacro": true,
+																					"Path": "",
+																					"DisplayKind": "None",
+																					"HonourFailureSettings": true,
+																					"Text": "/opt/homebrew/bin/yabai -m signal --remove arcrules; /opt/homebrew/bin/yabai -m signal --add label=float_next_window_created event=window_created action='/opt/homebrew/bin/yabai -m signal --remove float_next_window_created; /opt/homebrew/bin/yabai -m window $YABAI_WINDOW_ID --toggle float'"
+																				},
+																				{
+																					"MacroActionType": "SimulateKeystroke",
+																					"ActionUID": 15519228,
+																					"ReleaseAll": false,
+																					"TargetApplication": {
+																						"BundleIdentifier": "company.thebrowser.Browser",
+																						"Name": "Arc",
+																						"NewFile": "/Applications/Arc.app"
+																					},
+																					"TargetingType": "Specific",
+																					"KeyCode": 45,
+																					"Modifiers": 256
+																				},
+																				{
+																					"MacroActionType": "Pause",
+																					"TimeOutAbortsMacro": true,
+																					"Time": ".2",
+																					"ActionUID": 15519229
+																				},
+																				{
+																					"MacroActionType": "ExecuteShellScript",
+																					"IncludedVariables": [
+																						"9999"
+																					],
+																					"TrimResults": true,
+																					"Source": "Nothing",
+																					"IncludeStdErr": false,
+																					"ActionUID": 15519230,
+																					"UseText": true,
+																					"TrimResultsNew": true,
+																					"TimeOutAbortsMacro": true,
+																					"Path": "",
+																					"DisplayKind": "None",
+																					"HonourFailureSettings": true,
+																					"Text": "/opt/homebrew/bin/yabai -m signal --add label=\"arcrules\" app=\"^Arc$\" title!=\"^Space [0-9]+$|^$|^Robert$\" event=window_created action=\"yabai -m window $YABAI_WINDOW_ID --toggle float\"; /opt/homebrew/bin/yabai -m window --focus $(~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/activateNonScratchpad.sh \"Arc\")"
+																				},
+																				{
+																					"MacroActionType": "ExecuteAppleScript",
+																					"IncludedVariables": [
+																						"9999"
+																					],
+																					"TrimResults": true,
+																					"IncludeStdErr": false,
+																					"ActionUID": 15519231,
+																					"UseText": true,
+																					"TrimResultsNew": true,
+																					"TimeOutAbortsMacro": true,
+																					"Path": "",
+																					"DisplayKind": "Window",
+																					"HonourFailureSettings": true,
+																					"Text": "tell application \"Bartender 5\"\n\tshow \"com.hegenberg.BetterTouchTool-275E1579-EA47-4838-B80C-62E7CE5EEE46\"\nend tell"
+																				},
+																				{
+																					"MacroActionType": "HideOthers",
+																					"ActionUID": 15519232,
+																					"HonorExcluded": true
+																				}
+																			],
+																			"TimeOutAbortsMacro": true,
+																			"ActionUID": 15519226
+																		}
+																	],
+																	"TimeOutAbortsMacro": true,
+																	"ActionUID": 15519224
+																}
+															],
+															"Conditions": {
+																"ConditionListMatch": "All",
+																"ConditionList": [
+																	{
+																		"ConditionType": "Variable",
+																		"VariableValue": "xx",
+																		"Variable": "localAction",
+																		"VariableConditionType": "Is"
+																	}
+																]
+															},
+															"ThenActions": [
+																{
+																	"MacroActionType": "QuitSpecificApp",
+																	"Application": {
+																		"BundleIdentifier": "company.thebrowser.Browser",
+																		"Name": "Arc",
+																		"NewFile": "/Applications/Arc.app"
+																	},
+																	"TimeOutAbortsMacro": true,
+																	"Target": "Specific",
+																	"Action": "Quit",
+																	"ActionUID": 15519223
+																}
+															],
+															"TimeOutAbortsMacro": true,
+															"ActionUID": 15519222
+														}
+													],
+													"Conditions": {
+														"ConditionListMatch": "All",
+														"ConditionList": [
+															{
+																"ConditionType": "Variable",
+																"VariableValue": "0",
+																"Variable": "localAction",
+																"VariableConditionType": "Is"
+															}
+														]
+													},
+													"ThenActions": [
+														{
+															"MacroActionType": "HideSpecificApp",
+															"ActionUID": 15519221,
+															"Application": {
+																"BundleIdentifier": "company.thebrowser.Browser",
+																"Name": "Arc",
+																"NewFile": "/Applications/Arc.app"
+															}
+														}
+													],
+													"TimeOutAbortsMacro": true,
+													"ActionUID": 15519220
+												}
+											],
+											"Conditions": {
+												"ConditionListMatch": "All",
+												"ConditionList": [
+													{
+														"ConditionType": "Variable",
+														"VariableValue": "x",
+														"Variable": "localAction",
+														"VariableConditionType": "Is"
+													}
+												]
+											},
+											"ThenActions": [
+												{
+													"MacroActionType": "ExecuteShellScript",
+													"IncludedVariables": [
+														"9999"
+													],
+													"TrimResults": true,
+													"Source": "Nothing",
+													"IncludeStdErr": false,
+													"ActionUID": 15519219,
+													"UseText": true,
+													"TrimResultsNew": true,
+													"TimeOutAbortsMacro": true,
+													"Path": "",
+													"DisplayKind": "Window",
+													"HonourFailureSettings": true,
+													"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/closeAppWindows.sh \"Arc\""
+												}
+											],
+											"TimeOutAbortsMacro": true,
+											"ActionUID": 15519218
+										}
+									],
+									"Conditions": {
+										"ConditionListMatch": "All",
+										"ConditionList": [
+											{
+												"ConditionType": "Variable",
+												"VariableValue": "dm",
+												"Variable": "localAction",
+												"VariableConditionType": "Is"
+											}
+										]
+									},
+									"ThenActions": [
+										{
+											"MacroActionType": "ExecuteShellScript",
+											"IncludedVariables": [
+												"9999"
+											],
+											"TrimResults": true,
+											"Source": "Nothing",
+											"IncludeStdErr": false,
+											"ActionUID": 15519217,
+											"UseText": true,
+											"TrimResultsNew": true,
+											"TimeOutAbortsMacro": true,
+											"Path": "",
+											"DisplayKind": "None",
+											"HonourFailureSettings": true,
+											"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/deminimizeWindowsOfApp.sh \"Arc\""
+										}
+									],
+									"TimeOutAbortsMacro": true,
+									"ActionUID": 15519216
+								}
+							],
+							"Conditions": {
+								"ConditionListMatch": "All",
+								"ConditionList": [
+									{
+										"ConditionType": "Variable",
+										"VariableValue": "m",
+										"Variable": "localAction",
+										"VariableConditionType": "Is"
+									}
+								]
+							},
+							"ThenActions": [
+								{
+									"MacroActionType": "ExecuteShellScript",
+									"IncludedVariables": [
+										"9999"
+									],
+									"TrimResults": true,
+									"Source": "Nothing",
+									"IncludeStdErr": false,
+									"ActionUID": 15519215,
+									"UseText": true,
+									"TrimResultsNew": true,
+									"TimeOutAbortsMacro": true,
+									"Path": "",
+									"DisplayKind": "None",
+									"HonourFailureSettings": true,
+									"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/minimizeAllWindowsOfApp.sh \"Arc\""
+								}
+							],
+							"TimeOutAbortsMacro": true,
+							"ActionUID": 15519214
+						}
+					],
+					"TimeOutAbortsMacro": true,
+					"ActionUID": 15519213
+				}
+			],
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"ConditionType": "Variable",
+						"VariableValue": "",
+						"Variable": "localAction",
+						"VariableConditionType": "Is"
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "IfThenElse",
+					"ElseActions": [
+						{
+							"MacroActionType": "ActivateApplication",
+							"ActionUID": 15519212,
+							"ReopenWindows": false,
+							"AllWindows": false,
+							"TimeOutAbortsMacro": true,
+							"AlreadyActivatedActionType": "Normal",
+							"Application": {
+								"BundleIdentifier": "company.thebrowser.Browser",
+								"Name": "Arc",
+								"NewFile": "/Applications/Arc.app"
+							}
+						}
+					],
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"Application": {
+									"BundleIdentifier": "company.thebrowser.Browser",
+									"Name": "Arc",
+									"NewFile": "/Applications/Arc.app"
+								},
+								"ApplicationConditionType": "Running",
+								"ConditionType": "Application"
+							}
+						]
+					},
+					"ThenActions": [
+						{
+							"MacroActionType": "ExecuteShellScript",
+							"IncludedVariables": [
+								"9999"
+							],
+							"TrimResults": true,
+							"Source": "Nothing",
+							"Variable": "localAppWindows",
+							"IncludeStdErr": false,
+							"ActionUID": 15519198,
+							"UseText": true,
+							"TrimResultsNew": true,
+							"TimeOutAbortsMacro": true,
+							"Path": "",
+							"DisplayKind": "Variable",
+							"HonourFailureSettings": true,
+							"Text": "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/activateNonScratchpad.sh \"Arc\""
+						},
+						{
+							"MacroActionType": "IfThenElse",
+							"ElseActions": [
+								{
+									"MacroActionType": "IfThenElse",
+									"ElseActions": [
+										{
+											"MacroActionType": "IfThenElse",
+											"ElseActions": [
+												{
+													"MacroActionType": "IfThenElse",
+													"ElseActions": [
+														{
+															"MacroActionType": "ExecuteShellScript",
+															"IncludedVariables": [
+																"9999"
+															],
+															"TrimResults": true,
+															"Source": "Nothing",
+															"IncludeStdErr": false,
+															"ActionUID": 15519211,
+															"UseText": true,
+															"TrimResultsNew": true,
+															"TimeOutAbortsMacro": true,
+															"Path": "",
+															"DisplayKind": "None",
+															"HonourFailureSettings": true,
+															"Text": "/opt/homebrew/bin/yabai -m window --focus $KMVAR_localAppWindows || open -a \"Arc\""
+														}
+													],
+													"Conditions": {
+														"ConditionListMatch": "All",
+														"ConditionList": [
+															{
+																"ConditionType": "Variable",
+																"VariableValue": "onWindowNoScratchpad",
+																"Variable": "localAppWindows",
+																"VariableConditionType": "Is"
+															}
+														]
+													},
+													"ThenActions": [
+														{
+															"MacroActionType": "ActivateApplication",
+															"ActionUID": 15519210,
+															"ReopenWindows": false,
+															"AllWindows": false,
+															"TimeOutAbortsMacro": true,
+															"AlreadyActivatedActionType": "Hide",
+															"Application": {
+																"BundleIdentifier": "company.thebrowser.Browser",
+																"Name": "Arc",
+																"NewFile": "/Applications/Arc.app"
+															}
+														}
+													],
+													"TimeOutAbortsMacro": true,
+													"ActionUID": 15519209
+												}
+											],
+											"Conditions": {
+												"ConditionListMatch": "All",
+												"ConditionList": [
+													{
+														"ConditionType": "Variable",
+														"VariableValue": "onWindowWithScratchpad",
+														"Variable": "localAppWindows",
+														"VariableConditionType": "Is"
+													}
+												]
+											},
+											"ThenActions": [
+												{
+													"MacroActionType": "ExecuteShellScript",
+													"IncludedVariables": [
+														"9999"
+													],
+													"TrimResults": true,
+													"Source": "Nothing",
+													"IncludeStdErr": false,
+													"ActionUID": 15519208,
+													"UseText": true,
+													"TrimResultsNew": true,
+													"TimeOutAbortsMacro": true,
+													"Path": "",
+													"DisplayKind": "None",
+													"HonourFailureSettings": true,
+													"Text": "/opt/homebrew/bin/yabai -m window --toggle arcScratchpad"
+												}
+											],
+											"TimeOutAbortsMacro": true,
+											"ActionUID": 15519207
+										}
+									],
+									"Conditions": {
+										"ConditionListMatch": "All",
+										"ConditionList": [
+											{
+												"ConditionType": "Variable",
+												"VariableValue": "noWindows",
+												"Variable": "localAppWindows",
+												"VariableConditionType": "Is"
+											}
+										]
+									},
+									"ThenActions": [
+										{
+											"MacroActionType": "ActivateApplication",
+											"ActionUID": 15519206,
+											"ReopenWindows": false,
+											"AllWindows": false,
+											"TimeOutAbortsMacro": true,
+											"AlreadyActivatedActionType": "Normal",
+											"Application": {
+												"BundleIdentifier": "company.thebrowser.Browser",
+												"Name": "Arc",
+												"NewFile": "/Applications/Arc.app"
+											}
+										}
+									],
+									"TimeOutAbortsMacro": true,
+									"ActionUID": 15519205
+								}
+							],
+							"Conditions": {
+								"ConditionListMatch": "All",
+								"ConditionList": [
+									{
+										"ConditionType": "Variable",
+										"VariableValue": "onlyScratchpadWindows",
+										"Variable": "localAppWindows",
+										"VariableConditionType": "Is"
+									}
+								]
+							},
+							"ThenActions": [
+								{
+									"MacroActionType": "ExecuteShellScript",
+									"IncludedVariables": [
+										"9999"
+									],
+									"TrimResults": true,
+									"Source": "Nothing",
+									"IncludeStdErr": false,
+									"ActionUID": 15519200,
+									"UseText": true,
+									"TrimResultsNew": true,
+									"TimeOutAbortsMacro": true,
+									"Path": "",
+									"DisplayKind": "None",
+									"HonourFailureSettings": true,
+									"Text": "/opt/homebrew/bin/yabai -m signal --remove arcrules; /opt/homebrew/bin/yabai -m signal --add label=float_next_window_created event=window_created action='/opt/homebrew/bin/yabai -m signal --remove float_next_window_created; /opt/homebrew/bin/yabai -m window $YABAI_WINDOW_ID --toggle float'"
+								},
+								{
+									"MacroActionType": "SimulateKeystroke",
+									"ActionUID": 15519201,
+									"ReleaseAll": false,
+									"TargetApplication": {
+										"BundleIdentifier": "company.thebrowser.Browser",
+										"Name": "Arc",
+										"NewFile": "/Applications/Arc.app"
+									},
+									"TargetingType": "Specific",
+									"KeyCode": 45,
+									"Modifiers": 256
+								},
+								{
+									"MacroActionType": "Pause",
+									"TimeOutAbortsMacro": true,
+									"Time": ".2",
+									"ActionUID": 15519202
+								},
+								{
+									"MacroActionType": "ExecuteShellScript",
+									"IncludedVariables": [
+										"9999"
+									],
+									"TrimResults": true,
+									"Source": "Nothing",
+									"IncludeStdErr": false,
+									"ActionUID": 15519203,
+									"UseText": true,
+									"TrimResultsNew": true,
+									"TimeOutAbortsMacro": true,
+									"Path": "",
+									"DisplayKind": "None",
+									"HonourFailureSettings": true,
+									"Text": "/opt/homebrew/bin/yabai -m signal --add label=\"arcrules\" app=\"^Arc$\" title!=\"^Space [0-9]+$|^$|^Robert$\" event=window_created action=\"yabai -m window $YABAI_WINDOW_ID --toggle float\"; /opt/homebrew/bin/yabai -m window --focus $(~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/activateNonScratchpad.sh \"Arc\")"
+								},
+								{
+									"MacroActionType": "ExecuteAppleScript",
+									"IncludedVariables": [
+										"9999"
+									],
+									"TrimResults": true,
+									"IncludeStdErr": false,
+									"ActionUID": 15519204,
+									"UseText": true,
+									"TrimResultsNew": true,
+									"TimeOutAbortsMacro": true,
+									"Path": "",
+									"DisplayKind": "Window",
+									"HonourFailureSettings": true,
+									"Text": "tell application \"Bartender 5\"\n\tshow \"com.hegenberg.BetterTouchTool-275E1579-EA47-4838-B80C-62E7CE5EEE46\"\nend tell"
+								}
+							],
+							"TimeOutAbortsMacro": true,
+							"ActionUID": 15519199
+						}
+					],
+					"TimeOutAbortsMacro": true,
+					"ActionUID": 15519197
+				}
+			]
+		}
+	]
+}

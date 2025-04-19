@@ -1,0 +1,47 @@
+{
+	"CreationDate": 494958326.367943,
+	"UID": "F4D122FE-9BAD-49B6-B25B-2EBBDDFA170E",
+	"Name": "caps-s - Cleanshot: PinSelection",
+	"Triggers": [],
+	"ModificationDate": 742008190.097336,
+	"Actions": [
+		{
+			"MacroActionType": "For",
+			"Actions": [
+				{
+					"MacroActionType": "SetVariableToText",
+					"Variable": "localSelectionPath",
+					"Text": "%Variable%localPath%",
+					"ActionUID": 15497009
+				},
+				{
+					"MacroActionType": "SearchReplace",
+					"Search": " ",
+					"Source": "Variable",
+					"Variable": "localSelectionPath",
+					"Action": "IgnoreCaseString",
+					"ActionUID": 15497010,
+					"Replace": "%20",
+					"Which": "All"
+				}
+			],
+			"Collections": {
+				"CollectionList": [
+					{
+						"CollectionType": "FinderSelection"
+					}
+				]
+			},
+			"TimeOutAbortsMacro": true,
+			"Variable": "localPath",
+			"ActionUID": 15497008
+		},
+		{
+			"MacroActionType": "OpenURL",
+			"TimeOutAbortsMacro": true,
+			"URL": "cleanshot://pin?filepath=%Variable%localSelectionPath%",
+			"IsDefaultApplication": true,
+			"ActionUID": 15497011
+		}
+	]
+}

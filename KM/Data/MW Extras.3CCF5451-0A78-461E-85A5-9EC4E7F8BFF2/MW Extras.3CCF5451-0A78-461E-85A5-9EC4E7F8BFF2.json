@@ -1,0 +1,18 @@
+{
+	"AddToMacroPalette": false,
+	"AddToStatusMenu": false,
+	"CreationDate": 766178727.802473,
+	"Modifiers": 0,
+	"PaletteUnderMouse": false,
+	"Name": "MW Extras",
+	"UID": "3CCF5451-0A78-461E-85A5-9EC4E7F8BFF2",
+	"Targeting": {
+		"Targeting": "All",
+		"TargetingApps": []
+	},
+	"Macros": [],
+	"ToggleMacroUID": "326107A0-48B6-4FA3-BB12-9694C48827E0",
+	"Activate": "Normal",
+	"KeyCode": 32767,
+	"DisplayToggle": false
+}

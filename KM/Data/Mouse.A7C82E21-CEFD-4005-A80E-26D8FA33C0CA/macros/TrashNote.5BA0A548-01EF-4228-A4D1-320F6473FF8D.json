@@ -1,0 +1,45 @@
+{
+	"CreationDate": 742593812.788719,
+	"UID": "5BA0A548-01EF-4228-A4D1-320F6473FF8D",
+	"Name": "TrashNote",
+	"Triggers": [
+		{
+			"KeyCode": 35,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 6656,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 742614061.648504,
+	"Actions": [
+		{
+			"MacroActionType": "Semaphore",
+			"ActionUID": 15516268,
+			"TimeOutAbortsMacro": true,
+			"TimeOutPeriod": 0.01,
+			"SemaphoreName": "BMRepeat",
+			"NotifyOnTimeOut": false,
+			"SemaphoreAction": "Lock"
+		},
+		{
+			"MacroActionType": "ExecuteMacro",
+			"UseParameter": false,
+			"MacroUID": "9A812F68-7857-4ACE-A7BD-8AF3AEEE57CE",
+			"TimeOutAbortsMacro": true,
+			"Asynchronously": false,
+			"ActionUID": 15515874
+		},
+		{
+			"MacroActionType": "Pause",
+			"TimeOutAbortsMacro": true,
+			"Time": "1.5",
+			"ActionUID": 15516269
+		},
+		{
+			"MacroActionType": "Semaphore",
+			"SemaphoreAction": "Unlock",
+			"SemaphoreName": "BMRepeat",
+			"ActionUID": 15516270
+		}
+	]
+}

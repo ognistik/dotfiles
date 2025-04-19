@@ -1,0 +1,168 @@
+{
+	"CreationDate": 738082365.526463,
+	"UID": "6F659C92-7EBC-4A22-90D8-47FC7F4E8DF5",
+	"Name": "New Bear Note - Same Window",
+	"Triggers": [
+		{
+			"KeyCode": 8,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 6656,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 754509315.922655,
+	"Actions": [
+		{
+			"MacroActionType": "ExecuteShellScript",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"StopOnFailure": false,
+			"Source": "Nothing",
+			"Variable": "localResult",
+			"IncludeStdErr": false,
+			"ActionUID": 15523020,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "Variable",
+			"HonourFailureSettings": true,
+			"Text": "/Applications/xcall.app/Contents/MacOS/xcall -url \"bear://x-callback-url/open-note?selected=yes&token=5FBB1D-B4CA64-5B5AD7\" -activateApp NO",
+			"NotifyOnFailure": false
+		},
+		{
+			"MacroActionType": "IfThenElse",
+			"ElseActions": [
+				{
+					"MacroActionType": "SetVariableToText",
+					"Variable": "localJSON",
+					"Text": "%JSONValue%localResult.tags%",
+					"ActionUID": 15523021
+				},
+				{
+					"MacroActionType": "SetVariableToText",
+					"Variable": "localHowMany",
+					"Text": "%JSONValue%localJSON.0%",
+					"ActionUID": 15523022
+				},
+				{
+					"MacroActionType": "IfThenElse",
+					"ElseActions": [
+						{
+							"MacroActionType": "IfThenElse",
+							"ElseActions": [
+								{
+									"MacroActionType": "ExecuteShellScript",
+									"IncludedVariables": [
+										"9999"
+									],
+									"TrimResults": true,
+									"Source": "Nothing",
+									"Variable": "localTheTags",
+									"IncludeStdErr": false,
+									"ActionUID": 15523035,
+									"UseText": true,
+									"TrimResultsNew": true,
+									"TimeOutAbortsMacro": true,
+									"Path": "",
+									"DisplayKind": "AppendVar",
+									"HonourFailureSettings": true,
+									"Text": "#!/bin/bash\n\n# Assuming the input is stored in a variable called 'input'\ninput=$KMVAR_localJSON\n\n# Remove brackets, split by comma, and process each item\necho \"$input\" | sed 's/^\\[//;s/\\]$//;s/\",\\s*\"/\\n/g;s/^\"//;s/\"$//' | \nwhile IFS= read -r item; do\n    # Skip items without a slash\n    [[ \"$item\" != */* ]] && continue\n    \n    # Unescape slashes\n    item=${item//\\\\/}\n    \n    # Add hashtags, with special handling for items containing spaces\n    if [[ \"$item\" == *\" \"* ]]; then\n        echo -n \"#${item}# \"\n    else\n        echo -n \"#${item} \"\n    fi\ndone | sed 's/ $//'  # Remove trailing space"
+								}
+							],
+							"Conditions": {
+								"ConditionListMatch": "All",
+								"ConditionList": [
+									{
+										"ConditionType": "Variable",
+										"VariableValue": "1",
+										"Variable": "localHowMany",
+										"VariableConditionType": "Is"
+									}
+								]
+							},
+							"ThenActions": [
+								{
+									"MacroActionType": "SetVariableToText",
+									"Variable": "localTheTags",
+									"Text": "#%JSONValue%localJSON.1%",
+									"ActionUID": 15523034
+								}
+							],
+							"TimeOutAbortsMacro": true,
+							"ActionUID": 15523033
+						}
+					],
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"ConditionType": "Variable",
+								"VariableValue": "0",
+								"Variable": "localHowMany",
+								"VariableConditionType": "Is"
+							}
+						]
+					},
+					"ThenActions": [
+						{
+							"MacroActionType": "SetVariableToText",
+							"Variable": "localTheTags",
+							"Text": "#0-inbox",
+							"ActionUID": 15523032
+						}
+					],
+					"TimeOutAbortsMacro": true,
+					"ActionUID": 15523023
+				}
+			],
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"ConditionType": "Variable",
+						"VariableValue": "value",
+						"Variable": "localResult",
+						"VariableConditionType": "IsEmpty"
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "SetVariableToText",
+					"Variable": "localTheTags",
+					"Text": "#0-inbox",
+					"ActionUID": 15523031
+				}
+			],
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 15523029
+		},
+		{
+			"MacroActionType": "Filter",
+			"Source": "Variable",
+			"Action": "PercentEncodeForURL",
+			"Variable": "localTheTags",
+			"ActionUID": 15523037
+		},
+		{
+			"MacroActionType": "ExecuteShellScript",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"Source": "Nothing",
+			"IncludeStdErr": false,
+			"ActionUID": 15474912,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "None",
+			"HonourFailureSettings": true,
+			"Text": "~/Documents/GitHubRepos/dotfiles/Karabiner/Scripts/bearNewNote.sh $KMVAR_localTheTags"
+		}
+	]
+}

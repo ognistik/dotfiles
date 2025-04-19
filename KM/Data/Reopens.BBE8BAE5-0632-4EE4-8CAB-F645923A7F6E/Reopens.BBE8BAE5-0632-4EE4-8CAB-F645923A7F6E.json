@@ -1,0 +1,18 @@
+{
+	"AddToMacroPalette": false,
+	"AddToStatusMenu": false,
+	"CreationDate": 739591383.132367,
+	"Modifiers": 0,
+	"PaletteUnderMouse": false,
+	"Name": "Reopens",
+	"UID": "BBE8BAE5-0632-4EE4-8CAB-F645923A7F6E",
+	"Targeting": {
+		"Targeting": "All",
+		"TargetingApps": []
+	},
+	"Macros": [],
+	"ToggleMacroUID": "33EBA6D8-CF2C-4C97-BD96-69C57A1FE62B",
+	"Activate": "Normal",
+	"KeyCode": 32767,
+	"DisplayToggle": false
+}

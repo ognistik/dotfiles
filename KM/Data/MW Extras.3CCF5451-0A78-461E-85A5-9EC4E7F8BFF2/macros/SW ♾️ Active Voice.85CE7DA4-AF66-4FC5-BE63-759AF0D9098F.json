@@ -1,0 +1,218 @@
+{
+	"UID": "85CE7DA4-AF66-4FC5-BE63-759AF0D9098F",
+	"CreationDate": 760879298.901843,
+	"ModificationDate": 766288233.205078,
+	"Triggers": [
+		{
+			"AutoRun": false,
+			"Display": "Active Voice",
+			"MacroTriggerType": "GroupStatusMenu"
+		}
+	],
+	"Actions": [
+		{
+			"MacroActionType": "SetVariableToText",
+			"IsDisclosed": false,
+			"Variable": "localActiveMode",
+			"Text": "%sw_currentMode%",
+			"ActionUID": 15599639
+		},
+		{
+			"MacroActionType": "SetVariableToText",
+			"ActionName": "First we set all available models in their respective keys",
+			"IsDisclosed": false,
+			"Variable": "localModels",
+			"Text": "{\n  \"Ultra (Cloud)\": \"sw-ultra-cloud-v1-east\",\n  \"Nova (Cloud)\": \"sw-deepgram-nova-2\",\n  \"Ultra V3 Turbo\": \"large-v3-turbo\",\n  \"GPT-4o Mini Transcribe\": \"A2B20D88-A684-43E0-82B6-389731765E97\"\n}",
+			"ActionUID": 15599608
+		},
+		{
+			"MacroActionType": "ExecuteShellScript",
+			"ActionName": "We read the LLM used on the current model",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"Source": "Nothing",
+			"Variable": "localCurrent",
+			"IncludeStdErr": false,
+			"ActionUID": 15599609,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "Variable",
+			"IsDisclosed": false,
+			"HonourFailureSettings": true,
+			"Text": "/usr/bin/python3 \"$HOME/Dropbox/2-Areas/SystemAndApps/superwhisper/queryVoice.py\" \"$KMVAR_localActiveMode\""
+		},
+		{
+			"MacroActionType": "ExecuteJavaScriptForAutomation",
+			"ActionName": "We read the value that we received for the current model",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"Variable": "localCurrent",
+			"IncludeStdErr": false,
+			"UseModernSyntax": true,
+			"ActionUID": 15599614,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "Variable",
+			"IsDisclosed": false,
+			"HonourFailureSettings": true,
+			"Text": "const jsonString = kmvar.localModels;\nconst valueToFind = kmvar.localCurrent; // Assuming the value is stored in this variable\n\ntry {\n  // Parse the JSON string\n  const jsonObject = JSON.parse(jsonString);\n  \n  // Find the key that has the specified value\n  const keys = Object.keys(jsonObject);\n  let foundKey = null;\n  \n  for (const key of keys) {\n    if (jsonObject[key] === valueToFind) {\n      foundKey = key;\n      break;\n    }\n  }\n  \n  // Return the key or an error message if value doesn't exist\n  return foundKey !== null ? foundKey : `Value \"${valueToFind}\" not found in JSON`;\n} catch (error) {\n  return `Error processing JSON: ${error.message}`;\n}"
+		},
+		{
+			"MacroActionType": "ExecuteJavaScriptForAutomation",
+			"ActionName": "We read all the keys that we have available for all the models - except the current one",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"Variable": "localKeys",
+			"IncludeStdErr": false,
+			"UseModernSyntax": true,
+			"ActionUID": 15599615,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "Variable",
+			"IsDisclosed": false,
+			"HonourFailureSettings": true,
+			"Text": "const jsonString = kmvar.localModels;\nconst currentKey = kmvar.localCurrent;\n\ntry {\n  // Parse the JSON string\n  const jsonObject = JSON.parse(jsonString);\n  \n  // Extract keys and filter out the current key\n  const keys = Object.keys(jsonObject).filter(key => key !== currentKey);\n  \n  // Join the filtered keys with newlines\n  const keysWithNewlines = keys.join('\\n');\n  \n  return keysWithNewlines;\n} catch (error) {\n  return `Error processing JSON: ${error.message}`;\n}"
+		},
+		{
+			"MacroActionType": "ExecuteMacro",
+			"MacroUID": "C5C363E6-43A6-400C-A5F7-08C94745B2C9",
+			"ActionUID": 15599640,
+			"IsDisclosed": false,
+			"TimeOutAbortsMacro": true,
+			"UseParameter": false,
+			"Asynchronously": true
+		},
+		{
+			"MacroActionType": "PromptWithList",
+			"Sort": false,
+			"NotifyOnTimeOut": true,
+			"Source": "Text",
+			"DestinationVariable": "localTheModel",
+			"WindowTitle": "Set Voice for %localActiveMode%",
+			"ActionUID": 15599616,
+			"PromptUID": "EB19C27C-601E-47E8-8496-C12E40375D01",
+			"TimeOutAbortsMacro": false,
+			"IsDisclosed": false,
+			"Destination": "Variable",
+			"Text": "%localKeys%\n🌟 ACTIVE: %localCurrent% 🌟",
+			"NotifyOnFailure": false
+		},
+		{
+			"MacroActionType": "ExecuteMacro",
+			"MacroUID": "C5C363E6-43A6-400C-A5F7-08C94745B2C9",
+			"ActionUID": 15578161,
+			"IsDisclosed": false,
+			"TimeOutAbortsMacro": true,
+			"UseParameter": false,
+			"Asynchronously": true
+		},
+		{
+			"MacroActionType": "Alert",
+			"Title": "Change Voice Model",
+			"ActionUID": 15577768,
+			"IsDisclosed": false,
+			"TimeOutAbortsMacro": true,
+			"Text": "Mode: \"%sw_currentMode%\" \nSwitch to: \"%localTheModel%\"",
+			"SoundPath": ""
+		},
+		{
+			"MacroActionType": "ExecuteJavaScriptForAutomation",
+			"ActionName": "Now we read the value of the chosen model",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"Variable": "localTheModel",
+			"IncludeStdErr": false,
+			"UseModernSyntax": true,
+			"ActionUID": 15599618,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "Variable",
+			"IsDisclosed": false,
+			"HonourFailureSettings": true,
+			"Text": "const jsonString = kmvar.localModels;\nconst chosenKey = kmvar.localTheModel;\n\ntry {\n  // Parse the JSON string\n  const jsonObject = JSON.parse(jsonString);\n  \n  // Get the value for the chosen key\n  if (jsonObject.hasOwnProperty(chosenKey)) {\n    return jsonObject[chosenKey];\n  } else {\n    return `Error: Key \"${chosenKey}\" not found in the JSON object`;\n  }\n} catch (error) {\n  return `Error processing JSON: ${error.message}`;\n}"
+		},
+		{
+			"MacroActionType": "ExecuteShellScript",
+			"ActionName": "We do the replacement",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"Source": "Nothing",
+			"IncludeStdErr": false,
+			"ActionUID": 15577769,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "None",
+			"HonourFailureSettings": true,
+			"Text": "/usr/bin/python3 \"$HOME/Dropbox/2-Areas/SystemAndApps/superwhisper/setVoice.py\" \"$KMVAR_localActiveMode\" \"$KMVAR_localTheModel\""
+		},
+		{
+			"MacroActionType": "QuitSpecificApp",
+			"Target": "Specific",
+			"Action": "Quit",
+			"IsDisclosed": false,
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 15580521,
+			"Application": {
+				"BundleIdentifier": "com.superduper.superwhisper",
+				"Name": "superwhisper",
+				"NewFile": "/Applications/superwhisper.app"
+			}
+		},
+		{
+			"MacroActionType": "PauseUntil",
+			"IsDisclosed": false,
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"Application": {
+							"BundleIdentifier": "com.superduper.superwhisper",
+							"Name": "superwhisper",
+							"NewFile": "/Applications/superwhisper.app"
+						},
+						"ApplicationConditionType": "NotRunning",
+						"ConditionType": "Application"
+					}
+				]
+			},
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 15580522
+		},
+		{
+			"MacroActionType": "ActivateApplication",
+			"ActionUID": 15580523,
+			"ReopenWindows": false,
+			"IsDisclosed": false,
+			"AlreadyActivatedActionType": "Normal",
+			"AllWindows": false,
+			"TimeOutAbortsMacro": true,
+			"Application": {
+				"BundleIdentifier": "com.superduper.superwhisper",
+				"Name": "superwhisper",
+				"NewFile": "/Applications/superwhisper.app"
+			}
+		}
+	],
+	"Name": "SW ♾️ Active Voice",
+	"CustomIconData": "KMEC=Rounded=KMCOLOR:0,0,255,0=👽=86=0=0=1=KMCOLOR:0,0,0,255"
+}

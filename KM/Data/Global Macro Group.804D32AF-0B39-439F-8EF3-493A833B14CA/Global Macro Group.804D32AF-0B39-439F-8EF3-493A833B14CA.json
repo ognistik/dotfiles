@@ -1,0 +1,17 @@
+{
+	"AddToMacroPalette": false,
+	"Modifiers": 0,
+	"CreationDate": 727664813.703839,
+	"AddToStatusMenu": false,
+	"UID": "804D32AF-0B39-439F-8EF3-493A833B14CA",
+	"Name": "Global Macro Group",
+	"PaletteUnderMouse": false,
+	"Targeting": {
+		"Targeting": "All",
+		"TargetingApps": []
+	},
+	"Macros": [],
+	"ToggleMacroUID": "D5F07683-C5FD-464F-A516-AB20B83EC07F",
+	"Activate": "Normal",
+	"KeyCode": 32767
+}

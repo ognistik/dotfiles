@@ -1,0 +1,73 @@
+{
+	"CreationDate": 724111102.279341,
+	"UID": "1CBBBF64-412F-4245-9376-E104FD66A151",
+	"Name": "To Dropover Folder",
+	"Triggers": [
+		{
+			"MacroTriggerType": "Folder",
+			"Interest": {
+				"ObserveWhen": "WaitCompletion",
+				"UID2": "E4575BFC-4841-4277-97DC-E7BB6FD28609",
+				"Observe": "Add",
+				"Path": "~/Downloads"
+			}
+		}
+	],
+	"ModificationDate": 759996095.326939,
+	"Actions": [
+		{
+			"MacroActionType": "IfThenElse",
+			"ActionUID": 508781,
+			"IsDisclosed": false,
+			"TimeOutAbortsMacro": true,
+			"ElseActions": [
+				{
+					"MacroActionType": "IfThenElse",
+					"ElseActions": [
+						{
+							"MacroActionType": "File",
+							"IsActive": false,
+							"Source": "%TriggerValue%",
+							"Operation": "Move",
+							"Destination": "~/Desktop/ /Dropover",
+							"ActionUID": 508390
+						}
+					],
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"ConditionType": "Text",
+								"TextValue": ".torrent",
+								"Text": "%TriggerValue%",
+								"TextConditionType": "Contains"
+							}
+						]
+					},
+					"ThenActions": [
+						{
+							"MacroActionType": "Open1File",
+							"Path": "%TriggerValue%",
+							"IsDefaultApplication": true,
+							"ActionUID": 508785
+						}
+					],
+					"TimeOutAbortsMacro": true,
+					"ActionUID": 508784
+				}
+			],
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"ConditionType": "Text",
+						"TextValue": "/.",
+						"Text": "%TriggerValue%",
+						"TextConditionType": "Contains"
+					}
+				]
+			},
+			"ThenActions": []
+		}
+	]
+}

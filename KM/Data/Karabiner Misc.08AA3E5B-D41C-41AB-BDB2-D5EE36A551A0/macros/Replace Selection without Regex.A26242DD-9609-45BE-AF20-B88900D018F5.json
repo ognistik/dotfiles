@@ -1,0 +1,99 @@
+{
+	"CreationDate": 759665780.213925,
+	"UID": "A26242DD-9609-45BE-AF20-B88900D018F5",
+	"Name": "Replace Selection without Regex",
+	"Triggers": [],
+	"ModificationDate": 764182356.24504,
+	"Actions": [
+		{
+			"MacroActionType": "SetVariableToText",
+			"IsDisclosed": false,
+			"Variable": "localPrevClipboard",
+			"Text": "%SystemClipboard%",
+			"ActionUID": 15573764
+		},
+		{
+			"MacroActionType": "CutCopyPaste",
+			"IsDisclosed": false,
+			"TimeOutAbortsMacro": true,
+			"Action": "Copy",
+			"ActionUID": 15573370
+		},
+		{
+			"MacroActionType": "SetVariableToText",
+			"IsDisclosed": false,
+			"Variable": "localSource",
+			"Text": "%SystemClipboard%",
+			"ActionUID": 15573765
+		},
+		{
+			"MacroActionType": "SetClipboardToText",
+			"IsDisclosed": false,
+			"JustDisplay": false,
+			"Text": "%localPrevClipboard%",
+			"ActionUID": 15573768
+		},
+		{
+			"MacroActionType": "ExecuteMacro",
+			"MacroUID": "C5C363E6-43A6-400C-A5F7-08C94745B2C9",
+			"ActionUID": 15573371,
+			"IsDisclosed": false,
+			"TimeOutAbortsMacro": true,
+			"UseParameter": false,
+			"Asynchronously": true
+		},
+		{
+			"MacroActionType": "PromptForUserInput",
+			"Title": "Replace without Regex",
+			"Prompt": "Please enter the details for these variables.",
+			"ActionUID": 15573372,
+			"TimeOutAbortsMacro": true,
+			"Buttons": [
+				{
+					"Button": "OK"
+				},
+				{
+					"Button": "Cancel",
+					"Cancel": true
+				}
+			],
+			"Variables": [
+				{
+					"Default": "",
+					"Type": "Automatic",
+					"Variable": "localSearchFor"
+				},
+				{
+					"Default": "",
+					"Type": "Automatic",
+					"Variable": "localReplaceWith"
+				}
+			]
+		},
+		{
+			"MacroActionType": "SearchReplace",
+			"Search": "%localSearchFor%",
+			"Action": "CaseSensitiveString",
+			"IsDisclosed": false,
+			"Destination": "Clipboard",
+			"ActionUID": 15573373,
+			"Source": "Variable",
+			"Variable": "localSource",
+			"Replace": "%localReplaceWith%",
+			"Which": "All"
+		},
+		{
+			"MacroActionType": "CutCopyPaste",
+			"IsDisclosed": false,
+			"TimeOutAbortsMacro": true,
+			"Action": "Paste",
+			"ActionUID": 15573374
+		},
+		{
+			"MacroActionType": "DeletePastClipboard",
+			"IsDisclosed": false,
+			"PastExpression": "0",
+			"ActionUID": 15574969
+		}
+	]
+}

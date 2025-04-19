@@ -1,0 +1,25 @@
+{
+	"CreationDate": 765820316.345558,
+	"UID": "43123A1D-6192-48AF-834D-3157DB67E639",
+	"Name": "Style: Bullet List",
+	"Triggers": [
+		{
+			"KeyCode": 1,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 2048,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 765839793.341282,
+	"Actions": [
+		{
+			"MacroActionType": "SimulateKeystroke",
+			"ActionUID": 15607956,
+			"ReleaseAll": false,
+			"TargetApplication": {},
+			"TargetingType": "Front",
+			"KeyCode": 28,
+			"Modifiers": 2304
+		}
+	]
+}

@@ -1,0 +1,246 @@
+{
+	"UID": "8EBAFA85-7DB2-427F-8CCC-9CC78E5CA6E9",
+	"CreationDate": 751177102.296912,
+	"ModificationDate": 766669544.545494,
+	"Triggers": [
+		{
+			"AutoRun": false,
+			"Display": "Clear Action Mode",
+			"MacroTriggerType": "GroupStatusMenu"
+		}
+	],
+	"Actions": [
+		{
+			"MacroActionType": "Comment",
+			"Title": "How to set action",
+			"ActionName": "How to set an Action Mode",
+			"IsDisclosed": false,
+			"StyledText": "\n\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\tcnRmZAAAAAADAAAAAgAA\n\t\t\t\t\t\t\tAAcAAABUWFQucnRmAQAA\n\t\t\t\t\t\t\tAC52AgAAKwAAAAEAAABu\n\t\t\t\t\t\t\tAgAAe1xydGYxXGFuc2lc\n\t\t\t\t\t\t\tYW5zaWNwZzEyNTJcY29j\n\t\t\t\t\t\t\tb2FydGYyODIyClxjb2Nv\n\t\t\t\t\t\t\tYXRleHRzY2FsaW5nMFxj\n\t\t\t\t\t\t\tb2NvYXBsYXRmb3JtMHtc\n\t\t\t\t\t\t\tZm9udHRibFxmMFxmc3dp\n\t\t\t\t\t\t\tc3NcZmNoYXJzZXQwIEhl\n\t\t\t\t\t\t\tbHZldGljYTt9CntcY29s\n\t\t\t\t\t\t\tb3J0Ymw7XHJlZDI1NVxn\n\t\t\t\t\t\t\tcmVlbjI1NVxibHVlMjU1\n\t\t\t\t\t\t\tO1xyZWQwXGdyZWVuMFxi\n\t\t\t\t\t\t\tbHVlMDt9CntcKlxleHBh\n\t\t\t\t\t\t\tbmRlZGNvbG9ydGJsOztc\n\t\t\t\t\t\t\tY3NzcmdiXGMwXGMwXGMw\n\t\t\t\t\t\t\tXGM4NDcwNlxjbmFtZSBj\n\t\t\t\t\t\t\tb250cm9sVGV4dENvbG9y\n\t\t\t\t\t\t\tO30KXHBhcmRcdHg1NjBc\n\t\t\t\t\t\t\tdHgxMTIwXHR4MTY4MFx0\n\t\t\t\t\t\t\teDIyNDBcdHgyODAwXHR4\n\t\t\t\t\t\t\tMzM2MFx0eDM5MjBcdHg0\n\t\t\t\t\t\t\tNDgwXHR4NTA0MFx0eDU2\n\t\t\t\t\t\t\tMDBcdHg2MTYwXHR4Njcy\n\t\t\t\t\t\t\tMFxwYXJkaXJuYXR1cmFs\n\t\t\t\t\t\t\tXHBhcnRpZ2h0ZW5mYWN0\n\t\t\t\t\t\t\tb3IwCgpcZjBcZnMyNiBc\n\t\t\t\t\t\t\tY2YyIFRvIHNldCBhbiBh\n\t\t\t\t\t\t\tY3Rpb24gdGhpcyBtYWNy\n\t\t\t\t\t\t\tbyBtdXN0IGJlIHJ1biBl\n\t\t\t\t\t\t\teHRlcm5hbGx5IHdpdGgg\n\t\t\t\t\t\t\tdGhlIGFyZ3VtZW50ICJw\n\t\t\t\t\t\t\tYXN0ZVJlc3VsdCIsICJw\n\t\t\t\t\t\t\tYXN0ZUNoYXQiLCBvciAi\n\t\t\t\t\t\t\tcGFzdGVUZXh0Ii4gVG8g\n\t\t\t\t\t\t\tZGVhY3RpdmF0ZSBhbiBB\n\t\t\t\t\t\t\tY3Rpb24gTW9kZSwgeW91\n\t\t\t\t\t\t\tIG5lZWQgdG8gc2VuZCB0\n\t\t\t\t\t\t\taGUgZXhhY3Qgc2FtZSBh\n\t\t\t\t\t\t\tY3RpdmUgYWN0aW9uIG1v\n\t\t\t\t\t\t\tZGUgKG9yIHNpbXBseSB0\n\t\t\t\t\t\t\tcmlnZ2VyIHRoaXMgbWFj\n\t\t\t\t\t\t\tcm8gd2l0aG91dCBhbiBh\n\t\t\t\t\t\t\tcmd1bWVudCkufQEAAAAj\n\t\t\t\t\t\t\tAAAAAQAAAAcAAABUWFQu\n\t\t\t\t\t\t\tcnRmEAAAAOCt+me2AQAA\n\t\t\t\t\t\t\tAAAAAAAAAAA=\n\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\t",
+			"ActionUID": 15609633
+		},
+		{
+			"MacroActionType": "Semaphore",
+			"IsDisclosed": false,
+			"SemaphoreAction": "Lock",
+			"SemaphoreName": "MW SetAction",
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 15609634
+		},
+		{
+			"MacroActionType": "IfThenElse",
+			"ActionName": "This toggles a scheduled action OFF if the previous one is toggled again. Otherwise it sets it.",
+			"ActionUID": 15609635,
+			"IsDisclosed": false,
+			"ElseActions": [
+				{
+					"MacroActionType": "SetVariableToText",
+					"ActionName": "Will proceed to set action mode.",
+					"IsDisclosed": false,
+					"Variable": "sw_actionMode",
+					"Text": "%TriggerValue%",
+					"ActionUID": 15609641
+				},
+				{
+					"MacroActionType": "ExecuteMacro",
+					"ActionName": "Update MW Menu Bar",
+					"MacroUID": "EBECEC76-6E27-4839-B873-3AC55158B3F4",
+					"NotifyOnFailure": false,
+					"IsDisclosed": false,
+					"ActionUID": 15609648,
+					"TimeOutAbortsMacro": true,
+					"UseParameter": false,
+					"StopOnFailure": false,
+					"Asynchronously": false
+				},
+				{
+					"MacroActionType": "IfThenElse",
+					"ActionName": "Window Visibility",
+					"ActionUID": 15609642,
+					"IsDisclosed": false,
+					"ActionColor": "Teal",
+					"ElseActions": [
+						{
+							"MacroActionType": "IfThenElse",
+							"ActionName": "There's no Action Mode... so we need to show window",
+							"ActionUID": 15609649,
+							"IsDisclosed": false,
+							"ActionColor": "Teal",
+							"ElseActions": [],
+							"TimeOutAbortsMacro": true,
+							"Conditions": {
+								"ConditionListMatch": "All",
+								"ConditionList": [
+									{
+										"ConditionType": "Variable",
+										"VariableValue": "show",
+										"Variable": "sw_winState",
+										"VariableConditionType": "IsNot"
+									}
+								]
+							},
+							"ElseActionListDisclosed": false,
+							"ThenActions": [
+								{
+									"MacroActionType": "SetVariableToText",
+									"IsDisclosed": false,
+									"Variable": "sw_winState",
+									"Text": "show",
+									"ActionUID": 15609650
+								},
+								{
+									"MacroActionType": "ExecuteMacro",
+									"MacroUID": "F4D9F63D-A8B5-43D5-9AAA-2565583EE088",
+									"ActionUID": 15609651,
+									"IsDisclosed": false,
+									"TimeOutAbortsMacro": true,
+									"Parameter": "unhide",
+									"UseParameter": true,
+									"Asynchronously": false
+								}
+							]
+						}
+					],
+					"IsActive": false,
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"ConditionType": "Variable",
+								"VariableValue": "",
+								"Variable": "sw_actionMode",
+								"VariableConditionType": "IsNot"
+							}
+						]
+					},
+					"TimeOutAbortsMacro": true,
+					"ThenActions": [
+						{
+							"MacroActionType": "IfThenElse",
+							"ActionName": "We just set an action mode... so we hide the window",
+							"ActionUID": 15609643,
+							"ActionColor": "Teal",
+							"ElseActions": [],
+							"TimeOutAbortsMacro": true,
+							"Conditions": {
+								"ConditionListMatch": "All",
+								"ConditionList": [
+									{
+										"ConditionType": "Variable",
+										"VariableValue": "hide",
+										"Variable": "sw_winState",
+										"VariableConditionType": "IsNot"
+									}
+								]
+							},
+							"ElseActionListDisclosed": false,
+							"ThenActions": [
+								{
+									"MacroActionType": "SetVariableToText",
+									"IsDisclosed": false,
+									"Text": "hide",
+									"Variable": "sw_winState",
+									"ActionColor": "Teal",
+									"ActionUID": 15609644
+								},
+								{
+									"MacroActionType": "ExecuteMacro",
+									"MacroUID": "F4D9F63D-A8B5-43D5-9AAA-2565583EE088",
+									"ActionUID": 15609646,
+									"IsDisclosed": false,
+									"ActionColor": "Teal",
+									"TimeOutAbortsMacro": true,
+									"Parameter": "hide",
+									"UseParameter": true,
+									"Asynchronously": false
+								}
+							]
+						}
+					]
+				}
+			],
+			"ActionColor": "Teal",
+			"TimeOutAbortsMacro": true,
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"ConditionType": "Variable",
+						"VariableValue": "%TriggerValue%",
+						"Variable": "sw_actionMode",
+						"VariableConditionType": "Is"
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "SetVariableToText",
+					"IsDisclosed": false,
+					"Variable": "sw_actionMode",
+					"Text": "",
+					"ActionUID": 15609636
+				},
+				{
+					"MacroActionType": "ExecuteMacro",
+					"ActionName": "Update MW Menu Bar macro",
+					"MacroUID": "EBECEC76-6E27-4839-B873-3AC55158B3F4",
+					"NotifyOnFailure": false,
+					"IsDisclosed": false,
+					"ActionUID": 15609637,
+					"TimeOutAbortsMacro": true,
+					"UseParameter": false,
+					"Asynchronously": false
+				},
+				{
+					"MacroActionType": "IfThenElse",
+					"ActionName": "There's no Action Mode... so we need to show window",
+					"ActionUID": 15609638,
+					"ActionColor": "Teal",
+					"IsDisclosed": false,
+					"ElseActions": [],
+					"IsActive": false,
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"ConditionType": "Variable",
+								"VariableValue": "show",
+								"Variable": "sw_winState",
+								"VariableConditionType": "IsNot"
+							}
+						]
+					},
+					"TimeOutAbortsMacro": true,
+					"ElseActionListDisclosed": false,
+					"ThenActions": [
+						{
+							"MacroActionType": "SetVariableToText",
+							"Text": "show",
+							"Variable": "sw_winState",
+							"ActionColor": "Teal",
+							"ActionUID": 15609639
+						},
+						{
+							"MacroActionType": "ExecuteMacro",
+							"MacroUID": "F4D9F63D-A8B5-43D5-9AAA-2565583EE088",
+							"ActionUID": 15609640,
+							"ActionColor": "Teal",
+							"TimeOutAbortsMacro": true,
+							"Parameter": "unhide",
+							"UseParameter": true,
+							"Asynchronously": false
+						}
+					]
+				}
+			]
+		},
+		{
+			"MacroActionType": "Semaphore",
+			"IsDisclosed": false,
+			"SemaphoreAction": "Unlock",
+			"SemaphoreName": "MW SetAction",
+			"ActionUID": 15610473
+		}
+	],
+	"Name": "MW SetAction",
+	"CustomIconData": "KMEC=Rounded=KMCOLOR:0,0,255,0=📌=86=0=0=1=KMCOLOR:0,0,0,255"
+}

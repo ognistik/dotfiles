@@ -1,0 +1,144 @@
+{
+	"UID": "D8B6BF37-216C-42F6-B1A1-66394570543F",
+	"CreationDate": 764533103.134389,
+	"ModificationDate": 764650268.795892,
+	"Triggers": [
+		{
+			"AutoRun": false,
+			"Display": "XML Blocks",
+			"MacroTriggerType": "GroupStatusMenu"
+		}
+	],
+	"Actions": [
+		{
+			"MacroActionType": "ExecuteMacro",
+			"MacroUID": "C5C363E6-43A6-400C-A5F7-08C94745B2C9",
+			"ActionUID": 15599645,
+			"IsDisclosed": false,
+			"TimeOutAbortsMacro": true,
+			"UseParameter": false,
+			"Asynchronously": true
+		},
+		{
+			"MacroActionType": "PromptWithList",
+			"Sort": false,
+			"NotifyOnTimeOut": true,
+			"Source": "Text",
+			"DestinationVariable": "localTheBlock",
+			"WindowTitle": "Select Block to Edit",
+			"ActionUID": 15599646,
+			"PromptUID": "8BB078DE-FD7D-4B46-A7AA-A82FE75A509F",
+			"TimeOutAbortsMacro": false,
+			"Destination": "Variable",
+			"Text": "Style Requirements\nBanned Terms\nBanned Writing Structures",
+			"NotifyOnFailure": false
+		},
+		{
+			"MacroActionType": "ExecuteShellScript",
+			"ActionName": "We query the selected block",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"Source": "Nothing",
+			"Variable": "localBlockContent",
+			"IncludeStdErr": false,
+			"ActionUID": 15599647,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "Variable",
+			"IsDisclosed": false,
+			"HonourFailureSettings": true,
+			"Text": "/usr/bin/python3 \"$HOME/Dropbox/2-Areas/SystemAndApps/superwhisper/queryBlock.py\" \"$KMVAR_localTheBlock\""
+		},
+		{
+			"MacroActionType": "ExecuteMacro",
+			"MacroUID": "C5C363E6-43A6-400C-A5F7-08C94745B2C9",
+			"ActionUID": 15599648,
+			"IsDisclosed": false,
+			"TimeOutAbortsMacro": true,
+			"UseParameter": false,
+			"Asynchronously": true
+		},
+		{
+			"MacroActionType": "PromptForSnippet",
+			"Title": "%localTheBlock%",
+			"ActionUID": 15599649,
+			"IsDisclosed": false,
+			"TimeOutAbortsMacro": true,
+			"Text": "%Ask16=%localBlockContent%%",
+			"Variable": "localNewBlock",
+			"DisplayKind": "Variable"
+		},
+		{
+			"MacroActionType": "ExecuteShellScript",
+			"ActionName": "We do the replacements",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"Source": "Nothing",
+			"IncludeStdErr": false,
+			"ActionUID": 15599650,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "None",
+			"IsDisclosed": false,
+			"HonourFailureSettings": true,
+			"Text": "/usr/bin/python3 \"$HOME/Dropbox/2-Areas/SystemAndApps/superwhisper/setBlock.py\" \"$KMVAR_localTheBlock\" \"$KMVAR_localNewBlock\""
+		},
+		{
+			"MacroActionType": "QuitSpecificApp",
+			"Target": "Specific",
+			"Action": "Quit",
+			"IsDisclosed": false,
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 15599651,
+			"Application": {
+				"BundleIdentifier": "com.superduper.superwhisper",
+				"Name": "superwhisper",
+				"NewFile": "/Applications/superwhisper.app"
+			}
+		},
+		{
+			"MacroActionType": "PauseUntil",
+			"IsDisclosed": false,
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"Application": {
+							"BundleIdentifier": "com.superduper.superwhisper",
+							"Name": "superwhisper",
+							"NewFile": "/Applications/superwhisper.app"
+						},
+						"ApplicationConditionType": "NotRunning",
+						"ConditionType": "Application"
+					}
+				]
+			},
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 15599652
+		},
+		{
+			"MacroActionType": "ActivateApplication",
+			"ActionUID": 15599653,
+			"ReopenWindows": false,
+			"IsDisclosed": false,
+			"AlreadyActivatedActionType": "Normal",
+			"AllWindows": false,
+			"TimeOutAbortsMacro": true,
+			"Application": {
+				"BundleIdentifier": "com.superduper.superwhisper",
+				"Name": "superwhisper",
+				"NewFile": "/Applications/superwhisper.app"
+			}
+		}
+	],
+	"Name": "SW ♾️ XML Blocks",
+	"CustomIconData": "KMEC=Rounded=KMCOLOR:0,0,255,0=👽=86=0=0=1=KMCOLOR:0,0,0,255"
+}

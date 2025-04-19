@@ -1,0 +1,31 @@
+{
+	"CreationDate": 664290670.879492,
+	"UID": "52F19365-4865-4CED-BAB5-E791675CB744",
+	"Name": "JSON Escape String - Test using Clipboard",
+	"Triggers": [],
+	"ModificationDate": 664292937.03556,
+	"Actions": [
+		{
+			"MacroActionType": "SetClipboardToText",
+			"JustDisplay": false,
+			"Text": "Called \"JSON Escape String\" without passing a parameter,\nso the macro escaped this text, which was on the clipboard.",
+			"ActionUID": 248561
+		},
+		{
+			"MacroActionType": "ExecuteMacro",
+			"MacroUID": "80C00927-3DC1-4C4E-97E2-42C81FAD693A",
+			"ActionUID": 248560,
+			"ActionColor": "Magenta",
+			"TimeOutAbortsMacro": true,
+			"UseParameter": false,
+			"Asynchronously": false
+		},
+		{
+			"MacroActionType": "InsertText",
+			"Text": "Input (Clipboard):\n\n%PastClipboard%1%\n\nOutput (Clipboard):\n\n%CurrentClipboard%",
+			"Action": "DisplayWindow",
+			"StyledText": "\n\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\tcnRmZAAAAAADAAAAAgAA\n\t\t\t\t\t\t\tAAcAAABUWFQucnRmAQAA\n\t\t\t\t\t\t\tAC4WAgAAKwAAAAEAAAAO\n\t\t\t\t\t\t\tAgAAe1xydGYxXGFuc2lc\n\t\t\t\t\t\t\tYW5zaWNwZzEyNTJcY29j\n\t\t\t\t\t\t\tb2FydGYyNTEzClxjb2Nv\n\t\t\t\t\t\t\tYXRleHRzY2FsaW5nMFxj\n\t\t\t\t\t\t\tb2NvYXBsYXRmb3JtMHtc\n\t\t\t\t\t\t\tZm9udHRibFxmMFxmbmls\n\t\t\t\t\t\t\tXGZjaGFyc2V0MCBIZWx2\n\t\t\t\t\t\t\tZXRpY2FOZXVlLUJvbGQ7\n\t\t\t\t\t\t\tXGYxXGZuaWxcZmNoYXJz\n\t\t\t\t\t\t\tZXQwIEhlbHZldGljYU5l\n\t\t\t\t\t\t\tdWU7fQp7XGNvbG9ydGJs\n\t\t\t\t\t\t\tO1xyZWQyNTVcZ3JlZW4y\n\t\t\t\t\t\t\tNTVcYmx1ZTI1NTtccmVk\n\t\t\t\t\t\t\tMFxncmVlbjBcYmx1ZTA7\n\t\t\t\t\t\t\tfQp7XCpcZXhwYW5kZWRj\n\t\t\t\t\t\t\tb2xvcnRibDs7XGNzc3Jn\n\t\t\t\t\t\t\tYlxjMFxjMFxjMFxjODQ3\n\t\t\t\t\t\t\tMDZcY25hbWUgY29udHJv\n\t\t\t\t\t\t\tbFRleHRDb2xvcjt9Clxw\n\t\t\t\t\t\t\tYXJkXHR4NTYwXHR4MTEy\n\t\t\t\t\t\t\tMFx0eDE2ODBcdHgyMjQw\n\t\t\t\t\t\t\tXHR4MjgwMFx0eDMzNjBc\n\t\t\t\t\t\t\tdHgzOTIwXHR4NDQ4MFx0\n\t\t\t\t\t\t\teDUwNDBcdHg1NjAwXHR4\n\t\t\t\t\t\t\tNjE2MFx0eDY3MjBccGFy\n\t\t\t\t\t\t\tZGlybmF0dXJhbFxwYXJ0\n\t\t\t\t\t\t\taWdodGVuZmFjdG9yMAoK\n\t\t\t\t\t\t\tXGYwXGJcZnMyNiBcY2Yy\n\t\t\t\t\t\t\tIElucHV0IChDbGlwYm9h\n\t\t\t\t\t\t\tcmQpOlwKClxmMVxiMCBc\n\t\t\t\t\t\t\tCiVQYXN0Q2xpcGJvYXJk\n\t\t\t\t\t\t\tJTElXApcCgpcZjBcYiBP\n\t\t\t\t\t\t\tdXRwdXQgKENsaXBib2Fy\n\t\t\t\t\t\t\tZCk6ClxmMVxiMCBcClwK\n\t\t\t\t\t\t\tJUN1cnJlbnRDbGlwYm9h\n\t\t\t\t\t\t\tcmQlfQEAAAAjAAAAAQAA\n\t\t\t\t\t\t\tAAcAAABUWFQucnRmEAAA\n\t\t\t\t\t\t\tAMoW6GG2AQAAAAAAAAAA\n\t\t\t\t\t\t\tAAA=\n\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\t",
+			"ActionUID": 248593
+		}
+	]
+}
