@@ -87,6 +87,9 @@
                         ;SELDARIEN
                                 [{:sim [:c :b] :simo {:interrupt true :dorder :insensitive :uorder :insensitive}}
                                         :!Of16 [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!e-mode :!f-mode]]
+                        ;ALTER DICT
+                                [{:sim [:s :f] :simo {:interrupt true :dorder :insensitive :uorder :insensitive}}
+                                        :!COT9 [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!e-mode :!f-mode]]
                 ]},
 
                 {:des "Custom Modes Setup" :rules [
@@ -104,7 +107,7 @@
                                         {:alone {:key :e :halt true} :delayed {:canceled {:key :e}}
                                         :held [{:set ["e-mode" 1] :repeat false} [:km "Karabiner Active Layer" "e-mode,E"]]
                                         :afterup [["e-mode" 0]["hideOverlay" 0]]}]
-                        ; T MODE: Markdown and Text Transformations
+                        ; T MODE: Markdown and Text Transformation
                                 [:#Pt nil [:!ropt :!rcmd :!w-mode :!wR-press :!wD-press :!wF-press :!wG-press :!wC-press :!wV-press :!e-mode :!t-mode :!caps-mode :!capsE-press :!capsA-press :!capsS-press :!capsD-press :!capsF-press :!capsC-press :!f19-mode :!a-mode :!sd-mode :!sw-mode :!f-mode :!del-mode :!holdBri-mode]
                                         {:alone {:key :t :halt true} :delayed {:canceled {:key :t}}
                                         :held [{:set ["t-mode" 1] :repeat false} [:km "Karabiner Active Layer" "t-mode,T"]]
@@ -373,7 +376,7 @@
                                         action='~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggleSpecial bearScratchpad'"] ["f19-mode" 1]]                                                                     
                 ]},
 
-; -- W MODE / YABwwAI --j
+; -- W MODE / YABAI --j
                 {:des "W Mode Base Sublayer" :rules [[:condi :w-mode :!wC-press :!wV-press :!wD-press :!wR-press :!wG-press :!wF-press]
                         ;Query Win
                                 [:1 [[:yabai "query --windows --window > ~/Desktop/yabai_output.txt"]["hideOverlay" 1]]]
@@ -778,7 +781,7 @@
 
                 {:des "Caps Mode - Misc Macros" :rules [[:condi :caps-mode :!capsE-press :!capsA-press :!capsS-press :!capsD-press :!capsF-press :!capsC-press]
                         ;Clop on CB           
-                                [:q [:!TSc]]   
+                                [:q [:!WRc]]   
                         ;Clop WF on CB
                                 [:!Cq [:alfred "clop_cb" "com.afadingthought.clop" "wf"]]  
                         ;Del Note
@@ -788,10 +791,6 @@
                                 [:!Ce :!CTSx]
                         ;Anybox CB as List
                                 [:!Oe [:sc "" "Anybox Clipboard List"]]
-                        ;A **SW ACTIONS**
-                        ;S **PASTEFLOW**
-                        ;D **DROPOVER**
-                        ;F **FINDER**
                         ;RW to Bear
                                 [:r "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"604659A4-5CBD-4DBC-A9E4-2D2B6FAAC9F3\"';\\
                                         shortcuts run \"RW to Bear\""]
@@ -799,6 +798,12 @@
                                 [:t [:alfred "cmd" "com.taptix.aft" "toggle"]]
                         ;Taptix Menu
                                 [:!Ct [:alfred "mainMenu" "com.taptix.aft"]]
+                        ;A **SW ACTIONS**
+                        ;S **PASTEFLOW**
+                        ;D **DROPOVER**
+                        ;F **FINDER**
+                        ;Alter
+                                [:!Cf :!TS1]
                         ;C **CLEANSHOT**
                         ;Mute
                                 [{:sim [:y :u] :simo {:interrupt true :dorder :insensitive :uorder :insensitive}} :mute] ;(IMPORTANT: The order of this rule matters. Can't be after y or u individual rules)

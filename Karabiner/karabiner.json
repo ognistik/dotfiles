@@ -9847,46 +9847,6 @@
           "type" : "basic"
         }, {
           "from" : {
-            "key_code" : "t",
-            "modifiers" : {
-              "mandatory" : [ "left_command" ]
-            }
-          },
-          "to" : [ {
-            "shell_command" : "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"mainMenu\" in workflow \"com.taptix.aft\" with argument \"\"'"
-          } ],
-          "conditions" : [ {
-            "name" : "capsC-press",
-            "value" : 1,
-            "type" : "variable_unless"
-          }, {
-            "name" : "capsF-press",
-            "value" : 1,
-            "type" : "variable_unless"
-          }, {
-            "name" : "capsD-press",
-            "value" : 1,
-            "type" : "variable_unless"
-          }, {
-            "name" : "capsS-press",
-            "value" : 1,
-            "type" : "variable_unless"
-          }, {
-            "name" : "capsA-press",
-            "value" : 1,
-            "type" : "variable_unless"
-          }, {
-            "name" : "capsE-press",
-            "value" : 1,
-            "type" : "variable_unless"
-          }, {
-            "name" : "caps-mode",
-            "value" : 1,
-            "type" : "variable_if"
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
             "simultaneous" : [ {
               "key_code" : "y"
             }, {
