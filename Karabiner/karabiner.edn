@@ -77,19 +77,19 @@
                 {:des "Kando Menus" :rules [ ;Kando Menus do not set a variable, so it's necessary to set them up before custom layers so they work properly
                         ;ITHILWEN
                                 [{:sim [:f :g] :simo {:interrupt true :dorder :insensitive :uorder :insensitive}}
-                                        :!Tf16 [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!e-mode :!f-mode]]
+                                        :!Tf16 [:!ropt :!rcmd :!w-mode :!wR-press :!wD-press :!wF-press :!wG-press :!wC-press :!wV-press :!e-mode :!t-mode :!caps-mode :!capsE-press :!capsA-press :!capsS-press :!capsD-press :!capsF-press :!capsC-press :!f19-mode :!a-mode :!sd-mode :!sw-mode :!f-mode :!del-mode :!w-mode]]
                         ;APHYRA
                                 [{:sim [:d :g] :simo {:interrupt true :dorder :insensitive :uorder :insensitive}}
-                                        :!TOf16 [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!e-mode :!f-mode]]
+                                        :!TOf16 [:!ropt :!rcmd :!w-mode :!wR-press :!wD-press :!wF-press :!wG-press :!wC-press :!wV-press :!e-mode :!t-mode :!caps-mode :!capsE-press :!capsA-press :!capsS-press :!capsD-press :!capsF-press :!capsC-press :!f19-mode :!a-mode :!sd-mode :!sw-mode :!f-mode :!del-mode :!w-mode]]
                         ;TEXENDUR
                                 [{:sim [:v :b] :simo {:interrupt true :dorder :insensitive :uorder :insensitive}}
-                                        :!COf16 [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!e-mode :!f-mode]]
+                                        :!COf16 [:!ropt :!rcmd :!w-mode :!wR-press :!wD-press :!wF-press :!wG-press :!wC-press :!wV-press :!e-mode :!t-mode :!caps-mode :!capsE-press :!capsA-press :!capsS-press :!capsD-press :!capsF-press :!capsC-press :!f19-mode :!a-mode :!sd-mode :!sw-mode :!f-mode :!del-mode :!w-mode]]
                         ;SELDARIEN
                                 [{:sim [:c :b] :simo {:interrupt true :dorder :insensitive :uorder :insensitive}}
-                                        :!Of16 [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!e-mode :!f-mode]]
+                                        :!Of16 [:!ropt :!rcmd :!w-mode :!wR-press :!wD-press :!wF-press :!wG-press :!wC-press :!wV-press :!e-mode :!t-mode :!caps-mode :!capsE-press :!capsA-press :!capsS-press :!capsD-press :!capsF-press :!capsC-press :!f19-mode :!a-mode :!sd-mode :!sw-mode :!f-mode :!del-mode :!w-mode]]
                         ;ALTER DICT
                                 [{:sim [:s :f] :simo {:interrupt true :dorder :insensitive :uorder :insensitive}}
-                                        :!COT9 [:!ropt :!rcmd :!del-mode :!f19-mode :!caps-mode :!t-mode :!sd-mode :!w-mode :!a-mode :!e-mode :!f-mode]]
+                                        :!COT9 [:!ropt :!rcmd :!w-mode :!wR-press :!wD-press :!wF-press :!wG-press :!wC-press :!wV-press :!e-mode :!t-mode :!caps-mode :!capsE-press :!capsA-press :!capsS-press :!capsD-press :!capsF-press :!capsC-press :!f19-mode :!a-mode :!sd-mode :!sw-mode :!f-mode :!del-mode :!w-mode]]
                 ]},
 
                 {:des "Custom Modes Setup" :rules [
