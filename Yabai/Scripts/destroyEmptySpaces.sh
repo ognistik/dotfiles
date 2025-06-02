@@ -13,8 +13,13 @@ hidden_minimized=$(yabai -m query --windows | jq 'map(select(."is-hidden" or .sc
 # Get a list of Kando window IDs
 kando_windows=$(yabai -m query --windows | jq -r 'map(select(.app == "Kando")) | map(."id")')
 
-# Get a list of Kando window IDs
+# Get a list of Alter window IDs
 alter_windows=$(yabai -m query --windows | jq -r 'map(select(.app == "Alter" and .subrole == "AXSystemDialog")) | map(."id")')
+
+anti_windows=$(yabai -m query --windows | jq -r 'map(select(.app == "Antinote")) | map(."id")')
+
+# Get a list of SW window IDs
+sw_windows=$(yabai -m query --windows | jq -r 'map(select(.app == "superwhisper" and .subrole == "AXSystemDialog")) | map(."id")')
 
 # Get a list of BetterMouse window IDs
 bettermouse_windows=$(yabai -m query --windows | jq -r 'map(select(.app == "BetterMouse")) | map(."id")')
@@ -25,7 +30,7 @@ screenstudio_windows=$(yabai -m query --windows | jq -r 'map(select(.app == "Scr
 # Find and destroy empty, unfocused spaces
 yabai -m query --spaces | \
 jq -re "map(select((.\"has-focus\" | not) and (\
-  .\"windows\" | map(select(. as \$window | $hidden_minimized + $kando_windows + $bettermouse_windows + $screenstudio_windows + $alter_windows | index(\$window) | not))\
+  .\"windows\" | map(select(. as \$window | $hidden_minimized + $kando_windows + $bettermouse_windows + $screenstudio_windows + $alter_windows + $sw_windows + $anti_windows | index(\$window) | not))\
   ) == []).index) | reverse | .[]" | \
 xargs -I % sh -c 'yabai -m space % --destroy' 
 

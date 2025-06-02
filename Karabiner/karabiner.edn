@@ -8,14 +8,14 @@
                                         ; simlayer is implemented with to_if_alone and simultaneous key press feature
                                         ; if keydown event for two different keys are pressed within :sim ms, the keypresses are considered simultaneous  
                                         ; this seems to be for [:a :b] kind of cases, and not for the :simlayers (which I don't currently use)
-                        :delay   140    ; to_delayed_action_delay_milliseconds (default: 500)
+                        :delay   110    ; to_delayed_action_delay_milliseconds (default: 500)
                                         ; basically it means time after which the key press is count delayed
                                         ; after :delay ms, the key press is considered to be delayed (used for double-press macros)
                                         ; NOTE: this should be equal to :held for mod-tap layers
-                        :held    140    ; to_if_held_down_threshold_milliseconds (default: 500)
+                        :held    110    ; to_if_held_down_threshold_milliseconds (default: 500)
                                         ; key is fired twice when :held ms is elapsed (otherwise seen as a hold command) (NOTE: NO CLUE WHAT IS THIS)
                                         ; NOTE: this should be equal to :delay for mod-tap layers
-                        :alone   139    ; to_if_alone_timeout_milliseconds (default: 1000)
+                        :alone   109    ; to_if_alone_timeout_milliseconds (default: 1000)
                                         ; affects to_if_alone behavior
                                         ; simlayer is implemented with to_if_alone and simultaneous key press feature
                                         ; if keyup event comes within :alone ms from keydown, the key is not just pressed but held
@@ -120,14 +120,14 @@
                         ; CAPS & HOLD BRILLIANT: Quick tap CAPS = ESCAPE and CAPS MODE. Similar as above with F19 Mode
                                 [:##caps_lock ["caps-mode" 1]
                                         [:!ropt :!rcmd :!w-mode :!wR-press :!wD-press :!wF-press :!wG-press :!wC-press :!wV-press :!e-mode :!t-mode :!caps-mode :!capsE-press :!capsA-press :!capsS-press :!capsD-press :!capsF-press :!capsC-press :!f19-mode :!a-mode :!sd-mode :!sw-mode :!f-mode :!del-mode :!holdBri-mode :brilliant]
-                                        {:afterup [["caps-mode" 0]["holdBri-mode" 0]] :alone {:key :escape}
-                                        :held [["caps-mode" 0]["holdBri-mode" 1][:km "Karabiner Active Layer" "holdBri-mode,◧"]]
+                                        {:afterup [["caps-mode" 0]["holdBri-mode" 0]["hideOverlay" 0]] :alone {:key :escape}
+                                        :held [["caps-mode" 0]["holdBri-mode" 1][:km "Karabiner Active Layer" "holdBri-mode,◬"]]
                                         :params {:held 160 :delay 160 :alone 159}}]
                         ; A MODE: KIKI AI
                                 [:a nil [:!ropt :!rcmd :!w-mode :!wR-press :!wD-press :!wF-press :!wG-press :!wC-press :!wV-press :!e-mode :!t-mode :!caps-mode :!capsE-press :!capsA-press :!capsS-press :!capsD-press :!capsF-press :!capsC-press :!f19-mode :!a-mode :!sd-mode :!sw-mode :!f-mode :!del-mode :!holdBri-mode]
                                         {:alone {:key :a :halt true} :delayed {:canceled {:key :a}}
                                         :held [{:set ["a-mode" 1] :repeat false} [:km "Karabiner Active Layer" "a-mode,A"]]
-                                        :afterup {:set ["a-mode" 0]}}]                      
+                                        :afterup [["a-mode" 0]["hideOverlay" 0]]}]                      
                         ; SD MODE: Text, Window, and Tabs Navigation (Super Duper Mode)
                                 [{:sim [:s :d] :simo {:interrupt true :dorder :insensitive :uorder :insensitive
                                         :afterup {:set ["sd-mode" 0]}} :modi {:optional :any}} {:set ["sd-mode" 1]}
@@ -785,7 +785,7 @@
                         ;Clop WF on CB
                                 [:!Cq [:alfred "clop_cb" "com.afadingthought.clop" "wf"]]  
                         ;Del Note
-                                [:w [:km "9A812F68-7857-4ACE-A7BD-8AF3AEEE57CE"]]
+                                [:w [:km "Delete Active Note"]]
                         ;E **EXTENSIONS**
                         ;Anybox Sel
                                 [:!Ce :!CTSx]
@@ -1235,7 +1235,7 @@
                         ;Previous Blue
                                 [:!Cc [:!OSc ["hideOverlay" 1]]]
                         ;Center Vertically
-                                [:v [:!CSv ]]
+                                [:v [:!CSv ["hideOverlay" 1]]]
                         ;Align Vertically
                                 [:!Cv [:!Ov ["hideOverlay" 1]]]
                         ;Flip Vertically
@@ -1532,6 +1532,25 @@
                                         [:l [:km "rcmd: Alfred" "2"] [:a-rcmd :caps-rcmd]]
                                         ; Bring to Space, Activate & Hide Others
                                         [:!Rl [:km "rcmd: Alfred" "3"] [:a-rcmd :caps-rcmd]]
+                                ; ALTER
+                                        ; Activate
+                                        [:t [:km "rcmd: Alter"] [:a-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:t [:km "rcmd: Alter" "m"] [:a-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Ct [:km "rcmd: Alter" "dm"] [:a-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:t [:km "rcmd: Alter" "x"] [:a-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:t [:km "rcmd: Alter" "0"] [:a-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:t [:km "rcmd: Alter" "xx"] [:a-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:t [:km "rcmd: Alter" "1"] [:a-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:t [:km "rcmd: Alter" "2"] [:a-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Rt [:km "rcmd: Alter" "3"] [:a-rcmd :caps-rcmd]]
                                 ; APPSTORE
                                         ; Activate
                                         [:s [:km "rcmd: AppStore"] [:a-rcmd :!space-rcmd :!ropt-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
@@ -2406,6 +2425,25 @@
                                         [:x [:km "rcmd: FinalCutPro" "2"] [:x-rcmd :caps-rcmd]]
                                         ; Bring to Space, Activate & Hide Others
                                         [:!Rx [:km "rcmd: FinalCutPro" "3"] [:x-rcmd :caps-rcmd]]
+                                ; XCODE
+                                        ; Activate
+                                        [:c [:km "rcmd: Xcode"] [:x-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        ; Minimize
+                                        [:c [:km "rcmd: Xcode" "m"] [:x-rcmd :lshift-rcmd]]
+                                        ; Deminimize
+                                        [:!Cc [:km "rcmd: Xcode" "dm"] [:x-rcmd :lshift-rcmd]]
+                                        ; Close Windows
+                                        [:c [:km "rcmd: Xcode" "x"] [:x-rcmd :lcmd-rcmd]]
+                                        ; Hide App
+                                        [:c [:km "rcmd: Xcode" "0"] [:x-rcmd :space-rcmd]]
+                                        ; QUIT
+                                        [:c [:km "rcmd: Xcode" "xx"] [:x-rcmd :semi-rcmd]]
+                                        ; Activate & Hide Others
+                                        [:c [:km "rcmd: Xcode" "1"] [:x-rcmd :rshift-rcmd]]
+                                        ; Bring to Space & Activate
+                                        [:c [:km "rcmd: Xcode" "2"] [:x-rcmd :caps-rcmd]]
+                                        ; Bring to Space, Activate & Hide Others
+                                        [:!Rc [:km "rcmd: Xcode" "3"] [:x-rcmd :caps-rcmd]]
                         ; >> RCMD Z >>
                                 ; LMSTUDIO
                                         ; Activate

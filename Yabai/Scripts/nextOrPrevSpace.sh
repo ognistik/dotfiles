@@ -15,7 +15,7 @@ else  # $1 = "next"
         if [ "$last_space" -eq 1 ]; then
             /opt/homebrew/bin/yabai -m space --create && /opt/homebrew/bin/yabai -m space --focus last
         else
-            visible_windows=$(/opt/homebrew/bin/yabai -m query --windows | /opt/homebrew/bin/jq '[.[] | select(.["is-visible"] == true)] | length')
+            visible_windows=$(/opt/homebrew/bin/yabai -m query --windows | /opt/homebrew/bin/jq "[.[] | select(.space == $current_space and .\"is-visible\" == true)] | length")
             if [ "$visible_windows" -eq 0 ]; then
                 /opt/homebrew/bin/yabai -m space --focus first
             else

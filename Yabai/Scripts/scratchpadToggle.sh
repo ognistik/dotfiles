@@ -42,12 +42,12 @@ toggleSpecial() {
       # If we are not on the Bear Scratchpad, this means we want it on our current window. Which means we have to remove it from whichever window has it and give it to the one in front of the user.
       else
       /opt/homebrew/bin/yabai -m window $bearScratchpadId --scratchpad ""
-      /opt/homebrew/bin/yabai -m window $theWindow --scratchpad bearScratchpad --grid 11:11:1:1:9:9
+      /opt/homebrew/bin/yabai -m window $theWindow --scratchpad bearScratchpad --grid 8:8:3:1:2:6 --opacity 1.0
       fi
 
     # There are no existing Bear Scratchpads... We simply assign the Bear Scratchpad to the window.
     else
-      /opt/homebrew/bin/yabai -m window $theWindow --scratchpad bearScratchpad --grid 11:11:1:1:9:9
+      /opt/homebrew/bin/yabai -m window $theWindow --scratchpad bearScratchpad --grid 8:8:3:1:2:6 --opacity 1.0
     fi
 
   elif [[ $NAME == "Safari" ]]; then
