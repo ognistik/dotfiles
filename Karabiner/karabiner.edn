@@ -977,29 +977,17 @@
                                 [:e [[:alfred "sw" "com.superwhisper.aft" "editLastResult"]["caps-mode" 0]["capsA-press" 0]]]
                         ;Reprocess Last
                                 [:r [[:alfred "sw" "com.superwhisper.aft" "processLast"]["caps-mode" 0]["capsA-press" 0]]]
-                        ;Toggle Win Size
-                                [:t [[:km "SW Toggle Rec Win"]["caps-mode" 0]["capsA-press" 0]]]
                         ;Modes
                                 [:a [[:alfred "sw" "com.superwhisper.aft" "selectMode"]["caps-mode" 0]["capsA-press" 0]]]
                         ;Main Menu
                                 [:!Ca [[:alfred "sw" "com.superwhisper.aft"]["caps-mode" 0]["capsA-press" 0]]]
-                        ;Macrowhisper
+                        ;Macrowhisper Alfred
                                 [:s [[:alfred "mw" "com.aft.macrowhisper"]["caps-mode" 0]["capsA-press" 0]]]
                         ;KM Specials
                                 [:d [[:alfred "swmacros" "com.chubamisc.afred"]["caps-mode" 0]["capsA-press" 0]]]
                         ;Last JSON
-                                ;[:f [[:alfred "sw" "com.superwhisper.aft" "viewLastJSON"]["caps-mode" 0]["capsA-press" 0]]]
                                 [:f ["/opt/homebrew/bin/macrowhisper --exec-action swWebDebug"["caps-mode" 0]["capsA-press" 0]]]
-                        ;Last Result
-                                [:!Cf [[:alfred "sw" "com.superwhisper.aft" "viewLastResult"]["caps-mode" 0]["capsA-press" 0]]]
-                        ;Toggle PasteResult
-                                [:z [[:km "Toggle Action" "pasteResult"]["caps-mode" 0]["capsA-press" 0]]]
-                        ;Toggle PasteChat
-                                [:x [[:km "Toggle Action" "pasteChat"]["caps-mode" 0]["capsA-press" 0]]]
-                        ;Clear Action
-                                [:c [[:km "Toggle Action" "autoPaste"]["caps-mode" 0]["capsA-press" 0]]]
                         ;Hide Unhide
-                                ;[:spacebar [[:km "SW Hide Unhide"]["caps-mode" 0]["capsA-press" 0]]]
                                 [:spacebar ["/opt/homebrew/bin/macrowhisper --exec-action swWebView"["caps-mode" 0]["capsA-press" 0]]]
                 ]},
                 
@@ -1285,8 +1273,12 @@
                                 [:g [[:alfred "sw" "com.superwhisper.aft" "openMode,superwhisper://mode?key=custom-IQVV"]["hideOverlay" 1]]]
                         ;Editor (★)
                                 [:!Cg [[:alfred "sw" "com.superwhisper.aft" "openMode,superwhisper://mode?key=custom-YYQY"]["hideOverlay" 1]]]
-                        ;Action: TextChat
-                                ;[:return_or_enter [:return_or_enter [:km "TextChat"]["hideOverlay" 1]]]
+                        ;Toggle PasteResult
+                                [:c [[:km "Toggle Action" "autoPaste"]["hideOverlay" 1]]]
+                        ;Toggle PasteResult
+                                [:v [[:km "Toggle Action" "pasteResult"]["hideOverlay" 1]]]
+                        ;ContextChat
+                                [:spacebar [[:km "ContextChat"]["hideOverlay" 1]]]
                 ]},
 
 ; -- SUPER DUPER MODE --
@@ -1348,14 +1340,13 @@
                                 [:##period :!Od [["sdC-press" 0]["sdO-press" 1]]]                       ;Delete Forward a word
                 ]},
 
-; -- SUPERWHISPER MODE --
+; -- SUPERWHISPER QUICK CONTROLS --
                 {:des "Superwhisper Mode" :rules [:sw-mode
                         [:caps_lock :escape]
-                        [:q [:km "SW Hide Unhide"]]
-                        [:w [:km "SW Toggle Rec Win"]]
-                        [:s [:km "Toggle Insert" "pasteResult"]]
-                        [:a [:km "Toggle Insert" "pasteChat"]]
+                        [:s [:km "Toggle Action" "pasteResult"]]
+                        [:a [:km "Toggle Action" "autoPaste"]]
                         [:spacebar "/opt/homebrew/bin/macrowhisper --auto-return true"]
+                        [:left_command "/opt/homebrew/bin/macrowhisper --schedule-action"]
                 ]},
 
 ; -- F MODE / MOUSE CONTROL --
