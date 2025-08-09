@@ -36,6 +36,7 @@
                 :open-g "open -g \"%s\""
                 :sc "echo \"%s\"|shortcuts run \"%s\" -i -" ; Pay attention - that the Shortcut input goes before the Shortcut name.
                 :yabai "/opt/homebrew/bin/yabai -m %s"
+                :mw "/opt/homebrew/bin/macrowhisper --schedule-action \"%s\" && osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"sw\" in workflow \"com.superwhisper.aft\" with argument \"%s\"'"
         }
 
         ; 👇️ Useful to later set as conditions
@@ -139,7 +140,7 @@
                                         :afterup {:set ["sd-mode" 0]}} :modi {:optional :any}} {:set ["sd-mode" 1]}
                                         [:!ropt :!rcmd :!w-mode :!wR-press :!wD-press :!wF-press :!wG-press :!wC-press :!wV-press :!e-mode :!t-mode :!caps-mode :!capsE-press :!capsA-press :!capsS-press :!capsD-press :!capsF-press :!capsC-press :!f19-mode :!a-mode :!sd-mode :!sw-mode :!f-mode :!del-mode :!holdBri-mode]]
                         ; SW Superwhisper Rec & Mode
-                                [{:sim [:d :f] :simo {:interrupt true :dorder :insensitive :uorder :insensitive}} [[:btt "g"] {:set ["sw-mode" 1]} :!CTO0]
+                                [{:sim [:d :f] :simo {:interrupt true :dorder :insensitive :uorder :insensitive}} [[:btt "swResultOff"] {:set ["sw-mode" 1]} :!CTO0]
                                         [:!ropt :!rcmd :!w-mode :!wR-press :!wD-press :!wF-press :!wG-press :!wC-press :!wV-press :!e-mode :!t-mode :!caps-mode :!capsE-press :!capsA-press :!capsS-press :!capsD-press :!capsF-press :!capsC-press :!f19-mode :!a-mode :!sd-mode :!sw-mode :!f-mode :!del-mode :!holdBri-mode]
                                         {:afterup [[:km "Trigger - KeyPress"] {:set ["sw-mode" 0]}]}]
                         ; F MODE: Cursor Movement, Dragging and Clicking
@@ -186,7 +187,7 @@
                                 [:delete_or_backspace :vk_none]
                         ; Disable the return key
                                 [:return_or_enter :vk_none]
-                        ; Recover FN key for external keyboard           
+                        ; Recover FN key for external keyboard
                                 [:##right_control :fn]
                         ; Make new note in Bear with KM Macro
                                 [:!Cn [:km "New Bear Note - Same Window"] [:bear]]
@@ -194,6 +195,8 @@
                                 ;[:!CSTe ["osascript -e 'tell application \"Safari\" to make new document at end'"]]
                         ; RETURN on Left CTRL??
                                 [:##left_control :left_control nil {:alone {:key :return_or_enter}}]
+                        ; Alfred Snippets Preferences
+                                [:!CTbackslash [:open "alfredpreferences://navigateto/features>snippets"]]
                ]},
 
                 {:des "Delete Mods" :rules [[:condi :!ropt :!rcmd :!w-mode :!wR-press :!wD-press :!wF-press :!wG-press :!wC-press :!wV-press :!e-mode :!t-mode :!caps-mode :!capsE-press :!capsA-press :!capsS-press :!capsD-press :!capsF-press :!capsC-press :!f19-mode :!a-mode :!sd-mode :!sw-mode :!f-mode :!del-mode :!holdBri-mode]
@@ -404,7 +407,7 @@
                         ;Sticky
                                 [:a ["~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/ToggleStickyRememberSize.sh" ["hideOverlay" 1]]]
                         ;AutoRaise
-                                [:s [[:yabai "config focus_follows_mouse $([ $(/opt/homebrew/bin/yabai -m config focus_follows_mouse) = \"autoraise\" ] && echo \"off\" || echo \"autoraise\")"]["hideOverlay" 1]]]
+                                ;[:s [[:yabai "config focus_follows_mouse $([ $(/opt/homebrew/bin/yabai -m config focus_follows_mouse) = \"autoraise\" ] && echo \"off\" || echo \"autoraise\")"]["hideOverlay" 1]]]
                         ;D **INSERT / STACK / THROW**
                         ;F **FOCUS**
                         ;G **SWAP / THROW & GO
@@ -979,7 +982,9 @@
                         ;Modes
                                 [:a [[:alfred "sw" "com.superwhisper.aft" "selectMode"]["caps-mode" 0]["capsA-press" 0]]]
                         ;Main Menu
-                                [:s [[:alfred "sw" "com.superwhisper.aft"]["caps-mode" 0]["capsA-press" 0]]]
+                                [:!Ca [[:alfred "sw" "com.superwhisper.aft"]["caps-mode" 0]["capsA-press" 0]]]
+                        ;Macrowhisper
+                                [:s [[:alfred "mw" "com.aft.macrowhisper"]["caps-mode" 0]["capsA-press" 0]]]
                         ;KM Specials
                                 [:d [[:alfred "swmacros" "com.chubamisc.afred"]["caps-mode" 0]["capsA-press" 0]]]
                         ;Last JSON
@@ -1122,8 +1127,8 @@
                                 [:x [[:sc "" "Drop Cleanshot"]["caps-mode" 0]["capsD-press" 0]]]
                         ;Dropover Cloud
                                 [:c [[:km "Dropover Cloud Link"]["caps-mode" 0]["capsD-press" 0]]]
-                        ;Imgur
-                                [:!Cc [[:km "Dropover Imgur Link"]["caps-mode" 0]["capsD-press" 0]]]
+                        ;Dropover PasteFlow
+                                [:!Cc [[:sc "" "Drop PasteFlow"]["caps-mode" 0]["capsD-press" 0]]]
                         ;Airdrop
                                 [:!Oc [[:sc "" "Drop Airdrop"]["caps-mode" 0]["capsD-press" 0]]]
                         ;Pin with CS
@@ -1252,42 +1257,36 @@
 
 ; -- A MODE / KIKI AI & SUPERWHISPER --
                 {:des "A Mode - Kiki & SW Modes" :rules [:a-mode
-                        ;CW Assistant ★
-                                [:e [[:alfred "sw" "com.superwhisper.aft" "openMode,superwhisper://mode?key=message-UBXR"]["hideOverlay" 1]]]
-                        ;CW Options
-                                [:!Ce [[:alfred "sw" "com.superwhisper.aft" "openMode,superwhisper://mode?key=message-GTOX"]["hideOverlay" 1]]]
+                        ;Alter Ask
+                                [:e [[:mw "Alter Ask" "openModeRecord,superwhisper://mode?key=custom-SWJU"]["hideOverlay" 1]]]
+                        ;Alter Answerer ★
+                                [:!Ce [[:mw "Alter Answerer ★" "openModeRecord,superwhisper://mode?key=custom-SWJU"]["hideOverlay" 1]]]
                         ;Helper
-                                [:r [[:alfred "sw" "com.superwhisper.aft" "openMode,superwhisper://mode?key=custom-GAXH"]["hideOverlay" 1]]]
-                        ;Helper ★
-                                [:!Cr [[:alfred "sw" "com.superwhisper.aft" "openMode,superwhisper://mode?key=custom-KYFL"]["hideOverlay" 1]]]                        
-                        ;Coder ★
-                                [:t [[:alfred "sw" "com.superwhisper.aft" "openMode,superwhisper://mode?key=custom"]["hideOverlay" 1]]]
-                        ;Kiki Translate
-                                [:!Ct [[:alfred "kikiActions" "com.kiki.ai" "direct,copy,1,translateEn"]["hideOverlay" 1]]]
+                                [:r [[:alfred "sw" "com.superwhisper.aft" "openModeRecord,superwhisper://mode?key=custom-GAXH"]["hideOverlay" 1]]]
+                        ;Alter Helper ★
+                                [:!Cr [[:mw "Alter Helper ★" "openModeRecord,superwhisper://mode?key=custom-SWJU"]["hideOverlay" 1]]]                        
+                        ;Alter Coder (★)
+                                [:t [[:mw "Alter Coder (★)" "openModeRecord,superwhisper://mode?key=custom-SWJU"]["hideOverlay" 1]]]
+                        ;Alter Translate
+                                [:!Ct ["/opt/homebrew/bin/macrowhisper --exec-action \"Alter Translate\"" ["hideOverlay" 1]]]
                         ;Simplifier
-                                [:s [[:alfred "sw" "com.superwhisper.aft" "openMode,superwhisper://mode?key=custom-GNIX"]["hideOverlay" 1]]]
+                                [:s [[:alfred "sw" "com.superwhisper.aft" "openModeRecord,superwhisper://mode?key=custom-GNIX"]["hideOverlay" 1]]]
+                        ;Alter Editor (★)
+                                [:!Cs [[:mw "Alter Editor" "openModeRecord,superwhisper://mode?key=custom-SWJU"]["hideOverlay" 1]]]
+                        ;Alter TM
+                                [:d [[:mw "Alter TM" "openMode,superwhisper://mode?key=custom-SWJU"]["hideOverlay" 1]]]
                         ;Doer
-                                [:d [[:alfred "sw" "com.superwhisper.aft" "openMode,superwhisper://mode?key=message"]["hideOverlay" 1]]]
-                        ;Doer
-                                [:!Cd [[:alfred "sw" "com.superwhisper.aft" "openMode,superwhisper://mode?key=message-XNGJ"]["hideOverlay" 1]]]
+                                [:!Cd [[:alfred "sw" "com.superwhisper.aft" "openMode,superwhisper://mode?key=message"]["hideOverlay" 1]]]
                         ;Voice
                                 [:f [[:alfred  "sw" "com.superwhisper.aft" "openMode,superwhisper://mode?key=custom-SWJU"]["hideOverlay" 1]]]
                         ;Dictate
                                 [:!Cf [[:alfred "sw" "com.superwhisper.aft" "openMode,superwhisper://mode?key=custom-SWJG"]["hideOverlay" 1]]]                        
                         ;Improver
                                 [:g [[:alfred "sw" "com.superwhisper.aft" "openMode,superwhisper://mode?key=custom-IQVV"]["hideOverlay" 1]]]
-                        ;Editor ★
+                        ;Editor (★)
                                 [:!Cg [[:alfred "sw" "com.superwhisper.aft" "openMode,superwhisper://mode?key=custom-YYQY"]["hideOverlay" 1]]]
-                        ;Kiki Resume
-                                [:h [[:alfred "kikiWorkflow" "com.kiki.ai" "actionResumeLast"]["hideOverlay" 1]]]
                         ;Action: TextChat
-                                [:return_or_enter [:return_or_enter [:km "TextChat"]["hideOverlay" 1]]]
-                        ;Kiki Chat
-                                [:right_shift [[:alfred "kikiWorkflow" "com.kiki.ai" "actionChat"]["hideOverlay" 1]]]
-                        ;Kiki SelChat
-                                [:!Cright_shift [[:alfred "kikiActions" "com.kiki.ai" "direct,copy,1,customPrompt"]["hideOverlay" 1]]]
-                        ;Clean ★
-                                [:spacebar [[:alfred "sw" "com.superwhisper.aft" "openMode,superwhisper://mode?key=custom-UTIY"]["hideOverlay" 1]]]
+                                ;[:return_or_enter [:return_or_enter [:km "TextChat"]["hideOverlay" 1]]]
                 ]},
 
 ; -- SUPER DUPER MODE --
