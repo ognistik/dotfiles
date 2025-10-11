@@ -49,14 +49,15 @@ yabai -m rule --add app="^Loopback$" manage=off opacity=1.0 grid="11:11:1:1:9:9"
 yabai -m rule --add app="^Karabiner-.*" manage=off opacity=1.0 grid="11:11:1:1:9:9"
 yabai -m rule --add app="^Yume$" manage=off opacity=1.0 grid="1:1:0:0:1:1"
 yabai -m rule --add app="^Kando$" manage=off opacity=1.0
-yabai -m rule --add app="^Screen Studio$|^Screen Studio Beta$" subrole="AXDialog" title!="Camera Preview" manage=off opacity=0.0001
+yabai -m rule --add app="^Alter$" title="General" manage=off opacity=1.0
+yabai -m rule --add app="^Screen Studio$|^Screen Studio Beta$" subrole="AXDialog" title!="Camera Preview|Start Recording|Screen Studio Display Window Picker Highlighter" manage=off opacity=0.0001
 yabai -m rule --add app="^Screen Studio$|^Screen Studio Beta$" subrole!="AXDialog" manage=off opacity=1.0
 yabai -m rule --add app="^Keyboard Maestro$" subrole!="AXDialog" manage=off
 yabai -m rule --add app="^BetterTouchTool$" manage=off grid="11:11:1:1:9:9"
 yabai -m rule --add app="^Antinote$" manage=off opacity=1.0
 
 # SuperWhisper
-yabai -m rule --add app="superwhisper" manage=off opacity=1.0 
+yabai -m rule --add app="superwhisper" subrole!="AXSystemDialog" sticky=on manage=off grid="6:4:1:1:2:4"
 # yabai -m rule --add app="superwhisper" subrole="AXSystemDialog" grid="1:2:0:0:1:1" sticky=on manage=off opacity=0.5        grid="12:12:3:2:9:6"    
 # yabai -m rule --apply app="superwhisper" subrole="AXSystemDialog" grid="1:2:0:0:1:1" sticky=on manage=off opacity=0.5
 # yabai -m signal --add label=superwhisper_floating event=window_created app="^superwhisper$" action='echo "Window creation signal triggered" >> ~/Desktop/yabai_signal_log.txt'
@@ -65,7 +66,7 @@ yabai -m rule --add app="superwhisper" manage=off opacity=1.0
 yabai -m rule --add app="^Bear$" title!="^Bear$" manage=off grid="8:8:3:1:2:6" opacity=1.0
 yabai -m signal --add label=scratchpad_newBear event=window_created app="^Bear$" title!="^Bear|Settings$" action='~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggleSpecial bearScratchpad'
 
-# Safari Scratchpads
+# Safari Scratchpads 
 yabai -m rule --add app="^Safari$" manage=off grid="11:11:1:1:9:9"
 yabai -m signal --add label=scratchpad_newSafari event=window_created app="^Safari$" title!="^(General|Extensions)$" action='~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/scratchpadToggle.sh toggleSpecial Safari'
 

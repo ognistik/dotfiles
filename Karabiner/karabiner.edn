@@ -36,7 +36,7 @@
                 :open-g "open -g \"%s\""
                 :sc "echo \"%s\"|shortcuts run \"%s\" -i -" ; Pay attention - that the Shortcut input goes before the Shortcut name.
                 :yabai "/opt/homebrew/bin/yabai -m %s"
-                :mw "/opt/homebrew/bin/macrowhisper --schedule-action \"%s\" && osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"sw\" in workflow \"com.superwhisper.aft\" with argument \"%s\"'"
+                :mw "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"sw\" in workflow \"com.superwhisper.aft\" with argument \"%s\"' && sleep 1 && /opt/homebrew/bin/macrowhisper --schedule-action \"%s\""
         }
 
         ; 👇️ Useful to later set as conditions
@@ -187,6 +187,8 @@
                                 [:delete_or_backspace :vk_none]
                         ; Disable the return key
                                 [:return_or_enter :vk_none]
+                        ; Paste as Plain Text
+                                [:!CSv [:sc "" "Paste as Plain Text"] [:!finalcutpro]]
                         ; Recover FN key for external keyboard
                                 [:##right_control :fn]
                         ; Make new note in Bear with KM Macro
@@ -797,9 +799,9 @@
                                 [:w [:km "Delete Active Note"]]
                         ;E **EXTENSIONS**
                         ;Anybox Sel
-                                [:!Ce :!CTSx]
+                                [:!Oe :!CTSx]
                         ;Anybox CB as List
-                                [:!Oe [:sc "" "Anybox Clipboard List"]]
+                                [:!Ce [:sc "" "Anybox Clipboard List"]]
                         ;RW to Bear
                                 [:r "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"604659A4-5CBD-4DBC-A9E4-2D2B6FAAC9F3\"';\\
                                         shortcuts run \"RW to Bear\""]
@@ -811,6 +813,10 @@
                         ;S **PASTEFLOW**
                         ;D **DROPOVER**
                         ;F **FINDER**
+                        ;Alter Send to Bear
+                                [:!Cd :!CO1]
+                        ;Alter Copy Close
+                                [:!Of [:!TOc :!Tw]]
                         ;Alter
                                 [:!Cf :!TS1]
                         ;C **CLEANSHOT**
@@ -839,9 +845,9 @@
                         ;Day One Shortcut
                                 [:o [[:sc "" "Day One Master"]]]
                         ;Update Plex
-                                [:p [:km "838EBFC2-7F83-48C5-AF0C-248638A8AD65"]]
+                                [:p [:km "caps-p: Update Plex Server"]]
                         ;Fav WF
-                                [:g [:alfred "init" "com.zeitlings.favs"]]
+                                [:g [:alfred "init" "com.zeitlings.fav"]]
                         ;Mouseless Scroll
                                 [:h :!Of18]
                         ;Mouseless Grid
@@ -896,7 +902,7 @@
                 {:des "Caps Mode - Paste Flow Basic" :rules [[:condi :caps-mode :!capsE-press :!capsA-press :!capsS-press :!capsD-press :!capsF-press :!capsC-press]
                         ; PF Sel
                                 [:!Cc [:alfred "cmd" "com.pasteflow.aft" "c!!addCurrentClip"]]
-                        ; PF Split & Add
+                        ; PF Split & Ad
                                 [:!Oc [:alfred "cmd" "com.pasteflow.aft" "c!!addSplitClip"]]
                         ; PF Paste Next
                                 [:!Cv [:alfred "cmd" "com.pasteflow.aft" "pasteNext"]]
@@ -919,6 +925,8 @@
                                 [:left_shift [:km "Karabiner Overlay Off" "overlayOnly"]]
                         ;Anybox Quick Save
                                 [:w [[:open-g "anybox://quick-save"]["caps-mode" 0]["capsE-press" 0]]]
+                        ;Anybox Save Selection
+                                [:!Cw [:!CTSx ["caps-mode" 0]["capsE-press" 0]]]
                         ;Add to Readwise
                                 [:r [:!Or ["caps-mode" 0]["capsE-press" 0]] [:arc]]   
                         ;Active Scratchpads
@@ -994,6 +1002,7 @@
                 {:des "Caps Mode S Sublayer - Pasteflow" :rules [:capsS-press
                         ;Cancel Main Mode
                                 [:caps_lock [["caps-mode" 0]["f19-mode" 0]["capsE-press" 0]["capsA-press" 0]["capsS-press" 0]["capsD-press" 0]["capsF-press" 0]["capsC-press" 0]]]
+                                [{:pkey :button1} [["caps-mode" 0]["f19-mode" 0]["capsE-press" 0]["capsA-press" 0]["capsS-press" 0]["capsD-press" 0]["capsF-press" 0]["capsC-press" 0]]]
                         ;Hide Overlay
                                 [:left_shift [:km "Karabiner Overlay Off" "overlayOnly"]]
                         ;Clear Items Toggle
@@ -1085,14 +1094,12 @@
                                 [:q [[:sc "quick" "Drop Optimize"]["caps-mode" 0]["capsD-press" 0]]]
                         ;Clop WF
                                 [:!Cq [[:sc "workflow" "Drop Optimize"]["caps-mode" 0]["capsD-press" 0]]]
-                        ;Transcribe
-                                [:w [[:sc "" "Drop AIFile Transcribe"]["caps-mode" 0]["capsD-press" 0]]]
+                        ;Save to Anybox
+                                [:w [[:sc "" "Drop Anybox"]["caps-mode" 0]["capsD-press" 0]]]
                         ;Move to Desktop
                                 [:e [[:sc "" "Drop Desktop"]["caps-mode" 0]["capsD-press" 0]]]
                         ;Reveal
                                 [:r [[:sc "" "Drop Reveal"]["caps-mode" 0]["capsD-press" 0]]]
-                        ;Save to Anybox
-                                [:a [[:sc "" "Drop Anybox"]["caps-mode" 0]["capsD-press" 0]]]
                         ;Previous Shelf
                                 [:s [[:sc "" "Drop Previous"]["caps-mode" 0]["capsD-press" 0]]]
                         ;Shelf from Sel
@@ -1162,7 +1169,9 @@
                         ;OCR w/Linebreaks
                                 [:q [[:open-g "cleanshot://capture-text?linebreaks=true"]["caps-mode" 0]["capsC-press" 0]]]
                         ;OCR no Linebreaks
-                                [:w [[:open-g "cleanshot://capture-text?linebreaks=false"]["caps-mode" 0]["capsC-press" 0]]]  
+                                [:w [[:open-g "cleanshot://capture-text?linebreaks=false"]["caps-mode" 0]["capsC-press" 0]]]
+                        ;OCR Alfred   
+                                [:!Cw [[:alfred "ocr" "com.zeitlings.ocr.light"]["caps-mode" 0]["capsC-press" 0]]]
                         ;FullScreen
                                 [:e [[:open-g "cleanshot://capture-fullscreen"]["caps-mode" 0]["capsC-press" 0]]]
                         ;FullScreen to CB
@@ -1245,26 +1254,26 @@
 
 ; -- A MODE / KIKI AI & SUPERWHISPER --
                 {:des "A Mode - Kiki & SW Modes" :rules [:a-mode
-                        ;Alter Ask
-                                [:e [[:mw "Alter Ask" "openModeRecord,superwhisper://mode?key=custom-SWJU"]["hideOverlay" 1]]]
+                        ;Alter Whatever
+                                [:e [[:km "MW Voice Schedule" "Alter Whatever"]["hideOverlay" 1]]]
                         ;Alter Answerer ★
-                                [:!Ce [[:mw "Alter Answerer ★" "openModeRecord,superwhisper://mode?key=custom-SWJU"]["hideOverlay" 1]]]
+                                [:!Ce [[:km "MW Voice Schedule" "Alter Answerer ★"]["hideOverlay" 1]]]
                         ;Helper
                                 [:r [[:alfred "sw" "com.superwhisper.aft" "openModeRecord,superwhisper://mode?key=custom-GAXH"]["hideOverlay" 1]]]
                         ;Alter Helper ★
-                                [:!Cr [[:mw "Alter Helper ★" "openModeRecord,superwhisper://mode?key=custom-SWJU"]["hideOverlay" 1]]]                        
+                                [:!Cr [[:km "MW Voice Schedule" "Alter Helper ★"]["hideOverlay" 1]]]                        
                         ;Alter Coder (★)
-                                [:t [[:mw "Alter Coder (★)" "openModeRecord,superwhisper://mode?key=custom-SWJU"]["hideOverlay" 1]]]
+                                [:t [[:km "MW Voice Schedule" "Alter Coder (★)"]["hideOverlay" 1]]]
                         ;Alter Translate
                                 [:!Ct ["/opt/homebrew/bin/macrowhisper --exec-action \"Alter Translate\"" ["hideOverlay" 1]]]
                         ;Simplifier
                                 [:s [[:alfred "sw" "com.superwhisper.aft" "openModeRecord,superwhisper://mode?key=custom-GNIX"]["hideOverlay" 1]]]
                         ;Alter Editor (★)
-                                [:!Cs [[:mw "Alter Editor" "openModeRecord,superwhisper://mode?key=custom-SWJU"]["hideOverlay" 1]]]
+                                [:!Cs [[:km "MW Voice Schedule" "Alter Editor (★)"]["hideOverlay" 1]]]
+                        ;Flex
+                                [:d [[:alfred  "sw" "com.superwhisper.aft" "openMode,superwhisper://mode?key=custom"]["hideOverlay" 1]]]
                         ;Alter TM
-                                [:d [[:mw "Alter TM" "openMode,superwhisper://mode?key=custom-SWJU"]["hideOverlay" 1]]]
-                        ;Doer
-                                [:!Cd [[:alfred "sw" "com.superwhisper.aft" "openMode,superwhisper://mode?key=message"]["hideOverlay" 1]]]
+                                [:!Cd [[:km "MW Voice Schedule" "Alter TM"]["hideOverlay" 1]]]
                         ;Voice
                                 [:f [[:alfred  "sw" "com.superwhisper.aft" "openMode,superwhisper://mode?key=custom-SWJU"]["hideOverlay" 1]]]
                         ;Dictate
@@ -1881,25 +1890,25 @@
                                         [:i [:km "rcmd: iMessages" "2"] [:i-rcmd :caps-rcmd]]
                                         ; Bring to Space, Activate & Hide Others
                                         [:!Ri [:km "rcmd: iMessages" "3"] [:i-rcmd :caps-rcmd]]
-                                ; IA WRITER
+                                ; IMAZING
                                         ; Activate
-                                        [:a [:km "rcmd: iA Writer"] [:i-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
+                                        [:m [:km "rcmd: iMazing"] [:i-rcmd :!space-rcmd :!semi-rcmd :!rshift-rcmd :!lshift-rcmd :!lcmd-rcmd :!caps-rcmd]]
                                         ; Minimize
-                                        [:a [:km "rcmd: iA Writer" "m"] [:i-rcmd :lshift-rcmd]]
+                                        [:m [:km "rcmd: iMazing" "m"] [:i-rcmd :lshift-rcmd]]
                                         ; Deminimize
-                                        [:!Ca [:km "rcmd: iA Writer" "dm"] [:i-rcmd :lshift-rcmd]]
+                                        [:!Cm [:km "rcmd: iMazing" "dm"] [:i-rcmd :lshift-rcmd]]
                                         ; Close Windows
-                                        [:a [:km "rcmd: iA Writer" "x"] [:i-rcmd :lcmd-rcmd]]
+                                        [:m [:km "rcmd: iMazing" "x"] [:i-rcmd :lcmd-rcmd]]
                                         ; Hide App
-                                        [:a [:km "rcmd: iA Writer" "0"] [:i-rcmd :space-rcmd]]
+                                        [:m [:km "rcmd: iMazing" "0"] [:i-rcmd :space-rcmd]]
                                         ; QUIT
-                                        [:a [:km "rcmd: iA Writer" "xx"] [:i-rcmd :semi-rcmd]]
+                                        [:m [:km "rcmd: iMazing" "xx"] [:i-rcmd :semi-rcmd]]
                                         ; Activate & Hide Others
-                                        [:a [:km "rcmd: iA Writer" "1"] [:i-rcmd :rshift-rcmd]]
+                                        [:m [:km "rcmd: iMazing" "1"] [:i-rcmd :rshift-rcmd]]
                                         ; Bring to Space & Activate
-                                        [:a [:km "rcmd: iA Writer" "2"] [:i-rcmd :caps-rcmd]]
+                                        [:m [:km "rcmd: iMazing" "2"] [:i-rcmd :caps-rcmd]]
                                         ; Bring to Space, Activate & Hide Others
-                                        [:!Ra [:km "rcmd: iA Writer" "3"] [:i-rcmd :caps-rcmd]]
+                                        [:!Rm [:km "rcmd: iMazing" "3"] [:i-rcmd :caps-rcmd]]
                         ; >> RCMD K >>
                                 ; KARABINERELEMENTS
                                         ; Activate
@@ -2474,15 +2483,15 @@
                                 ;UPDATE Note
                                         [:u [:open-g "bear://x-callback-url/open-note?title=Update"] :bear]
                         ; >> CRAFT >>
-                                ;INBOX
-                                        [:i [:open-g "craftdocs://open?blockId=306AAA3C-1804-42DE-80F8-F046BB38CA08&spaceId=dbf93b0b-3c55-5ab0-745b-9fa6a60fc3d2"] :craft]
+                                ;Habit Tracker
+                                        [:h [:open-g "craftdocs://open?blockId=7FC8ECAD-51EF-4136-935F-D320ADC4F629&spaceId=dbf93b0b-3c55-5ab0-745b-9fa6a60fc3d2"] :craft]
                         ; >> VS CODE >>
                                 ;Karabiner JSON
                                         [:j [:open "$HOME/.config/karabiner/karabiner.json"] :vscode]
                                 ;Karabiner EDN
                                         [:k [:open "$HOME/Documents/GitHubRepos/dotfiles/Karabiner/karabiner.edn"] :vscode]
                                 ;Menus JSON from Kando
-                                        [:m [:open "$HOME/Dropbox/2-Areas/SystemAndApps/Kando/menus.json"] :vscode]
+                                        [:m [:open "$HOME/Documents/GitHubRepos/macrowhisper/samples/macrowhisper-dev.json"] :vscode]
                                 ;Notas TXT
                                         [:n [:open "$HOME/Library/Mobile Documents/com~apple~CloudDocs/My Files/notas.txt"] :vscode]
                                 ;Yabairc

@@ -8,9 +8,9 @@
     "complex_modifications" : {
       "parameters" : {
         "basic.simultaneous_threshold_milliseconds" : 30,
-        "basic.to_delayed_action_delay_milliseconds" : 140,
-        "basic.to_if_alone_timeout_milliseconds" : 139,
-        "basic.to_if_held_down_threshold_milliseconds" : 140
+        "basic.to_delayed_action_delay_milliseconds" : 110,
+        "basic.to_if_alone_timeout_milliseconds" : 109,
+        "basic.to_if_held_down_threshold_milliseconds" : 110
       },
       "rules" : [ {
         "description" : "Auto generated layer conditions",
@@ -298,31 +298,31 @@
             "value" : 1,
             "type" : "variable_unless"
           }, {
-            "name" : "del-mode",
-            "value" : 1,
-            "type" : "variable_unless"
-          }, {
-            "name" : "f19-mode",
-            "value" : 1,
-            "type" : "variable_unless"
-          }, {
-            "name" : "caps-mode",
-            "value" : 1,
-            "type" : "variable_unless"
-          }, {
-            "name" : "t-mode",
-            "value" : 1,
-            "type" : "variable_unless"
-          }, {
-            "name" : "sd-mode",
-            "value" : 1,
-            "type" : "variable_unless"
-          }, {
             "name" : "w-mode",
             "value" : 1,
             "type" : "variable_unless"
           }, {
-            "name" : "a-mode",
+            "name" : "wR-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wD-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wF-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wG-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wC-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wV-press",
             "value" : 1,
             "type" : "variable_unless"
           }, {
@@ -330,7 +330,63 @@
             "value" : 1,
             "type" : "variable_unless"
           }, {
+            "name" : "t-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "caps-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsE-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsA-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsS-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsD-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsF-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsC-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "f19-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "a-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "sd-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "sw-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
             "name" : "f-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "del-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "w-mode",
             "value" : 1,
             "type" : "variable_unless"
           } ],
@@ -362,31 +418,31 @@
             "value" : 1,
             "type" : "variable_unless"
           }, {
-            "name" : "del-mode",
-            "value" : 1,
-            "type" : "variable_unless"
-          }, {
-            "name" : "f19-mode",
-            "value" : 1,
-            "type" : "variable_unless"
-          }, {
-            "name" : "caps-mode",
-            "value" : 1,
-            "type" : "variable_unless"
-          }, {
-            "name" : "t-mode",
-            "value" : 1,
-            "type" : "variable_unless"
-          }, {
-            "name" : "sd-mode",
-            "value" : 1,
-            "type" : "variable_unless"
-          }, {
             "name" : "w-mode",
             "value" : 1,
             "type" : "variable_unless"
           }, {
-            "name" : "a-mode",
+            "name" : "wR-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wD-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wF-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wG-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wC-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wV-press",
             "value" : 1,
             "type" : "variable_unless"
           }, {
@@ -394,7 +450,63 @@
             "value" : 1,
             "type" : "variable_unless"
           }, {
+            "name" : "t-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "caps-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsE-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsA-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsS-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsD-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsF-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsC-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "f19-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "a-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "sd-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "sw-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
             "name" : "f-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "del-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "w-mode",
             "value" : 1,
             "type" : "variable_unless"
           } ],
@@ -426,31 +538,31 @@
             "value" : 1,
             "type" : "variable_unless"
           }, {
-            "name" : "del-mode",
-            "value" : 1,
-            "type" : "variable_unless"
-          }, {
-            "name" : "f19-mode",
-            "value" : 1,
-            "type" : "variable_unless"
-          }, {
-            "name" : "caps-mode",
-            "value" : 1,
-            "type" : "variable_unless"
-          }, {
-            "name" : "t-mode",
-            "value" : 1,
-            "type" : "variable_unless"
-          }, {
-            "name" : "sd-mode",
-            "value" : 1,
-            "type" : "variable_unless"
-          }, {
             "name" : "w-mode",
             "value" : 1,
             "type" : "variable_unless"
           }, {
-            "name" : "a-mode",
+            "name" : "wR-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wD-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wF-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wG-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wC-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wV-press",
             "value" : 1,
             "type" : "variable_unless"
           }, {
@@ -458,7 +570,63 @@
             "value" : 1,
             "type" : "variable_unless"
           }, {
+            "name" : "t-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "caps-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsE-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsA-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsS-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsD-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsF-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsC-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "f19-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "a-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "sd-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "sw-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
             "name" : "f-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "del-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "w-mode",
             "value" : 1,
             "type" : "variable_unless"
           } ],
@@ -490,31 +658,31 @@
             "value" : 1,
             "type" : "variable_unless"
           }, {
-            "name" : "del-mode",
-            "value" : 1,
-            "type" : "variable_unless"
-          }, {
-            "name" : "f19-mode",
-            "value" : 1,
-            "type" : "variable_unless"
-          }, {
-            "name" : "caps-mode",
-            "value" : 1,
-            "type" : "variable_unless"
-          }, {
-            "name" : "t-mode",
-            "value" : 1,
-            "type" : "variable_unless"
-          }, {
-            "name" : "sd-mode",
-            "value" : 1,
-            "type" : "variable_unless"
-          }, {
             "name" : "w-mode",
             "value" : 1,
             "type" : "variable_unless"
           }, {
-            "name" : "a-mode",
+            "name" : "wR-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wD-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wF-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wG-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wC-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wV-press",
             "value" : 1,
             "type" : "variable_unless"
           }, {
@@ -522,7 +690,183 @@
             "value" : 1,
             "type" : "variable_unless"
           }, {
+            "name" : "t-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "caps-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsE-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsA-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsS-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsD-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsF-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsC-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "f19-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "a-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "sd-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "sw-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
             "name" : "f-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "del-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "w-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "simultaneous" : [ {
+              "key_code" : "s"
+            }, {
+              "key_code" : "f"
+            } ],
+            "simultaneous_options" : {
+              "detect_key_down_uninterruptedly" : true,
+              "key_down_order" : "insensitive",
+              "key_up_order" : "insensitive",
+              "key_up_when" : "any"
+            }
+          },
+          "to" : [ {
+            "key_code" : "9",
+            "modifiers" : [ "left_command", "left_control", "left_option" ]
+          } ],
+          "conditions" : [ {
+            "name" : "ropt",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "rcmd",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "w-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wR-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wD-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wF-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wG-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wC-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wV-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "e-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "t-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "caps-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsE-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsA-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsS-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsD-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsF-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsC-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "f19-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "a-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "sd-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "sw-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "f-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "del-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "w-mode",
             "value" : 1,
             "type" : "variable_unless"
           } ],
@@ -1224,6 +1568,140 @@
           }, {
             "type" : "frontmost_application_unless",
             "bundle_identifiers" : [ "design.brilliant" ]
+          }, {
+            "name" : "swResult",
+            "value" : 1,
+            "type" : "variable_unless"
+          } ],
+          "type" : "basic"
+        }, {
+          "to_if_alone" : [ {
+            "shell_command" : "osascript -e 'tell application \"BetterTouchTool\"' -e 'trigger_named \"swResultOff\"' -e 'end tell'"
+          } ],
+          "to_if_held_down" : [ {
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"Karabiner Active Layer\" with parameter \"caps-mode,▲\"'"
+          } ],
+          "to_after_key_up" : [ {
+            "set_variable" : {
+              "name" : "caps-mode",
+              "value" : 0
+            }
+          } ],
+          "from" : {
+            "key_code" : "caps_lock",
+            "modifiers" : {
+              "optional" : [ "any" ]
+            }
+          },
+          "to" : [ {
+            "set_variable" : {
+              "name" : "caps-mode",
+              "value" : 1
+            }
+          } ],
+          "conditions" : [ {
+            "name" : "ropt",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "rcmd",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "w-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wR-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wD-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wF-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wG-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wC-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wV-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "e-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "t-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "caps-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsE-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsA-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsS-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsD-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsF-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsC-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "f19-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "a-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "sd-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "sw-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "f-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "del-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "type" : "frontmost_application_unless",
+            "bundle_identifiers" : [ "design.brilliant" ]
+          }, {
+            "name" : "swResult",
+            "value" : 1,
+            "type" : "variable_if"
           } ],
           "type" : "basic"
         }, {
@@ -1241,7 +1719,7 @@
               "value" : 1
             }
           }, {
-            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"Karabiner Active Layer\" with parameter \"holdBri-mode,◧\"'"
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"Karabiner Active Layer\" with parameter \"holdBri-mode,◬\"'"
           } ],
           "to_after_key_up" : [ {
             "set_variable" : {
@@ -1251,6 +1729,11 @@
           }, {
             "set_variable" : {
               "name" : "holdBri-mode",
+              "value" : 0
+            }
+          }, {
+            "set_variable" : {
+              "name" : "hideOverlay",
               "value" : 0
             }
           } ],
@@ -1393,6 +1876,11 @@
           "to_after_key_up" : [ {
             "set_variable" : {
               "name" : "a-mode",
+              "value" : 0
+            }
+          }, {
+            "set_variable" : {
+              "name" : "hideOverlay",
               "value" : 0
             }
           } ],
@@ -1660,7 +2148,7 @@
             }
           },
           "to" : [ {
-            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"Trigger - KeyPress\" with parameter \"\"'"
+            "shell_command" : "osascript -e 'tell application \"BetterTouchTool\"' -e 'trigger_named \"swResultOff\"' -e 'end tell'"
           }, {
             "set_variable" : {
               "name" : "sw-mode",
@@ -2687,6 +3175,121 @@
           "type" : "basic"
         }, {
           "from" : {
+            "key_code" : "v",
+            "modifiers" : {
+              "mandatory" : [ "left_command", "left_shift" ]
+            }
+          },
+          "to" : [ {
+            "shell_command" : "echo \"\"|shortcuts run \"Paste as Plain Text\" -i -"
+          } ],
+          "conditions" : [ {
+            "name" : "holdBri-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "del-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "f-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "sw-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "sd-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "a-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "f19-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsC-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsF-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsD-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsS-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsA-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsE-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "caps-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "t-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "e-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wV-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wC-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wG-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wF-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wD-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wR-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "w-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "rcmd",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "ropt",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "type" : "frontmost_application_unless",
+            "bundle_identifiers" : [ "com.apple.FinalCut" ]
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
             "key_code" : "right_control",
             "modifiers" : {
               "optional" : [ "any" ]
@@ -2924,6 +3527,118 @@
           },
           "to" : [ {
             "key_code" : "left_control"
+          } ],
+          "conditions" : [ {
+            "name" : "holdBri-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "del-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "f-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "sw-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "sd-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "a-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "f19-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsC-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsF-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsD-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsS-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsA-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsE-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "caps-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "t-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "e-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wV-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wC-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wG-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wF-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wD-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "wR-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "w-mode",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "rcmd",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "ropt",
+            "value" : 1,
+            "type" : "variable_unless"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "backslash",
+            "modifiers" : {
+              "mandatory" : [ "left_command", "left_control" ]
+            }
+          },
+          "to" : [ {
+            "shell_command" : "open \"alfredpreferences://navigateto/features>snippets\""
           } ],
           "conditions" : [ {
             "name" : "holdBri-mode",
@@ -5032,48 +5747,6 @@
           },
           "to" : [ {
             "shell_command" : "~/Documents/GitHubRepos/dotfiles/Yabai/Scripts/ToggleStickyRememberSize.sh"
-          }, {
-            "set_variable" : {
-              "name" : "hideOverlay",
-              "value" : 1
-            }
-          } ],
-          "conditions" : [ {
-            "name" : "wF-press",
-            "value" : 1,
-            "type" : "variable_unless"
-          }, {
-            "name" : "wG-press",
-            "value" : 1,
-            "type" : "variable_unless"
-          }, {
-            "name" : "wR-press",
-            "value" : 1,
-            "type" : "variable_unless"
-          }, {
-            "name" : "wD-press",
-            "value" : 1,
-            "type" : "variable_unless"
-          }, {
-            "name" : "wV-press",
-            "value" : 1,
-            "type" : "variable_unless"
-          }, {
-            "name" : "wC-press",
-            "value" : 1,
-            "type" : "variable_unless"
-          }, {
-            "name" : "w-mode",
-            "value" : 1,
-            "type" : "variable_if"
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
-            "key_code" : "s"
-          },
-          "to" : [ {
-            "shell_command" : "/opt/homebrew/bin/yabai -m config focus_follows_mouse $([ $(/opt/homebrew/bin/yabai -m config focus_follows_mouse) = \"autoraise\" ] && echo \"off\" || echo \"autoraise\")"
           }, {
             "set_variable" : {
               "name" : "hideOverlay",
@@ -9581,7 +10254,7 @@
           },
           "to" : [ {
             "key_code" : "c",
-            "modifiers" : [ "left_control", "left_shift" ]
+            "modifiers" : [ "right_control", "right_shift" ]
           } ],
           "conditions" : [ {
             "name" : "capsC-press",
@@ -9658,7 +10331,7 @@
             "key_code" : "w"
           },
           "to" : [ {
-            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"9A812F68-7857-4ACE-A7BD-8AF3AEEE57CE\" with parameter \"\"'"
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"Delete Active Note\" with parameter \"\"'"
           } ],
           "conditions" : [ {
             "name" : "capsC-press",
@@ -9694,7 +10367,7 @@
           "from" : {
             "key_code" : "e",
             "modifiers" : {
-              "mandatory" : [ "left_command" ]
+              "mandatory" : [ "left_option" ]
             }
           },
           "to" : [ {
@@ -9735,7 +10408,7 @@
           "from" : {
             "key_code" : "e",
             "modifiers" : {
-              "mandatory" : [ "left_option" ]
+              "mandatory" : [ "left_command" ]
             }
           },
           "to" : [ {
@@ -9814,6 +10487,172 @@
           },
           "to" : [ {
             "shell_command" : "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"cmd\" in workflow \"com.taptix.aft\" with argument \"toggle\"'"
+          } ],
+          "conditions" : [ {
+            "name" : "capsC-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsF-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsD-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsS-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsA-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsE-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "caps-mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "t",
+            "modifiers" : {
+              "mandatory" : [ "left_command" ]
+            }
+          },
+          "to" : [ {
+            "shell_command" : "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"mainMenu\" in workflow \"com.taptix.aft\" with argument \"\"'"
+          } ],
+          "conditions" : [ {
+            "name" : "capsC-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsF-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsD-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsS-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsA-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsE-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "caps-mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "d",
+            "modifiers" : {
+              "mandatory" : [ "left_command" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "1",
+            "modifiers" : [ "left_command", "left_option" ]
+          } ],
+          "conditions" : [ {
+            "name" : "capsC-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsF-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsD-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsS-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsA-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsE-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "caps-mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "f",
+            "modifiers" : {
+              "mandatory" : [ "left_option" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "c",
+            "modifiers" : [ "left_control", "left_option" ]
+          }, {
+            "key_code" : "w",
+            "modifiers" : [ "left_control" ]
+          } ],
+          "conditions" : [ {
+            "name" : "capsC-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsF-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsD-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsS-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsA-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "capsE-press",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "caps-mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "f",
+            "modifiers" : {
+              "mandatory" : [ "left_command" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "1",
+            "modifiers" : [ "left_control", "left_shift" ]
           } ],
           "conditions" : [ {
             "name" : "capsC-press",
@@ -10358,7 +11197,7 @@
             "key_code" : "p"
           },
           "to" : [ {
-            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"838EBFC2-7F83-48C5-AF0C-248638A8AD65\" with parameter \"\"'"
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"caps-p: Update Plex Server\" with parameter \"\"'"
           } ],
           "conditions" : [ {
             "name" : "capsC-press",
@@ -10395,7 +11234,7 @@
             "key_code" : "g"
           },
           "to" : [ {
-            "shell_command" : "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"init\" in workflow \"com.zeitlings.favs\" with argument \"\"'"
+            "shell_command" : "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"init\" in workflow \"com.zeitlings.fav\" with argument \"\"'"
           } ],
           "conditions" : [ {
             "name" : "capsC-press",
@@ -11624,6 +12463,33 @@
           "type" : "basic"
         }, {
           "from" : {
+            "key_code" : "w",
+            "modifiers" : {
+              "mandatory" : [ "left_command" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "x",
+            "modifiers" : [ "left_command", "left_control", "left_shift" ]
+          }, {
+            "set_variable" : {
+              "name" : "caps-mode",
+              "value" : 0
+            }
+          }, {
+            "set_variable" : {
+              "name" : "capsE-press",
+              "value" : 0
+            }
+          } ],
+          "conditions" : [ {
+            "name" : "capsE-press",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
             "key_code" : "r"
           },
           "to" : [ {
@@ -12281,29 +13147,6 @@
           "type" : "basic"
         }, {
           "from" : {
-            "key_code" : "t"
-          },
-          "to" : [ {
-            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"SW Toggle Rec Win\" with parameter \"\"'"
-          }, {
-            "set_variable" : {
-              "name" : "caps-mode",
-              "value" : 0
-            }
-          }, {
-            "set_variable" : {
-              "name" : "capsA-press",
-              "value" : 0
-            }
-          } ],
-          "conditions" : [ {
-            "name" : "capsA-press",
-            "value" : 1,
-            "type" : "variable_if"
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
             "key_code" : "a"
           },
           "to" : [ {
@@ -12327,10 +13170,36 @@
           "type" : "basic"
         }, {
           "from" : {
-            "key_code" : "s"
+            "key_code" : "a",
+            "modifiers" : {
+              "mandatory" : [ "left_command" ]
+            }
           },
           "to" : [ {
             "shell_command" : "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"sw\" in workflow \"com.superwhisper.aft\" with argument \"\"'"
+          }, {
+            "set_variable" : {
+              "name" : "caps-mode",
+              "value" : 0
+            }
+          }, {
+            "set_variable" : {
+              "name" : "capsA-press",
+              "value" : 0
+            }
+          } ],
+          "conditions" : [ {
+            "name" : "capsA-press",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "s"
+          },
+          "to" : [ {
+            "shell_command" : "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"mw\" in workflow \"com.aft.macrowhisper\" with argument \"\"'"
           }, {
             "set_variable" : {
               "name" : "caps-mode",
@@ -12376,102 +13245,7 @@
             "key_code" : "f"
           },
           "to" : [ {
-            "shell_command" : "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"sw\" in workflow \"com.superwhisper.aft\" with argument \"viewLastJSON\"'"
-          }, {
-            "set_variable" : {
-              "name" : "caps-mode",
-              "value" : 0
-            }
-          }, {
-            "set_variable" : {
-              "name" : "capsA-press",
-              "value" : 0
-            }
-          } ],
-          "conditions" : [ {
-            "name" : "capsA-press",
-            "value" : 1,
-            "type" : "variable_if"
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
-            "key_code" : "f",
-            "modifiers" : {
-              "mandatory" : [ "left_command" ]
-            }
-          },
-          "to" : [ {
-            "shell_command" : "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"sw\" in workflow \"com.superwhisper.aft\" with argument \"viewLastResult\"'"
-          }, {
-            "set_variable" : {
-              "name" : "caps-mode",
-              "value" : 0
-            }
-          }, {
-            "set_variable" : {
-              "name" : "capsA-press",
-              "value" : 0
-            }
-          } ],
-          "conditions" : [ {
-            "name" : "capsA-press",
-            "value" : 1,
-            "type" : "variable_if"
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
-            "key_code" : "z"
-          },
-          "to" : [ {
-            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"MW SetAction\" with parameter \"pasteResult\"'"
-          }, {
-            "set_variable" : {
-              "name" : "caps-mode",
-              "value" : 0
-            }
-          }, {
-            "set_variable" : {
-              "name" : "capsA-press",
-              "value" : 0
-            }
-          } ],
-          "conditions" : [ {
-            "name" : "capsA-press",
-            "value" : 1,
-            "type" : "variable_if"
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
-            "key_code" : "x"
-          },
-          "to" : [ {
-            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"MW SetAction\" with parameter \"pasteChat\"'"
-          }, {
-            "set_variable" : {
-              "name" : "caps-mode",
-              "value" : 0
-            }
-          }, {
-            "set_variable" : {
-              "name" : "capsA-press",
-              "value" : 0
-            }
-          } ],
-          "conditions" : [ {
-            "name" : "capsA-press",
-            "value" : 1,
-            "type" : "variable_if"
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
-            "key_code" : "c"
-          },
-          "to" : [ {
-            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"MW SetAction\" with parameter \"\"'"
+            "shell_command" : "/opt/homebrew/bin/macrowhisper --exec-action swWebDebug"
           }, {
             "set_variable" : {
               "name" : "caps-mode",
@@ -12494,7 +13268,7 @@
             "key_code" : "spacebar"
           },
           "to" : [ {
-            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"SW Hide Unhide\" with parameter \"\"'"
+            "shell_command" : "/opt/homebrew/bin/macrowhisper --exec-action swWebView"
           }, {
             "set_variable" : {
               "name" : "caps-mode",
@@ -12518,6 +13292,57 @@
         "manipulators" : [ {
           "from" : {
             "key_code" : "caps_lock"
+          },
+          "to" : [ {
+            "set_variable" : {
+              "name" : "caps-mode",
+              "value" : 0
+            }
+          }, {
+            "set_variable" : {
+              "name" : "f19-mode",
+              "value" : 0
+            }
+          }, {
+            "set_variable" : {
+              "name" : "capsE-press",
+              "value" : 0
+            }
+          }, {
+            "set_variable" : {
+              "name" : "capsA-press",
+              "value" : 0
+            }
+          }, {
+            "set_variable" : {
+              "name" : "capsS-press",
+              "value" : 0
+            }
+          }, {
+            "set_variable" : {
+              "name" : "capsD-press",
+              "value" : 0
+            }
+          }, {
+            "set_variable" : {
+              "name" : "capsF-press",
+              "value" : 0
+            }
+          }, {
+            "set_variable" : {
+              "name" : "capsC-press",
+              "value" : 0
+            }
+          } ],
+          "conditions" : [ {
+            "name" : "capsS-press",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "pointing_button" : "button1"
           },
           "to" : [ {
             "set_variable" : {
@@ -13661,7 +14486,7 @@
             "key_code" : "w"
           },
           "to" : [ {
-            "shell_command" : "echo \"\"|shortcuts run \"Drop AIFile Transcribe\" -i -"
+            "shell_command" : "echo \"\"|shortcuts run \"Drop Anybox\" -i -"
           }, {
             "set_variable" : {
               "name" : "caps-mode",
@@ -13708,29 +14533,6 @@
           },
           "to" : [ {
             "shell_command" : "echo \"\"|shortcuts run \"Drop Reveal\" -i -"
-          }, {
-            "set_variable" : {
-              "name" : "caps-mode",
-              "value" : 0
-            }
-          }, {
-            "set_variable" : {
-              "name" : "capsD-press",
-              "value" : 0
-            }
-          } ],
-          "conditions" : [ {
-            "name" : "capsD-press",
-            "value" : 1,
-            "type" : "variable_if"
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
-            "key_code" : "a"
-          },
-          "to" : [ {
-            "shell_command" : "echo \"\"|shortcuts run \"Drop Anybox\" -i -"
           }, {
             "set_variable" : {
               "name" : "caps-mode",
@@ -14019,7 +14821,7 @@
             }
           },
           "to" : [ {
-            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"Dropover Imgur Link\" with parameter \"\"'"
+            "shell_command" : "echo \"\"|shortcuts run \"Drop PasteFlow\" -i -"
           }, {
             "set_variable" : {
               "name" : "caps-mode",
@@ -14529,6 +15331,32 @@
           },
           "to" : [ {
             "shell_command" : "open -g \"cleanshot://capture-text?linebreaks=false\""
+          }, {
+            "set_variable" : {
+              "name" : "caps-mode",
+              "value" : 0
+            }
+          }, {
+            "set_variable" : {
+              "name" : "capsC-press",
+              "value" : 0
+            }
+          } ],
+          "conditions" : [ {
+            "name" : "capsC-press",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "w",
+            "modifiers" : {
+              "mandatory" : [ "left_command" ]
+            }
+          },
+          "to" : [ {
+            "shell_command" : "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"ocr\" in workflow \"com.zeitlings.ocr.light\" with argument \"\"'"
           }, {
             "set_variable" : {
               "name" : "caps-mode",
@@ -15292,6 +16120,11 @@
           "to" : [ {
             "key_code" : "v",
             "modifiers" : [ "left_command", "left_shift" ]
+          }, {
+            "set_variable" : {
+              "name" : "hideOverlay",
+              "value" : 1
+            }
           } ],
           "conditions" : [ {
             "name" : "holdBri-mode",
@@ -15351,7 +16184,7 @@
             "key_code" : "e"
           },
           "to" : [ {
-            "shell_command" : "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"sw\" in workflow \"com.superwhisper.aft\" with argument \"openMode,superwhisper://mode?key=message-UBXR\"'"
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"MW Voice Schedule\" with parameter \"Alter Whatever\"'"
           }, {
             "set_variable" : {
               "name" : "hideOverlay",
@@ -15372,7 +16205,7 @@
             }
           },
           "to" : [ {
-            "shell_command" : "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"sw\" in workflow \"com.superwhisper.aft\" with argument \"openMode,superwhisper://mode?key=message-GTOX\"'"
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"MW Voice Schedule\" with parameter \"Alter Answerer ★\"'"
           }, {
             "set_variable" : {
               "name" : "hideOverlay",
@@ -15390,7 +16223,7 @@
             "key_code" : "r"
           },
           "to" : [ {
-            "shell_command" : "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"sw\" in workflow \"com.superwhisper.aft\" with argument \"openMode,superwhisper://mode?key=custom-GAXH\"'"
+            "shell_command" : "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"sw\" in workflow \"com.superwhisper.aft\" with argument \"openModeRecord,superwhisper://mode?key=custom-GAXH\"'"
           }, {
             "set_variable" : {
               "name" : "hideOverlay",
@@ -15411,7 +16244,7 @@
             }
           },
           "to" : [ {
-            "shell_command" : "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"sw\" in workflow \"com.superwhisper.aft\" with argument \"openMode,superwhisper://mode?key=custom-KYFL\"'"
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"MW Voice Schedule\" with parameter \"Alter Helper ★\"'"
           }, {
             "set_variable" : {
               "name" : "hideOverlay",
@@ -15429,7 +16262,7 @@
             "key_code" : "t"
           },
           "to" : [ {
-            "shell_command" : "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"sw\" in workflow \"com.superwhisper.aft\" with argument \"openMode,superwhisper://mode?key=custom\"'"
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"MW Voice Schedule\" with parameter \"Alter Coder (★)\"'"
           }, {
             "set_variable" : {
               "name" : "hideOverlay",
@@ -15450,7 +16283,7 @@
             }
           },
           "to" : [ {
-            "shell_command" : "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"kikiActions\" in workflow \"com.kiki.ai\" with argument \"direct,copy,1,translateEn\"'"
+            "shell_command" : "/opt/homebrew/bin/macrowhisper --exec-action \"Alter Translate\""
           }, {
             "set_variable" : {
               "name" : "hideOverlay",
@@ -15468,7 +16301,28 @@
             "key_code" : "s"
           },
           "to" : [ {
-            "shell_command" : "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"sw\" in workflow \"com.superwhisper.aft\" with argument \"openMode,superwhisper://mode?key=custom-GNIX\"'"
+            "shell_command" : "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"sw\" in workflow \"com.superwhisper.aft\" with argument \"openModeRecord,superwhisper://mode?key=custom-GNIX\"'"
+          }, {
+            "set_variable" : {
+              "name" : "hideOverlay",
+              "value" : 1
+            }
+          } ],
+          "conditions" : [ {
+            "name" : "a-mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "s",
+            "modifiers" : {
+              "mandatory" : [ "left_command" ]
+            }
+          },
+          "to" : [ {
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"MW Voice Schedule\" with parameter \"Alter Editor (★)\"'"
           }, {
             "set_variable" : {
               "name" : "hideOverlay",
@@ -15486,7 +16340,28 @@
             "key_code" : "d"
           },
           "to" : [ {
-            "shell_command" : "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"sw\" in workflow \"com.superwhisper.aft\" with argument \"openMode,superwhisper://mode?key=message-LGCA\"'"
+            "shell_command" : "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"sw\" in workflow \"com.superwhisper.aft\" with argument \"openMode,superwhisper://mode?key=custom\"'"
+          }, {
+            "set_variable" : {
+              "name" : "hideOverlay",
+              "value" : 1
+            }
+          } ],
+          "conditions" : [ {
+            "name" : "a-mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "d",
+            "modifiers" : {
+              "mandatory" : [ "left_command" ]
+            }
+          },
+          "to" : [ {
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"MW Voice Schedule\" with parameter \"Alter TM\"'"
           }, {
             "set_variable" : {
               "name" : "hideOverlay",
@@ -15579,10 +16454,10 @@
           "type" : "basic"
         }, {
           "from" : {
-            "key_code" : "h"
+            "key_code" : "c"
           },
           "to" : [ {
-            "shell_command" : "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"kikiWorkflow\" in workflow \"com.kiki.ai\" with argument \"actionResumeLast\"'"
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"Toggle Action\" with parameter \"autoPaste\"'"
           }, {
             "set_variable" : {
               "name" : "hideOverlay",
@@ -15597,51 +16472,10 @@
           "type" : "basic"
         }, {
           "from" : {
-            "key_code" : "return_or_enter"
+            "key_code" : "v"
           },
           "to" : [ {
-            "key_code" : "return_or_enter"
-          }, {
-            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"AM - TextChat\" with parameter \"\"'"
-          }, {
-            "set_variable" : {
-              "name" : "hideOverlay",
-              "value" : 1
-            }
-          } ],
-          "conditions" : [ {
-            "name" : "a-mode",
-            "value" : 1,
-            "type" : "variable_if"
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
-            "key_code" : "right_shift"
-          },
-          "to" : [ {
-            "shell_command" : "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"kikiWorkflow\" in workflow \"com.kiki.ai\" with argument \"actionChat\"'"
-          }, {
-            "set_variable" : {
-              "name" : "hideOverlay",
-              "value" : 1
-            }
-          } ],
-          "conditions" : [ {
-            "name" : "a-mode",
-            "value" : 1,
-            "type" : "variable_if"
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
-            "key_code" : "right_shift",
-            "modifiers" : {
-              "mandatory" : [ "left_command" ]
-            }
-          },
-          "to" : [ {
-            "shell_command" : "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"kikiActions\" in workflow \"com.kiki.ai\" with argument \"direct,copy,1,customPrompt\"'"
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"Toggle Action\" with parameter \"pasteResult\"'"
           }, {
             "set_variable" : {
               "name" : "hideOverlay",
@@ -15659,7 +16493,7 @@
             "key_code" : "spacebar"
           },
           "to" : [ {
-            "shell_command" : "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"sw\" in workflow \"com.superwhisper.aft\" with argument \"openMode,superwhisper://mode?key=custom-UTIY\"'"
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"ContextChat\" with parameter \"\"'"
           }, {
             "set_variable" : {
               "name" : "hideOverlay",
@@ -16648,36 +17482,10 @@
           "type" : "basic"
         }, {
           "from" : {
-            "key_code" : "q"
-          },
-          "to" : [ {
-            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"SW Hide Unhide\" with parameter \"\"'"
-          } ],
-          "conditions" : [ {
-            "name" : "sw-mode",
-            "value" : 1,
-            "type" : "variable_if"
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
-            "key_code" : "w"
-          },
-          "to" : [ {
-            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"SW Toggle Rec Win\" with parameter \"\"'"
-          } ],
-          "conditions" : [ {
-            "name" : "sw-mode",
-            "value" : 1,
-            "type" : "variable_if"
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
             "key_code" : "s"
           },
           "to" : [ {
-            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"MW SetAction\" with parameter \"pasteResult\"'"
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"Toggle Action\" with parameter \"pasteResult\"'"
           } ],
           "conditions" : [ {
             "name" : "sw-mode",
@@ -16690,7 +17498,7 @@
             "key_code" : "a"
           },
           "to" : [ {
-            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"MW SetAction\" with parameter \"pasteChat\"'"
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"Toggle Action\" with parameter \"autoPaste\"'"
           } ],
           "conditions" : [ {
             "name" : "sw-mode",
@@ -16699,14 +17507,24 @@
           } ],
           "type" : "basic"
         }, {
-          "to_after_key_up" : [ {
-            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"MW PressReturn\" with parameter \"off\"'"
-          } ],
           "from" : {
             "key_code" : "spacebar"
           },
           "to" : [ {
-            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"MW PressReturn\" with parameter \"on\"'"
+            "shell_command" : "/opt/homebrew/bin/macrowhisper --auto-return true"
+          } ],
+          "conditions" : [ {
+            "name" : "sw-mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "left_command"
+          },
+          "to" : [ {
+            "shell_command" : "/opt/homebrew/bin/macrowhisper --schedule-action"
           } ],
           "conditions" : [ {
             "name" : "sw-mode",
@@ -22628,6 +23446,185 @@
           "type" : "basic"
         }, {
           "from" : {
+            "key_code" : "t"
+          },
+          "to" : [ {
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"rcmd: Alter\" with parameter \"\"'"
+          } ],
+          "conditions" : [ {
+            "name" : "a-rcmd",
+            "value" : 1,
+            "type" : "variable_if"
+          }, {
+            "name" : "space-rcmd",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "semi-rcmd",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "rshift-rcmd",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "lshift-rcmd",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "lcmd-rcmd",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "caps-rcmd",
+            "value" : 1,
+            "type" : "variable_unless"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "t"
+          },
+          "to" : [ {
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"rcmd: Alter\" with parameter \"m\"'"
+          } ],
+          "conditions" : [ {
+            "name" : "a-rcmd",
+            "value" : 1,
+            "type" : "variable_if"
+          }, {
+            "name" : "lshift-rcmd",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "t",
+            "modifiers" : {
+              "mandatory" : [ "left_command" ]
+            }
+          },
+          "to" : [ {
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"rcmd: Alter\" with parameter \"dm\"'"
+          } ],
+          "conditions" : [ {
+            "name" : "a-rcmd",
+            "value" : 1,
+            "type" : "variable_if"
+          }, {
+            "name" : "lshift-rcmd",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "t"
+          },
+          "to" : [ {
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"rcmd: Alter\" with parameter \"x\"'"
+          } ],
+          "conditions" : [ {
+            "name" : "a-rcmd",
+            "value" : 1,
+            "type" : "variable_if"
+          }, {
+            "name" : "lcmd-rcmd",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "t"
+          },
+          "to" : [ {
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"rcmd: Alter\" with parameter \"0\"'"
+          } ],
+          "conditions" : [ {
+            "name" : "a-rcmd",
+            "value" : 1,
+            "type" : "variable_if"
+          }, {
+            "name" : "space-rcmd",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "t"
+          },
+          "to" : [ {
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"rcmd: Alter\" with parameter \"xx\"'"
+          } ],
+          "conditions" : [ {
+            "name" : "a-rcmd",
+            "value" : 1,
+            "type" : "variable_if"
+          }, {
+            "name" : "semi-rcmd",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "t"
+          },
+          "to" : [ {
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"rcmd: Alter\" with parameter \"1\"'"
+          } ],
+          "conditions" : [ {
+            "name" : "a-rcmd",
+            "value" : 1,
+            "type" : "variable_if"
+          }, {
+            "name" : "rshift-rcmd",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "t"
+          },
+          "to" : [ {
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"rcmd: Alter\" with parameter \"2\"'"
+          } ],
+          "conditions" : [ {
+            "name" : "a-rcmd",
+            "value" : 1,
+            "type" : "variable_if"
+          }, {
+            "name" : "caps-rcmd",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "t",
+            "modifiers" : {
+              "mandatory" : [ "right_shift" ]
+            }
+          },
+          "to" : [ {
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"rcmd: Alter\" with parameter \"3\"'"
+          } ],
+          "conditions" : [ {
+            "name" : "a-rcmd",
+            "value" : 1,
+            "type" : "variable_if"
+          }, {
+            "name" : "caps-rcmd",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
             "key_code" : "s"
           },
           "to" : [ {
@@ -25671,10 +26668,10 @@
           "type" : "basic"
         }, {
           "from" : {
-            "key_code" : "a"
+            "key_code" : "m"
           },
           "to" : [ {
-            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"rcmd: iA Writer\" with parameter \"\"'"
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"rcmd: iMazing\" with parameter \"\"'"
           } ],
           "conditions" : [ {
             "name" : "i-rcmd",
@@ -25708,10 +26705,10 @@
           "type" : "basic"
         }, {
           "from" : {
-            "key_code" : "a"
+            "key_code" : "m"
           },
           "to" : [ {
-            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"rcmd: iA Writer\" with parameter \"m\"'"
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"rcmd: iMazing\" with parameter \"m\"'"
           } ],
           "conditions" : [ {
             "name" : "i-rcmd",
@@ -25725,13 +26722,13 @@
           "type" : "basic"
         }, {
           "from" : {
-            "key_code" : "a",
+            "key_code" : "m",
             "modifiers" : {
               "mandatory" : [ "left_command" ]
             }
           },
           "to" : [ {
-            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"rcmd: iA Writer\" with parameter \"dm\"'"
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"rcmd: iMazing\" with parameter \"dm\"'"
           } ],
           "conditions" : [ {
             "name" : "i-rcmd",
@@ -25745,10 +26742,10 @@
           "type" : "basic"
         }, {
           "from" : {
-            "key_code" : "a"
+            "key_code" : "m"
           },
           "to" : [ {
-            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"rcmd: iA Writer\" with parameter \"x\"'"
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"rcmd: iMazing\" with parameter \"x\"'"
           } ],
           "conditions" : [ {
             "name" : "i-rcmd",
@@ -25762,10 +26759,10 @@
           "type" : "basic"
         }, {
           "from" : {
-            "key_code" : "a"
+            "key_code" : "m"
           },
           "to" : [ {
-            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"rcmd: iA Writer\" with parameter \"0\"'"
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"rcmd: iMazing\" with parameter \"0\"'"
           } ],
           "conditions" : [ {
             "name" : "i-rcmd",
@@ -25779,10 +26776,10 @@
           "type" : "basic"
         }, {
           "from" : {
-            "key_code" : "a"
+            "key_code" : "m"
           },
           "to" : [ {
-            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"rcmd: iA Writer\" with parameter \"xx\"'"
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"rcmd: iMazing\" with parameter \"xx\"'"
           } ],
           "conditions" : [ {
             "name" : "i-rcmd",
@@ -25796,10 +26793,10 @@
           "type" : "basic"
         }, {
           "from" : {
-            "key_code" : "a"
+            "key_code" : "m"
           },
           "to" : [ {
-            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"rcmd: iA Writer\" with parameter \"1\"'"
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"rcmd: iMazing\" with parameter \"1\"'"
           } ],
           "conditions" : [ {
             "name" : "i-rcmd",
@@ -25813,10 +26810,10 @@
           "type" : "basic"
         }, {
           "from" : {
-            "key_code" : "a"
+            "key_code" : "m"
           },
           "to" : [ {
-            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"rcmd: iA Writer\" with parameter \"2\"'"
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"rcmd: iMazing\" with parameter \"2\"'"
           } ],
           "conditions" : [ {
             "name" : "i-rcmd",
@@ -25830,13 +26827,13 @@
           "type" : "basic"
         }, {
           "from" : {
-            "key_code" : "a",
+            "key_code" : "m",
             "modifiers" : {
               "mandatory" : [ "right_shift" ]
             }
           },
           "to" : [ {
-            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"rcmd: iA Writer\" with parameter \"3\"'"
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"rcmd: iMazing\" with parameter \"3\"'"
           } ],
           "conditions" : [ {
             "name" : "i-rcmd",
@@ -30683,6 +31680,185 @@
           "type" : "basic"
         }, {
           "from" : {
+            "key_code" : "c"
+          },
+          "to" : [ {
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"rcmd: Xcode\" with parameter \"\"'"
+          } ],
+          "conditions" : [ {
+            "name" : "x-rcmd",
+            "value" : 1,
+            "type" : "variable_if"
+          }, {
+            "name" : "space-rcmd",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "semi-rcmd",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "rshift-rcmd",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "lshift-rcmd",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "lcmd-rcmd",
+            "value" : 1,
+            "type" : "variable_unless"
+          }, {
+            "name" : "caps-rcmd",
+            "value" : 1,
+            "type" : "variable_unless"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "c"
+          },
+          "to" : [ {
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"rcmd: Xcode\" with parameter \"m\"'"
+          } ],
+          "conditions" : [ {
+            "name" : "x-rcmd",
+            "value" : 1,
+            "type" : "variable_if"
+          }, {
+            "name" : "lshift-rcmd",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "c",
+            "modifiers" : {
+              "mandatory" : [ "left_command" ]
+            }
+          },
+          "to" : [ {
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"rcmd: Xcode\" with parameter \"dm\"'"
+          } ],
+          "conditions" : [ {
+            "name" : "x-rcmd",
+            "value" : 1,
+            "type" : "variable_if"
+          }, {
+            "name" : "lshift-rcmd",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "c"
+          },
+          "to" : [ {
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"rcmd: Xcode\" with parameter \"x\"'"
+          } ],
+          "conditions" : [ {
+            "name" : "x-rcmd",
+            "value" : 1,
+            "type" : "variable_if"
+          }, {
+            "name" : "lcmd-rcmd",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "c"
+          },
+          "to" : [ {
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"rcmd: Xcode\" with parameter \"0\"'"
+          } ],
+          "conditions" : [ {
+            "name" : "x-rcmd",
+            "value" : 1,
+            "type" : "variable_if"
+          }, {
+            "name" : "space-rcmd",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "c"
+          },
+          "to" : [ {
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"rcmd: Xcode\" with parameter \"xx\"'"
+          } ],
+          "conditions" : [ {
+            "name" : "x-rcmd",
+            "value" : 1,
+            "type" : "variable_if"
+          }, {
+            "name" : "semi-rcmd",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "c"
+          },
+          "to" : [ {
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"rcmd: Xcode\" with parameter \"1\"'"
+          } ],
+          "conditions" : [ {
+            "name" : "x-rcmd",
+            "value" : 1,
+            "type" : "variable_if"
+          }, {
+            "name" : "rshift-rcmd",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "c"
+          },
+          "to" : [ {
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"rcmd: Xcode\" with parameter \"2\"'"
+          } ],
+          "conditions" : [ {
+            "name" : "x-rcmd",
+            "value" : 1,
+            "type" : "variable_if"
+          }, {
+            "name" : "caps-rcmd",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "c",
+            "modifiers" : {
+              "mandatory" : [ "right_shift" ]
+            }
+          },
+          "to" : [ {
+            "shell_command" : "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"rcmd: Xcode\" with parameter \"3\"'"
+          } ],
+          "conditions" : [ {
+            "name" : "x-rcmd",
+            "value" : 1,
+            "type" : "variable_if"
+          }, {
+            "name" : "caps-rcmd",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
             "key_code" : "z"
           },
           "to" : [ {
@@ -30897,10 +32073,10 @@
           "type" : "basic"
         }, {
           "from" : {
-            "key_code" : "i"
+            "key_code" : "h"
           },
           "to" : [ {
-            "shell_command" : "open -g \"craftdocs://open?blockId=306AAA3C-1804-42DE-80F8-F046BB38CA08&spaceId=dbf93b0b-3c55-5ab0-745b-9fa6a60fc3d2\""
+            "shell_command" : "open -g \"craftdocs://open?blockId=7FC8ECAD-51EF-4136-935F-D320ADC4F629&spaceId=dbf93b0b-3c55-5ab0-745b-9fa6a60fc3d2\""
           } ],
           "conditions" : [ {
             "name" : "ropt",
@@ -30948,7 +32124,7 @@
             "key_code" : "m"
           },
           "to" : [ {
-            "shell_command" : "open \"$HOME/Dropbox/2-Areas/SystemAndApps/Kando/menus.json\""
+            "shell_command" : "open \"$HOME/Documents/GitHubRepos/macrowhisper/samples/macrowhisper-dev.json\""
           } ],
           "conditions" : [ {
             "name" : "ropt",
