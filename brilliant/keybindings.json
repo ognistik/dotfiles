@@ -1,0 +1,590 @@
+{
+  "combo_double_color_222FE936-6827-4787-A19E-114224C51770" : {
+    "modifiers" : [
+      "command",
+      "option"
+    ],
+    "key" : "V"
+  },
+  "combo_previous_yellow_C6D9DB72-B597-4D62-88D3-B3B102BBCAD9" : {
+    "modifiers" : [
+      "option",
+      "shift"
+    ],
+    "key" : "E"
+  },
+  "import_image" : {
+    "key" : ""
+  },
+  "set_transparency_level_8" : {
+    "modifiers" : [
+      "option"
+    ],
+    "key" : "8"
+  },
+  "combo_blue_highlighter" : {
+    "key" : ""
+  },
+  "increase_size" : {
+    "key" : "="
+  },
+  "decrease_transparency" : {
+    "modifiers" : [
+      "option"
+    ],
+    "key" : "-"
+  },
+  "align_horizontally" : {
+    "modifiers" : [
+      "option"
+    ],
+    "key" : "R"
+  },
+  "combo_previous_graddark_251CC5F7-C3AD-41AA-A0F2-B7F4BC142876" : {
+    "modifiers" : [
+      "option",
+      "shift"
+    ],
+    "key" : "S"
+  },
+  "set_transparency_level_3" : {
+    "modifiers" : [
+      "option"
+    ],
+    "key" : "3"
+  },
+  "toggle_combos" : {
+    "modifiers" : [
+      "command",
+      "shift"
+    ],
+    "key" : "W"
+  },
+  "scale_up_selected_annotations" : {
+    "modifiers" : [
+      "shift"
+    ],
+    "key" : "="
+  },
+  "toggle_background" : {
+    "modifiers" : [
+      "shift"
+    ],
+    "key" : "Q"
+  },
+  "toggle_font_family" : {
+    "modifiers" : [
+      "command"
+    ],
+    "key" : "T"
+  },
+  "center_vertically" : {
+    "modifiers" : [
+      "command",
+      "shift"
+    ],
+    "key" : "V"
+  },
+  "align_vertically" : {
+    "modifiers" : [
+      "option"
+    ],
+    "key" : "V"
+  },
+  "change_color_green" : {
+    "modifiers" : [
+      "option"
+    ],
+    "key" : "G"
+  },
+  "set_scale_level_8" : {
+    "modifiers" : [
+      "shift"
+    ],
+    "key" : "8"
+  },
+  "save_state" : {
+    "key" : ""
+  },
+  "toggle_color_selector" : {
+    "modifiers" : [
+      "shift"
+    ],
+    "key" : "C"
+  },
+  "disable_zoom_out" : {
+    "modifiers" : [
+      "command",
+      "control"
+    ],
+    "key" : "Z"
+  },
+  "combo_round_previous_D719598C-F4BF-435E-8694-5A53528EB570" : {
+    "modifiers" : [
+      "command",
+      "option"
+    ],
+    "key" : "C"
+  },
+  "set_scale_level_5" : {
+    "modifiers" : [
+      "shift"
+    ],
+    "key" : "5"
+  },
+  "set_scale_level_2" : {
+    "modifiers" : [
+      "shift"
+    ],
+    "key" : "2"
+  },
+  "change_tool_arrow" : {
+    "key" : "V"
+  },
+  "export_to_png" : {
+    "modifiers" : [
+      "command"
+    ],
+    "key" : "S"
+  },
+  "set_scale_level_9" : {
+    "modifiers" : [
+      "shift"
+    ],
+    "key" : "9"
+  },
+  "toggle_license_view" : {
+    "key" : ""
+  },
+  "change_color_yellow" : {
+    "modifiers" : [
+      "command",
+      "option"
+    ],
+    "key" : "E"
+  },
+  "change_color_orange" : {
+    "modifiers" : [
+      "option"
+    ],
+    "key" : "F"
+  },
+  "increase_corner_radius" : {
+    "modifiers" : [
+      "command",
+      "option"
+    ],
+    "key" : "="
+  },
+  "toggle_onboarding" : {
+    "key" : ""
+  },
+  "combo_previous_red_26949C8B-113E-4FF0-8922-92F95497DE2A" : {
+    "modifiers" : [
+      "option",
+      "shift"
+    ],
+    "key" : "D"
+  },
+  "set_size_level_0" : {
+    "key" : "`"
+  },
+  "focus_board_explorer" : {
+    "modifiers" : [
+      "command",
+      "shift"
+    ],
+    "key" : "↩"
+  },
+  "delete_active_board" : {
+    "modifiers" : [
+      "command"
+    ],
+    "key" : "⌫"
+  },
+  "change_color_black" : {
+    "modifiers" : [
+      "option"
+    ],
+    "key" : "Q"
+  },
+  "toggle_color_pick_mode" : {
+    "modifiers" : [
+      "command"
+    ],
+    "key" : "G"
+  },
+  "combo_toggle_snap_and_labels_9E18BF6E-9EF4-4944-B57E-3AE32F72FFE3" : {
+    "modifiers" : [
+      "command",
+      "option"
+    ],
+    "key" : "."
+  },
+  "toggle_zoom_effect" : {
+    "key" : ""
+  },
+  "set_transparency_level_1" : {
+    "modifiers" : [
+      "option"
+    ],
+    "key" : "1"
+  },
+  "set_transparency_level_4" : {
+    "modifiers" : [
+      "option"
+    ],
+    "key" : "4"
+  },
+  "set_scale_level_3" : {
+    "modifiers" : [
+      "shift"
+    ],
+    "key" : "3"
+  },
+  "focus_active_board" : {
+    "modifiers" : [
+      "command"
+    ],
+    "key" : "↩"
+  },
+  "set_transparency_level_2" : {
+    "modifiers" : [
+      "option"
+    ],
+    "key" : "2"
+  },
+  "combo_yellow_highlighter" : {
+    "key" : ""
+  },
+  "set_scale_level_1" : {
+    "modifiers" : [
+      "shift"
+    ],
+    "key" : "1"
+  },
+  "toggle_snap_guides" : {
+    "modifiers" : [
+      "command"
+    ],
+    "key" : "."
+  },
+  "fit_to_screen" : {
+    "modifiers" : [
+      "command",
+      "shift"
+    ],
+    "key" : "F"
+  },
+  "set_corner_radius_level_0" : {
+    "modifiers" : [
+      "command",
+      "option"
+    ],
+    "key" : "`"
+  },
+  "combo_full_centered_2B263A3C-3EF0-4220-A868-1F440436AFD8" : {
+    "modifiers" : [
+      "command",
+      "option"
+    ],
+    "key" : "F"
+  },
+  "launch_onboarding" : {
+    "key" : ""
+  },
+  "combo_red_highlighter" : {
+    "key" : ""
+  },
+  "set_transparency_level_5" : {
+    "modifiers" : [
+      "option"
+    ],
+    "key" : "5"
+  },
+  "increase_transparency" : {
+    "modifiers" : [
+      "option"
+    ],
+    "key" : "="
+  },
+  "combo_previous_blue_54A467F6-8541-4DB5-A4EC-2297E3722345" : {
+    "modifiers" : [
+      "option",
+      "shift"
+    ],
+    "key" : "C"
+  },
+  "combo_change_tool_to_highlighter" : {
+    "key" : "D"
+  },
+  "combo_previous_green_CE091F46-2F1C-4826-83E7-61B41C936D60" : {
+    "modifiers" : [
+      "option",
+      "shift"
+    ],
+    "key" : "G"
+  },
+  "combo_previous_-_roto_A2BD5310-28ED-47DF-B7F5-D76794EDC19F" : {
+    "modifiers" : [
+      "command",
+      "shift"
+    ],
+    "key" : "C"
+  },
+  "switch_to_previously_active_board" : {
+    "key" : ""
+  },
+  "change_tool_circle" : {
+    "key" : "X"
+  },
+  "combo_previous_gradlight_23D18C22-9C84-436D-8B0F-704AD981BA13" : {
+    "modifiers" : [
+      "option",
+      "shift"
+    ],
+    "key" : "A"
+  },
+  "load_state" : {
+    "key" : ""
+  },
+  "toggle_dimension_labels" : {
+    "modifiers" : [
+      "option"
+    ],
+    "key" : "."
+  },
+  "set_transparency_level_0" : {
+    "modifiers" : [
+      "option"
+    ],
+    "key" : "`"
+  },
+  "duplicate_board" : {
+    "modifiers" : [
+      "command",
+      "shift"
+    ],
+    "key" : "D"
+  },
+  "change_tool_eraser" : {
+    "modifiers" : [
+      "shift"
+    ],
+    "key" : "E"
+  },
+  "combo_clean_and_hide_9A8DFCAE-E7EE-4518-8ED7-6D9CE7187B05" : {
+    "modifiers" : [
+      "command",
+      "control"
+    ],
+    "key" : "F"
+  },
+  "toggle_visual_guides" : {
+    "modifiers" : [
+      "command"
+    ],
+    "key" : ""
+  },
+  "combo_previous_black_B746C12B-D407-4E57-8DEE-1D7939FE3E97" : {
+    "modifiers" : [
+      "option",
+      "shift"
+    ],
+    "key" : "Q"
+  },
+  "toggle_zoom" : {
+    "modifiers" : [
+      "command"
+    ],
+    "key" : "`"
+  },
+  "set_transparency_level_6" : {
+    "modifiers" : [
+      "option"
+    ],
+    "key" : "6"
+  },
+  "set_scale_level_6" : {
+    "modifiers" : [
+      "shift"
+    ],
+    "key" : "6"
+  },
+  "combo_full_opacity_marker_81AE5605-C153-4232-A314-96A5773A24C7" : {
+    "modifiers" : [
+      "shift"
+    ],
+    "key" : "D"
+  },
+  "toggle_corner_radius_editor" : {
+    "modifiers" : [
+      "shift"
+    ],
+    "key" : "R"
+  },
+  "set_scale_level_7" : {
+    "modifiers" : [
+      "shift"
+    ],
+    "key" : "7"
+  },
+  "change_tool_move" : {
+    "key" : "F"
+  },
+  "show_hidden_commands" : {
+    "key" : ""
+  },
+  "combo_make_previous_bold_2E532CCA-3867-49DA-A75C-86D24F5C412D" : {
+    "modifiers" : [
+      "command",
+      "option"
+    ],
+    "key" : "B"
+  },
+  "change_color_red" : {
+    "modifiers" : [
+      "option"
+    ],
+    "key" : "D"
+  },
+  "check_for_updates" : {
+    "key" : ""
+  },
+  "scale_down_selected_annotations" : {
+    "modifiers" : [
+      "shift"
+    ],
+    "key" : "-"
+  },
+  "change_color_blue" : {
+    "modifiers" : [
+      "option"
+    ],
+    "key" : "C"
+  },
+  "combo_previous_white_83EE009C-FA8F-4E4B-ACF4-A9B16592A654" : {
+    "modifiers" : [
+      "option",
+      "shift"
+    ],
+    "key" : "W"
+  },
+  "change_tool_line" : {
+    "key" : "B"
+  },
+  "change_color_purple" : {
+    "modifiers" : [
+      "option"
+    ],
+    "key" : "X"
+  },
+  "toggle_blackboard" : {
+    "key" : "Q"
+  },
+  "set_scale_level_4" : {
+    "modifiers" : [
+      "shift"
+    ],
+    "key" : "4"
+  },
+  "decrease_zoom" : {
+    "key" : ""
+  },
+  "toggle_whiteboard" : {
+    "key" : "W"
+  },
+  "change_color_gradient_light" : {
+    "modifiers" : [
+      "option"
+    ],
+    "key" : "A"
+  },
+  "change_tool_rectangle_filled" : {
+    "key" : "E"
+  },
+  "change_color_gradient_dark" : {
+    "modifiers" : [
+      "option"
+    ],
+    "key" : "S"
+  },
+  "zoom_to_selection" : {
+    "modifiers" : [
+      "command"
+    ],
+    "key" : "F"
+  },
+  "set_scale_level_0" : {
+    "modifiers" : [
+      "shift"
+    ],
+    "key" : "`"
+  },
+  "set_transparency_level_7" : {
+    "modifiers" : [
+      "option"
+    ],
+    "key" : "7"
+  },
+  "flip_vertically" : {
+    "modifiers" : [
+      "command",
+      "control"
+    ],
+    "key" : "B"
+  },
+  "change_tool_pen" : {
+    "key" : "A"
+  },
+  "set_transparency_level_9" : {
+    "modifiers" : [
+      "option"
+    ],
+    "key" : "9"
+  },
+  "toggle_folders" : {
+    "modifiers" : [
+      "command",
+      "option"
+    ],
+    "key" : "K"
+  },
+  "increase_zoom" : {
+    "key" : ""
+  },
+  "toggle_keyboard_shortcuts" : {
+    "modifiers" : [
+      "command"
+    ],
+    "key" : "\/"
+  },
+  "combo_green_highlighter" : {
+    "key" : ""
+  },
+  "combo_delete_&_go_last_6144F5C5-F24C-4D75-BEF5-EE14EFBF38AC" : {
+    "key" : ""
+  },
+  "show_hidden_toolbar_section" : {
+    "key" : ""
+  },
+  "change_color_white" : {
+    "modifiers" : [
+      "option"
+    ],
+    "key" : "W"
+  },
+  "change_tool_circle_filled" : {
+    "key" : "Z"
+  },
+  "toggle_sections" : {
+    "key" : ""
+  },
+  "combo_previous_orange_8A603F1C-100C-4D76-9674-E12D3224E9B3" : {
+    "modifiers" : [
+      "option",
+      "shift"
+    ],
+    "key" : "F"
+  }
+}

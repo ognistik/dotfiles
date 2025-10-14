@@ -1,0 +1,2 @@
+theme = "Andromeda"
+keybind = cmd+.=text:\x03

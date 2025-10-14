@@ -183,6 +183,8 @@
 
 ; -- CLEAN LAYER -
                 {:des "Basics" :rules [[:condi :!ropt :!rcmd :!w-mode :!wR-press :!wD-press :!wF-press :!wG-press :!wC-press :!wV-press :!e-mode :!t-mode :!caps-mode :!capsE-press :!capsA-press :!capsS-press :!capsD-press :!capsF-press :!capsC-press :!f19-mode :!a-mode :!sd-mode :!sw-mode :!f-mode :!del-mode :!holdBri-mode]
+                        ; Close SW Bettertouchtool Panel     
+                                [{:pkey :button3} [:btt "swResultOff"] [["swResult" 1]]]   
                         ; Disable the backspace key...
                                 [:delete_or_backspace :vk_none]
                         ; Disable the return key
@@ -921,6 +923,7 @@
                 {:des "Caps Mode E Sublayer - Arc Extensions" :rules [:capsE-press
                         ;Cancel Main Mode
                                 [:caps_lock [["caps-mode" 0]["f19-mode" 0]["capsE-press" 0]["capsA-press" 0]["capsS-press" 0]["capsD-press" 0]["capsF-press" 0]["capsC-press" 0]]]
+                                [{:pkey :button1} [["caps-mode" 0]["f19-mode" 0]["capsE-press" 0]["capsA-press" 0]["capsS-press" 0]["capsD-press" 0]["capsF-press" 0]["capsC-press" 0]]]
                         ;Hide Overlay
                                 [:left_shift [:km "Karabiner Overlay Off" "overlayOnly"]]
                         ;Anybox Quick Save
@@ -975,6 +978,7 @@
                 {:des "Caps Mode A Sublayer - SW Actions" :rules [:capsA-press
                         ;Cancel Main Mode
                                 [:caps_lock [["caps-mode" 0]["f19-mode" 0]["capsE-press" 0]["capsA-press" 0]["capsS-press" 0]["capsD-press" 0]["capsF-press" 0]["capsC-press" 0]]]
+                                [{:pkey :button1} [["caps-mode" 0]["f19-mode" 0]["capsE-press" 0]["capsA-press" 0]["capsS-press" 0]["capsD-press" 0]["capsF-press" 0]["capsC-press" 0]]]
                         ;Hide Overlay
                                 [:left_shift [:km "Karabiner Overlay Off" "overlayOnly"]]
                         ;History Voice
@@ -1047,6 +1051,7 @@
                 {:des "Caps Mode S Sublayer - Arc Popups and Macros" :rules [:capsS-press
                         ;Cancel Main Mode
                                 [:caps_lock [["caps-mode" 0]["f19-mode" 0]["capsE-press" 0]["capsA-press" 0]["capsS-press" 0]["capsD-press" 0]["capsF-press" 0]["capsC-press" 0]]]
+                                [{:pkey :button1} [["caps-mode" 0]["f19-mode" 0]["capsE-press" 0]["capsA-press" 0]["capsS-press" 0]["capsD-press" 0]["capsF-press" 0]["capsC-press" 0]]]
                         ;Hide Overlay
                                 [:left_shift [:km "Karabiner Overlay Off" "overlayOnly"]]
                         ;History
@@ -1088,6 +1093,7 @@
                 {:des "Caps Mode D Sublayer - Dropover" :rules [:capsD-press
                         ;Cancel Main Mode
                                 [:caps_lock [["caps-mode" 0]["f19-mode" 0]["capsE-press" 0]["capsA-press" 0]["capsS-press" 0]["capsD-press" 0]["capsF-press" 0]["capsC-press" 0]]]
+                                [{:pkey :button1} [["caps-mode" 0]["f19-mode" 0]["capsE-press" 0]["capsA-press" 0]["capsS-press" 0]["capsD-press" 0]["capsF-press" 0]["capsC-press" 0]]]
                         ;Hide Overlay
                                 [:left_shift [:km "Karabiner Overlay Off" "overlayOnly"]]
                         ;Clop
@@ -1135,6 +1141,7 @@
                 {:des "Caps Mode F Sublayer - Finder" :rules [:capsF-press
                         ;Cancel Main Mode
                                 [:caps_lock [["caps-mode" 0]["f19-mode" 0]["capsE-press" 0]["capsA-press" 0]["capsS-press" 0]["capsD-press" 0]["capsF-press" 0]["capsC-press" 0]]]
+                                [{:pkey :button1} [["caps-mode" 0]["f19-mode" 0]["capsE-press" 0]["capsA-press" 0]["capsS-press" 0]["capsD-press" 0]["capsF-press" 0]["capsC-press" 0]]]
                         ;Hide Overlay
                                 [:left_shift [:km "Karabiner Overlay Off" "overlayOnly"]]
                         ;Clop
@@ -1164,6 +1171,7 @@
                 {:des "Caps Mode C Sublayer - Cleanshot X" :rules [:capsC-press
                         ;Cancel Main Mode
                                 [:caps_lock [["caps-mode" 0]["f19-mode" 0]["capsE-press" 0]["capsA-press" 0]["capsS-press" 0]["capsD-press" 0]["capsF-press" 0]["capsC-press" 0]]]
+                                [{:pkey :button1} [["caps-mode" 0]["f19-mode" 0]["capsE-press" 0]["capsA-press" 0]["capsS-press" 0]["capsD-press" 0]["capsF-press" 0]["capsC-press" 0]]]
                         ;Hide Overlay
                                 [:left_shift [:km "Karabiner Overlay Off" "overlayOnly"]]
                         ;OCR w/Linebreaks
@@ -1282,7 +1290,7 @@
                                 [:g [[:alfred "sw" "com.superwhisper.aft" "openMode,superwhisper://mode?key=custom-IQVV"]["hideOverlay" 1]]]
                         ;Editor (★)
                                 [:!Cg [[:alfred "sw" "com.superwhisper.aft" "openMode,superwhisper://mode?key=custom-YYQY"]["hideOverlay" 1]]]
-                        ;Toggle PasteResult
+                        ;Toggle AutoPaste
                                 [:c [[:km "Toggle Action" "autoPaste"]["hideOverlay" 1]]]
                         ;Toggle PasteResult
                                 [:v [[:km "Toggle Action" "pasteResult"]["hideOverlay" 1]]]

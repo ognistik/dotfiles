@@ -15,7 +15,8 @@ kando_windows=$(yabai -m query --windows | jq -r 'map(select(.app == "Kando")) |
 alter_windows=$(yabai -m query --windows | jq -r 'map(select(.app == "Alter" and .subrole == "AXSystemDialog")) | map(."id")')
 drop_windows=$(yabai -m query --windows | jq -r 'map(select(.app == "Dropover")) | map(."id")')
 sw_windows=$(yabai -m query --windows | jq -r 'map(select(.app == "superwhisper" and .subrole != "AXStandardWindow")) | map(."id")')
-any_windows=$(yabai -m query --windows | jq -r 'map(select(.app == "Anybox" and .subrole != "AXStandardWindow")) | map(."id")')
+any_windows=$(yabai -m query --windows | jq -r 'map(select(.title == "")) | map(."id")')
+# any_windows=$(yabai -m query --windows | jq -r 'map(select(.app == "Anybox" and .subrole != "AXStandardWindow")) | map(."id")')
 bettermouse_windows=$(yabai -m query --windows | jq -r 'map(select(.app == "BetterMouse")) | map(."id")')
 screenstudio_windows=$(yabai -m query --windows | jq -r 'map(select(.app == "Screen Studio" and (.title | startswith("Project") | not))) | map(."id")')
 
