@@ -142,7 +142,7 @@
                         ; SW Superwhisper Rec & Mode
                                 [{:sim [:d :f] :simo {:interrupt true :dorder :insensitive :uorder :insensitive}} [[:btt "swResultOff"] {:set ["sw-mode" 1]} :!CTO0]
                                         [:!ropt :!rcmd :!w-mode :!wR-press :!wD-press :!wF-press :!wG-press :!wC-press :!wV-press :!e-mode :!t-mode :!caps-mode :!capsE-press :!capsA-press :!capsS-press :!capsD-press :!capsF-press :!capsC-press :!f19-mode :!a-mode :!sd-mode :!sw-mode :!f-mode :!del-mode :!holdBri-mode]
-                                        {:afterup [[:km "Trigger - KeyPress"] {:set ["sw-mode" 0]}]}]
+                                        {:afterup [{:set ["sw-mode" 0]}]}]
                         ; F MODE: Cursor Movement, Dragging and Clicking
                                         [:f nil [:!ropt :!rcmd :!w-mode :!wR-press :!wD-press :!wF-press :!wG-press :!wC-press :!wV-press :!e-mode :!t-mode :!caps-mode :!capsE-press :!capsA-press :!capsS-press :!capsD-press :!capsF-press :!capsC-press :!f19-mode :!a-mode :!sd-mode :!sw-mode :!f-mode :!del-mode :!holdBri-mode]
                                                 {:alone {:key :f :halt true} :delayed {:canceled {:key :f}}
@@ -922,10 +922,10 @@
 
                 {:des "Caps Mode E Sublayer - Arc Extensions" :rules [:capsE-press
                         ;Cancel Main Mode
-                                [:caps_lock [["caps-mode" 0]["f19-mode" 0]["capsE-press" 0]["capsA-press" 0]["capsS-press" 0]["capsD-press" 0]["capsF-press" 0]["capsC-press" 0]]]
-                                [{:pkey :button1} [["caps-mode" 0]["f19-mode" 0]["capsE-press" 0]["capsA-press" 0]["capsS-press" 0]["capsD-press" 0]["capsF-press" 0]["capsC-press" 0]]]
+                                [:caps_lock [[:btt "kara_off"]["caps-mode" 0]["f19-mode" 0]["capsE-press" 0]["capsA-press" 0]["capsS-press" 0]["capsD-press" 0]["capsF-press" 0]["capsC-press" 0]]]
+                                ;[{:pkey :button1} [[:btt "kara_toggle"]["caps-mode" 0]["f19-mode" 0]["capsE-press" 0]["capsA-press" 0]["capsS-press" 0]["capsD-press" 0]["capsF-press" 0]["capsC-press" 0]]]
                         ;Hide Overlay
-                                [:left_shift [:km "Karabiner Overlay Off" "overlayOnly"]]
+                                [:left_shift [:btt "kara_toggle"]]
                         ;Anybox Quick Save
                                 [:w [[:open-g "anybox://quick-save"]["caps-mode" 0]["capsE-press" 0]]]
                         ;Anybox Save Selection
@@ -978,9 +978,9 @@
                 {:des "Caps Mode A Sublayer - SW Actions" :rules [:capsA-press
                         ;Cancel Main Mode
                                 [:caps_lock [["caps-mode" 0]["f19-mode" 0]["capsE-press" 0]["capsA-press" 0]["capsS-press" 0]["capsD-press" 0]["capsF-press" 0]["capsC-press" 0]]]
-                                [{:pkey :button1} [["caps-mode" 0]["f19-mode" 0]["capsE-press" 0]["capsA-press" 0]["capsS-press" 0]["capsD-press" 0]["capsF-press" 0]["capsC-press" 0]]]
+                                ;[{:pkey :button1} [["caps-mode" 0]["f19-mode" 0]["capsE-press" 0]["capsA-press" 0]["capsS-press" 0]["capsD-press" 0]["capsF-press" 0]["capsC-press" 0]]]
                         ;Hide Overlay
-                                [:left_shift [:km "Karabiner Overlay Off" "overlayOnly"]]
+                                [:left_shift [:btt "kara_toggle"]]
                         ;History Voice
                                 [:q [[:alfred "sw" "com.superwhisper.aft" "selectHistoryVoice"]["caps-mode" 0]["capsA-press" 0]]]
                         ;History Result
@@ -988,7 +988,7 @@
                         ;Edit Last
                                 [:e [[:alfred "sw" "com.superwhisper.aft" "editLastResult"]["caps-mode" 0]["capsA-press" 0]]]
                         ;Reprocess Last
-                                [:r [[:alfred "sw" "com.superwhisper.aft" "processLast"]["caps-mode" 0]["capsA-press" 0]]]
+                                [:r [[:km "Reprocess Last Dictation"]["caps-mode" 0]["capsA-press" 0]]]
                         ;Modes
                                 [:a [[:alfred "sw" "com.superwhisper.aft" "selectMode"]["caps-mode" 0]["capsA-press" 0]]]
                         ;Main Menu
@@ -1008,7 +1008,7 @@
                                 [:caps_lock [["caps-mode" 0]["f19-mode" 0]["capsE-press" 0]["capsA-press" 0]["capsS-press" 0]["capsD-press" 0]["capsF-press" 0]["capsC-press" 0]]]
                                 [{:pkey :button1} [["caps-mode" 0]["f19-mode" 0]["capsE-press" 0]["capsA-press" 0]["capsS-press" 0]["capsD-press" 0]["capsF-press" 0]["capsC-press" 0]]]
                         ;Hide Overlay
-                                [:left_shift [:km "Karabiner Overlay Off" "overlayOnly"]]
+                                [:left_shift [:btt "kara_toggle"]]
                         ;Clear Items Toggle
                                 [:tab [[:alfred "cmd" "com.pasteflow.aft" "toggleSingleClear"]["caps-mode" 0]["capsS-press" 0]]]
                         ;DnD Toggle
@@ -1051,9 +1051,9 @@
                 {:des "Caps Mode S Sublayer - Arc Popups and Macros" :rules [:capsS-press
                         ;Cancel Main Mode
                                 [:caps_lock [["caps-mode" 0]["f19-mode" 0]["capsE-press" 0]["capsA-press" 0]["capsS-press" 0]["capsD-press" 0]["capsF-press" 0]["capsC-press" 0]]]
-                                [{:pkey :button1} [["caps-mode" 0]["f19-mode" 0]["capsE-press" 0]["capsA-press" 0]["capsS-press" 0]["capsD-press" 0]["capsF-press" 0]["capsC-press" 0]]]
+                                ;[{:pkey :button1} [["caps-mode" 0]["f19-mode" 0]["capsE-press" 0]["capsA-press" 0]["capsS-press" 0]["capsD-press" 0]["capsF-press" 0]["capsC-press" 0]]]
                         ;Hide Overlay
-                                [:left_shift [:km "Karabiner Overlay Off" "overlayOnly"]]
+                                [:left_shift [:btt "kara_toggle"]]
                         ;History
                                 [:return_or_enter [[:alfred "archistory" "com.chubamisc.afred"]["caps-mode" 0]["capsS-press" 0]]]
                         ;Tabs
@@ -1093,9 +1093,9 @@
                 {:des "Caps Mode D Sublayer - Dropover" :rules [:capsD-press
                         ;Cancel Main Mode
                                 [:caps_lock [["caps-mode" 0]["f19-mode" 0]["capsE-press" 0]["capsA-press" 0]["capsS-press" 0]["capsD-press" 0]["capsF-press" 0]["capsC-press" 0]]]
-                                [{:pkey :button1} [["caps-mode" 0]["f19-mode" 0]["capsE-press" 0]["capsA-press" 0]["capsS-press" 0]["capsD-press" 0]["capsF-press" 0]["capsC-press" 0]]]
+                                ;[{:pkey :button1} [["caps-mode" 0]["f19-mode" 0]["capsE-press" 0]["capsA-press" 0]["capsS-press" 0]["capsD-press" 0]["capsF-press" 0]["capsC-press" 0]]]
                         ;Hide Overlay
-                                [:left_shift [:km "Karabiner Overlay Off" "overlayOnly"]]
+                                [:left_shift [:btt "kara_toggle"]]
                         ;Clop
                                 [:q [[:sc "quick" "Drop Optimize"]["caps-mode" 0]["capsD-press" 0]]]
                         ;Clop WF
@@ -1141,9 +1141,9 @@
                 {:des "Caps Mode F Sublayer - Finder" :rules [:capsF-press
                         ;Cancel Main Mode
                                 [:caps_lock [["caps-mode" 0]["f19-mode" 0]["capsE-press" 0]["capsA-press" 0]["capsS-press" 0]["capsD-press" 0]["capsF-press" 0]["capsC-press" 0]]]
-                                [{:pkey :button1} [["caps-mode" 0]["f19-mode" 0]["capsE-press" 0]["capsA-press" 0]["capsS-press" 0]["capsD-press" 0]["capsF-press" 0]["capsC-press" 0]]]
+                                ;[{:pkey :button1} [["caps-mode" 0]["f19-mode" 0]["capsE-press" 0]["capsA-press" 0]["capsS-press" 0]["capsD-press" 0]["capsF-press" 0]["capsC-press" 0]]]
                         ;Hide Overlay
-                                [:left_shift [:km "Karabiner Overlay Off" "overlayOnly"]]
+                                [:left_shift [:btt "kara_toggle"]]
                         ;Clop
                                 [:q [[:alfred "finderClop" "com.afadingthought.clop" "quick"]["caps-mode" 0]["capsF-press" 0]]]   
                         ;Clop WF
@@ -1170,15 +1170,15 @@
 
                 {:des "Caps Mode C Sublayer - Cleanshot X" :rules [:capsC-press
                         ;Cancel Main Mode
-                                [:caps_lock [["caps-mode" 0]["f19-mode" 0]["capsE-press" 0]["capsA-press" 0]["capsS-press" 0]["capsD-press" 0]["capsF-press" 0]["capsC-press" 0]]]
-                                [{:pkey :button1} [["caps-mode" 0]["f19-mode" 0]["capsE-press" 0]["capsA-press" 0]["capsS-press" 0]["capsD-press" 0]["capsF-press" 0]["capsC-press" 0]]]
+                                [:caps_lock [[:btt "kara_off"]["caps-mode" 0]["f19-mode" 0]["capsE-press" 0]["capsA-press" 0]["capsS-press" 0]["capsD-press" 0]["capsF-press" 0]["capsC-press" 0]]]
+                                ;[{:pkey :button1} [[:btt "kara_off"]["caps-mode" 0]["f19-mode" 0]["capsE-press" 0]["capsA-press" 0]["capsS-press" 0]["capsD-press" 0]["capsF-press" 0]["capsC-press" 0]]]
                         ;Hide Overlay
-                                [:left_shift [:km "Karabiner Overlay Off" "overlayOnly"]]
+                                [:left_shift [:btt "kara_toggle"]]
                         ;OCR w/Linebreaks
                                 [:q [[:open-g "cleanshot://capture-text?linebreaks=true"]["caps-mode" 0]["capsC-press" 0]]]
                         ;OCR no Linebreaks
                                 [:w [[:open-g "cleanshot://capture-text?linebreaks=false"]["caps-mode" 0]["capsC-press" 0]]]
-                        ;OCR Alfred   
+                        ;OCR Alfred
                                 [:!Cw [[:alfred "ocr" "com.zeitlings.ocr.light"]["caps-mode" 0]["capsC-press" 0]]]
                         ;FullScreen
                                 [:e [[:open-g "cleanshot://capture-fullscreen"]["caps-mode" 0]["capsC-press" 0]]]
@@ -1192,9 +1192,9 @@
                                 [:d [[:open-g "cleanshot://capture-area?action=annotate"]["caps-mode" 0]["capsC-press" 0]]]
                         ;Capture
                                 [:f [[:open-g "cleanshot://capture-area"]["caps-mode" 0]["capsC-press" 0]]]
-                        ;Capture to CB                                         
+                        ;Capture to CB
                                 [:!Cf [[:open-g "cleanshot://capture-area?action=copy"]["caps-mode" 0]["capsC-press" 0]]]
-                        ;All in One    
+                        ;All in One
                                 [:c [[:open-g "cleanshot://all-in-one"]["caps-mode" 0]["capsC-press" 0]]]
                         ;Capture & Pin
                                 [:v [[:open-g "cleanshot://capture-area?action=pin"]["caps-mode" 0]["capsC-press" 0]]]
@@ -1262,12 +1262,12 @@
 
 ; -- A MODE / KIKI AI & SUPERWHISPER --
                 {:des "A Mode - Kiki & SW Modes" :rules [:a-mode
-                        ;Alter Whatever
-                                [:e [[:km "MW Voice Schedule" "Alter Whatever"]["hideOverlay" 1]]]
                         ;Alter Answerer ★
-                                [:!Ce [[:km "MW Voice Schedule" "Alter Answerer ★"]["hideOverlay" 1]]]
-                        ;Helper
-                                [:r [[:alfred "sw" "com.superwhisper.aft" "openModeRecord,superwhisper://mode?key=custom-GAXH"]["hideOverlay" 1]]]
+                                [:e [[:km "MW Voice Schedule" "Alter Answerer ★"]["hideOverlay" 1]]]
+                        ;Alter Editor (★)
+                                [:!Ce [[:km "MW Voice Schedule" "Alter Editor (★)"]["hideOverlay" 1]]]
+                        ;Alter Helper
+                                [:r [[:km "MW Voice Schedule" "Alter Helper"]["hideOverlay" 1]]]
                         ;Alter Helper ★
                                 [:!Cr [[:km "MW Voice Schedule" "Alter Helper ★"]["hideOverlay" 1]]]                        
                         ;Alter Coder (★)
@@ -1275,21 +1275,23 @@
                         ;Alter Translate
                                 [:!Ct ["/opt/homebrew/bin/macrowhisper --exec-action \"Alter Translate\"" ["hideOverlay" 1]]]
                         ;Simplifier
-                                [:s [[:alfred "sw" "com.superwhisper.aft" "openModeRecord,superwhisper://mode?key=custom-GNIX"]["hideOverlay" 1]]]
-                        ;Alter Editor (★)
-                                [:!Cs [[:km "MW Voice Schedule" "Alter Editor (★)"]["hideOverlay" 1]]]
-                        ;Flex
+                                [:s [[:alfred "sw" "com.superwhisper.aft" "openMode,superwhisper://mode?key=custom-GNIX"]["hideOverlay" 1]]]
+                        ;TypingMind
+                                [:!Cs [[:km "MW Voice Schedule" "TypingMind"]["hideOverlay" 1]]]
+                        ;Flex Q
                                 [:d [[:alfred  "sw" "com.superwhisper.aft" "openMode,superwhisper://mode?key=custom"]["hideOverlay" 1]]]
-                        ;Alter TM
-                                [:!Cd [[:km "MW Voice Schedule" "Alter TM"]["hideOverlay" 1]]]
+                        ;Flex P
+                                [:!Cd [[:alfred  "sw" "com.superwhisper.aft" "openMode,superwhisper://mode?key=flex"]["hideOverlay" 1]]]                                
                         ;Voice
                                 [:f [[:alfred  "sw" "com.superwhisper.aft" "openMode,superwhisper://mode?key=custom-SWJU"]["hideOverlay" 1]]]
                         ;Dictate
-                                [:!Cf [[:alfred "sw" "com.superwhisper.aft" "openMode,superwhisper://mode?key=custom-SWJG"]["hideOverlay" 1]]]                        
-                        ;Improver
-                                [:g [[:alfred "sw" "com.superwhisper.aft" "openMode,superwhisper://mode?key=custom-IQVV"]["hideOverlay" 1]]]
-                        ;Editor (★)
-                                [:!Cg [[:alfred "sw" "com.superwhisper.aft" "openMode,superwhisper://mode?key=custom-YYQY"]["hideOverlay" 1]]]
+                                [:!Cf [[:alfred "sw" "com.superwhisper.aft" "openMode,superwhisper://mode?key=custom-YYQY"]["hideOverlay" 1]]]                        
+                        ;Helper
+                                [:g [[:alfred "sw" "com.superwhisper.aft" "openMode,superwhisper://mode?key=custom-GAXH"]["hideOverlay" 1]]]
+                        ;Helper ★
+                                [:!Cg [[:alfred "sw" "com.superwhisper.aft" "openMode,superwhisper://mode?key=helper"]["hideOverlay" 1]]]
+                        ;Clean Action
+                                [:x [[:km "Toggle Action" ""]["hideOverlay" 1]]]
                         ;Toggle AutoPaste
                                 [:c [[:km "Toggle Action" "autoPaste"]["hideOverlay" 1]]]
                         ;Toggle PasteResult
