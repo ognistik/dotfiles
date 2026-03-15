@@ -130,11 +130,29 @@ toggleSpecial() {
 }
 
 toggle_others() {
-/opt/homebrew/bin/yabai -m window $(
-      /opt/homebrew/bin/yabai -m query --windows |
-      /opt/homebrew/bin/jq -r "[.[] | select(.scratchpad != \"\" and .scratchpad != \"$NAME\" and .\"is-visible\"==true) 
-          | \"--toggle \" + .scratchpad ] | join(\" \")"
+  sleep 0.05
+  /opt/homebrew/bin/yabai -m window $(
+        /opt/homebrew/bin/yabai -m query --windows |
+        /opt/homebrew/bin/jq -r "[.[] | select(.scratchpad != \"\" and .scratchpad != \"$NAME\" and .\"is-visible\"==true) 
+            | \"--toggle \" + .scratchpad ] | join(\" \")"
   ) 2>/dev/null
+}
+
+focus_visible_scratchpad() {
+  # Focus the scratchpad window that matches $NAME (if it is currently visible)
+  local target_id
+  target_id=$(
+    /opt/homebrew/bin/yabai -m query --windows |
+      /opt/homebrew/bin/jq -r --arg name "$NAME" '
+        .[] | select(.scratchpad == $name and ."is-visible" == true) | .id
+      ' | head -n 1
+  )
+
+  if [[ -n "$target_id" ]]; then
+    # Small delay helps when the window was just toggled / moved / re-gridded
+    sleep 0.05
+    /opt/homebrew/bin/yabai -m window --focus "$target_id" 2>/dev/null
+  fi
 }
 
 ACTION="$1"
@@ -163,5 +181,5 @@ else
   toggleSpecial
 fi
 toggle_others
-
+focus_visible_scratchpad
 exit 0

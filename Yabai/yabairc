@@ -5,7 +5,7 @@ sudo /opt/homebrew/bin/yabai --load-sa
 
 # global settings
 yabai -m config mouse_follows_focus          off
-yabai -m config focus_follows_mouse          off
+yabai -m config focus_follows_mouse          autoraise
 yabai -m config window_origin_display        default
 yabai -m config window_placement             second_child
 yabai -m config window_topmost               off
@@ -45,11 +45,12 @@ yabai -m rule --add app="^Soundly$" scratchpad="scratchpad" grid="11:11:1:1:9:9"
 
 # Misc 
 yabai -m rule --add app="^CleanShot X$" sticky=on manage=off opacity=1.0
+yabai -m rule --add app="^brilliant$" manage=off opacity=1.0
 yabai -m rule --add app="^Loopback$" manage=off opacity=1.0 grid="11:11:1:1:9:9"
 yabai -m rule --add app="^Karabiner-.*" manage=off opacity=1.0 grid="11:11:1:1:9:9"
 yabai -m rule --add app="^Yume$" manage=off opacity=1.0 grid="1:1:0:0:1:1"
 yabai -m rule --add app="^Kando$" manage=off opacity=1.0
-yabai -m rule --add app="^Alter$" title="General" manage=off opacity=1.0
+yabai -m rule --add app="^Alter$" title="^(General|Profile|Voice|Appereance|Billing|Permissions|API Keys|Router)$" sticky=on manage=off opacity=1.0
 yabai -m rule --add app="^Screen Studio$|^Screen Studio Beta$" subrole="AXDialog" title!="Camera Preview|Start Recording|Screen Studio Display Window Picker Highlighter" manage=off opacity=0.0001
 yabai -m rule --add app="^Screen Studio$|^Screen Studio Beta$" subrole!="AXDialog" manage=off opacity=1.0
 yabai -m rule --add app="^Keyboard Maestro$" subrole!="AXDialog" manage=off
@@ -57,10 +58,8 @@ yabai -m rule --add app="^BetterTouchTool$" manage=off grid="11:11:1:1:9:9"
 yabai -m rule --add app="^Antinote$" manage=off opacity=1.0
 
 # SuperWhisper
+yabai -m rule --add app="superwhisper" subrole="AXSystemDialog" sticky=on manage=off opacity=1.0
 yabai -m rule --add app="superwhisper" subrole!="AXSystemDialog" sticky=on manage=off grid="6:4:1:1:2:4" opacity=1.0
-# yabai -m rule --add app="superwhisper" subrole="AXSystemDialog" grid="1:2:0:0:1:1" sticky=on manage=off opacity=0.5        grid="12:12:3:2:9:6"    
-# yabai -m rule --apply app="superwhisper" subrole="AXSystemDialog" grid="1:2:0:0:1:1" sticky=on manage=off opacity=0.5
-# yabai -m signal --add label=superwhisper_floating event=window_created app="^superwhisper$" action='echo "Window creation signal triggered" >> ~/Desktop/yabai_signal_log.txt'
 
 # Bear Scratchpads and Main Window
 yabai -m rule --add app="^Bear$" title!="^Bear$" manage=off grid="8:8:3:1:2:6" opacity=1.0
@@ -83,7 +82,7 @@ yabai -m signal --add label=unmanagedAndCenteredTitles event=window_created titl
 # ARC WINDOWS HANDLING
 # I am not including sub-layer in this rule, since I apply a sub-layer=normal to all apps anyway. I know I can target the first created window with this.
 yabai -m rule --add app="^Arc$" manage=off
-# yabai -m signal --add app="^Arc$" event=window_title_changed action="yabai -m config focus_follows_mouse autoraise"
+yabai -m signal --add app="^Arc$" event=window_title_changed action="yabai -m config focus_follows_mouse autoraise"
 yabai -m signal --add label="arcrules" event=window_created app="^Arc$" title!="^Space [0-9]+$|^$|^Robert$" action="yabai -m window $YABAI_WINDOW_ID --toggle float"
 
 # focus window after active space changes
