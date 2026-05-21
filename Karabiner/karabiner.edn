@@ -183,11 +183,17 @@
                                 [:delete_or_backspace :vk_none]
                         ;Karabiner Overlay
                                 [:!Fw [:btt "kara_toggle"]]
+                        ;Bear Restore Note
+                                [:!Cr "$HOME/.local/bin/ursus n restore" [:bear]]
+                        ;Bear Apply Template
+                                [:!Ot "$HOME/.local/bin/ursus n apply-template" [:bear]]
+                        ;Bear Save Snapshot
+                                [:!Cs "$HOME/.local/bin/ursus n backup" [:bear]]
                         ;Disable the return key
                                 [:return_or_enter :vk_none]
                         ;Paste as Plain Text
                                 [:!CSv [:sc "" "Paste as Plain Text"] [:!finalcutpro]]
-                        ;Make new note in Bear with KM Macro
+                        ;Bear New Note with KM Macro
                                 [:!Cn [:km "New Bear Note - Same Window"] [:bear]]
                         ;RETURN on Left CTRL??
                                 [:##left_control :left_control nil {:alone {:key :return_or_enter}}]
@@ -390,7 +396,7 @@
                         ;Query Win
                                 [:1 [[:yabai "query --windows --window > ~/Desktop/yabai_output.txt"]["hideOverlay" 1]]]
                         ;Restart Server
-                                [:tab ["/opt/homebrew/bin/yabai --restart-service" ["hideOverlay" 1]]]
+                                [:tab ["/opt/homebrew/bin/yabai --stop-service && /opt/homebrew/bin/yabai --start-service" ["hideOverlay" 1]]]
                         ;Layer
                                 [:q ["layer=\"$(/opt/homebrew/bin/yabai --message query --windows --window | /opt/homebrew/bin/jq --raw-output '.\"sub-layer\"')\" && /opt/homebrew/bin/yabai --message window --sub-layer \"$([ \"$layer\" = 'normal' ] && echo 'below' || echo 'normal')\"" ["hideOverlay" 1]]]
                         ;M. Control / Desktop
@@ -816,7 +822,7 @@
                         ;Alter Send to Bear
                                 [:!Cd :!CO1]
                         ;Alter Copy Close
-                                [:!Of [:!TOc :!Tw]]
+                                [:!Of [:!TOc :!Cw]]
                         ;Alter
                                 [:!Cf :!TS1]
                         ;C **CLEANSHOT**
@@ -997,7 +1003,7 @@
                                 [:d [[:alfred "swmacros" "com.chubamisc.afred"]["caps-mode" 0]["capsA-press" 0]]]
                         ;Last JSON
                                 [:f ["/opt/homebrew/bin/macrowhisper --exec-action swWebDebug"["caps-mode" 0]["capsA-press" 0]]]
-                        ;Hide Unhide
+                        ;Hide Unhide Result
                                 [:spacebar ["/opt/homebrew/bin/macrowhisper --exec-action swWebView"["caps-mode" 0]["capsA-press" 0]]]
                 ]},
                 

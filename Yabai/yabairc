@@ -46,6 +46,7 @@ yabai -m rule --add app="^Soundly$" scratchpad="scratchpad" grid="11:11:1:1:9:9"
 # Misc 
 yabai -m rule --add app="^CleanShot X$" sticky=on manage=off opacity=1.0
 yabai -m rule --add app="^brilliant$" manage=off opacity=1.0
+yabai -m rule --add app="^Ursus$" title="Ursus" manage=off opacity=1.0 grid="26:28:8:2:20:10"
 yabai -m rule --add app="^Loopback$" manage=off opacity=1.0 grid="11:11:1:1:9:9"
 yabai -m rule --add app="^Karabiner-.*" manage=off opacity=1.0 grid="11:11:1:1:9:9"
 yabai -m rule --add app="^Yume$" manage=off opacity=1.0 grid="1:1:0:0:1:1"

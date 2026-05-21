@@ -68,7 +68,6 @@ ALLOWED_WINDOW_IDS=$(echo "$ALL_WINDOWS_JSON" | jq -r '
   map(
     select(
       ."is-hidden" or
-      ."is-minimized" or
       .scratchpad != "" or
       (.app == "Kando") or
       (.app == "Alter" and .subrole != "AXStandardWindow") or

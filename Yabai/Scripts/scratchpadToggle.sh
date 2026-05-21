@@ -8,17 +8,43 @@ toggle() {
 # Notification for debugging
 # osascript -e "display notification \"So far ok.\" with title \"YES\""
 
+tile_window_if_floating() {
+  local window_id="$1"
+  local is_floating
+
+  if [[ -z "$window_id" ]]; then
+    return
+  fi
+
+  is_floating=$(/opt/homebrew/bin/yabai -m query --windows --window "$window_id" 2>/dev/null | /opt/homebrew/bin/jq -r '.["is-floating"] // empty')
+  if [[ "$is_floating" == "true" ]]; then
+    /opt/homebrew/bin/yabai -m window "$window_id" --toggle float
+  fi
+}
+
 # This will handle toggling or setting scratchpads not set in Yabairc, including Bear, Arc, or my Solo Scratchpad.
 toggleSpecial() { 
   # First let's deal with the Bear scratchpad case.
   if [[ $NAME == "bearScratchpad" ]]; then
+    local lockdir="/tmp/yabai-bear-scratchpad.lock"
+    local wait_count=0
+
+    while ! mkdir "$lockdir" 2>/dev/null; do
+      sleep 0.05
+      wait_count=$((wait_count + 1))
+      if (( wait_count >= 40 )); then
+        rm -rf "$lockdir" 2>/dev/null
+      fi
+    done
+
+    trap 'rm -rf "$lockdir"' RETURN
 
     # Check if window has no title and close it if so. Seems to be a bug that only happens with Bear and this is a workaround...
     if [ "$YABAI_WINDOW_ID" != "" ]; then
-        windowTitle=$(/opt/homebrew/bin/yabai -m query --windows --window $YABAI_WINDOW_ID | /opt/homebrew/bin/jq -r '.title')
+        windowTitle=$(/opt/homebrew/bin/yabai -m query --windows --window "$YABAI_WINDOW_ID" | /opt/homebrew/bin/jq -r '.title')
         if [ "$windowTitle" = "" ]; then
-            /opt/homebrew/bin/yabai -m window $YABAI_WINDOW_ID --close
-            exit 0  # This will stop the entire script
+            /opt/homebrew/bin/yabai -m window "$YABAI_WINDOW_ID" --close
+            return 0
         fi
     fi
 
@@ -31,23 +57,23 @@ toggleSpecial() {
     fi
 
     # First we look for any existing Bear Scratchpads
-    bearScratchpadId=$(/opt/homebrew/bin/yabai -m query --windows | /opt/homebrew/bin/jq -r '.[] | select(.scratchpad == "bearScratchpad") | .id')
+    bearScratchpadId=$(/opt/homebrew/bin/yabai -m query --windows | /opt/homebrew/bin/jq -r --arg current "$theWindow" '.[] | select(.scratchpad == "bearScratchpad" and (.id | tostring) != $current) | .id' | head -n 1)
 
     # There is already a Bear Scratchpad so...
     if [ "$bearScratchpadId" != "" ]; then
-      # If we are focused on the Bear Scratchpad we want to toggle/remove it.
-      if [ "$bearScratchpadId" = "$theWindow" ]; then
-      /opt/homebrew/bin/yabai -m window $theWindow --scratchpad ""
-      
-      # If we are not on the Bear Scratchpad, this means we want it on our current window. Which means we have to remove it from whichever window has it and give it to the one in front of the user.
-      else
-      /opt/homebrew/bin/yabai -m window $bearScratchpadId --scratchpad ""
-      /opt/homebrew/bin/yabai -m window $theWindow --scratchpad bearScratchpad --grid 8:8:3:1:2:6 --opacity 1.0
-      fi
+      /opt/homebrew/bin/yabai -m window "$bearScratchpadId" --scratchpad ""
+      tile_window_if_floating "$bearScratchpadId"
+    fi
 
-    # There are no existing Bear Scratchpads... We simply assign the Bear Scratchpad to the window.
+    currentScratchpadId=$(/opt/homebrew/bin/yabai -m query --windows | /opt/homebrew/bin/jq -r --arg current "$theWindow" '.[] | select(.scratchpad == "bearScratchpad" and (.id | tostring) == $current) | .id' | head -n 1)
+
+    # If the current Bear window already owns the scratchpad, toggle/remove it and return it to tiling.
+    if [ "$currentScratchpadId" = "$theWindow" ]; then
+      /opt/homebrew/bin/yabai -m window "$theWindow" --scratchpad ""
+      tile_window_if_floating "$theWindow"
     else
-      /opt/homebrew/bin/yabai -m window $theWindow --scratchpad bearScratchpad --grid 8:8:3:1:2:6 --opacity 1.0
+      # There are no existing Bear Scratchpads on this window... We simply assign the Bear Scratchpad to the window.
+      /opt/homebrew/bin/yabai -m window "$theWindow" --scratchpad bearScratchpad --grid 8:8:3:1:2:6 --opacity 1.0
     fi
 
   elif [[ $NAME == "Safari" ]]; then
