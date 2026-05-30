@@ -18,7 +18,13 @@ else
     all_windows=$(/opt/homebrew/bin/yabai -m query --windows)
     
     # Check if there are any App (incoming app) windows
-    app_windows=$(echo "$all_windows" | /opt/homebrew/bin/jq "[.[] | select(.app == \"$app_name\")]")
+    app_windows=$(echo "$all_windows" | /opt/homebrew/bin/jq --arg app "$app_name" '
+    [
+        .[]
+        | select(.app == $app)
+        | select(."has-ax-reference" == true)
+    ]
+    ')
 
     if [ $(echo "$app_windows" | /opt/homebrew/bin/jq 'length') -eq 0 ]; then
         echo "noWindows"

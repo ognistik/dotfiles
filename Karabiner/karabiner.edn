@@ -189,6 +189,8 @@
                                 [:!Ot "$HOME/.local/bin/ursus n apply-template" [:bear]]
                         ;Bear Save Snapshot
                                 [:!Cs "$HOME/.local/bin/ursus n backup" [:bear]]
+                        ;Alter Close Chats & Hub
+                                [:!CSf [:km "Close Chats"]]
                         ;Disable the return key
                                 [:return_or_enter :vk_none]
                         ;Paste as Plain Text
@@ -821,12 +823,12 @@
                         ;F **FINDER**
                         ;Alter Send to Bear
                                 [:!Cd :!CO1]
-                        ;Alter Copy Close
-                                [:!Of [:!TOc :!Cw]]
-                        ;Alter
+                        ;Alter Main Hub
+                                [:!Of [:km "Toggle Hub"]]
+                        ;Alter Quickhub
                                 [:!Cf :!TS1]
                         ;C **CLEANSHOT**
-                        ;Mute
+                        ;Mut
                                 [{:sim [:y :u] :simo {:interrupt true :dorder :insensitive :uorder :insensitive}} :mute] ;(IMPORTANT: The order of this rule matters. Can't be after y or u individual rules)
                         ;Play/Pause
                                 [{:sim [:y :u] :modi [:left_command] :simo {:interrupt true :dorder :insensitive :uorder :insensitive}} :play_or_pause]

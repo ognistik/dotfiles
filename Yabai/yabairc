@@ -51,6 +51,7 @@ yabai -m rule --add app="^Loopback$" manage=off opacity=1.0 grid="11:11:1:1:9:9"
 yabai -m rule --add app="^Karabiner-.*" manage=off opacity=1.0 grid="11:11:1:1:9:9"
 yabai -m rule --add app="^Yume$" manage=off opacity=1.0 grid="1:1:0:0:1:1"
 yabai -m rule --add app="^Kando$" manage=off opacity=1.0
+yabai -m rule --add app="^Alter$" opacity=1.0
 yabai -m rule --add app="^Alter$" title="^(General|Profile|Voice|Appereance|Billing|Permissions|API Keys|Router)$" sticky=on manage=off opacity=1.0
 yabai -m rule --add app="^Screen Studio$|^Screen Studio Beta$" subrole="AXDialog" title!="Camera Preview|Start Recording|Screen Studio Display Window Picker Highlighter" manage=off opacity=0.0001
 yabai -m rule --add app="^Screen Studio$|^Screen Studio Beta$" subrole!="AXDialog" manage=off opacity=1.0
